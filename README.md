@@ -4,9 +4,11 @@ This is a collection of code notes or things learned over time for various langu
 
 ## Languages, IDEs, OS X
 
-- [React](react-basics.md)
-- [React Advanced](react-advanced.md)
-- [React v16](react-v16.md)
+- React
+    >  Note: Contains a copy of the Docs from React's website as of 4/29/2018.  I don't plan on keeping this in sync with the React site.  It's just to port it over which is good enough, and then add onto it with useful information from other sources on the web
+    - [React Basics](react-basics.md)
+    - [React Advanced](react-advanced.md)
+    - [React v16](react-v16.md)
 - Redux
 - JavaScript - Basics
   >  Note: a lot of the "You Don't Know JS" content was ported over and I tried to strip out fluff..it's too wordyga .
