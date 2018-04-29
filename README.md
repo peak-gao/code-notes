@@ -8,7 +8,9 @@ This is a collection of code notes or things learned over time for various langu
 - [React Advanced](react-advanced.md)
 - [React v16](react-v16.md)
 - Redux
-- [JavaScript - Basics](js-basics-notes.md)
+- JavaScript - Basics
+    - [Part 1](js-basics-notes.md)
+    - [Part 2](js-basics-notes-2.md)
 - JavaScript - ES6
 - Node
 - WebStorm IDE
