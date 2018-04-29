@@ -15,6 +15,7 @@ This is a collection of code notes or things learned over time for various langu
    gcmsg 'grammer correction'in places and I wanted a shortened version of it for review.  So this is no an exact copy, I've modified it by arranging it better by adding bullets, etc.
     - [Part 1](js-basics-notes.md)
     - [Part 2](js-basics-notes-2.md)
+    - [Part 3](js-basics-notes-3.md)
 - JavaScript - ES6
 - Node
 - WebStorm IDE
