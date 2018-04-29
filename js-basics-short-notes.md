@@ -757,6 +757,159 @@ if (foo) {
         console.log( b ); // ReferenceError!
         ```
 
+# Hoisting
+### Chicken Or The Egg?
+- There's a temptation to think that all of the code you see in a JavaScript program is interpreted line-by-line, top-down in order, as the program executes
+    - While that is substantially true, there's one part of that assumption which can lead to incorrect thinking about your program:
+        ```
+        a = 2;
+        var a;
+        console.log( a );
+        ```
+        - Many developers would expect undefined to be printed, since the var a statement comes after the a = 2, and it would seem natural to assume that the variable is re-defined, and thus assigned the default undefined. However, the output will be 2
+        ```
+        console.log( a );
+        var a = 2;
+        ```
+        - You might be tempted to assume that, since the previous snippet exhibited some less-than-top-down looking behavior, perhaps in this snippet, 2 will also be printed
+        - Others may think that since the a variable is used before it is declared, this must result in a ReferenceError being thrown
+        - Unfortunately, both guesses are incorrect. undefined is the output
+- It would appear we have a chicken-and-the-egg question. Which comes first, the declaration ("egg"), or the assignment ("chicken")?
+    - To answer this question, we need to refer back to Chapter 1, and our discussion of compilers. Recall that the Engine actually will compile your JavaScript code before it interprets it
+    - Part of the compilation phase was to find and associate all declarations with their appropriate scopes
+    - **the best way to think about things is that all declarations, both variables and functions, are processed first, before any part of your code is executed**
+    - When you see var a = 2;, you probably think of that as one statement. But JavaScript actually thinks of it as two statements: var a; and a = 2;
+        - The first statement, the declaration, is processed during the compilation phase
+        - The second statement, the assignment, is left in place for the execution phase
+        - Our first snippet then should be thought of as being handled like this:
+            ```
+            var a;
+            ```
+            a = 2;
+            console.log( a );
+            ```
+            - the first part is the compilation and the second part is the execution
+        - our second snippet is actually processed as:
+            ```
+            var a;
+            ```
+            ```
+            console.log( a );
+            a = 2;
+            ```
+- one way of thinking, sort of metaphorically, about this process, is that **variable and function declarations are "moved" from where they appear in the flow of the code to the top of the code. This gives rise to the name "Hoisting"**
+    - In other words, the egg (declaration) comes before the chicken (assignment)
+- **Only the declarations themselves are hoisted, while any assignments or other executable logic are left *in place***
+    - If hoisting were to re-arrange the executable logic of our code, that could wreak havoc
+```
+foo();
+
+function foo() {
+	console.log( a ); // undefined
+
+	var a = 2;
+}
+```
+- function foo's declaration (which in this case includes the implied value of it as an actual function) is hoisted, such that the call on the first line is able to execute
+- hoisting is per-scope
+    - while our previous snippets were simplified in that they only included global scope, the foo(..) function we are now examining itself exhibits that var a is hoisted to the top of foo(..) (not, obviously, to the top of the program)
+        - So the program can perhaps be more accurately interpreted like this:
+            ```
+            function foo() {
+            	var a;
+            
+            	console.log( a ); // undefined
+            
+            	a = 2;
+            }
+            
+            foo();
+            ```
+            - The variable identifier foo is hoisted and attached to the enclosing scope (global) of this program, so foo() doesn't fail as a ReferenceError
+            - But foo has no value yet (as it would if it had been a true function declaration instead of expression)
+            - So, foo() is attempting to invoke the undefined value, which is a TypeError illegal operation
+- **Function *declarations* are hoisted, as we just saw. But function *expressions* are not**
+- even if it's a named function expression, the name identifier is not available in the enclosing scope:
+```
+foo(); // TypeError
+bar(); // ReferenceError
+
+var foo = function bar() {
+	// ...
+};
+```
+- This snippet is more accurately interpreted (with hoisting) as:
+    ```
+    var foo;
+    
+    foo(); // TypeError
+    bar(); // ReferenceError
+    
+    foo = function() {
+    	var bar = ...self...
+    	// ...
+    }
+    ```
+### Functions First
+- **Both function declarations and variable declarations are hoisted**
+    - **functions are hoisted first**, and then variables
+```
+foo(); // 1
+
+var foo;
+
+function foo() {
+	console.log( 1 );
+}
+
+foo = function() {
+	console.log( 2 );
+};
+```
+- 1 is printed instead of 2! This snippet is interpreted by the Engine as:
+```
+function foo() {
+	console.log( 1 );
+}
+
+foo(); // 1
+
+foo = function() {
+	console.log( 2 );
+};
+```
+- Notice that var foo was the duplicate (and thus ignored) declaration, even though it came before the function foo()... declaration, because function declarations are hoisted before normal variables
+- While multiple/duplicate var declarations are effectively ignored, subsequent function declarations do override previous ones
+    ```
+    foo(); // 3
+    
+    function foo() {
+    	console.log( 1 );
+    }
+    
+    var foo = function() {
+    	console.log( 2 );
+    };
+    
+    function foo() {
+    	console.log( 3 );
+    }
+    ```
+    - it highlights the fact that duplicate definitions in the same scope are a really bad idea and will often lead to confusing results
+- **Function declarations that appear inside of normal blocks typically hoist to the enclosing scope, rather than being conditional**
+    ```
+    foo(); // "b"
+    
+    var a = true;
+    if (a) {
+       function foo() { console.log( "a" ); }
+    }
+    else {
+       function foo() { console.log( "b" ); }
+    }
+    ```
+    - this behavior is not reliable and is subject to change in future versions of JavaScript, so it's probably best to avoid declaring functions in blocks
+
 # References
 - [You Don't Know JS: Up & Going](https://github.com/getify/You-Dont-Know-JS/blob/master/up%20&%20going/README.md#you-dont-know-js-up--going)
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
