@@ -426,6 +426,106 @@ function foo(a) {
     - **While this technique "works", it is not necessarily very ideal**
     - There are a few problems it introduces:
         - first we have to declare a named-function foo(), but now the identifier name foo itself "pollutes" the enclosing scope (global, in this case)
+        - we also have to explicitly call the function by name (foo()) so that the wrapped code actually executes
+        - It would be more ideal if the function didn't need a name (or, rather, the name didn't pollute the enclosing scope), and if the function could automatically be executed
+        - JavaScript offers a solution to both problems:
+            ```
+            var a = 2;
+            
+            (function foo(){ // <-- insert this
+            
+            	var a = 3;
+            	console.log( a ); // 3
+            
+            })(); // <-- and this
+            
+            console.log( a ); // 2
+            ```
+            - First, notice that the wrapping function statement starts with (function... as opposed to just function.... While this may seem like a minor detail, it's actually a major change
+            - Instead of treating the function as a standard declaration, the function is treated as a function-expression
+            - The easiest way to distinguish declaration vs. expression is the position of the word "function" in the statement (not just a line, but a distinct statement). If "function" is the very first thing in the statement, then it's a function declaration. Otherwise, it's a function expression.
+            - The key difference we can observe here between a function declaration and a function expression relates to where its name is bound as an identifier
+            - Compare the previous two snippets. In the first snippet, the name foo is bound in the enclosing scope, and we call it directly with foo(). In the second snippet, the name foo is not bound in the enclosing scope, but instead is bound only inside of its own function
+            - In other words, (function foo(){ .. }) as an expression means the identifier foo is found only in the scope where the .. indicates, not in the outer scope. Hiding the name foo inside itself means it does not pollute the enclosing scope unnecessarily
+  ### Anonymous vs. Named
+  Anonymous functions are quick and easy to type, and many libraries and tools tend to encourage this idiomatic style of code. However, they have several draw-backs to consider:
+1. Anonymous functions have no useful name to display in stack traces, which can make debugging more difficult.
+
+2. Without a name, if the function needs to refer to itself, for recursion, etc., the deprecated arguments.callee reference is unfortunately required. Another example of needing to self-reference is when an event handler function wants to unbind itself after it fires.
+
+3. Anonymous functions omit a name that is often helpful in providing more readable/understandable code. A descriptive name helps self-document the code in question
+
+- Providing a name for your function expression quite effectively addresses all these draw-backs, but has no tangible downsides. The best practice is to always name your function expressions:
+```
+setTimeout( function timeoutHandler(){ // <-- Look, I have a name!
+	console.log( "I waited 1 second!" );
+}, 1000 );
+```
+- IIFE's don't need names, necessarily -- the most common form of IIFE is to use an anonymous function expression. While certainly less common, naming an IIFE has all the aforementioned benefits over anonymous function expressions, so it's a good practice to adopt
+```
+var a = 2;
+
+(function IIFE(){
+
+	var a = 3;
+	console.log( a ); // 3
+
+})();
+
+console.log( a ); // 2
+```
+- There's a slight variation on the traditional IIFE form, which some prefer: (function(){ .. }()):
+    - In the first form above, the function expression is wrapped in ( ), and then the invoking () pair is on the outside right after it
+    - In the second form, the invoking () pair is moved to the inside of the outer ( ) wrapping pair
+    - It's purely a stylistic choice which you prefer
+- Another variation on IIFE's which is quite common is to use the fact that they are, in fact, just function calls, and pass in argument(s)
+    ```
+    var a = 2;
+    
+    (function IIFE( global ){
+    
+    	var a = 3;
+    	console.log( a ); // 3
+    	console.log( global.a ); // 2
+    
+    })( window );
+    
+    console.log( a ); // 2
+    ```
+    - We pass in the window object reference, but we name the parameter global, so that we have a clear stylistic delineation for global vs. non-global references
+- Another application of this pattern addresses the (minor niche) concern that the default undefined identifier might have its value incorrectly overwritten, causing unexpected results
+    - By naming a parameter undefined, but not passing any value for that argument, we can guarantee that the undefined identifier is in fact the undefined value in a block of code:
+    ```
+    undefined = true; // setting a land-mine for other code! avoid!
+    
+    (function IIFE( undefined ){
+    
+    	var a;
+    	if (a === undefined) {
+    		console.log( "Undefined is safe here!" );
+    	}
+    
+    })();
+    ```
+- another variation of the IIFE inverts the order of things, where the function to execute is given second, after the invocation and parameters to pass to it
+    - This pattern is used in the UMD (Universal Module Definition) project. Some people find it a little cleaner to understand, though it is slightly more verbose:
+    ```
+    var a = 2;
+    
+    (function IIFE( def ){
+    	def( window );
+    })(function def( global ){
+    
+    	var a = 3;
+    	console.log( a ); // 3
+    	console.log( global.a ); // 2
+    
+    });
+    ```
+    - The def function expression is defined in the second-half of the snippet, and then passed as a parameter (also called def) to the IIFE function defined in the first half of the snippet
+    - Finally, the parameter def (the function) is invoked, passing window in as the global parameter
+
+
 
 # You Don't Know JS: this & Object Prototypes
 # You Don't Know JS: Types & Grammar
@@ -453,10 +553,209 @@ function foo(a) {
         
         console.log( a ); // 2
         ```
+## Blocks As Scopes
+- While functions are the most common, other units of scope are possible, and the usage of these other scope units can lead to even better, cleaner to maintain code
 
+Block Scope Example 1:
+```
+for (var i=0; i<10; i++) {
+	console.log( i );
+}
+```
+- We declare the variable i directly inside the for-loop head, most likely because our intent is to use i only within the context of that for-loop, and essentially ignore the fact that the variable actually scopes itself to the enclosing scope (function or global)
+- That's what block-scoping is all about. Declaring variables as close as possible, as local as possible, to where they will be used
+Block Scope Example 2:
+```
+var foo = true;
 
+if (foo) {
+	var bar = foo * 2;
+	bar = something( bar );
+	console.log( bar );
+}
+```
+- We are using a bar variable only in the context of the if-statement, so it makes a kind of sense that we would declare it inside the if-block
+    - However, where we declare variables is not relevant when using var, because they will always belong to the enclosing scope
+    - This snippet is essentially "fake" block-scoping, for stylistic reasons, and relying on self-enforcement not to accidentally use bar in another place in that scope
+    - Block scope is a tool to extend information hiding via functions to hiding information further in blocks of our code
+Example 3:
+```
+for (var i=0; i<10; i++) {
+	console.log( i );
+}
+```
+- Why pollute the entire scope of a function with the i variable that is only going to be (or only should be, at least) used for the for-loop?
+- Block-scoping (if it were possible) for the i variable would make i available only for the for-loop, causing an error if i is accessed elsewhere in the function
+- This helps ensure variables are not re-used in confusing or hard-to-maintain ways
+### try/catch
+- variable declaration in the catch clause of a try/catch to be block-scoped to the catch block
+```
+try {
+	undefined(); // illegal operation to force an exception!
+}
+catch (err) {
+	console.log( err ); // works!
+}
 
+console.log( err ); // ReferenceError: `err` not found
+```
+- err exists only in the catch clause, and throws an error when you try to reference it elsewhere
 
+### let
+- Thus far, we've seen that JavaScript only has some strange niche behaviors which expose block scope functionality. If that were all we had, and it was for many, many years, then block scoping would not be terribly useful to the JavaScript developer
+- ES6 changes that, and introduces a new keyword let which sits alongside var as another way to declare variables
+- let keyword attaches the variable declaration to the scope of whatever block (commonly a { .. } pair) it's contained in
+    - In other words, let implicitly hijacks any block's scope for its variable declaration:
+        ```
+        var foo = true;
+        
+        if (foo) {
+        	let bar = foo * 2;
+        	bar = something( bar );
+        	console.log( bar );
+        }
+        
+        console.log( bar ); // ReferenceError
+        ```
+        - Using let to attach a variable to an existing block is somewhat implicit. It can confuse you if you're not paying close attention to which blocks have variables scoped to them, and are in the habit of moving blocks around, wrapping them in other blocks, etc., as you develop and evolve code
+        - Creating explicit blocks for block-scoping can address some of these concerns, making it more obvious where variables are attached and not. Usually, explicit code is preferable over implicit or subtle code. This explicit block-scoping style is easy to achieve, and fits more naturally with how block-scoping works in other languages:
+            ```
+            var foo = true;
+            
+            if (foo) {
+            	{ // <-- explicit block
+            		let bar = foo * 2;
+            		bar = something( bar );
+            		console.log( bar );
+            	}
+            }
+            
+            console.log( bar ); // ReferenceError
+            ```
+            - We can create an arbitrary block for let to bind to by simply including a { .. } pair anywhere a statement is valid grammar
+            - In this case, we've made an explicit block inside the if-statement, which may be easier as a whole block to move around later in refactoring, without affecting the position and semantics of the enclosing if-statement
+- declarations made with let will not hoist to the entire scope of the block they appear in. Such declarations will not observably "exist" in the block until the declaration statement:
+```
+{
+   console.log( bar ); // ReferenceError!
+   let bar = 2;
+}
+```
+### Garbage Collection
+- block-scoping is useful as it relates to closures and garbage collection to reclaim memory
+```
+function process(data) {
+	// do something interesting
+}
+
+var someReallyBigData = { .. };
+
+process( someReallyBigData );
+
+var btn = document.getElementById( "my_button" );
+
+btn.addEventListener( "click", function click(evt){
+	console.log("button clicked");
+}, /*capturingPhase=*/false );
+```
+The click function click handler callback doesn't need the someReallyBigData variable at all. That means, theoretically, after process(..) runs, the big memory-heavy data structure could be garbage collected. However, it's quite likely (though implementation dependent) that the JS engine will still have to keep the structure around, since the click function has a closure over the entire scope
+    - Block-scoping can address this concern, making it clearer to the engine that it does not need to keep someReallyBigData around:
+        ```
+        function process(data) {
+        	// do something interesting
+        }
+
+        // anything declared inside this block can go away after!
+        {
+        	let someReallyBigData = { .. };
+        
+        	process( someReallyBigData );
+        }
+        
+        var btn = document.getElementById( "my_button" );
+        
+        btn.addEventListener( "click", function click(evt){
+        	console.log("button clicked");
+        }, /*capturingPhase=*/false );
+        ```
+- Declaring explicit blocks for variables to locally bind to is a powerful tool that you can add to your code toolbox
+#### let Loops
+- A particular case where let shines is in the for-loop case
+```
+for (let i=0; i<10; i++) {
+	console.log( i );
+}
+
+console.log( i ); // ReferenceError
+```
+- Not only does let in the for-loop header bind the i to the for-loop body, but in fact, it **re-binds** it to each iteration of the loop, making sure to re-assign it the value from the end of the previous loop iteration
+- Here's another way of illustrating the per-iteration binding behavior that occurs:
+```
+{
+	let j;
+	for (j=0; j<10; j++) {
+		let i = j; // re-bound for each iteration!
+		console.log( i );
+	}
+}
+```
+- let declarations attach to arbitrary blocks rather than to the enclosing function's scope (or global), there can be gotchas where existing code has a hidden reliance on function-scoped var declarations, and replacing the var with let may require additional care when refactoring code:
+```
+var foo = true, baz = 10;
+
+if (foo) {
+	var bar = 3;
+
+	if (baz > bar) {
+		console.log( baz );
+	}
+
+	// ...
+}
+```
+- This code is fairly easily re-factored as:
+    ```
+    var foo = true, baz = 10;
+    
+    if (foo) {
+    	var bar = 3;
+    
+    	// ...
+    }
+    
+    if (baz > bar) {
+    	console.log( baz );
+    }
+    ```
+    - be careful of such changes when using block-scoped variables:
+        ```
+        var foo = true, baz = 10;
+        
+        if (foo) {
+        	let bar = 3;
+        
+        	if (baz > bar) { // <-- don't forget `bar` when moving!
+        		console.log( baz );
+        	}
+        }
+        ```
+### const
+- also creates a block-scoped variable, but whose value is fixed (constant)
+    - Any attempt to change that value at a later time results in an error
+        ```
+        var foo = true;
+        
+        if (foo) {
+        	var a = 2;
+        	const b = 3; // block-scoped to the containing `if`
+        
+        	a = 3; // just fine!
+        	b = 4; // error!
+        }
+        
+        console.log( a ); // 3
+        console.log( b ); // ReferenceError!
+        ```
 
 # References
 - [You Don't Know JS: Up & Going](https://github.com/getify/You-Dont-Know-JS/blob/master/up%20&%20going/README.md#you-dont-know-js-up--going)
