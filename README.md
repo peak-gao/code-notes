@@ -1,6 +1,6 @@
 # Code Notes
 
-This is a collection of code notes or things learned over time for various languages, TDD, etc.
+This is a collection of code notes or things learned over time for various languages, TDD, etc. and stuff I like to revisit from time-to-time cause I forget things :).
 
 ## Languages, IDEs, OS X
 
