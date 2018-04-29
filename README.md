@@ -14,7 +14,7 @@ This is a collection of code notes or things learned over time for various langu
     -  stripped down greatly to include short general points from all files above
 ## **Redux**
 ## **JavaScript**
-**Basics**
+#### **Basics**
 >  Note: a lot of the "You Don't Know JS" content was ported over and I tried to strip out fluff..it's too wordyga .
        gcmsg 'grammer correction'in places and I wanted a shortened version of it for review.  So this is no an exact copy, I've modified it by arranging it better by adding bullets, etc. Contains a copy of the Docs from "You Don't Know JS" as of 4/29/2018
 - [Part 1](js-basics-notes.md)
@@ -23,7 +23,7 @@ This is a collection of code notes or things learned over time for various langu
 - [mini notes](js-basics-notes-mini.md)
     - stripped down greatly to include short general points from the 3 more detailed files above
     - good for preparing for interviews or just a quick revisit without hurting your brain
-- **ES6**
+#### **ES6**
 ## **Node**
 ## **WebStorm IDE**
 ## **OS X Local Development Setup**
