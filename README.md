@@ -10,7 +10,8 @@ This is a collection of code notes or things learned over time for various langu
 - Redux
 - JavaScript - Basics
 
-  >  Note: a lot of the "You Don't Know JS" content was ported over and I tried to strip out fluff..it's too word in places and I wanted a shortened version of it for review.  So this is no an exact copy, I've modified it by arranging it better by adding bullets, etc.
+  >  Note: a lot of the "You Don't Know JS" content was ported over and I tried to strip out fluff..it's too wordyga .
+   gcmsg 'grammer correction'in places and I wanted a shortened version of it for review.  So this is no an exact copy, I've modified it by arranging it better by adding bullets, etc.
     - [Part 1](js-basics-notes.md)
     - [Part 2](js-basics-notes-2.md)
 - JavaScript - ES6
