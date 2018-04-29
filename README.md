@@ -9,6 +9,8 @@ This is a collection of code notes or things learned over time for various langu
     - [React Basics](react-basics.md)
     - [React Advanced](react-advanced.md)
     - [React v16](react-v16.md)
+    - [mini notes](react--mini.md)
+        -  stripped down greatly to include short general points from all files above
 - Redux
 - JavaScript - Basics
   >  Note: a lot of the "You Don't Know JS" content was ported over and I tried to strip out fluff..it's too wordyga .
@@ -16,6 +18,9 @@ This is a collection of code notes or things learned over time for various langu
     - [Part 1](js-basics-notes.md)
     - [Part 2](js-basics-notes-2.md)
     - [Part 3](js-basics-notes-3.md)
+    - [mini notes](js-basics-notes-mini.md)
+        - stripped down greatly to include short general points from the 3 more detailed files above
+        - good for preparing for interviews or just a quick revisit without hurting your brain
 - JavaScript - ES6
 - Node
 - WebStorm IDE
