@@ -1322,6 +1322,7 @@ foo2.identify(); // "foo 2"
 - By contrast, ES6 Module APIs are static (the APIs don't change at run-time)
     - Since the compiler knows that, it can (and does!) check during (file loading and) compilation that a reference to a member of an imported module's API actually exists
     - If the API reference doesn't exist, the compiler throws an "early" error at compile-time, rather than waiting for traditional dynamic run-time resolution (and errors, if any)
+
 # References
 - [You Don't Know JS: Up & Going](https://github.com/getify/You-Dont-Know-JS/blob/master/up%20&%20going/README.md#you-dont-know-js-up--going)
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
