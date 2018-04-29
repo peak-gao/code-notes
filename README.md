@@ -14,7 +14,7 @@ This is a collection of code notes or things learned over time for various langu
 - WebStorm IDE
 - OS X Local Development Setup
 
-## Principals and Practices
+## Principles and Practices
 - BDD
 - TDD
 - React BDD / TDD
