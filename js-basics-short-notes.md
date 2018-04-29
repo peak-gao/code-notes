@@ -46,9 +46,6 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
         - Using Number(..) (a built-in function)
 
 #### Typing and Variables
-- Most useful programs need to track a value as it changes over the course of the program, undergoing different operations as called for by your program's intended tasks
-    - The easiest way to go about that in your program is to assign a value to a symbolic container, called a variable -- so called because the value in this container can vary over time as needed
-    - In some programming languages, you declare a variable (container) to hold a specific type of value, such as number or string
 - **Static typing**, otherwise known as **type enforcement**, is typically cited as a benefit for program correctness by preventing unintended value conversions
 - **Weak Typing** - Other languages emphasize types for values instead of variables
     - Weak typing, otherwise known as dynamic typing, allows a variable to hold any type of value at any time
@@ -56,18 +53,18 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
 - **JavaScript uses dynamic/weak typing**, meaning *variables can hold values of any type without any type enforcement*
 #### Constants
 - The newest version of JavaScript at the time of this writing (commonly called "ES6") includes a new way to declare constants, by using const instead of var: `const TAX_RATE = 0.08;`
-- Constants are useful just like variables with unchanged values, except that constants also prevent accidentally changing value somewhere else after the initial setting
-- If you tried to assign any different value to TAX_RATE after that first declaration, your program would reject the change (and in strict mode, fail with an error -- see "Strict Mode" in Chapter 2)
+- Constants are just like variables except constants also prevent accidentally changing value somewhere else after the initial setting
+- If you tried to assign any different value to TAX_RATE after, your program would reject the change (and in strict mode, fail with an error -- see "Strict Mode" in Chapter 2)
 ####  Blocks
 - in code we often need to group a series of statements together, which we often call a *block*
 - In JavaScript, a block is defined by wrapping one or more statements inside a curly-brace pair { .. }
 
 ### Scope
 (aka ***lexical scope***)
-- In JavaScript, each function gets its own scope
-- Scope is basically a collection of variables as well as the rules for how those variables are accessed by name
+- In JS, each function gets its own scope
+- Scope is a collection of variables and the rules for how those variables are accessed by name
 - Only code inside that function can access that function's scoped variables
-- A variable name has to be unique within the same scope -- there can't be two different a variables sitting right next to each other. But the same variable name a could appear in different scopes
+- A variable name has to be unique within the same scope
 - a scope can be nested inside another scope
     - **If one scope is nested inside another, code inside the innermost scope can access variables from either scope**
         ```
@@ -90,7 +87,7 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
         outer();
         ```
         - **Lexical scope** rules say that *code in one scope can access variables of either that scope or any scope outside of it*
-            - So, code inside the inner() function has access to both variables a and b, but code in outer() has access only to a -- it cannot access b because that variable is only inside inner()
+            - code inside the inner() function has access to both variables a and b, but code in outer() has access only to a -- it cannot access b because that variable is only inside inner()
         ```
         const TAX_RATE = 0.08;
         
@@ -105,7 +102,7 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
         - The TAX_RATE constant (variable) is accessible from inside the calculateFinalPurchaseAmount(..) function, even though we didn't pass it in, because of lexical scope
 
 #### Loops
-- the while loop and the do..while loop forms illustrate the concept of repeating a block of statements until a condition no longer evaluates to true:
+- while loop & do..while loop illustrate repeating a block of statements until a condition no longer evaluates to true:
     ```
     while (numOfCustomers > 0) {
     	console.log( "How may I help you?" );
@@ -125,24 +122,22 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
     	numOfCustomers = numOfCustomers - 1;
     } while (numOfCustomers > 0);
     ```
-    - The only practical difference between these loops is whether the conditional is tested before the first iteration (while) or after the first iteration (do..while)
+    - The only difference between these loops is whether the conditional is tested before the first iteration (while) or after the first iteration (do..while)
     - In either form, if the conditional tests as false, the next iteration will not run
         - That means if the condition is initially false, a while loop will never run, but a do..while loop will run just the first time
-- The for loop has three clauses: the initialization clause (var i=0), the conditional test clause (i <= 9), and the update clause (i = i + 1). So if you're going to do counting with your loop iterations, for is a more compact and often easier form to understand and write
-- There are other specialized loop forms that are intended to iterate over specific values, such as the properties of an object (see Chapter 2) where the implied conditional test is just whether all the properties have been processed. The "loop until a condition fails" concept holds no matter what the form of the loop
 
 # You Don't Know JS: Scope & Closures
 # What is Scope?
-- One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values. In fact, the ability to store values and pull values out of variables is what gives a program state
-    - Without such a concept, a program could perform some tasks, but they would be extremely limited and not terribly interesting
-    - But the inclusion of variables into our program begets the most interesting questions we will now address: where do those variables live? In other words, where are they stored? And, most importantly, how does our program find them when it needs them?
-    - These questions speak to the need for a well-defined set of rules for storing variables in some location, and for finding those variables at a later time. **We'll call that set of rules: *Scope***
-    - ***But, where and how do these Scope rules get set?***
+- One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values
+    - the ability to store values and pull values out of variables is what gives a program state
+    - But where do those variables live? where are they stored? how does our program find them when it needs them?
+    - there's a well-defined set of rules for storing variables in some location, and for finding those variables at a later time. **We'll call that set of rules: *Scope***
+    - ***Where and how do these Scope rules get set***
 - despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language
     - It is not compiled well in advance, as are many traditionally-compiled languages, nor are the results of compilation portable among various distributed systems
-    - nevertheless, the JavaScript engine performs many of the same steps, albeit in more sophisticated ways than we may commonly be aware, of any traditional language-compiler
+    - The JavaScript engine performs many of the same steps, albeit in more sophisticated ways than we may commonly be aware, of any traditional language-compiler
 
-- In a traditional ***compiled-language process***, a chunk of source code, your program, will undergo typically three steps before it is executed, roughly called "compilation":
+- In traditional ***compiled-language process*** source code, your program will undergo three steps before it's executed, called "compilation":
 1. **Tokenizing/Lexing**
     - breaking up a string of characters into meaningful (to the language) chunks, called tokens
     - For instance, consider the program: var a = 2;
@@ -157,9 +152,8 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
 3. **Code-Generation**
     - the process of taking an AST and turning it into executable code
     - This part varies greatly depending on the language, the platform it's targeting, etc.
-    - So, rather than get mired in details, we'll just handwave and say that there's a way to take our above described AST for var a = 2; and turn it into a set of machine instructions to actually create a variable called a (including reserving memory, etc.), and then store a value into a.
+    - there's a way to take our above described AST for var a = 2; and turn it into a set of machine instructions to actually create a variable called a (including reserving memory, etc.), and then store a value into a
 
-    **Note:** The details of how the engine manages system resources are deeper than we will dig, so we'll just take it for granted that the engine is able to create and store variables as needed.
 - The **JavaScript engine** *is vastly more complex than just those three steps*, as are most other language compilers
     - in the process of parsing and code-generation, there are certainly steps to optimize the performance of the execution, including collapsing redundant elements, etc.
     - JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages
@@ -168,13 +162,11 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
     - Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually right before!) it's executed
         - So, the JS compiler will take the program var a = 2; and compile it first, and then be ready to execute it, usually right away
 ### Understanding Scope
-this section is extensive so read about it [here](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch1.md) if you need to
+this section is extensive so read about it [here](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch1.md)
 ### Nested Scope
 - Scope is a set of rules for looking up variables by their identifier name
-    - There's usually more than one Scope to consider, however
+    - There's usually more than one Scope to consider
 - Scope is the set of rules that determines where and how a variable (identifier) can be looked-up
-    - This look-up may be for the purposes of assigning to the variable, which is an LHS (left-hand-side) reference, or it may be for the purposes of retrieving its value, which is an RHS (right-hand-side) reference
-    - LHS references result from assignment operations. Scope-related assignments can occur either with the = operator or by passing arguments to (assign to) function parameters
 - Just as a block or function is nested inside another block or function, scopes are nested inside other scopes
     - So, if a variable cannot be found in the immediate scope, Engine consults the next outer containing scope, continuing until found or until the outermost (aka, global) scope has been reached
         ```
@@ -187,12 +179,6 @@ this section is extensive so read about it [here](https://github.com/getify/You-
         foo( 2 ); // 4
         ```
     - The RHS reference for b cannot be resolved inside the function foo, but it can be resolved in the Scope surrounding it (in this case, the global)
-    - So, revisiting the conversations between Engine and Scope, we'd overhear:
-
-          Engine: "Hey, Scope of foo, ever heard of b? Got an RHS reference for it."
-          Scope: "Nope, never heard of it. Go fish."
-          Engine: "Hey, Scope outside of foo, oh you're the global Scope, ok cool. Ever heard of b? Got an RHS reference for it."
-          Scope: "Yep, sure have. Here ya go."
     - The **simple rules for traversing nested Scope**:
         - Engine starts at the currently executing Scope, looks for the variable there, then if not found, keeps going up one level, and so on
         - If the outermost global scope is reached, the search stops, whether it finds the variable or not
@@ -205,8 +191,8 @@ this section is extensive so read about it [here](https://github.com/getify/You-
     - **Lexical Scope** - is by far the most common, used by the vast majority of programming languages and is the scope JavaScript applies
     - **Dynamic Scope**
 #### lexing
-- lexical scope is scope that is defined at lexing time
-    - lexical scope is based on where variables and blocks of scope are authored, by you, at write time, and thus is (mostly) set in stone by the time the lexer processes your code
+- scope that is defined at lexing time
+    - is based on where variables and blocks of scope are authored, by you, at write time, and thus is (mostly) set in stone by the time the lexer processes your code
 - the first traditional phase of a standard language compiler is called lexing (aka, tokenizing)
 - the lexing process examines a string of source code characters and assigns semantic meaning to the tokens as a result of some stateful parsing
 - It is this concept which provides the foundation to understand what lexical scope is and where the name comes from
@@ -235,11 +221,9 @@ foo( 2 ); // 2 4 12
     - Bubble 2 encompasses the scope of foo, which includes the three identifiers: a, bar and b
     - Bubble 3 encompasses the scope of bar, and it includes just one identifier: c
 - Scope bubbles are defined by where the blocks of scope are written, which one is nested inside the other, etc
-    - The bubble for bar is entirely contained within the bubble for foo, because (and only because) that's where we chose to define the function bar
-    - Notice that these nested bubbles are strictly nested. We're not talking about Venn diagrams where the bubbles can cross boundaries
-        - In other words, no bubble for some function can simultaneously exist (partially) inside two other outer scope bubbles, just as no function can partially be inside each of two parent functions
+
 #### Look-ups
-- The structure and relative placement of these scope bubbles fully explains to the Engine all the places it needs to look to find an identifier
+- scope bubbles fully explains to the Engine all the places it needs to look to find an identifier
 - In the above code snippet, the Engine executes the console.log(..) statement and goes looking for the three referenced variables a, b, and c
     - It first starts with the innermost scope bubble, the scope of the bar(..) function
     - It won't find a there, so it goes up one level, out to the next nearest scope bubble, the scope of foo(..)
@@ -262,7 +246,7 @@ foo( 2 ); // 2 4 12
 ##### eval
 - The eval(..) function in JavaScript takes a string as an argument, and treats the contents of the string as if it had actually been authored code at that point in the program
     - In other words, you can programmatically generate code inside of your authored code, and run the generated code as if it had been there at author time
-- Evaluating eval(..) (pun intended) in that light, it should be clear how eval(..) allows you to modify the lexical scope environment by cheating and pretending that author-time (aka, lexical) code was there all along
+- eval(..) allows you to modify the lexical scope environment by cheating and pretending that author-time (aka, lexical) code was there all along
 - On subsequent lines of code after an eval(..) has executed, the Engine will not "know" or "care" that the previous code in question was dynamically interpreted and thus modified the lexical scope environment
     - The Engine will simply perform its lexical scope look-ups as it always does
     ```
@@ -281,7 +265,7 @@ foo( 2 ); // 2 4 12
     - When the console.log(..) call occurs, it finds both a and b in the scope of foo(..), and never finds the outer b
     - Thus, we print out "1 3" instead of "1 2" as would have normally been the case
 - By default, if a string of code that eval(..) executes contains one or more declarations (either variables or functions), this action modifies the existing lexical scope in which the eval(..) resides
-    - Technically, eval(..) can be invoked "indirectly", through various tricks (beyond our discussion here), which causes it to instead execute in the context of the global scope, thus modifying it
+    - eval(..) can be invoked "indirectly", through various tricks (beyond our discussion here), which causes it to instead execute in the context of the global scope, thus modifying it
     - But in either case, ***eval(..) can at runtime modify an author-time lexical scope***
 
     **Note:** eval(..) when used in a strict-mode program operates in its own lexical scope, which means declarations made inside of the eval() do not actually modify the enclosing scope.
@@ -300,14 +284,11 @@ foo( 2 ); // 2 4 12
         - both can take a string for their respective first argument, the contents of which are evaluated as the code of a dynamically-generated function. This is old, legacy behavior and long-since deprecated. Don't do it!
     - The new Function(..) function constructor similarly takes a string of code in its last argument to turn into a dynamically-generated function (the first argument(s), if any, are the named parameters for the new function)
         - This function-constructor syntax is slightly safer than eval(..), but it should still be avoided in your code
-##### with
-- The other frowned-upon (and now deprecated!) feature in JavaScript which cheats lexical scope is the with keyword
-- read more about it [here](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch2.md)
 ### Function vs. Block Scope
-- as we mentioned scope consists of a series of "bubbles" that each act as a container or bucket, in which identifiers (variables, functions) are declared
+- scope consists of a series of "bubbles" that each act as a container or bucket, in which identifiers (variables, functions) are declared
     - These bubbles nest neatly inside each other, and this nesting is defined at author-time
 #### Scope From Functions
-- But **what exactly makes a new bubble?** Is it only the function? Can other structures in JavaScript create bubbles of scope?
+- **what exactly makes a new bubble?** Is it only the function? Can other structures in JavaScript create bubbles of scope?
 - The most common answer to those questions is that JavaScript has function-based scope
     - That is, **each function you declare creates a bubble for itself, but no other structures create their own scope bubbles **
 ```
@@ -325,7 +306,7 @@ function foo(a) {
 	var c = 3;
 }
 ```
-- in this example, the scope bubble for foo(..) includes identifiers a, b, c and bar
+- the scope bubble for foo(..) includes a, b, c and bar
 - **It doesn't matter *where*** in the scope a declaration appears, the variable or function belongs to the containing scope bubble, regardless
 - bar(..) has its own scope bubble. So does the global scope, which has just one identifier attached to it: foo
 - Because a, b, c, and bar all belong to the scope bubble of foo(..), they are not accessible outside of foo(..)
@@ -337,8 +318,114 @@ function foo(a) {
 - However, all these identifiers (a, b, c, foo, and bar) are accessible inside of foo(..), and indeed also available inside of bar(..) (assuming there are no shadow identifier declarations inside bar(..))
 - Function scope encourages the idea that all variables belong to the function, and can be used and reused throughout the entirety of the function (and indeed, accessible even to nested scopes)
     - On the other hand, if you don't take careful precautions, variables existing across the entirety of a scope can lead to some unexpected pitfalls
+#### Hiding In Plain Scope
+- The traditional way of thinking about functions is that you declare a function, and then add code inside it. But the inverse thinking is equally powerful and useful: take any arbitrary section of code you've written, and wrap a function declaration around it, which in effect "hides" the code
+- The practical result is to create a **scope bubble** around the code in question
+    - means that any declarations (variable or function) in that code will now be tied to the scope of the new wrapping function, rather than the previously enclosing scope
+    - so in other words, you can "hide" variables and functions by enclosing them in the scope of a function
+- Why would "hiding" variables and functions be a useful technique?
+    - There's a variety of reasons motivating this scope-based hiding
+    - If all variables and functions were in the global scope, they would of course be accessible to any nested scope. But this would violate the "Least..." principle in that you are (likely) exposing many variables or functions which you should otherwise keep private, as proper use of the code would discourage access to those variables/functions:
+        ```
+        function doSomething(a) {
+        	b = a + doSomethingElse( a * 2 );
+        
+        	console.log( b * 3 );
+        }
+        
+        function doSomethingElse(a) {
+        	return a - 1;
+        }
+        
+        var b;
+        
+        doSomething( 2 ); // 15
+        ```
+        - the b variable and the doSomethingElse(..) function are "private" details of how doSomething(..) does its job
+        - Giving the enclosing scope "access" to b and doSomethingElse(..) is not only unnecessary but also possibly "dangerous", in that they may be used in unexpected ways
+        - A more "proper" design would hide these private details inside the scope of doSomething(..), such as:
+        ```
+        function doSomething(a) {
+        	function doSomethingElse(a) {
+        		return a - 1;
+        	}
+        
+        	var b;
+        
+        	b = a + doSomethingElse( a * 2 );
+        
+        	console.log( b * 3 );
+        }
+        
+        doSomething( 2 ); // 15
+        ```
+        - Now, b and doSomethingElse(..) are not accessible to any outside influence, instead controlled only by doSomething(..)
+        - The functionality and end-result has not been affected, but the design keeps private details private, which is usually considered better software
+ #### Collision Avoidance
+        - Another benefit of "hiding" variables and functions inside a scope is to avoid unintended collision between two different identifiers with the same name but different intended usages
+        - Collision results often in unexpected overwriting of values:
+        ```
+        function foo() {
+        	function bar(a) {
+        		i = 3; // changing the `i` in the enclosing scope's for-loop
+        		console.log( a + i );
+        	}
+        
+        	for (var i=0; i<10; i++) {
+        		bar( i * 2 ); // oops, infinite loop ahead!
+        	}
+        }
+        
+        foo();
+        ```
+        - The i = 3 assignment inside of bar(..) overwrites, unexpectedly, the i that was declared in foo(..) at the for-loop
+        - In this case, it will result in an infinite loop, because i is set to a fixed value of 3 and that will forever remain < 10
+        - The assignment inside bar(..) needs to declare a local variable to use, regardless of what identifier name is chosen
+        - var i = 3; would fix the problem (and would create the previously mentioned "shadowed variable" declaration for i)
+        - An additional, not alternate, option is to pick another identifier name entirely, such as var j = 3;
+        - But your software design may naturally call for the same identifier name, so utilizing scope to "hide" your inner declaration is your best/only option in that case
+  #### Global "Namespaces"
+  - A particularly strong example of (likely) variable collision occurs in the global scope
+  - Multiple libraries loaded into your program can quite easily collide with each other if they don't properly hide their internal/private functions and variables
+  - Such libraries typically will create a single variable declaration, often an object, with a sufficiently unique name, in the global scope
+  - This object is then used as a "namespace" for that library, where all specific exposures of functionality are made as properties of that object (namespace), rather than as top-level lexically scoped identifiers themselves
+  ```
+  var MyReallyCoolLibrary = {
+  	awesome: "stuff",
+  	doSomething: function() {
+  		// ...
+  	},
+  	doAnotherThing: function() {
+  		// ...
+  	}
+  };
+  ```
+  #### Module Management
+  - Another option for collision avoidance is the more modern "module" approach, using any of various dependency managers
+  - Using these tools, no libraries ever add any identifiers to the global scope, but are instead required to have their identifier(s) be explicitly imported into another specific scope through usage of the dependency manager's various mechanisms
+  - It should be observed that these tools do not possess "magic" functionality that is exempt from lexical scoping rules
+  - They simply use the rules of scoping as explained here to enforce that no identifiers are injected into any shared scope, and are instead kept in private, non-collision-susceptible scopes, which prevents any accidental scope collisions
+  - As such, you can code defensively and achieve the same results as the dependency managers do without actually needing to use them, if you so choose. See the Chapter 5 for more information about the module pattern
 
+## Functions As Scopes
+- remember that we can take any snippet of code and wrap a function around it, and that effectively "hides" any enclosed variable or function declarations from the outside scope inside that function's inner scope:
 
+    ```
+    var a = 2;
+    
+    function foo() { // <-- insert this
+    
+    	var a = 3;
+    	console.log( a ); // 3
+    
+    } // <-- and this
+    foo(); // <-- and this
+    
+    console.log( a ); // 2
+    ```
+    - **While this technique "works", it is not necessarily very ideal**
+    - There are a few problems it introduces:
+        - first we have to declare a named-function foo(), but now the identifier name foo itself "pollutes" the enclosing scope (global, in this case)
 
 # You Don't Know JS: this & Object Prototypes
 # You Don't Know JS: Types & Grammar
@@ -366,6 +453,7 @@ function foo(a) {
         
         console.log( a ); // 2
         ```
+
 
 
 
