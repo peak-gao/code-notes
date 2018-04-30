@@ -10,7 +10,7 @@ This is a collection of code notes or things learned over time for various langu
 - [React Basics](react-basics.md)
 - [React Advanced](react-advanced.md)
 - [React v16](react-v16.md)
-- [mini notes](react--mini.md)
+- [mini notes](react-mini.md)
     -  stripped down greatly to include short general points from all files above
 ## **Redux**
 ## **JavaScript**
@@ -22,6 +22,7 @@ This is a collection of code notes or things learned over time for various langu
 - [Part 3](js-basics-notes-3.md)
 - [Part 4](js-basics-notes-4.md)
 - [JS Misconceptions](js-misconceptions.md)
+- [JS vs OOP Languages](js-misconceptions.md)
 - [mini notes](js-basics-notes-mini.md)
     - stripped down greatly to include short general points from the 3 more detailed files above
     - good for preparing for interviews or just a quick revisit without hurting your brain
