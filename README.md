@@ -2,7 +2,7 @@
 
 This is a collection of code notes or things learned over time for various languages, TDD, etc. and stuff I like to revisit from time-to-time cause I forget things :).
 
-## *mini notes*
+## *How to Navigate Notes*
 It's hard to digest everthing in the extensive .md files on each particular topic.
 
 So I'm taking an iterative approach to digesting all this information and thus creating little cheat sheets that allow you to gradually dive into each topic
