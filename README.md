@@ -28,6 +28,8 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
     - More Details that extend the list in mini-1
     - In depth Examples (as real-world as possible)
 
+# Notes
+
 ## Languages, IDEs, OS X
 
 ## **React**
