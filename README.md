@@ -35,18 +35,16 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 ## **React**
  >  Note: Contains a copy of the Docs from React's website as of 4/29/2018.  I don't plan on keeping this in sync with the React site.  It's just to port it over which is good enough, and then add onto it with useful information from other sources on the web
 
-**In Depth Notes**
+### In Depth Notes
 - [React Basics](React/react-basics.md)
 - [React Advanced](React/react-advanced.md)
 - [React v16](React/react-v16.md)
-
-**Mini Notes**
+### Mini Notes
 - [mini notes - 1](React/react-notes-mini-1.md)
 - [mini notes - 2](React/react-notes-mini-2.md)
 
 ## **Redux**
 ## **JavaScript**
-#### **Basics**
 **Note:**
 > A lot of the "You Don't Know JS" content (which is in the first 6 `js-basics.md` files) was ported over and I did 2 things
 > - I tried to strip out fluff
@@ -55,7 +53,9 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
     - You can read the first sentence in a paragraph, and then other sentences end up as talking points basically right under as bullets instead of one long paragraph.
 > - Note that the You Don't Know JS stuff is not going to be kept up-to-date, for me it's good enough just getting the copy over here one time.  Yes they'll be outdated but that's more on the ES6 stuff which I can always add later
 
-**In Depth Notes**
+### In Depth Notes
+
+#### JS Fundamentals
 - [Part 1](JavaScript/js-basics-notes.md)
 - [Part 2](JavaScript/js-basics-notes-2.md)
 - [Part 3](JavaScript/js-basics-notes-3.md)
@@ -65,7 +65,7 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 - [JS Misconceptions](JavaScript/js-misconceptions.md)
 - [JS vs OOP Languages](JavaScript/js-misconceptions.md)
 
-**Mini Notes**
+### Mini Notes
 - [mini notes - 1](JavaScript/js-notes-mini-1.md)
 - [mini notes - 2](JavaScript/js-notes-mini-2.md)
 
