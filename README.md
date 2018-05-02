@@ -48,12 +48,12 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 ## **JavaScript**
 #### **Basics**
 **Note:**
- A lot of the "You Don't Know JS" content (which is in the first 6 `js-basics.md` files) was ported over and I did 2 things
- - I tried to strip out fluff
- - I find his stuff hard to read because there are a lot of big paragraphs
-    - So what I did was I bullet the subsequent sentences in a paragraph which allows your eyes breathing room (much like I just did right here :))
+> A lot of the "You Don't Know JS" content (which is in the first 6 `js-basics.md` files) was ported over and I did 2 things
+> - I tried to strip out fluff
+> - I find his stuff hard to read because there are a lot of big paragraphs
+>    - So what I did was I bullet the subsequent sentences in a paragraph which allows your eyes breathing room (much like I just did right here :))
     - You can read the first sentence in a paragraph, and then other sentences end up as talking points basically right under as bullets instead of one long paragraph.
-- Note that the You Don't Know JS stuff is not going to be kept up-to-date, for me it's good enough just getting the copy over here one time.  Yes they'll be outdated but that's more on the ES6 stuff which I can always add later
+> - Note that the You Don't Know JS stuff is not going to be kept up-to-date, for me it's good enough just getting the copy over here one time.  Yes they'll be outdated but that's more on the ES6 stuff which I can always add later
 
 **In Depth Notes**
 - [Part 1](JavaScript/js-basics-notes.md)
