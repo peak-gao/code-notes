@@ -64,10 +64,11 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 - [Part 6](JavaScript/js-basics-notes-6.md)
 
 ### Mini Notes
-- [JS Misconceptions](JavaScript/js-misconceptions.md)
-- [JS vs OOP Languages](JavaScript/js-misconceptions.md)
 - [mini notes - 1](JavaScript/js-notes-mini-1.md)
 - [mini notes - 2](JavaScript/js-notes-mini-2.md)
+- [JS Misconceptions](JavaScript/js-misconceptions.md)
+- [JS vs OOP Languages](JavaScript/js-misconceptions.md)
+
 
 #### **ES6**
 ## **Node**
