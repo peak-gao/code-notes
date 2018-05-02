@@ -3,7 +3,7 @@
 This is a collection of code notes or things learned over time for various languages, TDD, etc. and stuff I like to revisit from time-to-time cause I forget things :).
 
 ## *mini notes*
-It's hard to digest everthing in the extensive .md files on each particular topic.  So I'm creating little cheat sheets that allow you to gradually dive into each topic.  Start with the mini-1 cheat sheets, move to mini-2, and then once you have those down well and memorized, you can dive into the extreme "guts" on each topic
+It's hard to digest everthing in the extensive .md files on each particular topic.  So I'm taking an iterative approach to digesting all this information and thus creating little cheat sheets that allow you to gradually dive into each topic.  Start with the mini-1 cheat sheets, move to mini-2, and then once you have those down well and memorized, you can dive into the extreme "guts" on each topic
 
 I think this a much better way to retain this information.
 
