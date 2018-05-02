@@ -21,6 +21,7 @@ This is a collection of code notes or things learned over time for various langu
 - [Part 2](js-basics-notes-2.md)
 - [Part 3](js-basics-notes-3.md)
 - [Part 4](js-basics-notes-4.md)
+- [Part 5](js-basics-notes-5.md)
 - [JS Misconceptions](js-misconceptions.md)
 - [JS vs OOP Languages](js-misconceptions.md)
 - [mini notes](js-basics-notes-mini.md)
