@@ -23,7 +23,8 @@
     - It displays “Hello, world” on the page
 
 ##### Updating the Rendered Element
-- React elements are immutable. Once you create an element, you can’t change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time
+- React elements are immutable. Once you create an element, you can’t change its children or attributes
+- An element is like a single frame in a movie: it represents the UI at a certain point in time
 - With our knowledge so far, the only way to update the UI is to create a new element, and pass it to ReactDOM.render()
 - Consider this ticking clock example:
     ```
@@ -40,7 +41,8 @@
     setInterval(tick, 1000);
     ```
     - It calls ReactDOM.render() every second from a setInterval() callback.
-    - Note: In practice, most React apps only call ReactDOM.render() once. In the next sections we will learn how such code gets encapsulated into [stateful components](https://reactjs.org/docs/state-and-lifecycle.html)
+    - Note: In practice, most React apps only call ReactDOM.render() once
+    - In the next sections we will learn how such code gets encapsulated into [stateful components](https://reactjs.org/docs/state-and-lifecycle.html)
         - We recommend that you don’t skip topics because they build on each other
 
  ##### React Only Updates What’s Necessary
@@ -93,7 +95,8 @@
     - Stateless functional components don’t support state or lifecycle methods
     - This is a good thing. Why? Because it protects from laziness
         - it’s always tempting to add state to a presentational component when you’re in a hurry
-        - It’s a quick way to hack in a feature. Since stateless functional components don’t support local state, you can’t easily hack in some state in a moment of laziness
+        - It’s a quick way to hack in a feature
+        - Since stateless functional components don’t support local state, you can’t easily hack in some state in a moment of laziness
         - Thus, stateless functional components programatically enforce keeping the component pure
         - You’re forced to put state management where it belongs: in higher level container components
 - stateless functional components require less typing which translates less noise so cleaner code means readability is improved
