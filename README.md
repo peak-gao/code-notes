@@ -29,9 +29,11 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 ## **React**
  >  Note: Contains a copy of the Docs from React's website as of 4/29/2018.  I don't plan on keeping this in sync with the React site.  It's just to port it over which is good enough, and then add onto it with useful information from other sources on the web
 
-- [React Basics](react-basics.md)
-- [React Advanced](react-advanced.md)
-- [React v16](react-v16.md)
+- [React Basics](React/react-basics.md)
+    - [mini notes - 1](React/react-basics-notes-mini-1.md)
+    - [mini notes - 2](React/react-basics-notes-mini-2.md)
+- [React Advanced](React/react-advanced.md)
+- [React v16](React/react-v16.md)
 - [mini notes](react-mini.md)
     -  stripped down greatly to include short general points from all files above
 ## **Redux**
@@ -45,17 +47,16 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
     - You can read the first sentence in a paragraph, and then other sentences end up as talking points basically right under as bullets instead of one long paragraph.
 - Note that the You Don't Know JS stuff is not going to be kept up-to-date, for me it's good enough just getting the copy over here one time.  Yes they'll be outdated but that's more on the ES6 stuff which I can always add later
 
-- [Part 1](js-basics-notes.md)
-- [Part 2](js-basics-notes-2.md)
-- [Part 3](js-basics-notes-3.md)
-- [Part 4](js-basics-notes-4.md)
-- [Part 5](js-basics-notes-5.md)
-- [Part 6](js-basics-notes-6.md)
-- [JS Misconceptions](js-misconceptions.md)
-- [JS vs OOP Languages](js-misconceptions.md)
-- [mini notes](js-basics-notes-mini.md)
-    - stripped down greatly to include short general points from the 3 more detailed files above
-    - good for preparing for interviews or just a quick revisit without hurting your brain
+- [Part 1](JavaScript/js-basics-notes.md)
+- [Part 2](JavaScript/js-basics-notes-2.md)
+- [Part 3](JavaScript/js-basics-notes-3.md)
+- [Part 4](JavaScript/js-basics-notes-4.md)
+- [Part 5](JavaScript/js-basics-notes-5.md)
+- [Part 6](JavaScript/js-basics-notes-6.md)
+- [JS Misconceptions](JavaScript/js-misconceptions.md)
+- [JS vs OOP Languages](JavaScript/js-misconceptions.md)
+    - [mini notes - 1](JavaScript/js-basics-notes-mini-1.md)
+    - [mini notes - 2](JavaScript/js-basics-notes-mini-2.md)
 #### **ES6**
 ## **Node**
 ## **WebStorm IDE**
