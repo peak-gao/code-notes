@@ -55,7 +55,7 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 
 ### In Depth Notes
 
-#### JS Fundamentals
+#### *JS Fundamentals*
 - [Part 1](JavaScript/js-basics-notes.md)
 - [Part 2](JavaScript/js-basics-notes-2.md)
 - [Part 3](JavaScript/js-basics-notes-3.md)
