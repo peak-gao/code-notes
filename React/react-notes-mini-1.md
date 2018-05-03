@@ -26,3 +26,42 @@ around
 - **React DOM compares the element and its children to the previous one**, and **only applies the DOM updates necessary to bring the DOM to the desired state**
 
 # Pure Functions
+#####  Rule #1: *always returns the same result if the same arguments are passed in*
+- does not depend on any **state** or **data change** during a program’s execution
+- It must **only depend on its input arguments**
+
+##### Rule #2: does *not produce any observable side effects*
+- such as network requests, input and output devices, or data mutation
+
+    - Side effects include, but are not limited to:
+
+        - Making a HTTP request
+        - Mutating data
+        - Printing to a screen or console
+        - DOM Query/Manipulation
+        - Math.random()
+        - Getting the current time
+- Note: Not all functions need to be, or should be, pure
+
+##### Examples
+**Pure**:
+```
+function priceAfterTax(productPrice) {
+    return (productPrice * 0.20) + productPrice;
+}
+```
+- It passes both rules
+- It doesn’t depend on any external input
+- If you run this function with the same input 100,000,000 times it **will always produce the same result**
+
+**Impure**:
+
+```
+var tax = 20;
+function calculateTax(productPrice) {
+    return (productPrice * (tax/100)) + productPrice;
+}
+```
+- depends on an external tax variable
+- depends on outside variables
+- It fails one of the requirements thus this function is impure
