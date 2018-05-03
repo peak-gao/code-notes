@@ -91,7 +91,7 @@
         - there are [five different ways to handle binding in React](https://medium.freecodecamp.com/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56)
 - Stateless functional components are useful for dumb/presentational components
     - Presentational components focus on the UI rather than behavior so it’s important to avoid using state in presentational components
-    - nstead, state should be managed by higher-level “container” components, or via Flux/Redux/etc
+    - Instead, state should be managed by higher-level “container” components, or via Flux/Redux/etc
     - Stateless functional components don’t support state or lifecycle methods
     - This is a good thing. Why? Because it protects from laziness
         - it’s always tempting to add state to a presentational component when you’re in a hurry
@@ -120,7 +120,8 @@
         - In this case, you can either break up the component or rethink the data structures you’re passing around
     - Sometimes a long list of props can be easily resolved by passing an object instead
         - But if the props aren’t logically related enough to justify a single object, then it’s likely time to refactor the component into multiple separate components
-- They're easy to undestand. when you see a stateless functional component, you know it’s simply a function that takes props and spits out HTML
+- They're easy to understand
+    - when you see a stateless functional component, you know it’s simply a function that takes props and spits out HTML
     - Even if it contains a lot of markup and nested functions inside the render, it’s conceptually simple
 - Since it’s a pure function, your assertions are very straightforward: Given these values for props, I expect it to return this markup
     - So for the example HelloWorld component, I can assert that when the render function is called with the value of ‘Cory’ for props.name, it returns a div with ‘Hi Cory’ inside
