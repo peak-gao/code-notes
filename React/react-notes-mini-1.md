@@ -124,7 +124,7 @@ Entire List, in order of when they're called:
 - componentWillUnmount
 - componentDidCatch
 
-#### componentWillMount (_legacy_)
+### componentWillMount (_legacy_)
 - invoked just before mounting occurs
     - component is going to appear on the screen very shortly
     - there is no component to play with yet
