@@ -167,12 +167,13 @@ Can call setState: Yes
            1. check which props will change (big caveat with componentWillReceiveProps — sometimes it’s called when nothing has changed; React just wants to check in)
            1. If the props will change in a way that is significant, act on it
 
-##### Use Cases
+###### Use Cases
 - If you need to update the state in response to prop changes (for example, to reset it)
     - compare this.props and nextProps and perform state transitions using this.setState()
 
-##### Examples
-*Generic Example*
+###### Examples
+
+Generic Example
 ```
 componentWillReceiveProps(nextProps) {
     if (parseInt(nextProps.modelId, 10) !== parseInt(this.props.modelId, 10)) {
