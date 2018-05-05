@@ -1,6 +1,6 @@
 # Code Notes
 
-This is a collection of code notes or things learned over time for various languages, TDD, etc. and stuff I like to revisit from time-to-time cause I forget things :).
+This is a collection of code notes learned over time for various languages, TDD, etc. and serves as a good concise reference from time-to-time
 
 # How to Navigate Notes
 It's hard to digest everthing in the extensive .md files on each particular topic.
