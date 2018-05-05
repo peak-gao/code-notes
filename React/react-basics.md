@@ -472,7 +472,7 @@ When called, it should examine this.props and this.state and return one of the f
 - Returning false does not prevent child components from re-rendering when their state changes
 
 #### _layman's terms_
-- Now our component is getting nervous.
+- Now our component is getting nervous
 - We have new props. Typical React dogma says that when a component receives new props, or new state, it should update
     - But our component is a little bit anxious and is going to ask permission first
 - Here’s what we get — a shouldComponentUpdate method, called with nextProps as the first argument, and nextState is the second:

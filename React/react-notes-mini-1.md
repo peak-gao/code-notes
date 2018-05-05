@@ -168,8 +168,10 @@ Can call setState: Yes
 - Here’s what you should do:
            1. check which props will change (big caveat with componentWillReceiveProps — sometimes it’s called when nothing has changed; React just wants to check in)
            1. If the props will change in a way that is significant, act on it
+**Can call setState**: Yes
 
 ###### Use Cases
+- acting on particular prop changes to trigger state transitions
 - If you need to update the state in response to prop changes (for example, to reset it)
     - compare this.props and nextProps and perform state transitions using this.setState()
 
@@ -184,7 +186,7 @@ componentWillReceiveProps(nextProps) {
     }
 }
 ```
-*Canvas Example*
+***Canvas***
 -  we have a canvas element
 -  we’re drawing a nice circle graphic based on this.props.percent
 -  whenever we receive new props, IF the percent has changed, we want to redraw the grid
@@ -195,3 +197,42 @@ componentWillReceiveProps(nextProps) {
     }
 }
 ```
+
+### shouldComponentUpdate
+- is invoked before rendering when new props or state are being received. Defaults to true
+- use it to let React know if a component’s output is not affected by the current change in state or props
+- default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior
+- Now our component is getting nervous:
+    - We have new props. Typical React dogma says that when a component receives new props, or new state, it should update
+      - But our component is a little bit anxious and is going to ask permission first
+
+**Can call setState**: No
+
+###### Use Cases
+- controlling exactly when your component will re-render
+- if worried about wasted renders and other nonsense it's a great place to improve performance
+
+###### Examples
+***Generic***
+```
+componentWillReceiveProps(nextProps, nextState) {
+    return this.props.engagement !== nextProps.engagement ||
+    nextState.input !== this.state.input
+}
+```
+***Table With Many Fields***
+
+ *TODO: Add a code example for this*
+- we have a table with many many fields
+- problem was that when the table re-rendered, each field would also re-render, slowing things down
+- ShouldComponentUpdate allows us to say: only update if the props you care about change
+    - keep in mind that it can cause major problems if you set it and forget it, because your React component will not update normally. So use with caution
+
+### componentWillUpdate (_legacy_)
+
+**Can call setState**:
+
+###### Use Cases
+
+###### Examples
+***Generic***
