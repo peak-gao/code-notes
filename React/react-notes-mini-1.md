@@ -113,15 +113,15 @@ This method is called when there is an error during rendering, in a lifecycle me
 - componentDidCatch
 
 Entire List, in order of when they're called:
-- [componentWillMount](#componentWillMount) (_legacy_)
-- [componentDidMount](#componentDidMount)
-- [componentWillReceiveProps (nextProps)](#componentWillReceiveProps) (_legacy_)
-- [shouldComponentUpdate (nextProps, nextState)](#shouldComponentUpdate)
-- [componentWillUpdate](#componentWillUpdate) (_legacy_)
-- [getSnapshotBeforeUpdate](#getSnapshotBeforeUpdate) (_v16_)
-- [componentDidUpdate](#componentDidUpdate)
-- [componentWillUnmount](#componentDidUpdate)
-- [componentDidCatch](#componentDidCatch) (_v16_)
+- [componentWillMount](#componentwillmount-legacy) (_legacy_)
+- [componentDidMount](#componentdidmount)
+- [componentWillReceiveProps (nextProps)](#componentwillreceiveprops-legacy) (_legacy_)
+- [shouldComponentUpdate (nextProps, nextState)](#shouldcomponentupdate)
+- [componentWillUpdate](#componentwillupdate-legacy) (_legacy_)
+- [getSnapshotBeforeUpdate](#getsnapshotbeforeupdate) (_v16_)
+- [componentDidUpdate](#componentdidupdate)
+- [componentWillUnmount](#componentwillunmount)
+- [componentDidCatch](#componentdidcatch) (_v16_)
 
 #### Called on Initial render
  *TODO: Add list *
@@ -226,7 +226,7 @@ componentWillReceiveProps(nextProps, nextState) {
 ```
 ###### Table With Many Fields
 
- *TODO: Add a code example for this*
+*TODO: Add a code example for this*
 - we have a table with many many fields
 - problem: when table re-renders, each field also re-renders, slowing things down
 - ShouldComponentUpdate lets us say: only update if the props I care about change
@@ -244,7 +244,7 @@ componentWillReceiveProps(nextProps, nextState) {
 - Used instead of componentWillReceiveProps on a component that also has shouldComponentUpdate (but no access to previous props)
 
 **Examples**
- *TODO: Add some examples*
+*TODO: Add some examples*
 
 ### getSnapshotBeforeUpdate
 - invoked immediately after a component is mounted
@@ -252,28 +252,28 @@ componentWillReceiveProps(nextProps, nextState) {
 **Can call setState**:
 
 **Use Cases**
- *TODO: Add some use cases*
+*TODO: Add some use cases*
 
 **Examples**
- *TODO: Add some examples*
+*TODO: Add some examples*
 
- ### componentDidUpdate
- - invoked immediately after updating occurs
+### componentDidUpdate
+- invoked immediately after updating occurs
 
- **Can call setState**: ?
+**Can call setState**: ?
 
- **Use Cases**
+**Use Cases**
 - to operate on the DOM when the component has been updated
 - Updating the DOM in response to prop or state changes
 - a good place to do network requests as long as you compare the current props to previous props (e.g. a network request may not be necessary if the props have not changed)
-- If your component implements the getSnapshotBeforeUpdate() lifecycle, the value it returns will be passed as a third “snapshot” parameter to componentDidUpdate()
+- If your component implements the getSnapshotBeforeUpdate lifecycle, the value it returns will be passed as a third “snapshot” parameter to componentDidUpdate
 
- **Examples**
+**Examples**
 ###### Rearrange a Grid
 - after we've [redrawn the canvas](#canvas), we want to rearrange the grid after the DOM itself updates — so we use componentDidUpdate to do so:
 ```
 componentDidUpdate () {
-    this.createGrid()
+this.createGrid()
 }
 ```
 
