@@ -1,3 +1,5 @@
+> [mini notes - 2](react-notes-mini-2.md) extends this cheat sheet with more detail (deeper dive)
+
 # Benefits of Using React
 #### Simplicity
 - beauty of React is that you **c*an split complicated UIs into tiny bite-sized, reusable, testable pieces***
