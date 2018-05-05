@@ -112,7 +112,6 @@ An update can be caused by changes to props or state. These methods are called w
 This method is called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
 - componentDidCatch()
 
-
 Entire List, in order of when they're called:
 - componentWillMount (_legacy_)
 - componentDidMount
@@ -133,7 +132,7 @@ Entire List, in order of when they're called:
 - only lifecycle hook called on server rendering
 - **Can call setState**: Don’t. Use default state instead
 
-##### Use Cases
+**Use Cases**
 - it's a bit of a dud, you will barely use this method since your constructor and other lifecycle methods do most the work
 - setup that can only be done at runtime
     - connecting to external API’s
@@ -150,7 +149,7 @@ Entire List, in order of when they're called:
 - initialization that requires DOM nodes should go here
 Can call setState: Yes
 
-###### Use Cases
+**Use Cases**
 - good place to instantiate the network request to get data
 - draw on a <canvas> element that you just rendered
 - initialize a masonry grid layout from a collection of elements
@@ -170,14 +169,14 @@ Can call setState: Yes
            1. If the props will change in a way that is significant, act on it
 **Can call setState**: Yes
 
-###### Use Cases
+**Use Cases**
 - acting on particular prop changes to trigger state transitions
 - If you need to update the state in response to prop changes (for example, to reset it)
     - compare this.props and nextProps and perform state transitions using this.setState()
 
-###### Examples
+**Examples**
 
-Generic Example
+###### Generic
 ```
 componentWillReceiveProps(nextProps) {
     if (parseInt(nextProps.modelId, 10) !== parseInt(this.props.modelId, 10)) {
@@ -186,7 +185,7 @@ componentWillReceiveProps(nextProps) {
     }
 }
 ```
-***Canvas***
+###### Canvas
 -  we have a canvas element
 -  we’re drawing a nice circle graphic based on this.props.percent
 -  whenever we receive new props, IF the percent has changed, we want to redraw the grid
@@ -212,8 +211,8 @@ componentWillReceiveProps(nextProps) {
 - controlling exactly when your component will re-render
 - if worried about wasted renders and other nonsense it's a great place to improve performance
 
-###### Examples
-***Generic***
+**Examples**
+###### Generic
 ```
 componentWillReceiveProps(nextProps, nextState) {
     return this.props.engagement !== nextProps.engagement ||
@@ -232,7 +231,7 @@ componentWillReceiveProps(nextProps, nextState) {
 
 **Can call setState**:
 
-###### Use Cases
+**Use Cases**
 
-###### Examples
-***Generic***
+**Examples**
+###### Generic
