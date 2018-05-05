@@ -116,7 +116,7 @@ The List:
 - componentDidMount
 - componentWillReceiveProps(nextProps) (_legacy_)
 - shouldComponentUpdate(nextProps, nextState
-- componentWillUpdate (_legacy_))
+- componentWillUpdate (_legacy_)
 - getSnapshotBeforeUpdate
 - componentDidUpdate
 - componentWillUnmount
@@ -135,6 +135,6 @@ The List:
     - connecting to external API’s
         - e.g. if you use Firebase, you’ll need to get that set up as your app is first mounting
         - but...the key is that such configuration should be done at the highest level component of your app (the root component). That means 99% of your components should probably not use componentWillMount
-- Do Not Fetch Data Here
+- *Do **Not** Fetch Data Here*
     - An asynchronous call to fetch data will not return before the render happens. This means the component will render with empty data at least once
 

@@ -63,14 +63,14 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 - [Part 5](JavaScript/js-basics-notes-5.md)
 - [Part 6](JavaScript/js-basics-notes-6.md)
 
+#### **ES6**
+
 ### Mini Notes
 - [mini notes - 1](JavaScript/js-notes-mini-1.md)
 - [mini notes - 2](JavaScript/js-notes-mini-2.md)
 - [JS Misconceptions](JavaScript/js-misconceptions.md)
 - [JS vs OOP Languages](JavaScript/js-misconceptions.md)
 
-
-#### **ES6**
 ## **Node**
 ## **WebStorm IDE**
 ## **OS X Local Development Setup**
