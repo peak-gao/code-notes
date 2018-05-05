@@ -156,7 +156,7 @@ Can call setState: Yes
 - add event listeners
 - set up subscriptions
 
-###### Examples
+**Examples**
 
 ### componentWillReceiveProps (_legacy_)
 - invoked before a mounted component receives new props
