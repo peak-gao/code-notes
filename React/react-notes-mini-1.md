@@ -195,13 +195,13 @@ componentWillReceiveProps(nextProps) {
 -  we have a canvas element
 -  we’re drawing a nice circle graphic based on this.props.percent
 -  whenever we receive new props, IF the percent has changed, we want to redraw the grid
-```
-componentWillReceiveProps(nextProps) {
-    if (this.props.percent !== nextProps.percent)
-        this.setUpCircle(nextProps.percent)
+    ```
+    componentWillReceiveProps(nextProps) {
+        if (this.props.percent !== nextProps.percent)
+            this.setUpCircle(nextProps.percent)
+        }
     }
-}
-```
+    ```
 
 ### shouldComponentUpdate
 **Can call setState**: No
@@ -250,7 +250,7 @@ componentWillReceiveProps(nextProps, nextState) {
 ### getSnapshotBeforeUpdate
 - invoked immediately after a component is mounted
 
-**Can call setState**:
+**Can call setState**: ?
 
 **Use Cases**
 *TODO: Add some use cases*
@@ -272,11 +272,11 @@ componentWillReceiveProps(nextProps, nextState) {
 **Examples**
 ###### Rearrange a Grid
 - after we've [redrawn the canvas](#canvas), we want to rearrange the grid after the DOM itself updates — so we use componentDidUpdate to do so:
-```
-componentDidUpdate () {
-this.createGrid()
-}
-```
+    ```
+    componentDidUpdate () {
+        this.createGrid()
+    }
+    ```
 
 ### componentWillUnmount
 - It’s almost over
@@ -315,7 +315,41 @@ this.createGrid()
 - In an ideal world, we wouldn’t use lifecycle methods. All our rendering issues would be controlled via state and props
       - But it’s not an ideal world, and sometimes you need to exact a little more control over how and when your component is updating
       - Use these methods sparingly, and use them with care
-
 **Examples**
  *TODO: Add some examples*
- ###### Example Name
+
+# Local State
+- a feature available only to React classes
+- state is similar to props, but it is private and fully controlled by the component
+- enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state
+- will always lead to a re-render unless shouldComponentUpdate() returns false
+- you access state by `this.state.someProperty`
+- think of setState() as a request rather than an immediate command to update the component
+- you initialize state in the class constructor using an object literal:
+    ```
+    constructor(props) {
+    super(props);
+        this.state = {date: new Date()};
+    }
+    ```
+**Use Cases**
+- the primary method you use to update the user interface in response to event handlers and server responses
+**Examples**
+   *TODO: Add some examples*
+
+# Props
+ - React uses a “top-down” or “unidirectional” data flow.  This is done by passing props to child components
+    - ***Functional components***: you pass them in via a **param** called `props`
+    - ***Classes***: You pass them in via the **constructor** and to **super()**
+       ```
+        constructor(props) {
+          super(props);
+          this.state = {date: new Date()};
+        }
+        ```
+        - Class components should always call the base constructor with props
+
+#### Inheritance
+- At Facebook, we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies
+- to **reuse non-UI functionality between components**, we suggest **extracting it into a separate JavaScript module**
+    - The components may import it and use that function, object, or a class, without extending it

@@ -583,19 +583,19 @@ When called, it should examine this.props and this.state and return one of the f
     constructor(props) {
         super(props);
         this.state = {date: new Date()};
-      }
+    }
     ```
 - state is similar to props, but it is private and fully controlled by the component
 - enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state
 - the primary method you use to update the user interface in response to event handlers and server responses
 - think of setState() as a request rather than an immediate command to update the component
-- for better perceived performance, React may delay it, and then update several components in a single pass. React does not guarantee that the state changes are applied immediately
-- does not always immediately update the component. It may batch or defer the update until later
-    - this makes reading this.state right after calling setState() a potential pitfall
-        - instead, use componentDidUpdate or a setState callback (setState(updater, callback)), either of which are guaranteed to fire after the update has been applied
-     - If you need to set the state based on the previous state, read about the updater argument
-     - will always lead to a re-render unless shouldComponentUpdate() returns false
-     - If mutable objects are being used and conditional rendering logic cannot be implemented in shouldComponentUpdate(), calling setState() only when the new state differs from the previous state will avoid unnecessary re-renders
+    - for better perceived performance, React may delay it, and then update several components in a single pass. React does not guarantee that the state changes are applied immediately
+    - does not always immediately update the component. It may batch or defer the update until later
+        - this makes reading this.state right after calling setState() a potential pitfall
+            - instead, use componentDidUpdate or a setState callback (setState(updater, callback)), either of which are guaranteed to fire after the update has been applied
+         - If you need to set the state based on the previous state, read about the updater argument
+ - will always lead to a re-render unless shouldComponentUpdate() returns false
+ - If mutable objects are being used and conditional rendering logic cannot be implemented in shouldComponentUpdate(), calling setState() only when the new state differs from the previous state will avoid unnecessary re-renders
  - The first argument is an updater function with the signature:
     - prevState is a reference to the previous state. It should not be directly mutated. Instead, changes should be represented by building a new object based on the input from prevState and props
         - For instance, suppose we wanted to increment a value in state by props.step:
@@ -855,7 +855,8 @@ When called, it should examine this.props and this.state and return one of the f
     - This approach may remind you of “slots” in other libraries but there are no limitations on what you can pass as props in React
 
 ##### Specialization
-- Sometimes we think about components as being “special cases” of other components. For example, we might say that a WelcomeDialog is a special case of Dialog
+- Sometimes we think about components as being “special cases” of other components
+    - For example, we might say that a WelcomeDialog is a special case of Dialog
 - In React, this is also achieved by composition, where a more “specific” component renders a more “generic” one and configures it with props:
     ```
     function Dialog(props) {
@@ -930,7 +931,8 @@ When called, it should examine this.props and this.state and return one of the f
     ```
 
 ##### Containment
-- Some components don’t know their children ahead of time. This is especially common for components like Sidebar or Dialog that represent generic “boxes”
+- Some components don’t know their children ahead of time
+    - This is especially common for components like Sidebar or Dialog that represent generic “boxes”
     - We recommend that such components use the special children prop to pass children elements directly into their output:
         ```
         function FancyBorder(props) {
@@ -971,7 +973,7 @@ When called, it should examine this.props and this.state and return one of the f
 
 #### Inheritance
 - At Facebook, we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies
-- Props and composition give you all the flexibility you need to customize a component’s look and behavior in an explicit and safe way. Remember that components may accept arbitrary props, including primitive values, React elements, or functions.
+- Props and composition give you all the flexibility you need to customize a component’s look and behavior in an explicit and safe way. Remember that components may accept arbitrary props, including primitive values, React elements, or functions
 - If you want to reuse non-UI functionality between components, we suggest extracting it into a separate JavaScript module. The components may import it and use that function, object, or a class, without extending it
 
 # Classes
@@ -995,7 +997,7 @@ When called, it should examine this.props and this.state and return one of the f
     - If props.color is not provided, it will be set by default to 'blue'
     - If props.color is set to null, it will remain null
 ##### displayName
-- The displayName string is used in debugging messages. Usually, you don’t need to set it explicitly because it’s inferred from the name of the function or class that defines the component. You might want to set it explicitly if you want to display a different name for debugging purposes or when you create a higher-order component, see Wrap the Display Name for Easy Debugging for details.
+- The displayName string is used in debugging messages. Usually, you don’t need to set it explicitly because it’s inferred from the name of the function or class that defines the component. You might want to set it explicitly if you want to display a different name for debugging purposes or when you create a higher-order component, see Wrap the Display Name for Easy Debugging for details
 
 #### Instance Properties
 ##### props
