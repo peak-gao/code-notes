@@ -1,3 +1,5 @@
+> These notes add onto and extend [mini notes - 1](react-notes-mini-1.md) with more detail
+
 # Benefits of Using React
 #### Simplicity
 - *placeholder*
