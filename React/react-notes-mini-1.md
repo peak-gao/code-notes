@@ -327,7 +327,17 @@ componentWillReceiveProps(nextProps, nextState) {
 - enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state
 - ***never mutate this.state directly***, as calling setState() afterwards may replace the mutation you made
     - **Treat this.state as if it were immutable**
-    - **instead use this.setState()** which is used to schedule updates to a component's local state
+    - **instead use this.setState()** which is used to schedule updates to a component's local state:
+        ```
+        // Wrong
+        this.state.comment = 'Hello';
+        ```
+        ```
+        // Correct
+        this.setState({
+          counter: this.state.counter++
+        });
+        ```
 - will always lead to a re-render unless shouldComponentUpdate() returns false
 - you access state by `this.state.someProperty`
 - think of setState() as a request rather than an immediate command to update the component
@@ -343,7 +353,7 @@ componentWillReceiveProps(nextProps, nextState) {
 
 **Examples**
 
-*TODO: Add example of using setState(), using this.state to read state, and other examples*
+*TODO: Add example of using setState(), using this.state to access state, and other examples*
 
 # Props
  - React uses a “top-down” or “unidirectional” data flow.  This is done by passing props to child components
