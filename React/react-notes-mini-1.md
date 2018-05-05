@@ -260,7 +260,7 @@ componentWillReceiveProps(nextProps, nextState) {
  ### componentDidUpdate
  - invoked immediately after updating occurs
 
- **Can call setState**:
+ **Can call setState**: ?
 
  **Use Cases**
 - to operate on the DOM when the component has been updated
@@ -268,12 +268,31 @@ componentWillReceiveProps(nextProps, nextState) {
 - a good place to do network requests as long as you compare the current props to previous props (e.g. a network request may not be necessary if the props have not changed)
 - If your component implements the getSnapshotBeforeUpdate() lifecycle, the value it returns will be passed as a third “snapshot” parameter to componentDidUpdate()
 
-
  **Examples**
 ###### Rearrange a Grid
 - after we've [redrawn the canvas](#canvas), we want to rearrange the grid after the DOM itself updates — so we use componentDidUpdate to do so:
 ```
 componentDidUpdate () {
-this.createGrid()
+    this.createGrid()
 }
 ```
+
+### componentWillUnmount
+- It’s almost over
+    - Your component is going to go away
+    - Before it goes, it asks if you have any last-minute requests
+
+**Can call setState**: ?
+
+**Use Cases**
+- when it’s gone, it should be completely gone. clean up anything to do that solely involves the component
+- cancel any outgoing network requests
+- remove all event listeners associated with the component
+
+**Examples**
+ ###### Remove Event Listeners
+ ```
+ componentWillUnmount () {
+    window.removeEventListener('resize', this.resizeListener)
+ }
+ ```
