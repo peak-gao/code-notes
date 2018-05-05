@@ -334,8 +334,10 @@ componentWillReceiveProps(nextProps, nextState) {
     ```
 **Use Cases**
 - the primary method you use to update the user interface in response to event handlers and server responses
+
 **Examples**
-   *TODO: Add some examples*
+
+*TODO: Add some examples*
 
 # Props
  - React uses a “top-down” or “unidirectional” data flow.  This is done by passing props to child components
@@ -348,8 +350,28 @@ componentWillReceiveProps(nextProps, nextState) {
         }
         ```
         - Class components should always call the base constructor with props
+            - you should call `super(props)` before any other statement. Otherwise, this.props will be undefined in the constructor, which can lead to bugs
+        - **defaultProps**
+            - a property on the component class itself, to set default props for the class
+                - This is used for undefined props, but not for null props:
+                ```
+                class CustomButton extends React.Component {
+                    // ...
+                }
+                    
+                CustomButton.defaultProps = {
+                    color: 'blue'
+                };
+                ```
+                - If props.color is not provided, it will be set by default to 'blue'
+                - If props.color is set to null, it will remain null
+- `this.props` contains the props that were defined by the caller of this component
+- `this.props.children` is a special prop, typically defined by the child tags in the JSX expression rather than in the tag itself
+- While this.props is set up by React itself and this.state has a special meaning, you are free to add additional fields to the class manually if you need to store something that doesn’t participate in the data flow
 
-#### Inheritance
+# Inheritance
 - At Facebook, we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies
 - to **reuse non-UI functionality between components**, we suggest **extracting it into a separate JavaScript module**
-    - The components may import it and use that function, object, or a class, without extending it
+    - The **components** may then **import it** and use that function, object, or a class, without extending it
+
+
