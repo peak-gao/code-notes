@@ -207,7 +207,7 @@ componentWillReceiveProps(nextProps) {
 
 **Can call setState**: No
 
-###### Use Cases
+**Use Cases**
 - controlling exactly when your component will re-render
 - if worried about wasted renders and other nonsense it's a great place to improve performance
 
