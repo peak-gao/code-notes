@@ -338,6 +338,7 @@ componentWillReceiveProps(nextProps, nextState) {
           counter: this.state.counter++
         });
         ```
+- when you call setState(), React merges the object you provide into the current state
 - will always lead to a re-render unless shouldComponentUpdate() returns false
 - you access state by `this.state.someProperty`
 - think of setState() as a request rather than an immediate command to update the component
@@ -390,4 +391,33 @@ componentWillReceiveProps(nextProps, nextState) {
 - to **reuse non-UI functionality between components**, we suggest **extracting it into a separate JavaScript module**
     - The **components** may then **import it** and use that function, object, or a class, without extending it
 
+# JSX
+- provides syntactic sugar for the React.createElement
 
+    The JSX code:
+    ```
+    <MyButton color="blue" shadowSize={2}>
+      Click Me
+    </MyButton>
+    ```
+    compiles (transpiles) into:
+    ```
+    React.createElement(
+      MyButton,
+      {color: 'blue', shadowSize: 2},
+      'Click Me'
+    )
+    ```
+    - After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects
+    - This means that you can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions
+- Consider this variable declaration: `const element = <h1>Hello, world!</h1>;`
+    - This tag syntax is **neither a string nor HTML**
+    - It is called JSX, and it is a **syntax extension to JavaScript**
+    -  JSX may remind you of a template language, but it comes with the full power of JavaScript
+    - JSX produces React “elements”
+- it's used with React to describe what the UI should look like
+- You can embed any JavaScript expression in JSX by wrapping it in curly braces
+##### Why JSX?
+- React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display
+- **Instead of artificially separating technologies by putting markup and logic in separate files, React separates concerns with loosely coupled units called “components”** that contain both
+- allows React to show more useful error and warning messages
