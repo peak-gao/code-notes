@@ -1,4 +1,4 @@
-> These notes add onto and extend [mini notes - 1](react-notes-mini-1.md) with more detail (deeper dive)
+> These notes extend [mini notes - 1](react-notes-mini-1.md) with more detail (deeper dive)
 
 # Benefits of Using React
 #### Simplicity
