@@ -112,7 +112,8 @@ An update can be caused by changes to props or state. These methods are called w
 This method is called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
 - componentDidCatch
 
-Entire List, in order of when they're called:
+#### Entire List
+*in order of when they're called:*
 - [componentWillMount](#componentwillmount-legacy) (_legacy_)
 - [componentDidMount](#componentdidmount)
 - [componentWillReceiveProps (nextProps)](#componentwillreceiveprops-legacy) (_legacy_)
@@ -298,3 +299,23 @@ this.createGrid()
     window.removeEventListener('resize', this.resizeListener)
  }
  ```
+
+### componentDidCatch
+- Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed
+    - Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them
+- A class component becomes an error boundary if it defines this lifecycle method
+- Calling setState() in it lets you capture an unhandled JavaScript error in the below tree and display a fallback UI
+- Error boundaries only catch errors in the components below them in the tree
+    - **An error boundary can’t catch an error within itself**
+
+**Can call setState**: No
+
+**Use Cases**
+- Only use error boundaries for recovering from unexpected exceptions; don’t try to use them for control flow
+- In an ideal world, we wouldn’t use lifecycle methods. All our rendering issues would be controlled via state and props
+      - But it’s not an ideal world, and sometimes you need to exact a little more control over how and when your component is updating
+      - Use these methods sparingly, and use them with care
+
+**Examples**
+ *TODO: Add some examples*
+ ###### Example Name
