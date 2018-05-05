@@ -124,7 +124,7 @@ Entire List, in order of when they're called:
 - componentWillUnmount
 - componentDidCatch
 
-#### componentWillMount
+#### componentWillMount (_legacy_)
 - invoked just before mounting occurs
     - component is going to appear on the screen very shortly
     - there is no component to play with yet
@@ -148,7 +148,7 @@ Entire List, in order of when they're called:
     - now you can do all the fun things you couldn’t do when there was no component to play with
     - do all the setup you couldn’t do without a DOM
 - initialization that requires DOM nodes should go here
-- **Can call setState**:
+Can call setState: Yes
 
 ##### Use Cases
 - good place to instantiate the network request to get data
@@ -156,3 +156,39 @@ Entire List, in order of when they're called:
 - initialize a masonry grid layout from a collection of elements
 - add event listeners
 - set up subscriptions
+
+### componentWillReceiveProps (_legacy_)
+- invoked before a mounted component receives new props
+- Our component was doing just fine, when all of a sudden a stream of new props arrive to mess things up
+    - Perhaps some data that was loaded in by a parent component’s componentDidMount finally arrived, and is being passed down
+- Before our component does anything with the new props, componentWillReceiveProps is called, with the next props as the argument
+-  we have access to both the next props (via nextProps), and our current props (via this.props)
+- Here’s what you should do:
+           1. check which props will change (big caveat with componentWillReceiveProps — sometimes it’s called when nothing has changed; React just wants to check in)
+           1. If the props will change in a way that is significant, act on it
+
+#### Use Cases
+- If you need to update the state in response to prop changes (for example, to reset it)
+    - compare this.props and nextProps and perform state transitions using this.setState()
+
+### Examples
+*Generic Example*
+```
+componentWillReceiveProps(nextProps) {
+    if (parseInt(nextProps.modelId, 10) !== parseInt(this.props.modelId, 10)) {
+        this.setState({ postsLoaded: false })
+        this.contentLoaded = 0
+    }
+}
+```
+*Canvas Example*
+-  we have a canvas element
+-  we’re drawing a nice circle graphic based on this.props.percent
+-  whenever we receive new props, IF the percent has changed, we want to redraw the grid
+```
+componentWillReceiveProps(nextProps) {
+    if (this.props.percent !== nextProps.percent)
+        this.setUpCircle(nextProps.percent)
+    }
+}
+```

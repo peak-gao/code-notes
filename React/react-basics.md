@@ -2600,7 +2600,7 @@ Imagine that we already have a JSON API and a mock from our designer. The mock l
 - [React.Component](https://reactjs.org/docs/react-component.html#forceupdate)
 - [State and Lifecycle
 ](https://reactjs.org/docs/state-and-lifecycle.html)
-- [React Lifecycle Methods- how and when to use them](https://engineering.musefind.com/react-lifecycle-methods-how-and-when-to-use-them-2111a1b692b1)
+- [React Lifecycle Methods - how and when to use them](https://engineering.musefind.com/react-lifecycle-methods-how-and-when-to-use-them-2111a1b692b1)
 - [rename-unsafe-lifecycles codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles)
 - [Destructuring objects as function parameters in ES6](https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6)
 - [Handling Events](https://reactjs.org/docs/handling-events.html)
