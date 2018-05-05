@@ -219,7 +219,7 @@ componentWillReceiveProps(nextProps, nextState) {
     nextState.input !== this.state.input
 }
 ```
-***Table With Many Fields***
+###### Table With Many Fields
 
  *TODO: Add a code example for this*
 - we have a table with many many fields
