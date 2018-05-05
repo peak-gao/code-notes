@@ -113,15 +113,15 @@ This method is called when there is an error during rendering, in a lifecycle me
 - componentDidCatch
 
 Entire List, in order of when they're called:
-- componentWillMount (_legacy_)
-- componentDidMount
-- componentWillReceiveProps(nextProps) (_legacy_)
-- shouldComponentUpdate(nextProps, nextState
-- componentWillUpdate (_legacy_)
-- getSnapshotBeforeUpdate
-- componentDidUpdate
-- componentWillUnmount
-- componentDidCatch
+- [componentWillMount](#componentWillMount) (_legacy_)
+- [componentDidMount](#componentDidMount)
+- [componentWillReceiveProps (nextProps)](#componentWillReceiveProps) (_legacy_)
+- [shouldComponentUpdate (nextProps, nextState)](#shouldComponentUpdate)
+- [componentWillUpdate](#componentWillUpdate) (_legacy_)
+- [getSnapshotBeforeUpdate](#getSnapshotBeforeUpdate) (_v16_)
+- [componentDidUpdate](#componentDidUpdate)
+- [componentWillUnmount](#componentDidUpdate)
+- [componentDidCatch](#componentDidCatch) (_v16_)
 
 #### Called on Initial render
  *TODO: Add list *
@@ -282,17 +282,19 @@ componentDidUpdate () {
     - Your component is going to go away
     - Before it goes, it asks if you have any last-minute requests
 
-**Can call setState**: ?
+**Can call setState**: No
 
 **Use Cases**
-- when it’s gone, it should be completely gone. clean up anything to do that solely involves the component
+- Cleaning up any leftover debris from your component
+    - when it’s gone, it should be completely gone
+    - clean up anything to do that solely involves the component
 - cancel any outgoing network requests
 - remove all event listeners associated with the component
 
 **Examples**
  ###### Remove Event Listeners
  ```
- componentWillUnmount () {
+ componentWillUnmount() {
     window.removeEventListener('resize', this.resizeListener)
  }
  ```
