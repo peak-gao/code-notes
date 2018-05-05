@@ -150,12 +150,14 @@ Entire List, in order of when they're called:
 - initialization that requires DOM nodes should go here
 Can call setState: Yes
 
-##### Use Cases
+###### Use Cases
 - good place to instantiate the network request to get data
 - draw on a <canvas> element that you just rendered
 - initialize a masonry grid layout from a collection of elements
 - add event listeners
 - set up subscriptions
+
+###### Examples
 
 ### componentWillReceiveProps (_legacy_)
 - invoked before a mounted component receives new props
