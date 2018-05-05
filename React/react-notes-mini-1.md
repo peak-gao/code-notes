@@ -105,9 +105,6 @@ An update can be caused by changes to props or state. These methods are called w
 - getSnapshotBeforeUpdate
 - componentDidUpdate
 
-#### Constructor
-- called before it is mounted
-
 #### Error Handling
 This method is called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
 - componentDidCatch
