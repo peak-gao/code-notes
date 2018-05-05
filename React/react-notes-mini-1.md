@@ -320,8 +320,14 @@ componentWillReceiveProps(nextProps, nextState) {
 
 # Local State
 - a feature available only to React classes
+- is user-defined, and it should be a plain JavaScript object (literal)
 - state is similar to props, but it is private and fully controlled by the component
+- state contains data specific to this component that may change over time
+- if some value isn’t used for rendering or data flow (for example, a timer ID), you don’t have to put it in the state. Such values can be defined as fields on the component instance
 - enqueues changes to the component state and tells React that this component and its children need to be re-rendered with the updated state
+- ***never mutate this.state directly***, as calling setState() afterwards may replace the mutation you made
+    - **Treat this.state as if it were immutable**
+    - **instead use this.setState()** which is used to schedule updates to a component's local state
 - will always lead to a re-render unless shouldComponentUpdate() returns false
 - you access state by `this.state.someProperty`
 - think of setState() as a request rather than an immediate command to update the component
@@ -337,7 +343,7 @@ componentWillReceiveProps(nextProps, nextState) {
 
 **Examples**
 
-*TODO: Add some examples*
+*TODO: Add example of using setState(), using this.state to read state, and other examples*
 
 # Props
  - React uses a “top-down” or “unidirectional” data flow.  This is done by passing props to child components
@@ -367,7 +373,7 @@ componentWillReceiveProps(nextProps, nextState) {
                 - If props.color is set to null, it will remain null
 - `this.props` contains the props that were defined by the caller of this component
 - `this.props.children` is a special prop, typically defined by the child tags in the JSX expression rather than in the tag itself
-- While this.props is set up by React itself and this.state has a special meaning, you are free to add additional fields to the class manually if you need to store something that doesn’t participate in the data flow
+- While `this.props` is set up by React itself and `this.state` has a special meaning, you are free to add additional fields to the class manually if you need to store something that doesn’t participate in the data flow
 
 # Inheritance
 - At Facebook, we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies
