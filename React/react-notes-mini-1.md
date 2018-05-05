@@ -142,7 +142,7 @@ Entire List, in order of when they're called:
 - *Do **Not** Fetch Data Here*
     - An asynchronous call to fetch data will not return before the render happens. This means the component will render with empty data at least once
 
-#### componentDidMount
+### componentDidMount
 - invoked immediately after a component is mounted
 - Your component is out there and appears on the screen (mounted), and ready to be used
     - now you can do all the fun things you couldn’t do when there was no component to play with
