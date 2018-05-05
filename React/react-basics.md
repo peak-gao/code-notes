@@ -362,7 +362,7 @@ When called, it should examine this.props and this.state and return one of the f
 
 # Lifecycle
 - methods (AKA “lifecycle hooks”) that allow you to
-    - free up resources taken by the components when they are destroyed.  Lifecycle
+    - free up resources taken by the components when they are destroyed
     - used declare special methods on the component class to run some code when a component mounts and unmounts
 - UNSAFE_ - methods prefixed with this are being phased out and will only work up until React v17
     - Use the [rename-unsafe-lifecycles codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) to automatically update your components.
@@ -385,6 +385,10 @@ When called, it should examine this.props and this.state and return one of the f
     - The exception is any setup that can only be done at runtime — namely, connecting to external API’s. For example, if you use Firebase for your app, you’ll need to get that set up as your app is first mounting.
     - But the key is that such configuration should be done at the highest level component of your app (the root component). That means 99% of your components should probably not use componentWillMount
 - You may see people using componentWillMount to start AJAX calls to load data for your components. Don’t do this. We’ll get to that in the second
+- Do Not Fetch Data Here
+    - An asynchronous call to fetch data will not return before the render happens. This means the component will render with empty data at least once
+        - here is no way to “pause” rendering to wait for data to arrive. You cannot return a promise from componentWillMount or wrangle in a setTimeout somehow
+    - The right way to handle this is to setup the component’s initial state so that it’s valid for rendering
 
 #### _Use Cases_
 - **Most Common Use Case**: App configuration in your root component.
@@ -2607,3 +2611,4 @@ Imagine that we already have a JSON API and a mock from our designer. The mock l
 - [7 Reasons to Outlaw React’s Functional Components](https://medium.freecodecamp.org/7-reasons-to-outlaw-reacts-functional-components-ff5b5ae09b7c)
 - [JavaScript: What Are Pure Functions And Why Use Them?](https://medium.com/@jamesjefferyuk/javascript-what-are-pure-functions-4d4d5392d49c)
 - [React — Event handling, binding, ES6 classes and public class fields](https://medium.com/@pauloesteves8/es6-classes-binding-public-class-fields-and-event-handling-in-react-2e1e39b1d498)
+- [Where to Fetch Data: componentWillMount vs componentDidMount](https://daveceddia.com/where-fetch-data-componentwillmount-vs-componentdidmount)
