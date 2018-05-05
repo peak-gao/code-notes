@@ -179,7 +179,7 @@ Can call setState: Yes
     - compare this.props and nextProps and perform state transitions using this.setState()
 
 **Examples**
- *TODO: Add some examples *
+ *TODO: Add some examples*
 
 ###### Generic
 ```
@@ -208,12 +208,12 @@ componentWillReceiveProps(nextProps) {
     - We have new props. Typical React dogma says that when a component receives new props, or new state, it should update
       - But our component is a little bit anxious and is going to ask permission first
 - is invoked before rendering when new props or state are being received. Defaults to true
-- use it to let React know if a component’s output is not affected by the current change in state or props
 - default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior
 
 
 **Use Cases**
 - controlling exactly when your component will re-render
+- - use it to let React know if a component’s output is not affected by the current change in state or props
 - if worried about wasted renders and other nonsense it's a great place to improve performance
 
 **Examples**
@@ -236,12 +236,44 @@ componentWillReceiveProps(nextProps, nextState) {
 **Can call setState**: No
 - Wow, what a process. Now we’ve committed to updating. “Want me to do anything before I re-render?” our component asks
 - invoked just before rendering when new props or state are being received
-- Use this as an opportunity to perform preparation before an update occurs
 - it’s basically the same as componentWillReceiveProps, except you are not allowed to call this.setState
 - If you are using shouldComponentUpdate AND needed to do something when props change, componentWillUpdate makes sense. But it’s probably not going to give you a whole lot of additional utility
 
 **Use Cases**
+- Use this as an opportunity to perform preparation before an update occurs
 - Used instead of componentWillReceiveProps on a component that also has shouldComponentUpdate (but no access to previous props)
 
 **Examples**
- *TODO: Add some examples *
+ *TODO: Add some examples*
+
+### getSnapshotBeforeUpdate
+- invoked immediately after a component is mounted
+
+**Can call setState**:
+
+**Use Cases**
+ *TODO: Add some use cases*
+
+**Examples**
+ *TODO: Add some examples*
+
+ ### componentDidUpdate
+ - invoked immediately after updating occurs
+
+ **Can call setState**:
+
+ **Use Cases**
+- to operate on the DOM when the component has been updated
+- Updating the DOM in response to prop or state changes
+- a good place to do network requests as long as you compare the current props to previous props (e.g. a network request may not be necessary if the props have not changed)
+- If your component implements the getSnapshotBeforeUpdate() lifecycle, the value it returns will be passed as a third “snapshot” parameter to componentDidUpdate()
+
+
+ **Examples**
+###### Rearrange a Grid
+- after we've [redrawn the canvas](#canvas), we want to rearrange the grid after the DOM itself updates — so we use componentDidUpdate to do so:
+```
+componentDidUpdate () {
+this.createGrid()
+}
+```

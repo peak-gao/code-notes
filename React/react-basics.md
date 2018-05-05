@@ -394,7 +394,7 @@ When called, it should examine this.props and this.state and return one of the f
 - **Most Common Use Case**: App configuration in your root component.
 - **Can call setState**: Don’t. Use default state instead
 
-### componentDidMount()
+### componentDidMount
 - invoked immediately after a component is mounted
 - initialization that requires DOM nodes should go here
 - good place to instantiate the network request to get data
@@ -529,7 +529,7 @@ When called, it should examine this.props and this.state and return one of the f
 #### _layman's terms_
 - Good job, little component
 - Here we can do the same stuff we did in componentDidMount — reset our masonry layout, redraw our canvas, etc.
-- Wait- didn’t we redraw our canvas in componentWillReceiveProps?
+- Wait - didn’t we redraw our canvas in componentWillReceiveProps?
     - Yes, we did. Here’s why: in componentDidUpdate, you don’t know why it updated
     - So if our component is receiving more props than those relevant to our canvas, we don’t want to waste time redrawing the canvas every time it updates.
     - That doesn’t mean componentDidUpdate isn’t useful. To go back to our masonry layout example, we want to rearrange the grid after the DOM itself updates — so we use componentDidUpdate to do so:
