@@ -110,7 +110,7 @@ An update can be caused by changes to props or state. These methods are called w
 
 #### Error Handling
 This method is called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
-- componentDidCatch()
+- componentDidCatch
 
 Entire List, in order of when they're called:
 - componentWillMount (_legacy_)
@@ -123,14 +123,18 @@ Entire List, in order of when they're called:
 - componentWillUnmount
 - componentDidCatch
 
+#### Called on Initial render
+ *TODO: Add list *
+
 ### componentWillMount (_legacy_)
+- **Can call setState**: Don’t. Use default state instead
+
 - invoked just before mounting occurs
     - component is going to appear on the screen very shortly
     - there is no component to play with yet
     - component is in default position at this point
 - called before render()
 - only lifecycle hook called on server rendering
-- **Can call setState**: Don’t. Use default state instead
 
 **Use Cases**
 - it's a bit of a dud, you will barely use this method since your constructor and other lifecycle methods do most the work
@@ -159,15 +163,15 @@ Can call setState: Yes
 **Examples**
 
 ### componentWillReceiveProps (_legacy_)
-- invoked before a mounted component receives new props
+**Can call setState**: Yes
 - Our component was doing just fine, when all of a sudden a stream of new props arrive to mess things up
     - Perhaps some data that was loaded in by a parent component’s componentDidMount finally arrived, and is being passed down
+- invoked before a mounted component receives new props
 - Before our component does anything with the new props, componentWillReceiveProps is called, with the next props as the argument
--  we have access to both the next props (via nextProps), and our current props (via this.props)
+- we have access to both the next props (via nextProps), and our current props (via this.props)
 - Here’s what you should do:
            1. check which props will change (big caveat with componentWillReceiveProps — sometimes it’s called when nothing has changed; React just wants to check in)
            1. If the props will change in a way that is significant, act on it
-**Can call setState**: Yes
 
 **Use Cases**
 - acting on particular prop changes to trigger state transitions
@@ -175,6 +179,7 @@ Can call setState: Yes
     - compare this.props and nextProps and perform state transitions using this.setState()
 
 **Examples**
+ *TODO: Add some examples *
 
 ###### Generic
 ```
@@ -198,14 +203,14 @@ componentWillReceiveProps(nextProps) {
 ```
 
 ### shouldComponentUpdate
-- is invoked before rendering when new props or state are being received. Defaults to true
-- use it to let React know if a component’s output is not affected by the current change in state or props
-- default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior
+**Can call setState**: No
 - Now our component is getting nervous:
     - We have new props. Typical React dogma says that when a component receives new props, or new state, it should update
       - But our component is a little bit anxious and is going to ask permission first
+- is invoked before rendering when new props or state are being received. Defaults to true
+- use it to let React know if a component’s output is not affected by the current change in state or props
+- default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior
 
-**Can call setState**: No
 
 **Use Cases**
 - controlling exactly when your component will re-render
@@ -223,15 +228,20 @@ componentWillReceiveProps(nextProps, nextState) {
 
  *TODO: Add a code example for this*
 - we have a table with many many fields
-- problem was that when the table re-rendered, each field would also re-render, slowing things down
-- ShouldComponentUpdate allows us to say: only update if the props you care about change
+- problem: when table re-renders, each field also re-renders, slowing things down
+- ShouldComponentUpdate lets us say: only update if the props I care about change
     - keep in mind that it can cause major problems if you set it and forget it, because your React component will not update normally. So use with caution
 
 ### componentWillUpdate (_legacy_)
-
-**Can call setState**:
+**Can call setState**: No
+- Wow, what a process. Now we’ve committed to updating. “Want me to do anything before I re-render?” our component asks
+- invoked just before rendering when new props or state are being received
+- Use this as an opportunity to perform preparation before an update occurs
+- it’s basically the same as componentWillReceiveProps, except you are not allowed to call this.setState
+- If you are using shouldComponentUpdate AND needed to do something when props change, componentWillUpdate makes sense. But it’s probably not going to give you a whole lot of additional utility
 
 **Use Cases**
+- Used instead of componentWillReceiveProps on a component that also has shouldComponentUpdate (but no access to previous props)
 
 **Examples**
-###### Generic
+ *TODO: Add some examples *
