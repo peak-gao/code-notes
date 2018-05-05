@@ -129,6 +129,8 @@ The List:
     - component is in default position at this point
 - called before render()
 - only lifecycle hook called on server rendering
+- **Can call setState**: Don’t. Use default state instead
+
 ##### Use Cases
 - it's a bit of a dud, you will barely use this method since your constructor and other lifecycle methods do most the work
 - setup that can only be done at runtime
@@ -138,3 +140,17 @@ The List:
 - *Do **Not** Fetch Data Here*
     - An asynchronous call to fetch data will not return before the render happens. This means the component will render with empty data at least once
 
+#### componentDidMount
+- invoked immediately after a component is mounted
+- Your component is out there and appears on the screen (mounted), and ready to be used
+    - now you can do all the fun things you couldn’t do when there was no component to play with
+    - do all the setup you couldn’t do without a DOM
+- initialization that requires DOM nodes should go here
+- **Can call setState**: Yes
+
+##### Use Cases
+- good place to instantiate the network request to get data
+- draw on a <canvas> element that you just rendered
+- initialize a masonry grid layout from a collection of elements
+- add event listeners
+- set up subscriptions
