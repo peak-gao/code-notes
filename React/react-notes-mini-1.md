@@ -77,6 +77,8 @@ function calculateTax(productPrice) {
 - A component may choose to pass its state down as props to its child components
 
 # Lifecycle
+legacy (UNSAFE) - it still works but will be phased out when React v17 comes out
+
 - methods (“hooks”) that allow you to
     - free up resources taken by the components when they are destroyed
     - special methods on a component class to run some code when a component mounts and unmounts
@@ -87,21 +89,21 @@ function calculateTax(productPrice) {
 
 #### Mounting
 These methods are called when an instance of a component is being created and inserted into the DOM:
-- constructor()
-- static getDerivedStateFromProps()
-- componentWillMount() / UNSAFE_componentWillMount()
-- render()
-- componentDidMount()
+- constructor
+- static getDerivedStateFromProps
+- componentWillMount (_legacy_)
+- render
+- componentDidMount
 
 #### Updating
 An update can be caused by changes to props or state. These methods are called when a component is being re-rendered:
-- componentWillReceiveProps() / UNSAFE_componentWillReceiveProps()
-- static getDerivedStateFromProps()
-- shouldComponentUpdate()
-- componentWillUpdate() / UNSAFE_componentWillUpdate()
-- render()
-- getSnapshotBeforeUpdate()
-- componentDidUpdate()
+- componentWillReceiveProps (_legacy_)
+- static getDerivedStateFromProps (_legacy_)
+- shouldComponentUpdate
+- componentWillUpdate (_legacy_)
+- render
+- getSnapshotBeforeUpdate
+- componentDidUpdate
 
 #### Constructor
 - called before it is mounted
@@ -111,7 +113,7 @@ This method is called when there is an error during rendering, in a lifecycle me
 - componentDidCatch()
 
 
-The List:
+Entire List, in order of when they're called:
 - componentWillMount (_legacy_)
 - componentDidMount
 - componentWillReceiveProps(nextProps) (_legacy_)
@@ -146,7 +148,7 @@ The List:
     - now you can do all the fun things you couldn’t do when there was no component to play with
     - do all the setup you couldn’t do without a DOM
 - initialization that requires DOM nodes should go here
-- **Can call setState**: Yes
+- **Can call setState**:
 
 ##### Use Cases
 - good place to instantiate the network request to get data
