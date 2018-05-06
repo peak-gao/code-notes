@@ -16,7 +16,7 @@
 - **JS explicit coercion**
     - JavaScript provides several different facilities for forcibly coercing between types
 
-### == vs ===
+### Equality: == vs ===
 The difference between `==` and `===` is usually characterized that `==` checks for value equality and `===` checks for both value and type equality. However, this is inaccurate
 - The proper way to characterize them is that `==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion; `===` is often called "strict equality" for this reason
 
@@ -75,6 +75,47 @@ a == b;  // false
 ```
 
 **Note:** For more information about the `==` equality comparison rules, see the ES5 specification (section 11.9.3) and also consult Chapter 4 of the *Types & Grammar* title of this series; see Chapter 2 for more information about values versus references.
+
+### Inequality
+
+The `<`, `>`, `<=`, and `>=` operators are used for inequality, referred to in the specification as "relational comparison." Typically they will be used with ordinally comparable values like `number`s
+- It's easy to understand that `3 < 4`
+
+But JavaScript `string` values can also be compared for inequality, using typical alphabetic rules (`"bar" < "foo"`).
+
+What about coercion? Similar rules as `==` comparison (though not exactly identical!) apply to the inequality operators
+- Notably, there are no "strict inequality" operators that would disallow coercion the same way `===` "strict equality" does
+
+Consider:
+
+```js
+var a = 41;
+var b = "42";
+var c = "43";
+
+a < b;  // true
+b < c;  // true
+```
+
+What happens here? In section 11.8.5 of the ES5 specification, it says that if both values in the `<` comparison are `string`s, as it is with `b < c`, the comparison is made lexicographically (aka alphabetically like a dictionary)
+- But if one or both is not a `string`, as it is with `a < b`, then both values are coerced to be `number`s, and a typical numeric comparison occurs
+
+The biggest gotcha you may run into here with comparisons between potentially different value types -- remember, there are no "strict inequality" forms to use -- is when one of the values cannot be made into a valid number, such as:
+
+```js
+var a = 42;
+var b = "foo";
+
+a < b;  // false
+a > b;  // false
+a == b;  // false
+```
+
+Wait, how can all three of those comparisons be `false`? Because the `b` value is being coerced to the "invalid number value" `NaN` in the `<` and `>` comparisons, and the specification says that `NaN` is neither greater-than nor less-than any other value.
+
+The `==` comparison fails for a different reason. `a == b` could fail if it's interpreted either as `42 == NaN` or `"42" == "foo"` -- as we explained earlier, the former is the case.
+
+**Note:** For more information about the inequality comparison rules, see section 11.8.5 of the ES5 specification and also consult Chapter 4 of the *Types & Grammar* title of this series.
 
 **Examples**
 ###### Explicit Conversions
@@ -211,6 +252,7 @@ function foo(a) {
 
 
 # Resources
+- [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
 - [Variables: Scopes, Environments, and Closures](http://speakingjs.com/es5/ch16.html)
 
 # Awesome Vids
