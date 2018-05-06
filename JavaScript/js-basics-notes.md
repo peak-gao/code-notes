@@ -832,27 +832,27 @@ function foo() {
             - But foo has no value yet (as it would if it had been a true function declaration instead of expression)
             - So, foo() is attempting to invoke the undefined value, which is a TypeError illegal operation
 - **Function *declarations* are hoisted, as we just saw. But function *expressions* are not**
-- even if it's a named function expression, the name identifier is not available in the enclosing scope:
-```
-foo(); // TypeError
-bar(); // ReferenceError
-
-var foo = function bar() {
-	// ...
-};
-```
-- This snippet is more accurately interpreted (with hoisting) as:
+    - even if it's a named function expression, the name identifier is not available in the enclosing scope:
     ```
-    var foo;
-    
     foo(); // TypeError
     bar(); // ReferenceError
     
-    foo = function() {
-    	var bar = ...self...
-    	// ...
-    }
+    var foo = function bar() {
+        // ...
+    };
     ```
+    - This snippet is more accurately interpreted (with hoisting) as:
+        ```
+        var foo;
+        
+        foo(); // TypeError
+        bar(); // ReferenceError
+        
+        foo = function() {
+            var bar = ...self...
+            // ...
+        }
+        ```
 ### Functions First
 - **Both function declarations and variable declarations are hoisted**
     - **functions are hoisted first**, and then variables
