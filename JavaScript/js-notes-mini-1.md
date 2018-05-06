@@ -612,6 +612,7 @@ function foo() {
         - So, foo() is attempting to invoke the undefined value, which is a TypeError illegal operation
 
 ###### Function Declarations are Hosted, Functional Expressions are not
+- even if it's a named function expression, the name identifier is not available in the enclosing scope:
 ```
 foo(); // TypeError
 bar(); // ReferenceError
@@ -658,6 +659,87 @@ foo = function() {
 	console.log( 2 );
 };
 ```
+
+# Scope Closure
+- *Closure* is when **a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope**
+- ***Closure lets the function continue to access the lexical scope it was defined in at author-time***
+- **Whatever facility we use to *transport an inner function outside of its lexical scope*, it *will maintain a scope reference to where it was originally declared*, and *wherever we execute it, that closure will be exercised***
+- 
+**Examples**
+###### Scope Closure 1
+```
+function foo() {
+    var a = 2;
+
+    function bar() {
+        console.log( a );
+    }
+
+    return bar;
+}
+
+var baz = foo();
+
+baz(); // 2 -- Whoa, closure was just observed, man.
+```
+- function **bar() has *lexical scope access* to the *inner scope of foo()***
+- But then, we take bar(), the function itself, and pass it as a value
+- we return the function object itself that bar references
+- After we execute foo(), we assign the value it returned (our inner bar() function) to a variable called baz
+- then we actually invoke baz(), which of course is invoking our inner function bar(), just by a different identifier reference
+- **bar() is executed**, for sure. But in this case, it's executed ***outside of its declared lexical scope***
+- After foo() executed, normally we would expect that the entirety of the inner scope of foo() would go away, because we know that the Engine employs a Garbage Collector that comes along and frees up memory once it's no longer in use
+- Since it would appear that the contents of foo() are no longer in use, it would seem natural that they should be considered gone
+- **But the "magic" of closures does not let this happen. That inner scope is in fact still "in use", and thus does not go away**
+    - Who's using it? The function bar() itself
+        - By virtue of where it was declared, bar() has a lexical scope closure over that inner scope of foo(), which keeps that scope alive for bar() to reference at any later time
+        - **bar() still has a reference to that scope, and *that reference is called closure***
+    - a few microseconds later, when the variable baz is invoked (invoking the inner function we initially labeled bar), it duly has access to author-time lexical scope, so it can access the variable a just as we'd expect
+- The **function is being invoked well *outside* of its *author-time lexical scope***
+
+###### Passing Functions Around Exercises Closure
+- any of the various ways that functions can be passed around as values, and indeed invoked in other locations, are all examples of observing/exercising closure
+```
+function foo() {
+    var a = 2;
+
+    function baz() {
+        console.log( a ); // 2
+    }
+
+    bar( baz );
+}
+
+function bar(fn) {
+    fn(); // look ma, I saw closure!
+}
+```
+- We pass the inner function baz over to bar, and call that inner function (labeled fn now), and when we do, its closure over the inner scope of foo() is observed, by accessing a
+- These passings-around of functions can be indirect, too
+    ```
+    var fn;
+    
+    function foo() {
+        var a = 2;
+    
+        function baz() {
+            console.log( a );
+        }
+    
+        fn = baz; // assign `baz` to global variable
+    }
+    
+    function bar() {
+        fn(); // look ma, I saw closure!
+    }
+    
+    foo();
+    
+    bar(); // 2
+    ```
+    - **Whatever facility we use to *transport an inner function outside of its lexical scope*, it *will maintain a scope reference to where it was originally declared*, and *wherever we execute it, that closure will be exercised***
+
+
 
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
