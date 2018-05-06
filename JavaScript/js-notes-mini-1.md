@@ -1017,6 +1017,28 @@ var MyModules = (function Manager() {
     - Both the "foo" and "bar" modules are defined with a function that returns a public API
     - "foo" even receives the instance of "bar" as a dependency parameter, and can use it accordingly
 
+
+# this
+- this is a special identifier keyword that's automatically defined in the scope of every function
+- `this` does **not** refer to
+    -  the **function itself**
+        - To reference a function object from inside itself, `this` by itself will typically be insufficient
+            - You generally need a reference to the function object via a lexical identifier (variable) that points at it
+    - the **function's scope**
+        - a reference to the **function's *lexical scope***
+    - **where** a **function is declared**
+- **what this *is***:
+    - It is contextual based on the conditions of the function's invocation
+    - has everything to do with the manner in which the function is called
+    - **When a function is invoked**, an activation record, otherwise known as **an *execution context*, is created**
+        -  This record contains information about where the function was called from (the call-stack), *how* the function was invoked, what parameters were passed, etc
+        - One of the properties of this record is the `this` **reference** which will be *used for the duration of that function's execution*
+    - it's a **binding** that is **made when a function is invoked**, and *what* **it references** is **determined entirely by the *call-site* where the function is called**
+
+**Use Cases**
+- allow functions to be re-used against multiple *context* (`me` and `you`) objects, rather than needing a separate version of the function for each object
+    - Instead of relying on `this`, you could have explicitly passed in a context object to both
+
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
 - [Variables: Scopes, Environments, and Closures](http://speakingjs.com/es5/ch16.html)

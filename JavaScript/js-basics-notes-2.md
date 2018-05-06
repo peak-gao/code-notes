@@ -5,7 +5,7 @@
 
 - this is a special identifier keyword that's automatically defined in the scope of every function
     - what exactly it refers to bedevils even seasoned JavaScript developers
-- without lack of clear understanding, `this` can seem downright magical in *your* confusion.
+- without lack of clear understanding, `this` can seem downright magical in *your* confusion
 
 ## Why `this`?
 
@@ -233,7 +233,7 @@ The next most common misconception about the meaning of `this` is that it someho
 
 - `this` does not, in any way, refer to a function's **lexical scope**
     - It is true that internally, scope is kind of like an object with properties for each of the available identifiers
-    - But the scope "object" is not accessible to JavaScript code. It's an inner part of the *Engine*'s implementation.
+    - But the scope "object" is not accessible to JavaScript code. It's an inner part of the *Engine*'s implementation
 
 Consider code which attempts (and fails!) to cross over the boundary and use `this` to implicitly refer to a function's lexical scope:
 
