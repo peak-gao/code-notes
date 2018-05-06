@@ -27,23 +27,23 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
 - number and boolean literals are just presented as is (i.e., 42, true, etc.)
 #### Converting Between Types
 - JavaScript calls converting types "coercion" (converting one type to another)
-    - there is "explicit" and "implicit" coercion
-    - **JS implicit coercion is controversial**:
-        - a controversial topic is what happens when you try to compare two values that are not already of the same type, which would require implicit coercion
-            - When comparing the string "99.99" to the number 99.99, most people would agree they are equivalent
-                - But they're not exactly the same, are they? It's the same value in two different representations, two different types. You could say they're "loosely equal," couldn't you?
-                - **To help you out in these common situations, JavaScript will sometimes kick in and implicitly coerce values to the matching types**
-                    - if you use the == loose equals operator to make the comparison "99.99" == 99.99, JavaScript will convert the left-hand side "99.99" to its number equivalent 99.99
-                    - The comparison then becomes 99.99 == 99.99, which is of course true
-                - While designed to help you, implicit coercion can create confusion if you haven't taken the time to learn the rules that govern its behavior
-                - Most JS developers never have, so the common feeling is that implicit coercion is confusing and harms programs with unexpected bugs, and should thus be avoided. It's even sometimes called a flaw in the design of the language
-                - However, implicit coercion is a mechanism that can be learned, and moreover should be learned by anyone wishing to take JavaScript programming seriously
-                - Not only is it not confusing once you learn the rules, it can actually make your programs better! The effort is well worth it
-        - **explicit** examples:
-            - Using Number(..) (a built-in function)
-        - **implicit** examples:
-    - JavaScript provides several different facilities for forcibly coercing between types
+- there is "explicit" and "implicit" coercion
+- **JS implicit coercion is controversial**:
+    - a controversial topic is what happens when you try to compare two values that are not already of the same type, which would require implicit coercion
+        - When comparing the string "99.99" to the number 99.99, most people would agree they are equivalent
+            - But they're not exactly the same, are they? It's the same value in two different representations, two different types. You could say they're "loosely equal," couldn't you?
+            - **To help you out in these common situations, JavaScript will sometimes kick in and implicitly coerce values to the matching types**
+                - if you use the == loose equals operator to make the comparison "99.99" == 99.99, JavaScript will convert the left-hand side "99.99" to its number equivalent 99.99
+                - The comparison then becomes 99.99 == 99.99, which is of course true
+            - While designed to help you, implicit coercion can create confusion if you haven't taken the time to learn the rules that govern its behavior
+            - Most JS developers never have, so the common feeling is that implicit coercion is confusing and harms programs with unexpected bugs, and should thus be avoided. It's even sometimes called a flaw in the design of the language
+            - However, implicit coercion is a mechanism that can be learned, and moreover should be learned by anyone wishing to take JavaScript programming seriously
+            - Not only is it not confusing once you learn the rules, it can actually make your programs better! The effort is well worth it
+    - **explicit** examples:
         - Using Number(..) (a built-in function)
+    - **implicit** examples:
+- JavaScript provides several different facilities for forcibly coercing between types
+    - Using Number(..) (a built-in function)
 
 #### Typing and Variables
 - **Static typing**, otherwise known as **type enforcement**, is typically cited as a benefit for program correctness by preventing unintended value conversions
@@ -75,13 +75,13 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
         		var b = 2;
         
         		// we can access both `a` and `b` here
-        		console.log( a + b );	// 3
+        		console.log( a + b );   // 3
         	}
         
         	inner();
         
         	// we can only access `a` here
-        	console.log( a );			// 1
+        	console.log( a );   // 1
         }
         
         outer();
@@ -215,7 +215,6 @@ function foo(a) {
 foo( 2 ); // 2 4 12
 ```
 - There are three nested scopes inherent in this code example
-
     *picture here*
     - Bubble 1 encompasses the global scope, and has just one identifier in it: foo
     - Bubble 2 encompasses the scope of foo, which includes the three identifiers: a, bar and b

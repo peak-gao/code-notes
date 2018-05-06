@@ -152,6 +152,7 @@ This method is called when there is an error during rendering, in a lifecycle me
     - do all the setup you couldn’t do without a DOM
 - initialization that requires DOM nodes should go here
 Can call setState: Yes
+- If you ever need to render your app on the server (SSR/isomorphic/other buzzwords), componentWillMount will actually be called twice – once on the server, and again on the client – which is probably not what you want. Putting the data loading code in componentDidMount will ensure that data is only fetched from the client
 
 **Use Cases**
 - good place to instantiate the network request to get data
