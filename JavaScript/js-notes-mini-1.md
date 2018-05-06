@@ -46,6 +46,36 @@ The `a === b` produces `false`, because the coercion is not allowed, so the simp
 - Much of the == coercion is pretty sensible, but there are some important corner cases to be careful of
     - You can read section 11.9.3 of the ES5 specification (http://www.ecma-international.org/ecma-262/5.1/) to see the exact rules, and you'll be surprised at just how straightforward this mechanism is, compared to all the negative hype surrounding it
 
+To boil down a whole lot of details to a few simple takeaways, and help you know whether to use `==` or `===` in various situations, here are my simple rules:
+
+* If either value (aka side) in a comparison could be the `true` or `false` value, avoid `==` and use `===`
+* If either value in a comparison could be of these specific values (`0`, `""`, or `[]` -- empty array), avoid `==` and use `===`
+* In *all* other cases, you're safe to use `==`. Not only is it safe, but in many cases it simplifies your code in a way that improves readability
+
+What these rules boil down to is requiring you to think critically about your code and about what kinds of values can come through variables that get compared for equality
+- If you can be certain about the values, and `==` is safe, use it! If you can't be certain about the values, use `===`. It's that simple
+
+The `!=` non-equality form pairs with `==`, and the `!==` form pairs with `===`
+- All the rules and observations we just discussed hold symmetrically for these non-equality comparisons.
+
+You should take special note of the `==` and `===` comparison rules if you're comparing two non-primitive values, like `object`s (including `function` and `array`)
+- Because those values are actually held by reference, both `==` and `===` comparisons will simply check whether the references match, not anything about the underlying values
+
+For example, `array`s are by default coerced to `string`s by simply joining all the values with commas (`,`) in between
+- You might think that two `array`s with the same contents would be `==` equal, but they're not:
+
+```js
+var a = [1,2,3];
+var b = [1,2,3];
+var c = "1,2,3";
+
+a == c;  // true
+b == c;  // true
+a == b;  // false
+```
+
+**Note:** For more information about the `==` equality comparison rules, see the ES5 specification (section 11.9.3) and also consult Chapter 4 of the *Types & Grammar* title of this series; see Chapter 2 for more information about values versus references.
+
 **Examples**
 ###### Explicit Conversions
  - Using Number(..) (a built-in function)
