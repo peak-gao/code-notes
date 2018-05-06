@@ -19,7 +19,7 @@
 **Examples**
 ###### Explicit Conversions
  - Using Number(..) (a built-in function)
-###### Explicit Conversions
+###### Implicit Conversions
 - comparing two different types with ==
     - "99.99" == 99.99
 
@@ -35,21 +35,28 @@
 - there's a well-defined set of rules for storing variables in some location, and for finding those variables at a later time. **We'll call that set of rules: *Scope***
 - Scope is a set of rules for looking up variables by their identifier name
     - There's usually more than one Scope to consider
-- Scope is the set of rules that determines where and how a variable (identifier/name) can be looked-up
- - if a variable cannot be found in the immediate scope, Engine consults the next outer containing scope, continuing until found or until the outermost (aka, global) scope has been reached
- - **Lexical Scope** (as opposed to Dynamic Scope) - is by far the most common, used by the vast majority of programming languages and is the scope JavaScript applies
-- In JS, each function gets its own scope
-- Only code inside that function can access that function's scoped variables
-- a scope can be nested inside another scope
-    - **If one scope is nested inside another, code inside the innermost scope can access variables from either scope**
+- scope consists of a series of "bubbles" that each act as a container or bucket, in which identifiers (variables, functions) are declared
+    - These bubbles nest neatly inside each other, and this nesting is defined at author-time
 - we defined "scope" as the set of rules that govern how the Engine can look up a variable by its identifier name and find it, either in the current Scope, or in any of the Nested Scopes it's contained within
+    - if a variable cannot be found in the immediate scope, Engine consults the next outer containing scope, continuing until found or until the outermost (aka, global) scope has been reached
+- JavaScript has function-based scope
+    - **each function you declare creates a bubble for itself, but no other structures create their own scope bubbles**
+ - **Lexical Scope** (as opposed to Dynamic Scope) - is by far the most common, used by the vast majority of programming languages and is the scope JavaScript applies
+    - In JS, each function gets its own scope
+    - Only code inside that function can access that function's scoped variables
+    - a scope can be nested inside another scope
+        - **If one scope is nested inside another, code inside the innermost scope can access variables from either scope**
+
+    - No matter where a function is invoked from, or even how it is invoked, its lexical scope is only defined by where the function was declared
+** Dynamic Scope **
+- You examine what happens while executing the program (“at runtime”)
 
 #### lexing
 - scope that is defined at lexing time
     - is based on where variables and blocks of scope are authored, by you, at write time, and thus is (mostly) set in stone by the time the lexer processes your code
 - the first traditional phase of a standard language compiler is called lexing (aka, tokenizing)
 - It is this concept which provides the foundation to understand what lexical scope is and where the name comes from
-- there are some ways to cheat lexical scope, thereby modifying it after the lexer has passed by, but these are frowned upon
+- there are some ways to cheat lexical scope, thereby modifying it after the lexer has passed by, but these are frowned upon (e.g. using eval)
     - It is considered best practice to treat lexical scope as, in fact, lexical-only, and thus entirely author-time in nature
 
 #### Look-ups
@@ -61,6 +68,7 @@
 - The same identifier name (e.g. a variable with the same name found in multiple scopes) can be specified at multiple layers of nested scope, which is called "shadowing"
     - Regardless of shadowing, scope look-up always starts at the innermost scope being executed at the time, and works its way outward/upward until the first match, and stops
 
+***Note:*** Global variables are also automatically properties of the global object (window in browsers, etc.)
 
 
 **Examples**
@@ -90,6 +98,24 @@ foo( 2 ); // 2 4 12
       - the scope of bar, and it includes just one identifier: c
   - Scope bubbles are defined by where the blocks of scope are written, which one is nested inside the other, etc
 
+##### Function Scope Bubble
+```
+function foo(a) {
+	var b = 2;
+
+	// some code
+
+	function bar() {
+		// ...
+	}
+
+	// more code
+
+	var c = 3;
+}
+```
+- the scope bubble for foo(..) includes a, b, c and bar
+- **It doesn't matter *where*** in the scope a declaration appears, the variable or function belongs to the containing scope bubble, regardless
 
 # JS Compilation
 - despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language
@@ -124,6 +150,8 @@ foo( 2 ); // 2 4 12
 
 
 
+# Resources
+- [Variables: Scopes, Environments, and Closures](http://speakingjs.com/es5/ch16.html)
 
 # Awesome Vids
 [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
