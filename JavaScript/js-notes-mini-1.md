@@ -956,7 +956,7 @@ foo.identify(); // FOO MODULE
 ```
 - By retaining an inner reference to the public API object inside your module instance, you can modify that module instance from the inside, including adding and removing methods, properties, and changing their values
 
-**Modern Modules**
+###### Modern Module Closures
 - Various module dependency loaders/managers essentially wrap up this pattern of module definition into a friendly API
 ```
 var MyModules = (function Manager() {
