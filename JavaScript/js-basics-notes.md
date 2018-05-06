@@ -2127,7 +2127,7 @@ The `User()` function serves as an outer scope that holds the variables `usernam
 - `User()` is just a function, not a class to be instantiated, so it's just called normally. Using `new` would be inappropriate and actually waste resources
 
 Executing `User()` creates an *instance* of the `User` module -- a whole new scope is created, and thus a whole new copy of each of these inner variables/functions
-- We assign this instance to `fred`. If we run `User()` again, we'd get a new instance entirely separate from `fred`
+    - We assign this instance to `fred`. If we run `User()` again, we'd get a new instance entirely separate from `fred`
 
 The inner `doLogin()` function has a closure over `username` and `password`, meaning it will retain its access to them even after the `User()` function finishes running.
 
