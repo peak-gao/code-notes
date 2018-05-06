@@ -1321,17 +1321,10 @@ foo2.identify(); // "foo 2"
 ### Future Modules
 - ES6 adds first-class syntax support for the concept of modules
     - Each module can both import other modules or specific API members, as well export their own public API members
-    - Note: Function-based modules aren't a statically recognized pattern (something the compiler knows about), so their API semantics aren't considered until run-time. That is, you can actually modify a module's API during the run-time (see earlier publicAPI discussion)
+    - Note: Function-based modules aren't a statically recognized pattern (something the compiler knows about), so their API semantics aren't considered until run-time. That is, you can actually modify a module's API during the run-time (see earlier publicAPI discussion)You theoretically could
 - By contrast, ES6 Module APIs are static (the APIs don't change at run-time)
     - Since the compiler knows that, it can (and does!) check during (file loading and) compilation that a reference to a member of an imported module's API actually exists
     - If the API reference doesn't exist, the compiler throws an "early" error at compile-time, rather than waiting for traditional dynamic run-time resolution (and errors, if any)
-
-
-
-
-
-
-
 
 
 # Into JavaScript
@@ -1467,9 +1460,8 @@ It may be helpful to think of `arr` visually:
 Because arrays are special objects (as `typeof` implies), they can also have properties, including the automatically updated `length` property.
 
 You theoretically could use an array as a normal object with your own named properties, or you could use an `object` but only give it numeric properties (`0`, `1`, etc.) similar to an array
-- However, this would generally be considered improper usage of the respective types
-
-The best and most natural approach is to use arrays for numerically positioned values and use `object`s for named properties.
+    - However, this would generally be considered improper usage of the respective types
+    - The best and most natural approach is to use arrays for numerically positioned values and use `object`s for named properties
 
 #### Functions
 

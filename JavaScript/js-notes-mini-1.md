@@ -1,4 +1,82 @@
 
+# Values & Types
+
+As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
+
+* `string`
+* `number`
+* `boolean`
+* `null` and `undefined`
+* `object`
+* `symbol` (new to ES6)
+
+There are a couple of other value types that you will commonly interact with in JavaScript programs: *array* and *function*
+    - But rather than being proper built-in types, these should be thought of more like **subtypes** -- specialized versions of the `object` type
+    - An array is an `object` that holds values (of any type) not particularly in
+     named properties/keys, but rather in numerically indexed positions
+     - You theoretically could use an array as a normal object with your own named properties, or you could use an `object` but only give it numeric properties (`0`, `1`, etc.) similar to an array
+         - However, this would generally be considered improper usage of the respective types
+         - The best and most natural approach is to use arrays for numerically positioned values and use `object`s for named properties
+
+- functions are a subtype of `objects`
+    - typeof` returns `"function"`, which implies that a `function` is a main type -- and can thus have properties, but you typically will only use function object properties (like `foo.bar`) in limited cases
+
+- Only values have types in JavaScript; variables are just simple containers for those values
+
+JavaScript provides a `typeof` operator that can examine a value and tell you what type it is:
+
+```js
+var a;
+typeof a;  // "undefined"
+
+a = "hello world";
+typeof a;  // "string"
+
+a = 42;
+typeof a;  // "number"
+
+a = true;
+typeof a;  // "boolean"
+
+a = null;
+typeof a;  // "object" -- weird, bug
+
+a = undefined;
+typeof a;  // "undefined"
+
+a = { b: "c" };
+typeof a;  // "object"
+```
+
+- The return value from the **`typeof` operator is always one of six** (seven as of ES6! - the "symbol" type) ***string* values**. That is, **`typeof "abc"` returns `"string"`, not `string`**
+- `typeof null` is an interesting case, because it errantly returns `"object"`, when you'd expect it to return `"null"`
+    - **Warning:** This is a long-standing bug in JS, but one that is likely never going to be fixed. Too much code on the Web relies on the bug and thus fixing it would cause a lot more bugs!
+- `typeof a` is not asking for the "type of `a`", but rather for the "type of the value currently in `a`."
+- `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet
+    - A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator
+
+# Objects
+- The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type.]
+- Properties on an object can either be accessed with *dot notation* (i.e., `obj.a`) or *bracket notation* (i.e., `obj["a"]`)
+    - Bracket notation is useful if you have a property name that has special characters in it, like `obj["hello world!"]`
+        - such properties are often referred to as *keys* when accessed via bracket notation
+    - The `[ ]` notation requires either a variable (explained next) or a `string` *literal* (which needs to be wrapped in `" .. "` or `' .. '`)
+    - bracket notation is also useful if you want to access a property/key but the name is stored in another variable
+        ```js
+        var obj = {
+            a: "hello world",
+            b: 42
+        };
+        
+        var b = "a";
+        
+        obj[b];   // "hello world"
+        obj["b"];  // 42
+        ```
+- When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), JS automatically "boxes" the value to its object wrapper counterpart (hidden under the covers)
+    - A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object
+    - For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you
+
 # Converting Between Types
 
 - **JS implicit coercion**
@@ -117,12 +195,55 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
 
 **Note:** For more information about the inequality comparison rules, see section 11.8.5 of the ES5 specification and also consult Chapter 4 of the *Types & Grammar* title of this series.
 
+#### Truthy & Falsy
+
+In Chapter 1, we briefly mentioned the "truthy" and "falsy" nature of values: when a non-`boolean` value is coerced to a `boolean`, does it become `true` or `false`, respectively?
+
+The specific list of "falsy" values in JavaScript is as follows:
+
+* `""` (empty string)
+* `0`, `-0`, `NaN` (invalid `number`)
+* `null`, `undefined`
+* `false`
+
+Any value that's not on this "falsy" list is "truthy." Here are some examples of those:
+
+* `"hello"`
+* `42`
+* `true`
+* `[ ]`, `[ 1, "2", 3 ]` (arrays)
+* `{ }`, `{ a: 42 }` (objects)
+* `function foo() { .. }` (functions)
+
+It's important to remember that a non-`boolean` value only follows this "truthy"/"falsy" coercion if it's actually coerced to a `boolean
+    - It's not all that difficult to confuse yourself with a situation that seems like it's coercing a value to a `boolean` when it's not
+
 **Examples**
 ###### Explicit Conversions
- - Using Number(..) (a built-in function)
+Example 1: Using **Number(..)** (a built-in function)
+
+Example 2:
+ ```js
+   var a = "42";
+   
+   var b = Number( a );
+   
+   a;  // "42"
+   b;  // 42 -- the number!
+   ```
 ###### Implicit Conversions
-- comparing two different types with ==
+Example 1: comparing two different types with ==
     - "99.99" == 99.99
+
+Example 2:
+```js
+var a = "42";
+
+var b = a * 1;	// "42" implicitly coerced to 42 here
+
+a;  // "42"
+b;  // 42 -- the number!
+```
 
 # Typing and Variables
 - **Static typing**, otherwise known as **type enforcement**, is typically cited as a benefit for program correctness by preventing unintended value conversions
