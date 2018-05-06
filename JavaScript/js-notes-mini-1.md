@@ -823,6 +823,200 @@ for (var i=1; i<=5; i++) {
                                             - The use of an IIFE inside each iteration created a new scope for each iteration, which gave our timeout function callbacks the opportunity to close over a new scope for each iteration, one which had a variable with the right per-iteration value in it for us to access
                                             - Problem solved!
 
+###### Modules Closures
+- other code patterns which leverage the power of closure but which do not on the surface appear to be about callbacks
+    - Let's examine the most powerful of them:the the ***module***:
+        ```
+        function foo() {
+            var something = "cool";
+            var another = [1, 2, 3];
+        
+            function doSomething() {
+                console.log( something );
+            }
+        
+            function doAnother() {
+                console.log( another.join( " ! " ) );
+            }
+        }
+        ```
+        - there's no observable closure going on
+            We simply have some private data variables something and another, and a couple of inner functions doSomething() and doAnother(), which both have lexical scope (and thus closure!) over the inner scope of foo()
+        - now consider:
+            ```
+            function CoolModule() {
+                var something = "cool";
+                var another = [1, 2, 3];
+            
+                function doSomething() {
+                    console.log( something );
+                }
+            
+                function doAnother() {
+                    console.log( another.join( " ! " ) );
+                }
+            
+                return {
+                    doSomething: doSomething,
+                    doAnother: doAnother
+                };
+            }
+            
+            var foo = CoolModule();
+            
+            foo.doSomething(); // cool
+            foo.doAnother(); // 1 ! 2 ! 3
+            ```
+            - This is the pattern in JavaScript we call ***module***
+            - CoolModule() is just a function, but it *has to be invoked* for there to be a module instance created
+                - Without the execution of the outer function, the creation of the inner scope and the closures would not occur
+            - Secondly, the CoolModule() function returns an object, denoted by the object-literal syntax { key: value, ... }
+                - The object we return has references on it to our inner functions, but not to our inner data variables
+                - We keep those hidden and private
+                - It's appropriate to think of this object return value as essentially a **public API for our module**
+                    - This object return value is ultimately assigned to the outer variable foo, and then we can access those property methods on the API, like foo.doSomething()
+                    - Note: It is not required that we return an actual object (literal) from our module. We could just return back an inner function directly. jQuery is actually a good example of this. The jQuery and $ identifiers are the public API for the jQuery "module", but they are, themselves, just a function (which can itself have properties, since all functions are objects)
+            - The doSomething() and doAnother() functions have closure over the inner scope of the module "instance" (arrived at by actually invoking CoolModule())
+                - When we transport those functions outside of the lexical scope, by way of property references on the object we return, we have now set up a condition by which closure can be observed and exercised
+- To state it more simply, there are two "requirements" for the module pattern to be exercised:
+1. There must be an outer enclosing function, and it must be invoked at least once (each time creates a new module instance).
+
+2. The enclosing function must return back at least one inner function, so that this inner function has closure over the private scope, and can access and/or modify that private state
+- An object with a function property on it alone is not really a module
+- An object which is returned from a function invocation which only has data properties on it and no closured functions is not really a module, in the observable sense
+- A slight variation on this pattern is when you only care to have one instance, a "singleton" of sorts
+    ```
+    var foo = (function CoolModule() {
+        var something = "cool";
+        var another = [1, 2, 3];
+    
+        function doSomething() {
+            console.log( something );
+        }
+    
+        function doAnother() {
+            console.log( another.join( " ! " ) );
+        }
+    
+        return {
+            doSomething: doSomething,
+            doAnother: doAnother
+        };
+    })();
+    
+    foo.doSomething(); // cool
+    foo.doAnother(); // 1 ! 2 ! 3
+    ```
+    - Here, we turned our module function into an IIFE (see Chapter 3), and we immediately invoked it and assigned its return value directly to our single module instance identifier foo
+- Modules are just functions, so they can receive parameters:
+```
+function CoolModule(id) {
+    function identify() {
+        console.log( id );
+    }
+    
+    return {
+        identify: identify
+    };
+}
+
+var foo1 = CoolModule( "foo 1" );
+var foo2 = CoolModule( "foo 2" );
+
+foo1.identify(); // "foo 1"
+foo2.identify(); // "foo 2"
+```
+- Another slight but powerful variation on the module pattern is to name the object you are returning as your public API:
+```
+var foo = (function CoolModule(id) {
+    function change() {
+        // modifying the public API
+        publicAPI.identify = identify2;
+    }
+
+    function identify1() {
+        console.log( id );
+    }
+
+    function identify2() {
+        console.log( id.toUpperCase() );
+    }
+
+    var publicAPI = {
+        change: change,
+        identify: identify1
+    };
+
+    return publicAPI;
+})( "foo module" );
+
+foo.identify(); // foo module
+foo.change();
+foo.identify(); // FOO MODULE
+```
+- By retaining an inner reference to the public API object inside your module instance, you can modify that module instance from the inside, including adding and removing methods, properties, and changing their values
+
+**Modern Modules**
+- Various module dependency loaders/managers essentially wrap up this pattern of module definition into a friendly API
+```
+var MyModules = (function Manager() {
+    var modules = {};
+
+    function define(name, deps, impl) {
+        for (var i=0; i<deps.length; i++) {
+            deps[i] = modules[deps[i]];
+        }
+        modules[name] = impl.apply( impl, deps );
+    }
+
+    function get(name) {
+        return modules[name];
+    }
+
+    return {
+        define: define,
+        get: get
+    };
+})();
+```
+- The key part of this code is modules[name] = impl.apply(impl, deps)
+    - This is invoking the definition wrapper function for a module (passing in any dependencies), and storing the  return value, the module's API, into an internal list of modules tracked by name
+- here's how I might use it to define some modules:
+    ```
+    MyModules.define( "bar", [], function(){
+        function hello(who) {
+            return "Let me introduce: " + who;
+        }
+    
+        return {
+            hello: hello
+        };
+    } );
+    
+    MyModules.define( "foo", ["bar"], function(bar){
+        var hungry = "hippo";
+    
+        function awesome() {
+            console.log( bar.hello( hungry ).toUpperCase() );
+        }
+    
+        return {
+            awesome: awesome
+        };
+    } );
+    
+    var bar = MyModules.get( "bar" );
+    var foo = MyModules.get( "foo" );
+    
+    console.log(
+        bar.hello( "hippo" )
+    ); // Let me introduce: hippo
+    
+    foo.awesome(); // LET ME INTRODUCE: HIPPO
+    ```
+    - Both the "foo" and "bar" modules are defined with a function that returns a public API
+    - "foo" even receives the instance of "bar" as a dependency parameter, and can use it accordingly
+
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
 - [Variables: Scopes, Environments, and Closures](http://speakingjs.com/es5/ch16.html)
