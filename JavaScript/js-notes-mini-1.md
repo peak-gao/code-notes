@@ -64,16 +64,15 @@ You should take special note of the `==` and `===` comparison rules if you're co
 
 For example, `array`s are by default coerced to `string`s by simply joining all the values with commas (`,`) in between
 - You might think that two `array`s with the same contents would be `==` equal, but they're not:
-
-```js
-var a = [1,2,3];
-var b = [1,2,3];
-var c = "1,2,3";
-
-a == c;  // true
-b == c;  // true
-a == b;  // false
-```
+    ```js
+    var a = [1,2,3];
+    var b = [1,2,3];
+    var c = "1,2,3";
+    
+    a == c;  // true
+    b == c;  // true
+    a == b;  // false
+    ```
 
 **Note:** For more information about the `==` equality comparison rules, see the ES5 specification (section 11.9.3) and also consult Chapter 4 of the *Types & Grammar* title of this series; see Chapter 2 for more information about values versus references.
 
@@ -180,19 +179,19 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
 
 #### Functions As Scopes
  - remember that we can take any snippet of code and wrap a function around it, and that effectively "hides" any enclosed variable or function declarations from the outside scope inside that function's inner scope
- ```
- var a = 2;
- 
- function foo() { // <-- insert this
- 
-    var a = 3;
-    console.log( a ); // 3
- 
- } // <-- and this
- foo(); // <-- and this
- 
- console.log( a ); // 2
- ```
+     ```
+     var a = 2;
+     
+     function foo() { // <-- insert this
+     
+        var a = 3;
+        console.log( a ); // 3
+     
+     } // <-- and this
+     foo(); // <-- and this
+     
+     console.log( a ); // 2
+     ```
  - **While this technique "works", it is not necessarily very ideal**
  - There are a few problems it introduces:
      - first we have to declare a named-function foo(), but now the identifier name foo itself "pollutes" the enclosing scope (global, in this case)
@@ -214,6 +213,7 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
          - First, notice that the wrapping function statement starts with (function... as opposed to just function.... While this may seem like a minor detail, it's actually a major change
          - Instead of treating the function as a standard declaration, the function is treated as a function-expression
          - The easiest way to distinguish declaration vs. expression is the position of the word "function" in the statement (not just a line, but a distinct statement). If "function" is the very first thing in the statement, then it's a function declaration. Otherwise, it's a function expression
+
 #### immediately invoked function expression (IIFE)
   - the fundamental unit of variable scoping in JavaScript has always been the function. If you needed to create a block of scope, the most prevalent way to do so other than a regular function declaration was the immediately invoked function expression (IIFE)
       ```
@@ -229,50 +229,51 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
 #### Block Scopes
 - While functions are the most common, other units of scope are possible, and the usage of these other scope units can lead to even better, cleaner to maintain code
 
-Block Scope Example 1:
-```
-for (var i=0; i<10; i++) {
-	console.log( i );
-}
-```
+**Examples**
+###### 1
+    ```
+    for (var i=0; i<10; i++) {
+        console.log( i );
+    }
+    ```
 - We declare the variable i directly inside the for-loop head, most likely because our intent is to use i only within the context of that for-loop, and essentially ignore the fact that the variable actually scopes itself to the enclosing scope (function or global)
 - That's what block-scoping is all about. Declaring variables as close as possible, as local as possible, to where they will be used
-Block Scope Example 2:
-```
-var foo = true;
-
-if (foo) {
-	var bar = foo * 2;
-	bar = something( bar );
-	console.log( bar );
-}
-```
+###### 2
+    ```
+    var foo = true;
+    
+    if (foo) {
+        var bar = foo * 2;
+        bar = something( bar );
+        console.log( bar );
+    }
+    ```
 - We are using a bar variable only in the context of the if-statement, so it makes a kind of sense that we would declare it inside the if-block
     - However, where we declare variables is not relevant when using var, because they will always belong to the enclosing scope
     - This snippet is essentially "fake" block-scoping, for stylistic reasons, and relying on self-enforcement not to accidentally use bar in another place in that scope
     - Block scope is a tool to extend information hiding via functions to hiding information further in blocks of our code
-Example 3:
-```
-for (var i=0; i<10; i++) {
-	console.log( i );
-}
-```
+###### 3
+    ```
+    for (var i=0; i<10; i++) {
+        console.log( i );
+    }
+    ```
 - Why pollute the entire scope of a function with the i variable that is only going to be (or only should be, at least) used for the for-loop?
 - Block-scoping (if it were possible) for the i variable would make i available only for the for-loop, causing an error if i is accessed elsewhere in the function
 - This helps ensure variables are not re-used in confusing or hard-to-maintain ways
 
 #### try/catch
 - variable declaration in the catch clause of a try/catch to be block-scoped to the catch block
-```
-try {
-	undefined(); // illegal operation to force an exception!
-}
-catch (err) {
-	console.log( err ); // works!
-}
-
-console.log( err ); // ReferenceError: `err` not found
-```
+    ```
+    try {
+        undefined(); // illegal operation to force an exception!
+    }
+    catch (err) {
+        console.log( err ); // works!
+    }
+    
+    console.log( err ); // ReferenceError: `err` not found
+    ```
 - err exists only in the catch clause, and throws an error when you try to reference it elsewhere
 
 #### let
@@ -309,60 +310,60 @@ console.log( err ); // ReferenceError: `err` not found
             - We can create an arbitrary block for let to bind to by simply including a { .. } pair anywhere a statement is valid grammar
             - In this case, we've made an explicit block inside the if-statement, which may be easier as a whole block to move around later in refactoring, without affecting the position and semantics of the enclosing if-statement
 - declarations made with let will not hoist to the entire scope of the block they appear in. Such declarations will not observably "exist" in the block until the declaration statement:
-```
-{
-   console.log( bar ); // ReferenceError!
-   let bar = 2;
-}
-```
+    ```
+    {
+       console.log( bar ); // ReferenceError!
+       let bar = 2;
+    }
+    ```
 #### let Loops
 - A particular case where let shines is in the for-loop case
-```
-for (let i=0; i<10; i++) {
-	console.log( i );
-}
-
-console.log( i ); // ReferenceError
-```
-- Not only does let in the for-loop header bind the i to the for-loop body, but in fact, it **re-binds** it to each iteration of the loop, making sure to re-assign it the value from the end of the previous loop iteration
-- Here's another way of illustrating the per-iteration binding behavior that occurs:
-```
-{
-	let j;
-	for (j=0; j<10; j++) {
-		let i = j; // re-bound for each iteration!
-		console.log( i );
-	}
-}
-```
-- let declarations attach to arbitrary blocks rather than to the enclosing function's scope (or global), there can be gotchas where existing code has a hidden reliance on function-scoped var declarations, and replacing the var with let may require additional care when refactoring code:
-```
-var foo = true, baz = 10;
-
-if (foo) {
-	var bar = 3;
-
-	if (baz > bar) {
-		console.log( baz );
-	}
-
-	// ...
-}
-```
-- This code is fairly easily re-factored as:
     ```
-    var foo = true, baz = 10;
-    
-    if (foo) {
-    	var bar = 3;
-    
-    	// ...
+    for (let i=0; i<10; i++) {
+        console.log( i );
     }
     
-    if (baz > bar) {
-    	console.log( baz );
-    }
+    console.log( i ); // ReferenceError
     ```
+    - Not only does let in the for-loop header bind the i to the for-loop body, but in fact, it **re-binds** it to each iteration of the loop, making sure to re-assign it the value from the end of the previous loop iteration
+    - Here's another way of illustrating the per-iteration binding behavior that occurs:
+        ```
+        {
+            let j;
+            for (j=0; j<10; j++) {
+                let i = j; // re-bound for each iteration!
+                console.log( i );
+            }
+        }
+        ```
+    - let declarations attach to arbitrary blocks rather than to the enclosing function's scope (or global), there can be gotchas where existing code has a hidden reliance on function-scoped var declarations, and replacing the var with let may require additional care when refactoring code:
+        ```
+        var foo = true, baz = 10;
+        
+        if (foo) {
+            var bar = 3;
+        
+            if (baz > bar) {
+                console.log( baz );
+            }
+        
+            // ...
+        }
+        ```
+    - This code is fairly easily re-factored as:
+        ```
+        var foo = true, baz = 10;
+        
+        if (foo) {
+            var bar = 3;
+        
+            // ...
+        }
+        
+        if (baz > bar) {
+            console.log( baz );
+        }
+        ```
     - be careful of such changes when using block-scoped variables:
         ```
         var foo = true, baz = 10;
@@ -378,21 +379,21 @@ if (foo) {
 
 #### Garbage Collection
 - block-scoping is useful as it relates to closures and garbage collection to reclaim memory
-```
-function process(data) {
-	// do something interesting
-}
-
-var someReallyBigData = { .. };
-
-process( someReallyBigData );
-
-var btn = document.getElementById( "my_button" );
-
-btn.addEventListener( "click", function click(evt){
-	console.log("button clicked");
-}, /*capturingPhase=*/false );
-```
+    ```
+    function process(data) {
+        // do something interesting
+    }
+    
+    var someReallyBigData = { .. };
+    
+    process( someReallyBigData );
+    
+    var btn = document.getElementById( "my_button" );
+    
+    btn.addEventListener( "click", function click(evt){
+        console.log("button clicked");
+    }, /*capturingPhase=*/false );
+    ```
 - The click function click handler callback doesn't need the someReallyBigData variable at all
     - That means, theoretically, after process(..) runs, the big memory-heavy data structure could be garbage collected
     - However, it's quite likely (though implementation dependent) that the JS engine will still have to keep the structure around, since the click function has a closure over the entire scope
@@ -521,21 +522,21 @@ doSomething( 2 ); // 15
 - the b variable and the doSomethingElse(..) function are "private" details of how doSomething(..) does its job
 - Giving the enclosing scope "access" to b and doSomethingElse(..) is not only unnecessary but also possibly "dangerous", in that they may be used in unexpected ways
     - A more "proper" design would hide these private details inside the scope of doSomething(..), such as:
-    ```
-    function doSomething(a) {
-        function doSomethingElse(a) {
-            return a - 1;
+        ```
+        function doSomething(a) {
+            function doSomethingElse(a) {
+                return a - 1;
+            }
+        
+            var b;
+        
+            b = a + doSomethingElse( a * 2 );
+        
+            console.log( b * 3 );
         }
-    
-        var b;
-    
-        b = a + doSomethingElse( a * 2 );
-    
-        console.log( b * 3 );
-    }
-    
-    doSomething( 2 ); // 15
-    ```
+        
+        doSomething( 2 ); // 15
+        ```
     - Now, b and doSomethingElse(..) are not accessible to any outside influence, instead controlled only by doSomething(..)
     - The functionality and end-result has not been affected, but the design keeps private details private, which is usually considered better software
 ###### Collision Avoidance
@@ -613,14 +614,14 @@ function foo() {
 
 ###### Function Declarations are Hosted, Functional Expressions are not
 - even if it's a named function expression, the name identifier is not available in the enclosing scope:
-```
-foo(); // TypeError
-bar(); // ReferenceError
-
-var foo = function bar() {
-    // ...
-};
-```
+    ```
+    foo(); // TypeError
+    bar(); // ReferenceError
+    
+    var foo = function bar() {
+        // ...
+    };
+    ```
 - This snippet is more accurately interpreted (with hoisting) as:
     ```
     var foo;
@@ -648,17 +649,17 @@ foo = function() {
 };
 ```
 - 1 is printed instead of 2! This snippet is interpreted by the Engine as:
-```
-function foo() {
-	console.log( 1 );
-}
-
-foo(); // 1
-
-foo = function() {
-	console.log( 2 );
-};
-```
+    ```
+    function foo() {
+        console.log( 1 );
+    }
+    
+    foo(); // 1
+    
+    foo = function() {
+        console.log( 2 );
+    };
+    ```
 
 # Scope Closure
 - *Closure* is when **a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope**
