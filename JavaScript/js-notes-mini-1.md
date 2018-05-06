@@ -89,16 +89,16 @@ This may sound like a strange concept at first, so take a moment to ponder it
 
  **functional expressions**
  - when you assign a function to a variable
- - ```js
-   // assigning an anonymous function (function without a name) to a variable
-   var foo = function() {
-       // ..
-   };
-   // assigning a named function to a variable
-   var x = function bar(){
-       // ..
-   };
-   ```
+    ```js
+       // assigning an anonymous function (function without a name) to a variable
+       var foo = function() {
+           // ..
+       };
+       // assigning a named function to a variable
+       var x = function bar(){
+           // ..
+       };
+    ```
 
 # Objects
 - The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type.]
@@ -881,22 +881,22 @@ function makeAdder(x) {
 }
 ```
 - he reference to the inner `add(..)` function that gets returned with each call to the outer `makeAdder(..)` is able to remember whatever `x` value was passed in to `makeAdder(..)`
-```js
-// `plusOne` gets a reference to the inner `add(..)`
-// function with closure over the `x` parameter of
-// the outer `makeAdder(..)`
-var plusOne = makeAdder( 1 );
-
-// `plusTen` gets a reference to the inner `add(..)`
-// function with closure over the `x` parameter of
-// the outer `makeAdder(..)`
-var plusTen = makeAdder( 10 );
-
-plusOne( 3 );		// 4  <-- 1 + 3
-plusOne( 41 );		// 42 <-- 1 + 41
-
-plusTen( 13 );		// 23 <-- 10 + 13
-```
+    ```js
+    // `plusOne` gets a reference to the inner `add(..)`
+    // function with closure over the `x` parameter of
+    // the outer `makeAdder(..)`
+    var plusOne = makeAdder( 1 );
+    
+    // `plusTen` gets a reference to the inner `add(..)`
+    // function with closure over the `x` parameter of
+    // the outer `makeAdder(..)`
+    var plusTen = makeAdder( 10 );
+    
+    plusOne( 3 );		// 4  <-- 1 + 3
+    plusOne( 41 );		// 42 <-- 1 + 41
+    
+    plusTen( 13 );		// 23 <-- 10 + 13
+    ```
 
 More on how this code works:
 
@@ -937,21 +937,21 @@ baz(); // 2 -- Whoa, closure was just observed, man.
 
 ###### Passing Functions Around Exercises Closure
 - any of the various ways that functions can be passed around as values, and indeed invoked in other locations, are all examples of observing/exercising closure
-```
-function foo() {
-    var a = 2;
-
-    function baz() {
-        console.log( a ); // 2
+    ```
+    function foo() {
+        var a = 2;
+    
+        function baz() {
+            console.log( a ); // 2
+        }
+    
+        bar( baz );
     }
-
-    bar( baz );
-}
-
-function bar(fn) {
-    fn(); // look ma, I saw closure!
-}
-```
+    
+    function bar(fn) {
+        fn(); // look ma, I saw closure!
+    }
+    ```
 - We pass the inner function baz over to bar, and call that inner function (labeled fn now), and when we do, its closure over the inner scope of foo() is observed, by accessing a
 - These passings-around of functions can be indirect, too
     ```
@@ -1060,7 +1060,8 @@ for (var i=1; i<=5; i++) {
 
 ###### Module Closures
 The most common usage of closure in JavaScript is the module pattern
-    - Modules **let you define private implementation details** (*variables*, *functions*) that are hidden from the outside world, as well as a **public API that *is* accessible from the outside**
+
+- Modules **let you define private implementation details** (*variables*, *functions*) that are hidden from the outside world, as well as a **public API that *is* accessible from the outside**
     - other code patterns which leverage the power of closure but which do not on the surface appear to be about callbacks
     - Let's examine the most powerful of them:the the ***module***:
         ```
@@ -1116,9 +1117,9 @@ The most common usage of closure in JavaScript is the module pattern
             - The doSomething() and doAnother() functions have closure over the inner scope of the module "instance" (arrived at by actually invoking CoolModule())
                 - When we transport those functions outside of the lexical scope, by way of property references on the object we return, we have now set up a condition by which closure can be observed and exercised
 - To state it more simply, there are two "requirements" for the module pattern to be exercised:
-1. There must be an outer enclosing function, and it must be invoked at least once (each time creates a new module instance).
+1. There **must be an outer enclosing function**, and it **must be invoked at least once** (each time creates a new module instance).
 
-2. The enclosing function must return back at least one inner function, so that this inner function has closure over the private scope, and can access and/or modify that private state
+2. The **enclosing function must return back at least one inner function**, so that this inner function has closure over the private scope, and can access and/or modify that private state
 - An object with a function property on it alone is not really a module
 - An object which is returned from a function invocation which only has data properties on it and no closured functions is not really a module, in the observable sense
 - A slight variation on this pattern is when you only care to have one instance, a "singleton" of sorts
@@ -1146,51 +1147,51 @@ The most common usage of closure in JavaScript is the module pattern
     ```
     - Here, we turned our module function into an IIFE (see Chapter 3), and we immediately invoked it and assigned its return value directly to our single module instance identifier foo
 - Modules are just functions, so they can receive parameters:
-```
-function CoolModule(id) {
-    function identify() {
-        console.log( id );
+    ```
+    function CoolModule(id) {
+        function identify() {
+            console.log( id );
+        }
+        
+        return {
+            identify: identify
+        };
     }
     
-    return {
-        identify: identify
-    };
-}
-
-var foo1 = CoolModule( "foo 1" );
-var foo2 = CoolModule( "foo 2" );
-
-foo1.identify(); // "foo 1"
-foo2.identify(); // "foo 2"
-```
+    var foo1 = CoolModule( "foo 1" );
+    var foo2 = CoolModule( "foo 2" );
+    
+    foo1.identify(); // "foo 1"
+    foo2.identify(); // "foo 2"
+    ```
 - Another slight but powerful variation on the module pattern is to name the object you are returning as your public API:
-```
-var foo = (function CoolModule(id) {
-    function change() {
-        // modifying the public API
-        publicAPI.identify = identify2;
-    }
-
-    function identify1() {
-        console.log( id );
-    }
-
-    function identify2() {
-        console.log( id.toUpperCase() );
-    }
-
-    var publicAPI = {
-        change: change,
-        identify: identify1
-    };
-
-    return publicAPI;
-})( "foo module" );
-
-foo.identify(); // foo module
-foo.change();
-foo.identify(); // FOO MODULE
-```
+    ```
+    var foo = (function CoolModule(id) {
+        function change() {
+            // modifying the public API
+            publicAPI.identify = identify2;
+        }
+    
+        function identify1() {
+            console.log( id );
+        }
+    
+        function identify2() {
+            console.log( id.toUpperCase() );any of the various ways
+        }
+    
+        var publicAPI = {
+            change: change,
+            identify: identify1
+        };
+    
+        return publicAPI;
+    })( "foo module" );
+    
+    foo.identify(); // foo module
+    foo.change();
+    foo.identify(); // FOO MODULE
+    ```
 - By retaining an inner reference to the public API object inside your module instance, you can modify that module instance from the inside, including adding and removing methods, properties, and changing their values
 
 **Examples**
@@ -1232,65 +1233,64 @@ fred.login( "fred", "12Battery34!" );
 
 ###### Modern Module Closures
 - Various module dependency loaders/managers essentially wrap up this pattern of module definition into a friendly API
-```
-var MyModules = (function Manager() {
-    var modules = {};
-
-    function define(name, deps, impl) {
-        for (var i=0; i<deps.length; i++) {
-            deps[i] = modules[deps[i]];
-        }
-        modules[name] = impl.apply( impl, deps );
-    }
-
-    function get(name) {
-        return modules[name];
-    }
-
-    return {
-        define: define,
-        get: get
-    };
-})();
-```
-- The key part of this code is modules[name] = impl.apply(impl, deps)
-    - This is invoking the definition wrapper function for a module (passing in any dependencies), and storing the  return value, the module's API, into an internal list of modules tracked by name
-- here's how I might use it to define some modules:
     ```
-    MyModules.define( "bar", [], function(){
-        function hello(who) {
-            return "Let me introduce: " + who;
+    var MyModules = (function Manager() {
+        var modules = {};
+    
+        function define(name, deps, impl) {
+            for (var i=0; i<deps.length; i++) {
+                deps[i] = modules[deps[i]];
+            }
+            modules[name] = impl.apply( impl, deps );
+        }
+    
+        function get(name) {
+            return modules[name];
         }
     
         return {
-            hello: hello
+            define: define,
+            get: get
         };
-    } );
-    
-    MyModules.define( "foo", ["bar"], function(bar){
-        var hungry = "hippo";
-    
-        function awesome() {
-            console.log( bar.hello( hungry ).toUpperCase() );
-        }
-    
-        return {
-            awesome: awesome
-        };
-    } );
-    
-    var bar = MyModules.get( "bar" );
-    var foo = MyModules.get( "foo" );
-    
-    console.log(
-        bar.hello( "hippo" )
-    ); // Let me introduce: hippo
-    
-    foo.awesome(); // LET ME INTRODUCE: HIPPO
+    })();
     ```
-    - Both the "foo" and "bar" modules are defined with a function that returns a public API
+    - The key part of this code is modules[name] = impl.apply(impl, deps)
+        - This is invoking the definition wrapper function for a module (passing in any dependencies), and storing the  return value, the module's API, into an internal list of modules tracked by name
+    - here's how I might use it to define some modules:
+        ```
+        MyModules.define( "bar", [], function(){
+            function hello(who) {
+                return "Let me introduce: " + who;
+            }
+        
+            return {
+                hello: hello
+            };
+        } );
+        
+        MyModules.define( "foo", ["bar"], function(bar){
+            var hungry = "hippo";
+        
+            function awesome() {
+                console.log( bar.hello( hungry ).toUpperCase() );
+            }
+        
+            return {
+                awesome: awesome
+            };
+        } );
+        
+        var bar = MyModules.get( "bar" );
+        var foo = MyModules.get( "foo" );
+        
+        console.log(
+            bar.hello( "hippo" )
+        ); // Let me introduce: hippo
+        
+        foo.awesome(); // LET ME INTRODUCE: HIPPO
+        ```
+        - Both the "foo" and "bar" modules are defined with a function that returns a public API
     - "foo" even receives the instance of "bar" as a dependency parameter, and can use it accordingly
-
 
 # this
 - this is a special identifier keyword that's automatically defined in the scope of every function
