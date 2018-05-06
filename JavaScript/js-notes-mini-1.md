@@ -8,6 +8,7 @@
 - [Hoisting](#hoisting)
 - [Scope Closure](#scope-closure)
 - [this](#this)
+- [Prototpyes](#prototypes)
 - [Resources](#resources)
 
 **NOTE**: Believe it or not the **Scope** and **Closure** sections are trimmed down extensively as compared to what's in [js-basics-notes-1](js-basics-notes.md) but still fairly long in here because it's so critical to understand in order to bre a serious and effective JS developer.  You'd be wise to read this entire md file over and over till you get this ingrained into your head.
@@ -1292,6 +1293,8 @@ var MyModules = (function Manager() {
 
 # this
 - this is a special identifier keyword that's automatically defined in the scope of every function
+- While it may often seem that `this` is related to "object-oriented patterns," in JS `this` is a different mechanism
+
 - `this` does **not** refer to
     -  the **function itself**
         - To reference a function object from inside itself, `this` by itself will typically be insufficient
@@ -1301,15 +1304,83 @@ var MyModules = (function Manager() {
     - **where** a **function is declared**
 - **what this *is***:
     - It is contextual based on the conditions of the function's invocation
-    - has everything to do with the manner in which the function is called
+    - has everything to do with the manner in which the function is called (*call-site*)
+    - If a function has a `this` reference inside it, that `this` reference usually points to an `object`
+        - But which `object` it points to **depends on how the function was called**
     - **When a function is invoked**, an activation record, otherwise known as **an *execution context*, is created**
         -  This record contains information about where the function was called from (the call-stack), *how* the function was invoked, what parameters were passed, etc
         - One of the properties of this record is the `this` **reference** which will be *used for the duration of that function's execution*
     - it's a **binding** that is **made when a function is invoked**, and *what* **it references** is **determined entirely by the *call-site* where the function is called**
 
+**Examples**
+###### Basic
+```js
+function foo() {
+    console.log( this.bar );
+}
+
+var bar = "global";
+
+var obj1 = {
+    bar: "obj1",
+    foo: foo
+};
+
+var obj2 = {
+    bar: "obj2"
+};
+
+// --------
+
+foo();  // "global"
+obj1.foo();  // "obj1"
+foo.call( obj2 );  // "obj2"
+new foo();  // undefined
+```
+- There are four rules for how `this` gets set, and they're shown in those last four lines of that snippet
+
+    1. `foo()` ends up setting `this` to the global object in non-strict mode -- in strict mode, `this` would be `undefined` and you'd get an error in accessing the `bar` property -- so `"global"` is the value found for `this.bar`
+    2. `obj1.foo()` sets `this` to the `obj1` object
+    3. `foo.call(obj2)` sets `this` to the `obj2` object
+    4. `new foo()` sets `this` to a brand new empty object
+
+Bottom line: to understand what `this` points to, you have to examine how the function in question was called
+    - It will be one of those four ways just shown, and that will then answer what `this` is
+
 **Use Cases**
 - allow functions to be re-used against multiple *context* (`me` and `you`) objects, rather than needing a separate version of the function for each object
     - Instead of relying on `this`, you could have explicitly passed in a context object to both
+
+# Prototypes
+- When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on
+    - You could think of this almost as a fallback if the property is missing
+
+- The internal prototype reference linkage from one object to its fallback happens at the time the object is created
+    - The simplest way to illustrate it is with a built-in utility called `Object.create(..)`
+- a more natural way of applying prototypes is a pattern called "behavior delegation," where you intentionally design your linked objects to be able to *delegate* from one to the other for parts of the needed behavior
+
+
+**Examples**
+```js
+var foo = {
+    a: 42
+};
+
+// create `bar` and link it to `foo`
+var bar = Object.create( foo );
+
+bar.b = "hello world";
+
+bar.b;  // "hello world"
+bar.a;  // 42 <-- delegated to `foo`
+```
+
+It may help to visualize the `foo` and `bar` objects and their relationship:
+- The `a` property doesn't actually exist on the `bar` object, but because `bar` is prototype-linked to `foo`, JavaScript automatically falls back to looking for `a` on the `foo` object, where it's found.
+
+### Polyfilling
+
+- The word "polyfill" is an invented term (by Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) used to refer to taking the definition of a newer feature and producing a piece of code that's equivalent to the behavior, but is able to run in older JS environments
 
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
