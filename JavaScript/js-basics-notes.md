@@ -804,26 +804,26 @@ if (foo) {
     - In other words, the egg (declaration) comes before the chicken (assignment)
 - **Only the declarations themselves are hoisted, while any assignments or other executable logic are left *in place***
     - If hoisting were to re-arrange the executable logic of our code, that could wreak havoc
-```
-foo();
-
-function foo() {
-	console.log( a ); // undefined
-
-	var a = 2;
-}
-```
-- function foo's declaration (which in this case includes the implied value of it as an actual function) is hoisted, such that the call on the first line is able to execute
+        ```
+        foo();
+        
+        function foo() {
+            console.log( a ); // undefined
+        
+            var a = 2;
+        }
+        ```
+    - function foo's declaration (which in this case includes the implied value of it as an actual function) is hoisted, such that the call on the first line is able to execute
 - hoisting is per-scope
     - while our previous snippets were simplified in that they only included global scope, the foo(..) function we are now examining itself exhibits that var a is hoisted to the top of foo(..) (not, obviously, to the top of the program)
         - So the program can perhaps be more accurately interpreted like this:
             ```
             function foo() {
-            	var a;
+                var a;
             
-            	console.log( a ); // undefined
+                console.log( a ); // undefined
             
-            	a = 2;
+                a = 2;
             }
             
             foo();

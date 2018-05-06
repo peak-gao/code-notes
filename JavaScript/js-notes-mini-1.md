@@ -578,6 +578,34 @@ foo();
 - **Only the declarations themselves are hoisted, while any assignments or other executable logic are left *in place***
 - hoisting is per-scope
 - **Function *declarations* are hoisted, as we just saw. But function *expressions* are not**
+- **Both function declarations and variable declarations are hoisted**
+    - **functions are hoisted first**, and then variables
+###### Functions are Hoisted First, then Variables
+```
+foo(); // 1
+
+var foo;
+
+function foo() {
+	console.log( 1 );
+}
+
+foo = function() {
+	console.log( 2 );
+};
+```
+- 1 is printed instead of 2! This snippet is interpreted by the Engine as:
+```
+function foo() {
+	console.log( 1 );
+}
+
+foo(); // 1
+
+foo = function() {
+	console.log( 2 );
+};
+```
 
 **Examples**
 ###### Hosting Example 1
