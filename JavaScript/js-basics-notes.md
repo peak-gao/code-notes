@@ -659,7 +659,9 @@ btn.addEventListener( "click", function click(evt){
 	console.log("button clicked");
 }, /*capturingPhase=*/false );
 ```
-The click function click handler callback doesn't need the someReallyBigData variable at all. That means, theoretically, after process(..) runs, the big memory-heavy data structure could be garbage collected. However, it's quite likely (though implementation dependent) that the JS engine will still have to keep the structure around, since the click function has a closure over the entire scope
+- The click function click handler callback doesn't need the someReallyBigData variable at all
+    - That means, theoretically, after process(..) runs, the big memory-heavy data structure could be garbage collected
+    - However, it's quite likely (though implementation dependent) that the JS engine will still have to keep the structure around, since the click function has a closure over the entire scope
     - Block-scoping can address this concern, making it clearer to the engine that it does not need to keep someReallyBigData around:
         ```
         function process(data) {

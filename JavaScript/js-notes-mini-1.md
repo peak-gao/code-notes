@@ -150,10 +150,10 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
     - Only code inside that function can access that function's scoped variables
     - a scope can be nested inside another scope
         - **If one scope is nested inside another, code inside the innermost scope can access variables from either scope**
-
     - No matter where a function is invoked from, or even how it is invoked, its lexical scope is only defined by where the function was declared
 ** Dynamic Scope **
 - You examine what happens while executing the program (“at runtime”)
+- **Global variables** are also **automatically properties of the global object** (window in browsers, etc.)
 
 #### lexing
 - scope that is defined at lexing time
@@ -172,7 +172,6 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
 - The same identifier name (e.g. a variable with the same name found in multiple scopes) can be specified at multiple layers of nested scope, which is called "shadowing"
     - Regardless of shadowing, scope look-up always starts at the innermost scope being executed at the time, and works its way outward/upward until the first match, and stops
 
-***Note:*** Global variables are also automatically properties of the global object (window in browsers, etc.)
 #### Scope Hiding
 - taking any arbitrary section of code you've written, and wrap a function declaration around it, which in effect "hides" the code
     - The result is that this creates a **scope bubble** around the code in question
@@ -316,7 +315,107 @@ console.log( err ); // ReferenceError: `err` not found
    let bar = 2;
 }
 ```
+#### let Loops
+- A particular case where let shines is in the for-loop case
+```
+for (let i=0; i<10; i++) {
+	console.log( i );
+}
 
+console.log( i ); // ReferenceError
+```
+- Not only does let in the for-loop header bind the i to the for-loop body, but in fact, it **re-binds** it to each iteration of the loop, making sure to re-assign it the value from the end of the previous loop iteration
+- Here's another way of illustrating the per-iteration binding behavior that occurs:
+```
+{
+	let j;
+	for (j=0; j<10; j++) {
+		let i = j; // re-bound for each iteration!
+		console.log( i );
+	}
+}
+```
+- let declarations attach to arbitrary blocks rather than to the enclosing function's scope (or global), there can be gotchas where existing code has a hidden reliance on function-scoped var declarations, and replacing the var with let may require additional care when refactoring code:
+```
+var foo = true, baz = 10;
+
+if (foo) {
+	var bar = 3;
+
+	if (baz > bar) {
+		console.log( baz );
+	}
+
+	// ...
+}
+```
+- This code is fairly easily re-factored as:
+    ```
+    var foo = true, baz = 10;
+    
+    if (foo) {
+    	var bar = 3;
+    
+    	// ...
+    }
+    
+    if (baz > bar) {
+    	console.log( baz );
+    }
+    ```
+    - be careful of such changes when using block-scoped variables:
+        ```
+        var foo = true, baz = 10;
+        
+        if (foo) {
+        	let bar = 3;
+        
+        	if (baz > bar) { // <-- don't forget `bar` when moving!
+        		console.log( baz );
+        	}
+        }
+        ```
+
+#### Garbage Collection
+- block-scoping is useful as it relates to closures and garbage collection to reclaim memory
+```
+function process(data) {
+	// do something interesting
+}
+
+var someReallyBigData = { .. };
+
+process( someReallyBigData );
+
+var btn = document.getElementById( "my_button" );
+
+btn.addEventListener( "click", function click(evt){
+	console.log("button clicked");
+}, /*capturingPhase=*/false );
+```
+- The click function click handler callback doesn't need the someReallyBigData variable at all
+    - That means, theoretically, after process(..) runs, the big memory-heavy data structure could be garbage collected
+    - However, it's quite likely (though implementation dependent) that the JS engine will still have to keep the structure around, since the click function has a closure over the entire scope
+    - Block-scoping can address this concern, making it clearer to the engine that it does not need to keep someReallyBigData around:
+        ```
+        function process(data) {
+        	// do something interesting
+        }
+
+        // anything declared inside this block can go away after!
+        {
+        	let someReallyBigData = { .. };
+        
+        	process( someReallyBigData );
+        }
+        
+        var btn = document.getElementById( "my_button" );
+        
+        btn.addEventListener( "click", function click(evt){
+        	console.log("button clicked");
+        }, /*capturingPhase=*/false );
+        ```
+- Declaring explicit blocks for variables to locally bind to is a powerful tool that you can add to your code toolbox
 
 **Use Cases**
  - If all variables and functions were in the global scope, they would of course be accessible to any nested scope. But this would violate the "Least..." principle in that you are (likely) exposing many variables or functions which you should otherwise keep private, as proper use of the code would discourage access to those variables/functions
@@ -470,6 +569,27 @@ foo();
     - To ensure the fastest performance, JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.) which are well beyond the "scope" of our discussion here
     - Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually right before!) it's executed
     - So, the JS compiler will take the program var a = 2; and compile it first, and then be ready to execute it, usually right away
+
+# Hoisting
+- There's a temptation to think that all of the code you see in a JavaScript program is interpreted line-by-line, top-down in order, as the program executes
+- **the best way to think about things is that all declarations, both variables and functions, are processed first, before any part of your code is executed**
+- one way of thinking, sort of metaphorically, about this process, is that **variable and function declarations are "moved" from where they appear in the flow of the code to the top of the code. This gives rise to the name "Hoisting"**
+- (declaration) comes before (assignment)
+- **Only the declarations themselves are hoisted, while any assignments or other executable logic are left *in place***
+
+**Examples**
+###### Hosting Example 1
+```
+foo();
+
+function foo() {
+	console.log( a ); // undefined
+
+	var a = 2;
+}
+```
+- function foo's declaration (which in this case includes the implied value of it as an actual function) is hoisted, such that the call on the first line is able to execute
+
 
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
