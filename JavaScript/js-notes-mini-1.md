@@ -181,6 +181,9 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
 
 **Use Cases**
  - If all variables and functions were in the global scope, they would of course be accessible to any nested scope. But this would violate the "Least..." principle in that you are (likely) exposing many variables or functions which you should otherwise keep private, as proper use of the code would discourage access to those variables/functions
+ - Collision Avoidance
+    - avoid unintended collision between two different identifiers with the same name but different intended usages
+    - Collision results often in unexpected overwriting of values
 
 **Examples**
 ###### Scope Bubbles
@@ -253,7 +256,7 @@ function foo(a) {
     outer();
     ```
 
-##### Hiding Scope
+###### Hiding Scope
 ```
 function doSomething(a) {
     b = a + doSomethingElse( a * 2 );
@@ -289,6 +292,27 @@ doSomething( 2 ); // 15
     ```
     - Now, b and doSomethingElse(..) are not accessible to any outside influence, instead controlled only by doSomething(..)
     - The functionality and end-result has not been affected, but the design keeps private details private, which is usually considered better software
+###### Collision Avoidance
+```
+function foo() {
+    function bar(a) {
+        i = 3; // changing the `i` in the enclosing scope's for-loop
+        console.log( a + i );
+    }
+
+    for (var i=0; i<10; i++) {
+        bar( i * 2 ); // oops, infinite loop ahead!
+    }
+}
+
+foo();
+```
+- The i = 3 assignment inside of bar(..) overwrites, unexpectedly, the i that was declared in foo(..) at the for-loop
+- In this case, it will result in an infinite loop, because i is set to a fixed value of 3 and that will forever remain < 10
+- The assignment inside bar(..) needs to declare a local variable to use, regardless of what identifier name is chosen
+- var i = 3; would fix the problem (and would create the previously mentioned "shadowed variable" declaration for i)
+- An additional, not alternate, option is to pick another identifier name entirely, such as var j = 3;
+- But your software design may naturally call for the same identifier name, so utilizing scope to "hide" your inner declaration is your best/only option in that case
 
 ##### [eval - details here](js-basics-notes.md)
 
