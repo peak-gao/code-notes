@@ -55,6 +55,36 @@ typeof a;  // "object"
 - `a = undefined`. We're explicitly setting `a` to the `undefined` value, but that is behaviorally no different from a variable that has no value set yet, like with the `var a;` line at the top of the snippet
     - A variable can get to this "undefined" value state in several different ways, including functions that return no values and usage of the `void` operator
 
+### Functions As Values
+
+So far, we've discussed functions as the primary mechanism of *scope* in JavaScript
+- You recall typical `function` declaration syntax as follows:
+
+```js
+function foo() {
+    // ..
+}
+```
+
+Though it may not seem obvious from that syntax, `foo` is basically just a variable in the outer enclosing scope that's given a reference to the `function` being declared
+    - That is, the `function` itself is a value, just like `42` or `[1,2,3]` would be
+
+This may sound like a strange concept at first, so take a moment to ponder it
+    - Not only can you pass a value (argument) *to* a function, but *a function itself can be a value* that's assigned to variables, or passed to or returned from other functions
+
+ **functional expressions**
+ - when you assign a function to a variable
+ - ```js
+   // assigning an anonymous function (function without a name) to a variable
+   var foo = function() {
+       // ..
+   };
+   // assigning a named function to a variable
+   var x = function bar(){
+       // ..
+   };
+   ```
+
 # Objects
 - The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type.]
 - Properties on an object can either be accessed with *dot notation* (i.e., `obj.a`) or *bracket notation* (i.e., `obj["a"]`)
@@ -97,7 +127,7 @@ typeof a;  // "object"
 
 ### Equality: == vs ===
 The difference between `==` and `===` is usually characterized that `==` checks for value equality and `===` checks for both value and type equality. However, this is inaccurate
-- The proper way to characterize them is that `==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion; `===` is often called "strict equality" for this reason
+    - The proper way to characterize them is that `==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion; `===` is often called "strict equality" for this reason
 
 Consider the implicit coercion that's allowed by the `==` loose-equality comparison and not allowed with the `===` strict-equality:
 

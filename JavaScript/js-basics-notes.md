@@ -1950,10 +1950,10 @@ function foo() {
 ```
 
 Though it may not seem obvious from that syntax, `foo` is basically just a variable in the outer enclosing scope that's given a reference to the `function` being declared
-- That is, the `function` itself is a value, just like `42` or `[1,2,3]` would be
+    - That is, the `function` itself is a value, just like `42` or `[1,2,3]` would be
 
 This may sound like a strange concept at first, so take a moment to ponder it
-- Not only can you pass a value (argument) *to* a function, but *a function itself can be a value* that's assigned to variables, or passed to or returned from other functions
+    - Not only can you pass a value (argument) *to* a function, but *a function itself can be a value* that's assigned to variables, or passed to or returned from other functions
 
 As such, a function value should be thought of as an expression, much like any other value or expression.
 
