@@ -595,21 +595,21 @@ function foo() {
 - function foo's declaration (which in this case includes the implied value of it as an actual function) is hoisted, such that the call on the first line is able to execute
 ###### Per Scope Hosting
 - while our previous snippets were simplified in that they only included global scope, the foo(..) function we are now examining itself exhibits that var a is hoisted to the top of foo(..) (not, obviously, to the top of the program)
-        - So the program can perhaps be more accurately interpreted like this:
-            ```
-            function foo() {
-            	var a;
+    - So the program can perhaps be more accurately interpreted like this:
+        ```
+        function foo() {
+            var a;
 
-            	console.log( a ); // undefined
-            
-            	a = 2;
-            }
-            
-            foo();
-            ```
-            - The variable identifier foo is hoisted and attached to the enclosing scope (global) of this program, so foo() doesn't fail as a ReferenceError
-            - But foo has no value yet (as it would if it had been a true function declaration instead of expression)
-            - So, foo() is attempting to invoke the undefined value, which is a TypeError illegal operation
+            console.log( a ); // undefined
+        
+            a = 2;
+        }
+        
+        foo();
+        ```
+        - The variable identifier foo is hoisted and attached to the enclosing scope (global) of this program, so foo() doesn't fail as a ReferenceError
+        - But foo has no value yet (as it would if it had been a true function declaration instead of expression)
+        - So, foo() is attempting to invoke the undefined value, which is a TypeError illegal operation
 
 ###### Function Declarations are Hosted, Functional Expressions are not
 ```
