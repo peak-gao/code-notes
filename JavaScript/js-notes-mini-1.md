@@ -9,6 +9,7 @@
 - [Scope Closure](#scope-closure)
 - [this](#this)
 - [Prototpyes](#prototypes)
+- [Polyfilling](#polyfilling)
 - [Resources](#resources)
 
 **NOTE**: Believe it or not the **Scope** and **Closure** sections are trimmed down extensively as compared to what's in [js-basics-notes-1](js-basics-notes.md) but still fairly long in here because it's so critical to understand in order to bre a serious and effective JS developer.  You'd be wise to read this entire md file over and over till you get this ingrained into your head.
