@@ -1117,9 +1117,11 @@ The most common usage of closure in JavaScript is the module pattern
             - The doSomething() and doAnother() functions have closure over the inner scope of the module "instance" (arrived at by actually invoking CoolModule())
                 - When we transport those functions outside of the lexical scope, by way of property references on the object we return, we have now set up a condition by which closure can be observed and exercised
 - To state it more simply, there are two "requirements" for the module pattern to be exercised:
-1. There **must be an outer enclosing function**, and it **must be invoked at least once** (each time creates a new module instance).
 
-2. The **enclosing function must return back at least one inner function**, so that this inner function has closure over the private scope, and can access and/or modify that private state
+  1. There **must be an outer enclosing function**, and it **must be invoked at least once** (each time creates a new module instance).
+
+  1. The **enclosing function must return back at least one inner function**, so that this inner function has closure over the private scope, and can access and/or modify that private state
+
 - An object with a function property on it alone is not really a module
 - An object which is returned from a function invocation which only has data properties on it and no closured functions is not really a module, in the observable sense
 - A slight variation on this pattern is when you only care to have one instance, a "singleton" of sorts
