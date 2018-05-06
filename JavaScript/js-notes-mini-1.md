@@ -663,10 +663,12 @@ foo = function() {
 # Scope Closure
 - *Closure* is when **a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope**
 - ***Closure lets the function continue to access the lexical scope it was defined in at author-time***
+- closure is something all around you in your code
 - **Whatever facility we use to *transport an inner function outside of its lexical scope*, it *will maintain a scope reference to where it was originally declared*, and *wherever we execute it, that closure will be exercised***
-- 
+- whenever and wherever you treat functions (which access their own respective lexical scopes) as first-class values and pass them around, you are likely to see those functions exercising closure
+
 **Examples**
-###### Scope Closure 1
+###### Basic Closure
 ```
 function foo() {
     var a = 2;
@@ -738,7 +740,24 @@ function bar(fn) {
     bar(); // 2
     ```
     - **Whatever facility we use to *transport an inner function outside of its lexical scope*, it *will maintain a scope reference to where it was originally declared*, and *wherever we execute it, that closure will be exercised***
+###### Asynchronous Tasks
+```
+function wait(message) {
 
+	setTimeout( function timer(){
+		console.log( message );
+	}, 1000 );
+
+}
+
+wait( "Hello, closure!" );
+```
+- We take an inner function (named timer) and pass it to setTimeout(..)
+- But timer has a scope closure over the scope of wait(..), indeed keeping and using a reference to the variable message
+- A thousand milliseconds after we have executed wait(..), and its inner scope should otherwise be long gone, that inner function timer still has closure over that scope
+- Deep down in the guts of the Engine, the built-in utility setTimeout(..) has reference to some parameter, probably called fn or func or something like that. Engine goes to invoke that function, which is invoking our inner timer function, and the lexical scope reference is still intact
+- whenever and wherever you treat functions (which access their own respective lexical scopes) as first-class values and pass them around, you are likely to see those functions exercising closure
+    - Be that timers, event handlers, Ajax requests, cross-window messaging, web workers, or any of the other asynchronous (or synchronous!) tasks, when you pass in a callback function, get ready to sling some closure around!
 
 
 # Resources

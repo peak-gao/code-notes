@@ -1019,9 +1019,9 @@ function wait(message) {
 wait( "Hello, closure!" );
 ```
 - We take an inner function (named timer) and pass it to setTimeout(..)
--  But timer has a scope closure over the scope of wait(..), indeed keeping and using a reference to the variable message
--  A thousand milliseconds after we have executed wait(..), and its inner scope should otherwise be long gone, that inner function timer still has closure over that scope
--  Deep down in the guts of the Engine, the built-in utility setTimeout(..) has reference to some parameter, probably called fn or func or something like that. Engine goes to invoke that function, which is invoking our inner timer function, and the lexical scope reference is still intact
+- But timer has a scope closure over the scope of wait(..), indeed keeping and using a reference to the variable message
+- A thousand milliseconds after we have executed wait(..), and its inner scope should otherwise be long gone, that inner function timer still has closure over that scope
+- Deep down in the guts of the Engine, the built-in utility setTimeout(..) has reference to some parameter, probably called fn or func or something like that. Engine goes to invoke that function, which is invoking our inner timer function, and the lexical scope reference is still intact
 - whenever and wherever you treat functions (which access their own respective lexical scopes) as first-class values and pass them around, you are likely to see those functions exercising closure
     - Be that timers, event handlers, Ajax requests, cross-window messaging, web workers, or any of the other asynchronous (or synchronous!) tasks, when you pass in a callback function, get ready to sling some closure around!
 - While it is often said that IIFE (alone) is an example of observed closure, I would somewhat disagree
