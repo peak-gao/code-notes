@@ -580,32 +580,6 @@ foo();
 - **Function *declarations* are hoisted, as we just saw. But function *expressions* are not**
 - **Both function declarations and variable declarations are hoisted**
     - **functions are hoisted first**, and then variables
-###### Functions are Hoisted First, then Variables
-```
-foo(); // 1
-
-var foo;
-
-function foo() {
-	console.log( 1 );
-}
-
-foo = function() {
-	console.log( 2 );
-};
-```
-- 1 is printed instead of 2! This snippet is interpreted by the Engine as:
-```
-function foo() {
-	console.log( 1 );
-}
-
-foo(); // 1
-
-foo = function() {
-	console.log( 2 );
-};
-```
 
 **Examples**
 ###### Hosting Example 1
@@ -658,6 +632,32 @@ var foo = function bar() {
         // ...
     }
     ```
+###### Functions are Hoisted First, then Variables
+```
+foo(); // 1
+
+var foo;
+
+function foo() {
+	console.log( 1 );
+}
+
+foo = function() {
+	console.log( 2 );
+};
+```
+- 1 is printed instead of 2! This snippet is interpreted by the Engine as:
+```
+function foo() {
+	console.log( 1 );
+}
+
+foo(); // 1
+
+foo = function() {
+	console.log( 2 );
+};
+```
 
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
