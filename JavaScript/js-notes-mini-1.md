@@ -16,6 +16,28 @@
 - **JS explicit coercion**
     - JavaScript provides several different facilities for forcibly coercing between types
 
+#### == vs ===
+The difference between `==` and `===` is usually characterized that `==` checks for value equality and `===` checks for both value and type equality. However, this is inaccurate
+- The proper way to characterize them is that `==` checks for value equality with coercion allowed, and `===` checks for value equality without allowing coercion; `===` is often called "strict equality" for this reason
+
+Consider the implicit coercion that's allowed by the `==` loose-equality comparison and not allowed with the `===` strict-equality:
+
+```js
+var a = "42";
+var b = 42;
+
+a == b;  // true
+a === b;  // false
+```
+
+In the `a == b` comparison, JS notices that the types do not match, so it goes through an ordered series of steps to coerce one or both values to a different type until the types match, where then a simple value equality can be checked.
+
+If you think about it, there's two possible ways `a == b` could give `true` via coercion
+- Either the comparison could end up as `42 == 42` or it could be `"42" == "42"`. So which is it?
+
+The answer: `"42"` becomes `42`, to make the comparison `42 == 42`
+- In such a simple example, it doesn't really seem to matter which way that process goes, as the end result is the same
+
 **Examples**
 ###### Explicit Conversions
  - Using Number(..) (a built-in function)
