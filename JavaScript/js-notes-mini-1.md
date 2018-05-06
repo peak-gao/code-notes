@@ -823,7 +823,7 @@ for (var i=1; i<=5; i++) {
                                             - The use of an IIFE inside each iteration created a new scope for each iteration, which gave our timeout function callbacks the opportunity to close over a new scope for each iteration, one which had a variable with the right per-iteration value in it for us to access
                                             - Problem solved!
 
-###### Modules Closures
+###### Module Closures
 - other code patterns which leverage the power of closure but which do not on the surface appear to be about callbacks
     - Let's examine the most powerful of them:the the ***module***:
         ```
