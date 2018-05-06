@@ -144,6 +144,7 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
 - JavaScript has function-based scope
     - **each function you declare creates a bubble for itself, but no other structures create their own scope bubbles**
     - Function scope encourages the idea that all variables belong to the function, and can be used and reused throughout the entirety of the function (and indeed, accessible even to nested scopes)
+    - however be aware that if you don't take careful precautions, variables existing across the entirety of a scope can lead to some unexpected pitfalls
  - **Lexical Scope** (as opposed to Dynamic Scope) - is by far the most common, used by the vast majority of programming languages and is the scope JavaScript applies
     - In JS, each function gets its own scope
     - Only code inside that function can access that function's scoped variables
@@ -172,7 +173,14 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
     - Regardless of shadowing, scope look-up always starts at the innermost scope being executed at the time, and works its way outward/upward until the first match, and stops
 
 ***Note:*** Global variables are also automatically properties of the global object (window in browsers, etc.)
+#### Hiding In Scope
+- taking any arbitrary section of code you've written, and wrap a function declaration around it, which in effect "hides" the code
+    - The result is that this creates a **scope bubble** around the code in question
+          - means that any declarations (variable or function) in that code will now be tied to the scope of the new wrapping function, rather than the previously enclosing scope
+          - so in other words, you can "hide" variables and functions by enclosing them in the scope of a function
 
+**Use Cases**
+ - If all variables and functions were in the global scope, they would of course be accessible to any nested scope. But this would violate the "Least..." principle in that you are (likely) exposing many variables or functions which you should otherwise keep private, as proper use of the code would discourage access to those variables/functions
 
 **Examples**
 ###### Scope Bubbles
@@ -231,7 +239,6 @@ function foo(a) {
     - Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually right before!) it's executed
     - So, the JS compiler will take the program var a = 2; and compile it first, and then be ready to execute it, usually right away
 
-**Examples**
 ###### Nested Scope
 - code inside the inner() function has access to both variables a and b, but code in outer() has access only to a
     ```
@@ -253,6 +260,44 @@ function foo(a) {
     
     outer();
     ```
+
+##### Hiding Scope
+```
+function doSomething(a) {
+    b = a + doSomethingElse( a * 2 );
+
+    console.log( b * 3 );
+}
+
+function doSomethingElse(a) {
+    return a - 1;
+}
+
+var b;
+
+doSomething( 2 ); // 15
+```
+- the b variable and the doSomethingElse(..) function are "private" details of how doSomething(..) does its job
+- Giving the enclosing scope "access" to b and doSomethingElse(..) is not only unnecessary but also possibly "dangerous", in that they may be used in unexpected ways
+    - A more "proper" design would hide these private details inside the scope of doSomething(..), such as:
+    ```
+    function doSomething(a) {
+        function doSomethingElse(a) {
+            return a - 1;
+        }
+    
+        var b;
+    
+        b = a + doSomethingElse( a * 2 );
+    
+        console.log( b * 3 );
+    }
+    
+    doSomething( 2 ); // 15
+    ```
+    - Now, b and doSomethingElse(..) are not accessible to any outside influence, instead controlled only by doSomething(..)
+    - The functionality and end-result has not been affected, but the design keeps private details private, which is usually considered better software
+
 ##### [eval - details here](js-basics-notes.md)
 
 
