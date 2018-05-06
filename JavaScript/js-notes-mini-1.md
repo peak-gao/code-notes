@@ -72,11 +72,11 @@ typeof a;  // "object"
 So far, we've discussed functions as the primary mechanism of *scope* in JavaScript
 - You recall typical `function` declaration syntax as follows:
 
-```js
-function foo() {
-    // ..
-}
-```
+    ```js
+    function foo() {
+        // ..
+    }
+    ```
 
 Though it may not seem obvious from that syntax, `foo` is basically just a variable in the outer enclosing scope that's given a reference to the `function` being declared
     - That is, the `function` itself is a value, just like `42` or `[1,2,3]` would be
@@ -1056,7 +1056,9 @@ for (var i=1; i<=5; i++) {
                                             - Problem solved!
 
 ###### Module Closures
-- other code patterns which leverage the power of closure but which do not on the surface appear to be about callbacks
+The most common usage of closure in JavaScript is the module pattern
+    - Modules **let you define private implementation details** (*variables*, *functions*) that are hidden from the outside world, as well as a **public API that *is* accessible from the outside**
+    - other code patterns which leverage the power of closure but which do not on the surface appear to be about callbacks
     - Let's examine the most powerful of them:the the ***module***:
         ```
         function foo() {
@@ -1187,6 +1189,34 @@ foo.change();
 foo.identify(); // FOO MODULE
 ```
 - By retaining an inner reference to the public API object inside your module instance, you can modify that module instance from the inside, including adding and removing methods, properties, and changing their values
+
+**Examples**
+###### Basic Module Closure
+```js
+function User(){
+    var username, password;
+
+    function doLogin(user,pw) {
+        username = user;
+        password = pw;
+
+        // do the rest of the login work
+    }
+
+    var publicAPI = {
+        login: doLogin
+    };
+
+    return publicAPI;
+}
+
+// create a `User` module instance
+var fred = User();
+
+fred.login( "fred", "12Battery34!" );
+```
+
+- The `User()` function serves as an outer scope that holds the variables `username` and `password`, as well as the inner `doLogin()` function; these are all private inner details of this `User` module that cannot be accessed from the outside world
 
 ###### Modern Module Closures
 - Various module dependency loaders/managers essentially wrap up this pattern of module definition into a friendly API
