@@ -215,6 +215,52 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
          - First, notice that the wrapping function statement starts with (function... as opposed to just function.... While this may seem like a minor detail, it's actually a major change
          - Instead of treating the function as a standard declaration, the function is treated as a function-expression
          - The easiest way to distinguish declaration vs. expression is the position of the word "function" in the statement (not just a line, but a distinct statement). If "function" is the very first thing in the statement, then it's a function declaration. Otherwise, it's a function expression
+#### immediately invoked function expression (IIFE)
+  - the fundamental unit of variable scoping in JavaScript has always been the function. If you needed to create a block of scope, the most prevalent way to do so other than a regular function declaration was the immediately invoked function expression (IIFE)
+      ```
+      var a = 2;
+      
+      (function IIFE(){
+          var a = 3;
+          console.log( a )  // 3
+      })();
+      
+      console.log( a );
+      ```
+#### Block Scopes
+- While functions are the most common, other units of scope are possible, and the usage of these other scope units can lead to even better, cleaner to maintain code
+
+Block Scope Example 1:
+```
+for (var i=0; i<10; i++) {
+	console.log( i );
+}
+```
+- We declare the variable i directly inside the for-loop head, most likely because our intent is to use i only within the context of that for-loop, and essentially ignore the fact that the variable actually scopes itself to the enclosing scope (function or global)
+- That's what block-scoping is all about. Declaring variables as close as possible, as local as possible, to where they will be used
+Block Scope Example 2:
+```
+var foo = true;
+
+if (foo) {
+	var bar = foo * 2;
+	bar = something( bar );
+	console.log( bar );
+}
+```
+- We are using a bar variable only in the context of the if-statement, so it makes a kind of sense that we would declare it inside the if-block
+    - However, where we declare variables is not relevant when using var, because they will always belong to the enclosing scope
+    - This snippet is essentially "fake" block-scoping, for stylistic reasons, and relying on self-enforcement not to accidentally use bar in another place in that scope
+    - Block scope is a tool to extend information hiding via functions to hiding information further in blocks of our code
+Example 3:
+```
+for (var i=0; i<10; i++) {
+	console.log( i );
+}
+```
+- Why pollute the entire scope of a function with the i variable that is only going to be (or only should be, at least) used for the for-loop?
+- Block-scoping (if it were possible) for the i variable would make i available only for the for-loop, causing an error if i is accessed elsewhere in the function
+- This helps ensure variables are not re-used in confusing or hard-to-maintain ways
 
 **Use Cases**
  - If all variables and functions were in the global scope, they would of course be accessible to any nested scope. But this would violate the "Least..." principle in that you are (likely) exposing many variables or functions which you should otherwise keep private, as proper use of the code would discourage access to those variables/functions
@@ -226,6 +272,9 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
     - Another option for collision avoidance is the more modern "module" approach, using any of various dependency managers
         - Using these tools, no libraries ever add any identifiers to the global scope, but are instead required to have their identifier(s) be explicitly imported into another specific scope through usage of the dependency manager's various mechanisms
         - enforce that no identifiers are injected into any shared scope, and are instead kept in private, non-collision-susceptible scopes, which prevents any accidental scope collisions
+        - The key difference we can observe here between a function declaration and a function expression relates to where its name is bound as an identifier
+                      - Compare the previous two snippets. In the first snippet, the name foo is bound in the enclosing scope, and we call it directly with foo(). In the second snippet, the name foo is not bound in the enclosing scope, but instead is bound only inside of its own function
+                      - In other words, (function foo(){ .. }) as an expression means the identifier foo is found only in the scope where the .. indicates, not in the outer scope. Hiding the name foo inside itself means it does not pollute the enclosing scope unnecessarily
 
 **Examples**
 ###### Scope Bubbles

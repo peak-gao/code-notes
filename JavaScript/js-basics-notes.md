@@ -527,7 +527,9 @@ console.log( a ); // 2
 
 
 # You Don't Know JS: this & Object Prototypes
+
 # You Don't Know JS: Types & Grammar
+
 # immediately invoked function expression (IIFE)
 - the fundamental unit of variable scoping in JavaScript has always been the function. If you needed to create a block of scope, the most prevalent way to do so other than a regular function declaration was the immediately invoked function expression (IIFE)
     ```

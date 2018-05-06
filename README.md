@@ -21,7 +21,7 @@ These serve as more of quick "cheat sheet" and something you can start with.  Th
     - Disadvantages
     - Examples (as real-world as possible)
 
-### mini-2 notes format:
+### *mini-2 notes format*
 these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet with shorter bullet points compared to the major .md files on that area.
 
 - **Topic Header** (matches the headers in mini-1)
