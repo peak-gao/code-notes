@@ -391,9 +391,12 @@ b;  // 42 -- the number!
           // then `()` executes it
           (function IIFE(){ .. })();
           ```
+          - As you can see, listing the `(function IIFE(){ .. })` before its executing `()` is essentially the same as including `foo` before its executing `()`
+
 ###### IIFE and Scope
   - the fundamental unit of variable scoping in JavaScript has always been the function
   - If you **needed to create a block of scope**, the most prevalent way to do so other than a regular function declaration was the immediately invoked function expression (IIFE)
+    - Because an IIFE is just a function, and functions create variable *scope*, using an IIFE in this fashion is often used to declare variables that won't affect the surrounding code outside:
       ```
       var a = 2;
       
@@ -840,6 +843,7 @@ foo = function() {
     ```
 
 # Scope Closure
+- You can think of closure as a **way to "remember" and continue to access a function's scope** (its variables) **even once the function has finished running**
 - *Closure* is when **a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope**
 - ***Closure lets the function continue to access the lexical scope it was defined in at author-time***
 - closure is something all around you in your code
@@ -847,7 +851,22 @@ foo = function() {
 - whenever and wherever you treat functions (which access their own respective lexical scopes) as first-class values and pass them around, you are likely to see those functions exercising closure
 
 **Examples**
-###### Basic Closure
+###### Basic Closure 1
+```js
+function makeAdder(x) {
+    // parameter `x` is an inner variable
+
+    // inner function `add()` uses `x`, so
+    // it has a "closure" over it
+    function add(y) {
+      return y + x;
+    };
+
+    return add;
+}
+```
+- he reference to the inner `add(..)` function that gets returned with each call to the outer `makeAdder(..)` is able to remember whatever `x` value was passed in to `makeAdder(..)`
+###### Basic Closure 2
 ```
 function foo() {
     var a = 2;
