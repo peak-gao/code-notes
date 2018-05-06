@@ -173,7 +173,7 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
     - Regardless of shadowing, scope look-up always starts at the innermost scope being executed at the time, and works its way outward/upward until the first match, and stops
 
 ***Note:*** Global variables are also automatically properties of the global object (window in browsers, etc.)
-#### Hiding In Scope
+#### Scope Hiding
 - taking any arbitrary section of code you've written, and wrap a function declaration around it, which in effect "hides" the code
     - The result is that this creates a **scope bubble** around the code in question
           - means that any declarations (variable or function) in that code will now be tied to the scope of the new wrapping function, rather than the previously enclosing scope
@@ -261,6 +261,62 @@ for (var i=0; i<10; i++) {
 - Why pollute the entire scope of a function with the i variable that is only going to be (or only should be, at least) used for the for-loop?
 - Block-scoping (if it were possible) for the i variable would make i available only for the for-loop, causing an error if i is accessed elsewhere in the function
 - This helps ensure variables are not re-used in confusing or hard-to-maintain ways
+
+#### try/catch
+- variable declaration in the catch clause of a try/catch to be block-scoped to the catch block
+```
+try {
+	undefined(); // illegal operation to force an exception!
+}
+catch (err) {
+	console.log( err ); // works!
+}
+
+console.log( err ); // ReferenceError: `err` not found
+```
+- err exists only in the catch clause, and throws an error when you try to reference it elsewhere
+
+#### let
+- Thus far, we've seen that JavaScript only has some strange niche behaviors which expose block scope functionality. If that were all we had, and it was for many, many years, then block scoping would not be terribly useful to the JavaScript developer
+- ES6 changes that, and introduces a new keyword let which sits alongside var as another way to declare variables
+- let keyword attaches the variable declaration to the scope of whatever block (commonly a { .. } pair) it's contained in
+    - In other words, let implicitly hijacks any block's scope for its variable declaration:
+        ```
+        var foo = true;
+        
+        if (foo) {
+        	let bar = foo * 2;
+        	bar = something( bar );
+        	console.log( bar );
+        }
+        
+        console.log( bar ); // ReferenceError
+        ```
+        - Using let to attach a variable to an existing block is somewhat implicit. It can confuse you if you're not paying close attention to which blocks have variables scoped to them, and are in the habit of moving blocks around, wrapping them in other blocks, etc., as you develop and evolve code
+        - Creating explicit blocks for block-scoping can address some of these concerns, making it more obvious where variables are attached and not. Usually, explicit code is preferable over implicit or subtle code. This explicit block-scoping style is easy to achieve, and fits more naturally with how block-scoping works in other languages:
+            ```
+            var foo = true;
+            
+            if (foo) {
+            	{ // <-- explicit block
+            		let bar = foo * 2;
+            		bar = something( bar );
+            		console.log( bar );
+            	}
+            }
+            
+            console.log( bar ); // ReferenceError
+            ```
+            - We can create an arbitrary block for let to bind to by simply including a { .. } pair anywhere a statement is valid grammar
+            - In this case, we've made an explicit block inside the if-statement, which may be easier as a whole block to move around later in refactoring, without affecting the position and semantics of the enclosing if-statement
+- declarations made with let will not hoist to the entire scope of the block they appear in. Such declarations will not observably "exist" in the block until the declaration statement:
+```
+{
+   console.log( bar ); // ReferenceError!
+   let bar = 2;
+}
+```
+
 
 **Use Cases**
  - If all variables and functions were in the global scope, they would of course be accessible to any nested scope. But this would violate the "Least..." principle in that you are (likely) exposing many variables or functions which you should otherwise keep private, as proper use of the code would discourage access to those variables/functions
