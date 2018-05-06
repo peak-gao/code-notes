@@ -1,5 +1,17 @@
+# Table Of Contents
+- [Values & Types](#values-and-types)
+- [Objects](#objects)
+- [Converting Between Types](#converting-between-types)
+- [Typing and Variables](#typing-and-variables)
+- [Scope](#scope)
+- [JS Compilation](#js-compilation)
+- [Hoisting](#hoisting)
+- [Scope Closure](#scope-closure)
+- [this](#this)
+- [Resources](#resources)
 
-# Values & Types
+
+# *Values* and *Types*
 
 As we asserted in Chapter 1, JavaScript has typed values, not typed variables. The following built-in types are available:
 
