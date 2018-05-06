@@ -78,4 +78,4 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 # Principles and Practices
 ## **BDD**
 ## **TDD**
-## ****React BDD / TDD
+## **React BDD / TDD**
