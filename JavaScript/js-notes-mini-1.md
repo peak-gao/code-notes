@@ -209,7 +209,7 @@ foo( 2 ); // 2 4 12
       - the scope of bar, and it includes just one identifier: c
   - Scope bubbles are defined by where the blocks of scope are written, which one is nested inside the other, etc
 
-##### Function Scope Bubble
+###### Function Scope Bubble
 ```
 function foo(a) {
 	var b = 2;
@@ -230,14 +230,6 @@ function foo(a) {
 - Because a, b, c, and bar all belong to the scope bubble of foo(..), they are not accessible outside of foo(..) and also available inside of bar(..)
 - (a, b, c, foo, and bar) are accessible inside of foo(..)
 - **It doesn't matter *where*** in the scope a declaration appears, the variable or function belongs to the containing scope bubble, regardless
-
-# JS Compilation
-- despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language
-- JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages
-    - the compilation that occurs happens, in many cases, mere microseconds (or less!) before the code is executed
-    - To ensure the fastest performance, JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.) which are well beyond the "scope" of our discussion here
-    - Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually right before!) it's executed
-    - So, the JS compiler will take the program var a = 2; and compile it first, and then be ready to execute it, usually right away
 
 ###### Nested Scope
 - code inside the inner() function has access to both variables a and b, but code in outer() has access only to a
@@ -300,6 +292,13 @@ doSomething( 2 ); // 15
 
 ##### [eval - details here](js-basics-notes.md)
 
+# JS Compilation
+- despite the fact that JavaScript falls under the general category of "dynamic" or "interpreted" languages, it is in fact a compiled language
+- JavaScript engines don't get the luxury (like other language compilers) of having plenty of time to optimize, because JavaScript compilation doesn't happen in a build step ahead of time, as with other languages
+    - the compilation that occurs happens, in many cases, mere microseconds (or less!) before the code is executed
+    - To ensure the fastest performance, JS engines use all kinds of tricks (like JITs, which lazy compile and even hot re-compile, etc.) which are well beyond the "scope" of our discussion here
+    - Let's just say, for simplicity's sake, that any snippet of JavaScript has to be compiled before (usually right before!) it's executed
+    - So, the JS compiler will take the program var a = 2; and compile it first, and then be ready to execute it, usually right away
 
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
