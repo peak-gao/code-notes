@@ -1379,7 +1379,7 @@ bar.a;  // 42 <-- delegated to `foo`
 It may help to visualize the `foo` and `bar` objects and their relationship:
 - The `a` property doesn't actually exist on the `bar` object, but because `bar` is prototype-linked to `foo`, JavaScript automatically falls back to looking for `a` on the `foo` object, where it's found.
 
-### Polyfilling
+# Polyfilling
 
 - The word "polyfill" is an invented term (by Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) used to refer to taking the definition of a newer feature and producing a piece of code that's equivalent to the behavior, but is able to run in older JS environments
 
