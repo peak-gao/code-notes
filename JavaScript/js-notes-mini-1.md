@@ -366,7 +366,34 @@ b;  // 42 -- the number!
          - The easiest way to distinguish declaration vs. expression is the position of the word "function" in the statement (not just a line, but a distinct statement). If "function" is the very first thing in the statement, then it's a function declaration. Otherwise, it's a function expression
 
 #### immediately invoked function expression (IIFE)
-  - the fundamental unit of variable scoping in JavaScript has always been the function. If you needed to create a block of scope, the most prevalent way to do so other than a regular function declaration was the immediately invoked function expression (IIFE)
+###### What It Is
+  - if you recall a function value should be thought of as an expression, much like any other value or expression.  A function value (functional expression) is when you assign a function to a variable
+  - There are a couple ways to execute an functional expression:
+    - on the variable: foo()
+    - via an IIFE
+        ```js
+        (function IIFE(){
+            console.log( "Hello!" );
+        })();
+        // "Hello!"
+        ```
+        - The outer `( .. )` that surrounds the `(function IIFE(){ .. })` function expression is just a nuance of JS grammar needed to prevent it from being treated as a normal function declaration
+        - The final `()` on the end of the expression -- the `})();` line -- is what actually executes the function expression referenced immediately before it
+        - That may seem strange, but it's not as foreign as first glance. Consider the similarities between `foo` and `IIFE` here:
+          ```js
+          function foo() { .. }
+          
+          // `foo` function reference expression,
+          // then `()` executes it
+          foo();
+          
+          // `IIFE` function expression,
+          // then `()` executes it
+          (function IIFE(){ .. })();
+          ```
+###### IIFE and Scope
+  - the fundamental unit of variable scoping in JavaScript has always been the function
+  - If you **needed to create a block of scope**, the most prevalent way to do so other than a regular function declaration was the immediately invoked function expression (IIFE)
       ```
       var a = 2;
       
