@@ -2,6 +2,7 @@
 # Converting Between Types
 
 - **JS implicit coercion**
+- there is "explicit" and "implicit" coercion
 - JS implicit coercion is controversial
     - a controversial topic is what happens when you try to compare two values that are not already of the same type, which would require implicit coercion
     - When comparing the string "99.99" to the number 99.99, most people would agree they are equivalent
@@ -142,6 +143,7 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
     - if a variable cannot be found in the immediate scope, Engine consults the next outer containing scope, continuing until found or until the outermost (aka, global) scope has been reached
 - JavaScript has function-based scope
     - **each function you declare creates a bubble for itself, but no other structures create their own scope bubbles**
+    - Function scope encourages the idea that all variables belong to the function, and can be used and reused throughout the entirety of the function (and indeed, accessible even to nested scopes)
  - **Lexical Scope** (as opposed to Dynamic Scope) - is by far the most common, used by the vast majority of programming languages and is the scope JavaScript applies
     - In JS, each function gets its own scope
     - Only code inside that function can access that function's scoped variables
@@ -216,6 +218,9 @@ function foo(a) {
 }
 ```
 - the scope bubble for foo(..) includes a, b, c and bar
+- bar(..) has its own scope bubble. So does the global scope, which has just one identifier attached to it: foo
+- Because a, b, c, and bar all belong to the scope bubble of foo(..), they are not accessible outside of foo(..) and also available inside of bar(..)
+- (a, b, c, foo, and bar) are accessible inside of foo(..)
 - **It doesn't matter *where*** in the scope a declaration appears, the variable or function belongs to the containing scope bubble, regardless
 
 # JS Compilation
@@ -248,7 +253,7 @@ function foo(a) {
     
     outer();
     ```
-
+##### [eval - details here](js-basics-notes.md)
 
 
 # Resources
