@@ -180,42 +180,41 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
           - so in other words, you can "hide" variables and functions by enclosing them in the scope of a function
 
 #### Functions As Scopes
-     - remember that we can take any snippet of code and wrap a function around it, and that effectively "hides" any enclosed variable or function declarations from the outside scope inside that function's inner scope:
-     
+ - remember that we can take any snippet of code and wrap a function around it, and that effectively "hides" any enclosed variable or function declarations from the outside scope inside that function's inner scope
+ ```
+ var a = 2;
+ 
+ function foo() { // <-- insert this
+ 
+    var a = 3;
+    console.log( a ); // 3
+ 
+ } // <-- and this
+ foo(); // <-- and this
+ 
+ console.log( a ); // 2
+ ```
+ - **While this technique "works", it is not necessarily very ideal**
+ - There are a few problems it introduces:
+     - first we have to declare a named-function foo(), but now the identifier name foo itself "pollutes" the enclosing scope (global, in this case)
+     - we also have to explicitly call the function by name (foo()) so that the wrapped code actually executes
+     - It would be more ideal if the function didn't need a name (or, rather, the name didn't pollute the enclosing scope), and if the function could automatically be executed
+     - JavaScript offers a solution to both problems:
          ```
          var a = 2;
          
-         function foo() { // <-- insert this
+         (function foo(){ // <-- insert this
          
-         	var a = 3;
-         	console.log( a ); // 3
+            var a = 3;
+            console.log( a ); // 3
          
-         } // <-- and this
-         foo(); // <-- and this
+         })(); // <-- and this
          
          console.log( a ); // 2
          ```
-         - **While this technique "works", it is not necessarily very ideal**
-         - There are a few problems it introduces:
-             - first we have to declare a named-function foo(), but now the identifier name foo itself "pollutes" the enclosing scope (global, in this case)
-             - we also have to explicitly call the function by name (foo()) so that the wrapped code actually executes
-             - It would be more ideal if the function didn't need a name (or, rather, the name didn't pollute the enclosing scope), and if the function could automatically be executed
-             - JavaScript offers a solution to both problems:
-                 ```
-                 var a = 2;
-                 
-                 (function foo(){ // <-- insert this
-                 
-                 	var a = 3;
-                 	console.log( a ); // 3
-                 
-                 })(); // <-- and this
-                 
-                 console.log( a ); // 2
-                 ```
-                 - First, notice that the wrapping function statement starts with (function... as opposed to just function.... While this may seem like a minor detail, it's actually a major change
-                 - Instead of treating the function as a standard declaration, the function is treated as a function-expression
-                 - The easiest way to distinguish declaration vs. expression is the position of the word "function" in the statement (not just a line, but a distinct statement). If "function" is the very first thing in the statement, then it's a function declaration. Otherwise, it's a function expression.
+         - First, notice that the wrapping function statement starts with (function... as opposed to just function.... While this may seem like a minor detail, it's actually a major change
+         - Instead of treating the function as a standard declaration, the function is treated as a function-expression
+         - The easiest way to distinguish declaration vs. expression is the position of the word "function" in the statement (not just a line, but a distinct statement). If "function" is the very first thing in the statement, then it's a function declaration. Otherwise, it's a function expression
 
 **Use Cases**
  - If all variables and functions were in the global scope, they would of course be accessible to any nested scope. But this would violate the "Least..." principle in that you are (likely) exposing many variables or functions which you should otherwise keep private, as proper use of the code would discourage access to those variables/functions
