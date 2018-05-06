@@ -37,6 +37,14 @@ If you think about it, there's two possible ways `a == b` could give `true` via 
 
 The answer: `"42"` becomes `42`, to make the comparison `42 == 42`
 - In such a simple example, it doesn't really seem to matter which way that process goes, as the end result is the same
+- There are more complex cases where it matters not just what the end result of the comparison is, but *how* you get there
+
+The `a === b` produces `false`, because the coercion is not allowed, so the simple value comparison obviously fails
+- Many developers feel that `===` is more predictable, so they advocate always using that form and staying away from `==`. I think this view is very shortsighted
+- I believe `==` is a powerful tool that helps your program, *if you take the time to learn how it works*
+
+- Much of the == coercion is pretty sensible, but there are some important corner cases to be careful of
+    - You can read section 11.9.3 of the ES5 specification (http://www.ecma-international.org/ecma-262/5.1/) to see the exact rules, and you'll be surprised at just how straightforward this mechanism is, compared to all the negative hype surrounding it
 
 **Examples**
 ###### Explicit Conversions
