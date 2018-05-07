@@ -1,7 +1,7 @@
 # Table Of Contents
 - [Values & Types](#values-and-types)
 - [Objects](#objects)
-- [Functions](#function)
+- [Functions](#functions)
 - [Converting Between Types](#converting-between-types)
 - [Typing and Variables](#typing-and-variables)
 - [Scope](#scope)
