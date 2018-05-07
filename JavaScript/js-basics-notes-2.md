@@ -1167,7 +1167,7 @@ foo.call( obj ); // 2
 
 A program can effectively use both styles of code (lexical and `this`), but inside of the same function, and indeed for the same sorts of look-ups, mixing the two mechanisms is usually asking for harder-to-maintain code, and probably working too hard to be clever.
 
-## Review
+## Review on this Binding
 
 Determining the `this` binding for an executing function requires **finding the direct call-site of that function**. Once examined, **four rules can be applied to the call-site**, in *this* order of precedence:
 
@@ -1284,8 +1284,8 @@ Consider:
 
 ```js
 var strPrimitive = "I am a string";
-console.log( strPrimitive.length );			// 13
-console.log( strPrimitive.charAt( 3 ) );	// "m"
+console.log( strPrimitive.length ); // 13
+console.log( strPrimitive.charAt( 3 ) );  // "m"
 ```
 
 - In both cases, *we call a property or method on a string primitive*, and the **engine automatically coerces it to a `String` object**, *so that the property/method access works*
@@ -1298,7 +1298,7 @@ console.log( strPrimitive.charAt( 3 ) );	// "m"
 
 ## Contents
 
-As mentioned earlier, the **contents of an object consist of values** (any type) **stored at specifically named *locations*, which we call *properties***.
+As mentioned earlier, the **contents of an object consist of values** (any type) **stored at specifically named *locations*, which we call *properties***
 
 *It's important to note that while we say "contents" which implies that these values are *actually* stored inside the object, that's merely an appearance*. The **engine stores values in implementation-dependent ways**, and **may very well not store them *in* some object container**
 - What **is* stored in the container* are these **property names**, which ***act as pointers*** (technically, *references*) *to where the values are stored*
@@ -1363,27 +1363,27 @@ The `myObject[..]` property access syntax we just described is useful if you nee
 - But that's not really helpful when declaring objects using the object-literal syntax.
 - ES6 adds *computed property names*, where you can specify an expression, surrounded by a `[ ]` pair, in the key-name position of an object-literal declaration:
 
-```js
-var prefix = "foo";
-
-var myObject = {
-    [prefix + "bar"]: "hello",
-    [prefix + "baz"]: "world"
-};
-
-myObject["foobar"]; // hello
-myObject["foobaz"]; // world
-```
+    ```js
+    var prefix = "foo";
+    
+    var myObject = {
+        [prefix + "bar"]: "hello",
+        [prefix + "baz"]: "world"
+    };
+    
+    myObject["foobar"]; // hello
+    myObject["foobaz"]; // world
+    ```
 
 - The most common usage of *computed property names* will probably be for ES6 `Symbol`s, which we will not be covering in detail in this book
     - In short, they're a new primitive data type which has an opaque unguessable value (technically a `string` value)
     - You will be strongly discouraged from working with the *actual value* of a `Symbol` (which can theoretically be different between different JS engines), so the name of the `Symbol`, like `Symbol.Something` (just a made up name!), will be what you use:
 
-```js
-var myObject = {
-    [Symbol.Something]: "hello world"
-};
-```
+    ```js
+    var myObject = {
+        [Symbol.Something]: "hello world"
+    };
+    ```
 
 ### Property vs. Method
 

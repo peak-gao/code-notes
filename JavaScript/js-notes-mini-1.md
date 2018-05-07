@@ -1,6 +1,7 @@
 # Table Of Contents
 - [Values & Types](#values-and-types)
 - [Objects](#objects)
+- [Object Contents](#object-contents)
 - [Functions](#functions)
 - [Converting Between Types](#converting-between-types)
 - [Typing and Variables](#typing-and-variables)
@@ -206,6 +207,28 @@ This may sound like a strange concept at first, so take a moment to ponder it
         newObj.c === anotherArray;  // true
         newObj.d === anotherFunction; // true
         ```
+
+# Object Contents
+As mentioned earlier, the **contents of an object consist of values** (any type) **stored at specifically named *locations*, which we call *properties***
+
+*It's important to note that while we say "contents" which implies that these values are *actually* stored inside the object, that's merely an appearance*. The **engine stores values in implementation-dependent ways**, and **may very well not store them *in* some object container**
+- What **is* stored in the container* are these **property names**, which ***act as pointers*** (technically, *references*) *to where the values are stored*
+
+    ```js
+    var myObject = {
+        a: 2
+    };
+    
+    myObject.a;		// 2
+    myObject["a"];	// 2
+    ```
+
+    - To access the value at the *location* `a` in `myObject`, we need to use either the `.` operator or the `[ ]` operator.
+        - The `.a` syntax is usually referred to as "property" access, whereas the `["a"]` syntax is usually referred to as "key" access
+        - In reality, they both access the same *location*, and will pull out the same value, `2`, so the terms can be used interchangeably
+        - We will use the most common term, "property access" from here on
+    - The `myObject[..]` property access syntax we just described is useful if you need to use a computed expression value *as* the key name, like `myObject[prefix + name]`
+
 # Functions
 
 **functions never "belong" to objects**, so **saying that a function that just happens to be accessed on an object reference is automatically a "method" seems a bit of a stretch of semantics**.
