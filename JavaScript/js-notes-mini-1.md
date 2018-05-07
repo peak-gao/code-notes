@@ -1529,11 +1529,7 @@ bar.a;  // 42 <-- delegated to `foo`
 ```
 
 It may help to visualize the `foo` and `bar` objects and their relationship:
-- The `a` property doesn't actually exist on the `bar` object, but because `bar` is prototype-linked to `foo`, JavaScript automatically falls back to looking for `a` on the `foo` object, where it's found.
-
-# Polyfilling
-
-- The word "polyfill" is an invented term (by Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) used to refer to taking the definition of a newer feature and producing a piece of code that's equivalent to the behavior, but is able to run in older JS environments
+- The `a` property doesn't actually exist on the `bar` object, but because `bar` is prototype-linked to `foo`, JavaScript automatically falls back to looking for `a` on the `foo` object, where it's found
 
 ###### Loops
 ```js
@@ -1551,7 +1547,11 @@ for (var k in myObject) {
 
 ("a" in myObject); // true
 ```
-- So, **the `[[Prototype]]` chain is consulted, one link at a time, when you perform property look-ups in various fashions**. The **look-up stops once the property is found or the chain ends**.
+- So, **the `[[Prototype]]` chain is consulted, one link at a time, when you perform property look-ups in various fashions**. The **look-up stops once the property is found or the chain ends**
+
+# Polyfilling
+
+- The word "polyfill" is an invented term (by Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) used to refer to taking the definition of a newer feature and producing a piece of code that's equivalent to the behavior, but is able to run in older JS environments
 
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
