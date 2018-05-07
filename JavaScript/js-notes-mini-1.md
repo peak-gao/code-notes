@@ -9,6 +9,7 @@
 - [Scope Closure](#scope-closure)
 - [this](#this)
 - [this and Call-site](#this-and-call-site)
+- [Lexical this with Arrow Functions](#lexical-this-with-arrow-functions)
 - [Prototpyes](#prototypes)
 - [Polyfilling](#polyfilling)
 - [Resources](#resources)
@@ -1563,7 +1564,7 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
 
 **That's it.** **That's *all it takes* to understand the rules of `this` binding for normal function calls**. Well... almost
 
-# Lexical `this`
+# Lexical this with Arrow Functions
 Normal functions abide by the 4 rules we just covered. But **ES6 introduces a special kind of function that does not use these rules: *arrow-function***.
 
 - Arrow-functions are signified not by the `function` keyword, but by the `=>` so called "fat arrow" operator
