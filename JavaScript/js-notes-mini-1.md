@@ -181,6 +181,31 @@ This may sound like a strange concept at first, so take a moment to ponder it
     - A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object
     - For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you
 
+#### Duplicating Objects
+     - A *shallow copy* would end up with `a` on the new object as a copy of the value `2`, but `b`, `c`, and `d` properties as just references to the same places as the references in the original object
+     - A *deep copy* would duplicate not only `myObject`, but `anotherObject` and `anotherArray`
+        - But then we have issues that `anotherArray` has references to `anotherObject` and `myObject` in it, so *those* should also be duplicated rather than reference-preserved
+        - Now we have an infinite circular duplication problem because of the circular reference
+
+###### Ways to Duplication an Object
+**Deep Copy**
+- Parsing a JSON object to a JS Object
+    - One subset solution is that **objects which are JSON-safe** (that is, can be serialized to a JSON string and then re-parsed to an object with the same structure and values) **can easily be *duplicated* with:**
+        ```js
+        var newObj = JSON.parse( JSON.stringify( someObj ) );
+        ```
+**Shallow Copy**
+- a **shallow copy** is fairly understandable and **has far less issues**, so **ES6 has now defined `Object.assign(..)` for this task. `Object.assign(..)`**
+    - takes a *target* object as its first parameter, and one or more *source* objects as its subsequent parameters
+    - It **iterates over all the *enumerable*** (see below), ***owned keys*** (**immediately present**) on the ***source* object(s)** and **copies them (via `=` assignment only) to *target***. It also, helpfully, **returns *target***, as you can see below:
+        ```js
+        var newObj = Object.assign( {}, myObject );
+        
+        newObj.a;						// 2
+        newObj.b === anotherObject;		// true
+        newObj.c === anotherArray;		// true
+        newObj.d === anotherFunction;	// true
+        ```
 # Functions
 
 **functions never "belong" to objects**, so **saying that a function that just happens to be accessed on an object reference is automatically a "method" seems a bit of a stretch of semantics**.
