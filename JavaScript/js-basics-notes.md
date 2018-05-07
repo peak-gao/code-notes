@@ -8,7 +8,7 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
 - a and b are called variables
 - 2 is just a value itself, called a literal value, because it stands alone without being stored in a variable
 - The = and * characters are operators
-#### Expressions
+
 - Statements are made up of one or more expressions
 - An expression is any reference to a variable or value, or a set of variable(s) and value(s) combined with operators: `a = b * 2;`
     - This statement has four expressions in it:
@@ -16,6 +16,8 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
         - b is a variable expression, which means to retrieve its current value
         - b * 2 is an arithmetic expression, which means to do the multiplication
         - a = b * 2 is an assignment expression, which means to assign the result of the b * 2 expression to the variable a (more on assignments later)
+#### Expressions
+
 #### Types
 - JavaScript has built-in types for each of these so called primitive values:
     - When you need to do math, you want a number
@@ -127,6 +129,7 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
         - That means if the condition is initially false, a while loop will never run, but a do..while loop will run just the first time
 
 # You Don't Know JS: Scope & Closures
+
 # What is Scope?
 - One of the most fundamental paradigms of nearly all programming languages is the ability to store values in variables, and later retrieve or modify those values
     - the ability to store values and pull values out of variables is what gives a program state
@@ -523,13 +526,8 @@ console.log( a ); // 2
     ```
     - The def function expression is defined in the second-half of the snippet, and then passed as a parameter (also called def) to the IIFE function defined in the first half of the snippet
     - Finally, the parameter def (the function) is invoked, passing window in as the global parameter
-
-
-
 # You Don't Know JS: this & Object Prototypes
-
 # You Don't Know JS: Types & Grammar
-
 # immediately invoked function expression (IIFE)
 - the fundamental unit of variable scoping in JavaScript has always been the function. If you needed to create a block of scope, the most prevalent way to do so other than a regular function declaration was the immediately invoked function expression (IIFE)
     ```
@@ -853,6 +851,7 @@ if (foo) {
             // ...
         }
         ```
+
 ### Functions First
 - **Both function declarations and variable declarations are hoisted**
     - **functions are hoisted first**, and then variables
@@ -1325,10 +1324,7 @@ foo2.identify(); // "foo 2"
 - By contrast, ES6 Module APIs are static (the APIs don't change at run-time)
     - Since the compiler knows that, it can (and does!) check during (file loading and) compilation that a reference to a member of an imported module's API actually exists
     - If the API reference doesn't exist, the compiler throws an "early" error at compile-time, rather than waiting for traditional dynamic run-time resolution (and errors, if any)
-
-
 # Into JavaScript
-
 You should expect to spend quite a bit of time reviewing the concepts and code examples here multiple times. Any good foundation is laid brick by brick, so don't expect that you'll immediately understand it all the first pass through.
 
 Your journey to deeply learn JavaScript starts here.
@@ -1679,7 +1675,6 @@ The `==` comparison fails for a different reason. `a == b` could fail if it's in
 **Note:** For more information about the inequality comparison rules, see section 11.8.5 of the ES5 specification and also consult Chapter 4 of the *Types & Grammar* title of this series.
 
 ## Variables
-
 In JavaScript, variable names (including function names) must be valid *identifiers*
 - The strict and complete rules for valid characters in identifiers are a little complex when you consider nontraditional characters such as Unicode
 - If you only consider typical ASCII alphanumeric characters, though, the rules are simple
@@ -1798,7 +1793,6 @@ Because of using `let` instead of `var`, `b` will belong only to the `if` statem
 - See the *ES6 & Beyond* title of this series for more information about `let` block scoping
 
 ## Conditionals
-
 In addition to the `if` statement we introduced briefly in Chapter 1, JavaScript provides a few other conditionals mechanisms that we should take a look at.
 
 Sometimes you may find yourself writing a series of `if..else..if` statements like this:
@@ -2035,7 +2029,6 @@ x;	// 42
 The `42` value gets `return`ed from the `IIFE`-named function being executed, and is then assigned to `x`.
 
 ### Closure
-
 *Closure* is one of the most important, and often least understood, concepts in JavaScript
 - I won't cover it in deep detail here, and instead refer you to the *Scope & Closures* title of this series
 - But I want to say a few things about it so you understand the general concept

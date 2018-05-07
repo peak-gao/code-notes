@@ -291,10 +291,10 @@ lets talk about *how* `this` mechanism really works.
 To understand `this` binding, we have to understand the **call-*site***: the ***location* in code where a function is *called*** (**not where it's declared**)
 - We must inspect the call-site to answer the question: what's *this* `this` a reference to?
 - Finding the: "go locate where a function is called from"
-    - but it's not always that easy; certain coding patterns can obscure the *true* call-site.
+    - but it's not always that easy; certain coding patterns can obscure the *true* call-site
 
 **call-*stack*** is the stack of functions that have been called to get us to the current moment in execution
-- The call-site we care about is *in* the invocation *before* the currently executing function.
+    - The call-site we care about is *in* the invocation *before* the currently executing function
 
 Let's demonstrate **call-stack** and **call-*site***:
 
@@ -335,7 +335,7 @@ You can visualize a call-stack in your mind by looking at the chain of function 
     - Most modern desktop browsers have built-in developer tools, which includes a JS debugger
     - In the above snippet, you could have set a breakpoint in the tools for the first line of the `foo()` function, or simply inserted the `debugger;` statement on that first line
     - When you run the page, the debugger will pause at this location, and will show you a list of the functions that have been called to get to that line, which will be your call stack
-    - So, if you're trying to diagnose `this` binding, use the developer tools to get the call-stack, then find the second item from the top, and that will show you the real call-site.
+    - So, if you're trying to diagnose `this` binding, use the developer tools to get the call-stack, then find the second item from the top, and that will show you the real call-site
 
 ## Nothing But Rules
 

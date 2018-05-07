@@ -1297,7 +1297,6 @@ fred.login( "fred", "12Battery34!" );
 # this
 - this is a special identifier keyword that's automatically defined in the scope of every function
 - While it may often seem that `this` is related to "object-oriented patterns," in JS `this` is a different mechanism
-
 - `this` does **not** refer to
     -  the **function itself**
         - To reference a function object from inside itself, `this` by itself will typically be insufficient
@@ -1354,16 +1353,62 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
 - allow functions to be re-used against multiple *context* (`me` and `you`) objects, rather than needing a separate version of the function for each object
     - Instead of relying on `this`, you could have explicitly passed in a context object to both
 
+# this and Call-site
+- To understand `this` binding, we have to understand the **call-*site***: the ***location* in code where a function is *called*** (**not where it's declared**)
+- We must inspect the call-site to answer the question: what's *this* `this` a reference to?
+    - but it's not always that easy; certain coding patterns can obscure the *true* call-site
+- **call-*stack*** is the **stack of functions that have been called to get us to the current moment in execution**
+    - The call-site we care about is *in* the invocation *before* the currently executing function
+- *how* the call-*site* **determines where `this` will point during the execution of a function**
+    - You must **inspect the call-site and determine which of 4 rules applies**
+- 4 Rules for inspecting the call-site:
+
+**Default Binding**
+- default catch-all rule when none of the other rules apply
+
+**Implicit Binding**
+- does the call-site have a *context object***, also referred to as an **owning** or **containing** object
+
+**Explicit Binding**
+- allows us to force its `this` to reference a certain object.  using call() for example
+
+**Hard Binding**
+- using a hard-bound function produced by using the bind() method
+- **creates a *pass-thru* of any arguments passed** and **any return value received**
+
 # Prototypes
 - When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on
+- **Objects** in JavaScript **have an internal property**, denoted in the specification as `[[Prototype]]`, which is **simply a reference to another object**.
+    - Almost all objects are given a non-`null` value for this property, at the time of their creation
+- the `[[Get]]` operation that is invoked when you reference a property on an object such as `myObject.a`
+    - For that default `[[Get]]` operation, the **first step is to check if the object itself has a property `a` on it, and if so, it's used**
+    - ***`[[Get]]` operation proceeds to follow the `[[Prototype]]` **link** of the object if it cannot find the requested property on the object directly***
+    - **This process continues until either a matching property name is found**, *or* **the `[[Prototype]]` chain ends**. **If no matching property is *ever* found by the end of the chain**, the return **result** from the `[[Get]]` operation is **`undefined`**
     - You could think of this almost as a fallback if the property is missing
-
 - The internal prototype reference linkage from one object to its fallback happens at the time the object is created
     - The simplest way to illustrate it is with a built-in utility called `Object.create(..)`
+- if you use a `for..in` loop to iterate over an object, any property that can be reached via its chain (and is also `enumerable` -- see Chapter 3) will be enumerated
+- if a property is not found on the prototype chain, it'll add the property to the object.  For example `myObject.a`, if a is not found, it'll add an `a` prop to `myObject`
 - a more natural way of applying prototypes is a pattern called "behavior delegation," where you intentionally design your linked objects to be able to *delegate* from one to the other for parts of the needed behavior
 
 
 **Examples**
+###### Basic Example 1
+```js
+var anotherObject = {
+    a: 2
+};
+
+// create an object linked to `anotherObject`
+var myObject = Object.create( anotherObject );
+
+myObject.a; // 2
+```
+- **`myObject` is now `[[Prototype]]` linked to `anotherObject`**
+    - Clearly `myObject.a` doesn't actually exist, but nevertheless, the property access succeeds (being found on `anotherObject` instead) and indeed finds the value `2`
+    - But, if `a` weren't found on `anotherObject` either, its `[[Prototype]]` chain, if non-empty, is again consulted and followed
+
+###### Basic Example 2
 ```js
 var foo = {
     a: 42
@@ -1384,6 +1429,24 @@ It may help to visualize the `foo` and `bar` objects and their relationship:
 # Polyfilling
 
 - The word "polyfill" is an invented term (by Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) used to refer to taking the definition of a newer feature and producing a piece of code that's equivalent to the behavior, but is able to run in older JS environments
+
+###### Loops
+```js
+var anotherObject = {
+    a: 2
+};
+
+// create an object linked to `anotherObject`
+var myObject = Object.create( anotherObject );
+
+for (var k in myObject) {
+    console.log("found: " + k);
+}
+// found: a
+
+("a" in myObject); // true
+```
+- So, **the `[[Prototype]]` chain is consulted, one link at a time, when you perform property look-ups in various fashions**. The **look-up stops once the property is found or the chain ends**.
 
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
