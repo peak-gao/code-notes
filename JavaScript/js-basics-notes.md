@@ -69,59 +69,59 @@ the info in the **You Don't Know JS** sections are shortened notes.  Those are v
 - A variable name has to be unique within the same scope
 - a scope can be nested inside another scope
     - **If one scope is nested inside another, code inside the innermost scope can access variables from either scope**
-        ```
+        ```js
         function outer() {
-        	var a = 1;
+            var a = 1;
         
-        	function inner() {
-        		var b = 2;
+            function inner() {
+                var b = 2;
         
-        		// we can access both `a` and `b` here
-        		console.log( a + b );   // 3
-        	}
+                // we can access both `a` and `b` here
+                console.log( a + b );   // 3
+            }
         
-        	inner();
+            inner();
         
-        	// we can only access `a` here
-        	console.log( a );   // 1
+            // we can only access `a` here
+            console.log( a );   // 1
         }
         
         outer();
         ```
         - **Lexical scope** rules say that *code in one scope can access variables of either that scope or any scope outside of it*
             - code inside the inner() function has access to both variables a and b, but code in outer() has access only to a -- it cannot access b because that variable is only inside inner()
-        ```
+        ```js
         const TAX_RATE = 0.08;
         
         function calculateFinalPurchaseAmount(amt) {
-        	// calculate the new amount with the tax
-        	amt = amt + (amt * TAX_RATE);
+            // calculate the new amount with the tax
+            amt = amt + (amt * TAX_RATE);
         
-        	// return the new amount
-        	return amt;
+            // return the new amount
+            return amt;
         }
         ```
         - The TAX_RATE constant (variable) is accessible from inside the calculateFinalPurchaseAmount(..) function, even though we didn't pass it in, because of lexical scope
 
 #### Loops
 - while loop & do..while loop illustrate repeating a block of statements until a condition no longer evaluates to true:
-    ```
+    ```js
     while (numOfCustomers > 0) {
-    	console.log( "How may I help you?" );
+        console.log( "How may I help you?" );
     
-    	// help the customer...
+            // help the customer...
     
-    	numOfCustomers = numOfCustomers - 1;
+            numOfCustomers = numOfCustomers - 1;
     }
     
     // versus:
     
     do {
-    	console.log( "How may I help you?" );
+        console.log( "How may I help you?" );
     
-    	// help the customer...
+        // help the customer...
     
-    	numOfCustomers = numOfCustomers - 1;
+        numOfCustomers = numOfCustomers - 1;
     } while (numOfCustomers > 0);
     ```
     - The only difference between these loops is whether the conditional is tested before the first iteration (while) or after the first iteration (do..while)
@@ -172,7 +172,7 @@ this section is extensive so read about it [here](https://github.com/getify/You-
 - Scope is the set of rules that determines where and how a variable (identifier) can be looked-up
 - Just as a block or function is nested inside another block or function, scopes are nested inside other scopes
     - So, if a variable cannot be found in the immediate scope, Engine consults the next outer containing scope, continuing until found or until the outermost (aka, global) scope has been reached
-        ```
+        ```js
         function foo(a) {
             console.log( a + b );
         }
@@ -202,8 +202,8 @@ this section is extensive so read about it [here](https://github.com/getify/You-
 - there are some ways to cheat lexical scope, thereby modifying it after the lexer has passed by, but these are frowned upon
     - It is considered best practice to treat lexical scope as, in fact, lexical-only, and thus entirely author-time in nature
 
- **Example**
- ```
+**Example**
+```js
 function foo(a) {
 
     var b = a * 2;
@@ -251,16 +251,16 @@ foo( 2 ); // 2 4 12
 - eval(..) allows you to modify the lexical scope environment by cheating and pretending that author-time (aka, lexical) code was there all along
 - On subsequent lines of code after an eval(..) has executed, the Engine will not "know" or "care" that the previous code in question was dynamically interpreted and thus modified the lexical scope environment
     - The Engine will simply perform its lexical scope look-ups as it always does
-    ```
-    function foo(str, a) {
-        eval( str ); // cheating!
-        console.log( a, b );
-    }
-    
-    var b = 2;
-    
-    foo( "var b = 3;", 1 ); // 1 3
-    ```
+        ```js
+        function foo(str, a) {
+            eval( str ); // cheating!
+            console.log( a, b );
+        }
+        
+        var b = 2;
+        
+        foo( "var b = 3;", 1 ); // 1 3
+        ```
     - The string "var b = 3;" is treated, at the point of the eval(..) call, as code that was there all along
     - Because that code happens to declare a new variable b, it modifies the existing lexical scope of foo(..)
         - In fact, as mentioned above, this code actually creates variable b inside of foo(..) that shadows the b that was declared in the outer (global) scope
@@ -271,7 +271,7 @@ foo( 2 ); // 2 4 12
     - But in either case, ***eval(..) can at runtime modify an author-time lexical scope***
 
     **Note:** eval(..) when used in a strict-mode program operates in its own lexical scope, which means declarations made inside of the eval() do not actually modify the enclosing scope.
-    ```
+    ```js
     function foo(str) {
        "use strict";
        eval( str );
@@ -293,27 +293,27 @@ foo( 2 ); // 2 4 12
 - **what exactly makes a new bubble?** Is it only the function? Can other structures in JavaScript create bubbles of scope?
 - The most common answer to those questions is that JavaScript has function-based scope
     - That is, **each function you declare creates a bubble for itself, but no other structures create their own scope bubbles **
-```
-function foo(a) {
-	var b = 2;
-
-	// some code
-
-	function bar() {
-		// ...
-	}
-
-	// more code
-
-	var c = 3;
-}
-```
+        ```js
+        function foo(a) {
+            var b = 2;
+        
+            // some code
+        
+            function bar() {
+                // ...
+            }
+        
+            // more code
+        
+            var c = 3;
+        }
+        ```
 - the scope bubble for foo(..) includes a, b, c and bar
 - **It doesn't matter *where*** in the scope a declaration appears, the variable or function belongs to the containing scope bubble, regardless
 - bar(..) has its own scope bubble. So does the global scope, which has just one identifier attached to it: foo
 - Because a, b, c, and bar all belong to the scope bubble of foo(..), they are not accessible outside of foo(..)
 - so the following code would all result in ReferenceError errors, as the identifiers are not available to the global scope:
-    ```
+    ```js
     bar(); // fails
     console.log( a, b, c ); // all 3 fail
     ```
@@ -328,15 +328,15 @@ function foo(a) {
 - Why would "hiding" variables and functions be a useful technique?
     - There's a variety of reasons motivating this scope-based hiding
     - If all variables and functions were in the global scope, they would of course be accessible to any nested scope. But this would violate the "Least..." principle in that you are (likely) exposing many variables or functions which you should otherwise keep private, as proper use of the code would discourage access to those variables/functions:
-        ```
+        ```js
         function doSomething(a) {
-        	b = a + doSomethingElse( a * 2 );
+            b = a + doSomethingElse( a * 2 );
         
-        	console.log( b * 3 );
+            console.log( b * 3 );
         }
         
         function doSomethingElse(a) {
-        	return a - 1;
+            return a - 1;
         }
         
         var b;
@@ -346,17 +346,17 @@ function foo(a) {
         - the b variable and the doSomethingElse(..) function are "private" details of how doSomething(..) does its job
         - Giving the enclosing scope "access" to b and doSomethingElse(..) is not only unnecessary but also possibly "dangerous", in that they may be used in unexpected ways
         - A more "proper" design would hide these private details inside the scope of doSomething(..), such as:
-        ```
+        ```js
         function doSomething(a) {
-        	function doSomethingElse(a) {
-        		return a - 1;
-        	}
+            function doSomethingElse(a) {
+                return a - 1;
+            }
         
-        	var b;
+            var b;
         
-        	b = a + doSomethingElse( a * 2 );
+            b = a + doSomethingElse( a * 2 );
         
-        	console.log( b * 3 );
+            console.log( b * 3 );
         }
         
         doSomething( 2 ); // 15
@@ -366,16 +366,16 @@ function foo(a) {
  #### Collision Avoidance
         - Another benefit of "hiding" variables and functions inside a scope is to avoid unintended collision between two different identifiers with the same name but different intended usages
         - Collision results often in unexpected overwriting of values:
-        ```
+        ```js
         function foo() {
-        	function bar(a) {
-        		i = 3; // changing the `i` in the enclosing scope's for-loop
-        		console.log( a + i );
-        	}
+            function bar(a) {
+                i = 3; // changing the `i` in the enclosing scope's for-loop
+                console.log( a + i );
+            }
         
-        	for (var i=0; i<10; i++) {
-        		bar( i * 2 ); // oops, infinite loop ahead!
-        	}
+            for (var i=0; i<10; i++) {
+                bar( i * 2 ); // oops, infinite loop ahead!
+            }
         }
         
         foo();
@@ -386,39 +386,39 @@ function foo(a) {
         - var i = 3; would fix the problem (and would create the previously mentioned "shadowed variable" declaration for i)
         - An additional, not alternate, option is to pick another identifier name entirely, such as var j = 3;
         - But your software design may naturally call for the same identifier name, so utilizing scope to "hide" your inner declaration is your best/only option in that case
+
   #### Global "Namespaces"
   - A particularly strong example of (likely) variable collision occurs in the global scope
   - Multiple libraries loaded into your program can quite easily collide with each other if they don't properly hide their internal/private functions and variables
   - Such libraries typically will create a single variable declaration, often an object, with a sufficiently unique name, in the global scope
   - This object is then used as a "namespace" for that library, where all specific exposures of functionality are made as properties of that object (namespace), rather than as top-level lexically scoped identifiers themselves
-  ```
-  var MyReallyCoolLibrary = {
-  	awesome: "stuff",
-  	doSomething: function() {
-  		// ...
-  	},
-  	doAnotherThing: function() {
-  		// ...
-  	}
-  };
-  ```
-  #### Module Management
-  - Another option for collision avoidance is the more modern "module" approach, using any of various dependency managers
-  - Using these tools, no libraries ever add any identifiers to the global scope, but are instead required to have their identifier(s) be explicitly imported into another specific scope through usage of the dependency manager's various mechanisms
-  - It should be observed that these tools do not possess "magic" functionality that is exempt from lexical scoping rules
-  - They simply use the rules of scoping as explained here to enforce that no identifiers are injected into any shared scope, and are instead kept in private, non-collision-susceptible scopes, which prevents any accidental scope collisions
-  - As such, you can code defensively and achieve the same results as the dependency managers do without actually needing to use them, if you so choose. See the Chapter 5 for more information about the module pattern
+        ```js
+        var MyReallyCoolLibrary = {
+            awesome: "stuff",
+            doSomething: function() {
+                // ...
+            },
+            doAnotherThing: function() {
+                // ...
+            }
+        };
+        ```
+#### Module Management
+- Another option for collision avoidance is the more modern "module" approach, using any of various dependency managers
+- Using these tools, no libraries ever add any identifiers to the global scope, but are instead required to have their identifier(s) be explicitly imported into another specific scope through usage of the dependency manager's various mechanisms
+- It should be observed that these tools do not possess "magic" functionality that is exempt from lexical scoping rules
+- They simply use the rules of scoping as explained here to enforce that no identifiers are injected into any shared scope, and are instead kept in private, non-collision-susceptible scopes, which prevents any accidental scope collisions
+- As such, you can code defensively and achieve the same results as the dependency managers do without actually needing to use them, if you so choose. See the Chapter 5 for more information about the module pattern
 
 ## Functions As Scopes
 - remember that we can take any snippet of code and wrap a function around it, and that effectively "hides" any enclosed variable or function declarations from the outside scope inside that function's inner scope:
-
-    ```
+    ```js
     var a = 2;
     
     function foo() { // <-- insert this
     
-    	var a = 3;
-    	console.log( a ); // 3
+        var a = 3;
+        console.log( a ); // 3
     
     } // <-- and this
     foo(); // <-- and this
@@ -431,13 +431,13 @@ function foo(a) {
         - we also have to explicitly call the function by name (foo()) so that the wrapped code actually executes
         - It would be more ideal if the function didn't need a name (or, rather, the name didn't pollute the enclosing scope), and if the function could automatically be executed
         - JavaScript offers a solution to both problems:
-            ```
+            ```js
             var a = 2;
             
             (function foo(){ // <-- insert this
             
-            	var a = 3;
-            	console.log( a ); // 3
+                var a = 3;
+                console.log( a ); // 3
             
             })(); // <-- and this
             
@@ -449,8 +449,8 @@ function foo(a) {
             - The key difference we can observe here between a function declaration and a function expression relates to where its name is bound as an identifier
             - Compare the previous two snippets. In the first snippet, the name foo is bound in the enclosing scope, and we call it directly with foo(). In the second snippet, the name foo is not bound in the enclosing scope, but instead is bound only inside of its own function
             - In other words, (function foo(){ .. }) as an expression means the identifier foo is found only in the scope where the .. indicates, not in the outer scope. Hiding the name foo inside itself means it does not pollute the enclosing scope unnecessarily
-  ### Anonymous vs. Named
-  Anonymous functions are quick and easy to type, and many libraries and tools tend to encourage this idiomatic style of code. However, they have several draw-backs to consider:
+### Anonymous vs. Named
+Anonymous functions are quick and easy to type, and many libraries and tools tend to encourage this idiomatic style of code. However, they have several draw-backs to consider:
 1. Anonymous functions have no useful name to display in stack traces, which can make debugging more difficult.
 
 2. Without a name, if the function needs to refer to itself, for recursion, etc., the deprecated arguments.callee reference is unfortunately required. Another example of needing to self-reference is when an event handler function wants to unbind itself after it fires.
@@ -458,37 +458,35 @@ function foo(a) {
 3. Anonymous functions omit a name that is often helpful in providing more readable/understandable code. A descriptive name helps self-document the code in question
 
 - Providing a name for your function expression quite effectively addresses all these draw-backs, but has no tangible downsides. The best practice is to always name your function expressions:
-```
-setTimeout( function timeoutHandler(){ // <-- Look, I have a name!
-	console.log( "I waited 1 second!" );
-}, 1000 );
-```
+    ```js
+    setTimeout( function timeoutHandler(){ // <-- Look, I have a name!
+        console.log( "I waited 1 second!" );
+    }, 1000 );
+    ```
 - IIFE's don't need names, necessarily -- the most common form of IIFE is to use an anonymous function expression. While certainly less common, naming an IIFE has all the aforementioned benefits over anonymous function expressions, so it's a good practice to adopt
-```
-var a = 2;
-
-(function IIFE(){
-
-	var a = 3;
-	console.log( a ); // 3
-
-})();
-
-console.log( a ); // 2
-```
+    ```js
+    var a = 2;
+    
+    (function IIFE(){
+        var a = 3;
+        console.log( a ); // 3
+    
+    })();
+    
+    console.log( a ); // 2
+    ```
 - There's a slight variation on the traditional IIFE form, which some prefer: (function(){ .. }()):
     - In the first form above, the function expression is wrapped in ( ), and then the invoking () pair is on the outside right after it
     - In the second form, the invoking () pair is moved to the inside of the outer ( ) wrapping pair
     - It's purely a stylistic choice which you prefer
 - Another variation on IIFE's which is quite common is to use the fact that they are, in fact, just function calls, and pass in argument(s)
-    ```
+    ```js
     var a = 2;
     
     (function IIFE( global ){
-    
-    	var a = 3;
-    	console.log( a ); // 3
-    	console.log( global.a ); // 2
+        var a = 3;
+        console.log( a ); // 3
+        console.log( global.a ); // 2
     
     })( window );
     
@@ -497,40 +495,40 @@ console.log( a ); // 2
     - We pass in the window object reference, but we name the parameter global, so that we have a clear stylistic delineation for global vs. non-global references
 - Another application of this pattern addresses the (minor niche) concern that the default undefined identifier might have its value incorrectly overwritten, causing unexpected results
     - By naming a parameter undefined, but not passing any value for that argument, we can guarantee that the undefined identifier is in fact the undefined value in a block of code:
-    ```
-    undefined = true; // setting a land-mine for other code! avoid!
-    
-    (function IIFE( undefined ){
-    
-    	var a;
-    	if (a === undefined) {
-    		console.log( "Undefined is safe here!" );
-    	}
-    
-    })();
-    ```
+        ```js
+        undefined = true; // setting a land-mine for other code! avoid!
+        
+        (function IIFE( undefined ){
+        
+            var a;
+            if (a === undefined) {
+                console.log( "Undefined is safe here!" );
+            }
+        
+        })();
+        ```
 - another variation of the IIFE inverts the order of things, where the function to execute is given second, after the invocation and parameters to pass to it
     - This pattern is used in the UMD (Universal Module Definition) project. Some people find it a little cleaner to understand, though it is slightly more verbose:
-    ```
-    var a = 2;
-    
-    (function IIFE( def ){
-    	def( window );
-    })(function def( global ){
-    
-    	var a = 3;
-    	console.log( a ); // 3
-    	console.log( global.a ); // 2
-    
-    });
-    ```
-    - The def function expression is defined in the second-half of the snippet, and then passed as a parameter (also called def) to the IIFE function defined in the first half of the snippet
-    - Finally, the parameter def (the function) is invoked, passing window in as the global parameter
+        ```js
+        var a = 2;
+        
+        (function IIFE( def ){
+            def( window );
+        })(function def( global ){
+        
+            var a = 3;
+            console.log( a ); // 3
+            console.log( global.a ); // 2
+        
+        });
+        ```
+        - The def function expression is defined in the second-half of the snippet, and then passed as a parameter (also called def) to the IIFE function defined in the first half of the snippet
+        - Finally, the parameter def (the function) is invoked, passing window in as the global parameter
 # You Don't Know JS: this & Object Prototypes
 # You Don't Know JS: Types & Grammar
 # immediately invoked function expression (IIFE)
 - the fundamental unit of variable scoping in JavaScript has always been the function. If you needed to create a block of scope, the most prevalent way to do so other than a regular function declaration was the immediately invoked function expression (IIFE)
-    ```
+    ```js
     var a = 2;
     
     (function IIFE(){
@@ -542,7 +540,7 @@ console.log( a ); // 2
     ```
 - **However, we can now create declarations that are bound to any block, called (unsurprisingly) block scoping**
     - This means all we need is a pair of { .. } to create a scope. Instead of using var, which always declares variables attached to the enclosing function (or global, if top level) scope, use let:
-        ```
+        ```js
         var a = 2;
         
         {
@@ -555,32 +553,34 @@ console.log( a ); // 2
 ## Blocks As Scopes
 - While functions are the most common, other units of scope are possible, and the usage of these other scope units can lead to even better, cleaner to maintain code
 
-Block Scope Example 1:
-```
+**Block Scope Example 1**
+```js
 for (var i=0; i<10; i++) {
-	console.log( i );
+    console.log( i );
 }
 ```
 - We declare the variable i directly inside the for-loop head, most likely because our intent is to use i only within the context of that for-loop, and essentially ignore the fact that the variable actually scopes itself to the enclosing scope (function or global)
 - That's what block-scoping is all about. Declaring variables as close as possible, as local as possible, to where they will be used
-Block Scope Example 2:
-```
+
+**Block Scope Example 2**
+```js
 var foo = true;
 
 if (foo) {
-	var bar = foo * 2;
-	bar = something( bar );
-	console.log( bar );
+    var bar = foo * 2;
+    bar = something( bar );
+    console.log( bar );
 }
 ```
 - We are using a bar variable only in the context of the if-statement, so it makes a kind of sense that we would declare it inside the if-block
     - However, where we declare variables is not relevant when using var, because they will always belong to the enclosing scope
     - This snippet is essentially "fake" block-scoping, for stylistic reasons, and relying on self-enforcement not to accidentally use bar in another place in that scope
     - Block scope is a tool to extend information hiding via functions to hiding information further in blocks of our code
-Example 3:
-```
+
+**Example 3**
+```js
 for (var i=0; i<10; i++) {
-	console.log( i );
+  console.log( i );
 }
 ```
 - Why pollute the entire scope of a function with the i variable that is only going to be (or only should be, at least) used for the for-loop?
@@ -588,16 +588,16 @@ for (var i=0; i<10; i++) {
 - This helps ensure variables are not re-used in confusing or hard-to-maintain ways
 ### try/catch
 - variable declaration in the catch clause of a try/catch to be block-scoped to the catch block
-```
-try {
-	undefined(); // illegal operation to force an exception!
-}
-catch (err) {
-	console.log( err ); // works!
-}
-
-console.log( err ); // ReferenceError: `err` not found
-```
+    ```js
+    try {
+        undefined(); // illegal operation to force an exception!
+    }
+    catch (err) {
+        console.log( err ); // works!
+    }
+    
+    console.log( err ); // ReferenceError: `err` not found
+    ```
 - err exists only in the catch clause, and throws an error when you try to reference it elsewhere
 
 ### let
@@ -605,28 +605,28 @@ console.log( err ); // ReferenceError: `err` not found
 - ES6 changes that, and introduces a new keyword let which sits alongside var as another way to declare variables
 - let keyword attaches the variable declaration to the scope of whatever block (commonly a { .. } pair) it's contained in
     - In other words, let implicitly hijacks any block's scope for its variable declaration:
-        ```
+        ```js
         var foo = true;
         
         if (foo) {
-        	let bar = foo * 2;
-        	bar = something( bar );
-        	console.log( bar );
+            let bar = foo * 2;
+            bar = something( bar );
+            console.log( bar );
         }
         
         console.log( bar ); // ReferenceError
         ```
         - Using let to attach a variable to an existing block is somewhat implicit. It can confuse you if you're not paying close attention to which blocks have variables scoped to them, and are in the habit of moving blocks around, wrapping them in other blocks, etc., as you develop and evolve code
         - Creating explicit blocks for block-scoping can address some of these concerns, making it more obvious where variables are attached and not. Usually, explicit code is preferable over implicit or subtle code. This explicit block-scoping style is easy to achieve, and fits more naturally with how block-scoping works in other languages:
-            ```
+            ```js
             var foo = true;
             
             if (foo) {
-            	{ // <-- explicit block
-            		let bar = foo * 2;
-            		bar = something( bar );
-            		console.log( bar );
-            	}
+                { // <-- explicit block
+                    let bar = foo * 2;
+                    bar = something( bar );
+                    console.log( bar );
+                }
             }
             
             console.log( bar ); // ReferenceError
@@ -634,43 +634,43 @@ console.log( err ); // ReferenceError: `err` not found
             - We can create an arbitrary block for let to bind to by simply including a { .. } pair anywhere a statement is valid grammar
             - In this case, we've made an explicit block inside the if-statement, which may be easier as a whole block to move around later in refactoring, without affecting the position and semantics of the enclosing if-statement
 - declarations made with let will not hoist to the entire scope of the block they appear in. Such declarations will not observably "exist" in the block until the declaration statement:
-```
-{
-   console.log( bar ); // ReferenceError!
-   let bar = 2;
-}
-```
+    ```js
+    {
+       console.log( bar ); // ReferenceError!
+       let bar = 2;
+    }
+    ```
 ### Garbage Collection
 - block-scoping is useful as it relates to closures and garbage collection to reclaim memory
-```
-function process(data) {
-	// do something interesting
-}
-
-var someReallyBigData = { .. };
-
-process( someReallyBigData );
-
-var btn = document.getElementById( "my_button" );
-
-btn.addEventListener( "click", function click(evt){
-	console.log("button clicked");
-}, /*capturingPhase=*/false );
-```
+    ```js
+    function process(data) {
+        // do something interesting
+    }
+    
+    var someReallyBigData = { .. };
+    
+    process( someReallyBigData );
+    
+    var btn = document.getElementById( "my_button" );
+    
+    btn.addEventListener( "click", function click(evt){
+        console.log("button clicked");
+    }, /*capturingPhase=*/false );
+    ```
 - The click function click handler callback doesn't need the someReallyBigData variable at all
     - That means, theoretically, after process(..) runs, the big memory-heavy data structure could be garbage collected
     - However, it's quite likely (though implementation dependent) that the JS engine will still have to keep the structure around, since the click function has a closure over the entire scope
     - Block-scoping can address this concern, making it clearer to the engine that it does not need to keep someReallyBigData around:
-        ```
+        ```js
         function process(data) {
-        	// do something interesting
+            // do something interesting
         }
 
         // anything declared inside this block can go away after!
         {
-        	let someReallyBigData = { .. };
+            let someReallyBigData = { .. };
         
-        	process( someReallyBigData );
+            process( someReallyBigData );
         }
         
         var btn = document.getElementById( "my_button" );
@@ -682,76 +682,76 @@ btn.addEventListener( "click", function click(evt){
 - Declaring explicit blocks for variables to locally bind to is a powerful tool that you can add to your code toolbox
 #### let Loops
 - A particular case where let shines is in the for-loop case
-```
-for (let i=0; i<10; i++) {
-	console.log( i );
-}
-
-console.log( i ); // ReferenceError
-```
+    ```js
+    for (let i=0; i<10; i++) {
+        console.log( i );
+    }
+    
+    console.log( i ); // ReferenceError
+    ```
 - Not only does let in the for-loop header bind the i to the for-loop body, but in fact, it **re-binds** it to each iteration of the loop, making sure to re-assign it the value from the end of the previous loop iteration
 - Here's another way of illustrating the per-iteration binding behavior that occurs:
-```
-{
-	let j;
-	for (j=0; j<10; j++) {
-		let i = j; // re-bound for each iteration!
-		console.log( i );
-	}
-}
-```
-- let declarations attach to arbitrary blocks rather than to the enclosing function's scope (or global), there can be gotchas where existing code has a hidden reliance on function-scoped var declarations, and replacing the var with let may require additional care when refactoring code:
-```
-var foo = true, baz = 10;
-
-if (foo) {
-	var bar = 3;
-
-	if (baz > bar) {
-		console.log( baz );
-	}
-
-	// ...
-}
-```
-- This code is fairly easily re-factored as:
+    ```js
+    {
+        let j;
+        for (j=0; j<10; j++) {
+            let i = j; // re-bound for each iteration!
+            console.log( i );
+        }
+    }
     ```
+- let declarations attach to arbitrary blocks rather than to the enclosing function's scope (or global), there can be gotchas where existing code has a hidden reliance on function-scoped var declarations, and replacing the var with let may require additional care when refactoring code:
+    ```js
     var foo = true, baz = 10;
     
     if (foo) {
-    	var bar = 3;
+        var bar = 3;
     
-    	// ...
+        if (baz > bar) {
+            console.log( baz );
+        }
+    
+        // ...
+    }
+    ```
+- This code is fairly easily re-factored as:
+    ```js
+    var foo = true, baz = 10;
+    
+    if (foo) {
+        var bar = 3;
+    
+        // ...
     }
     
     if (baz > bar) {
-    	console.log( baz );
+        console.log( baz );
     }
     ```
     - be careful of such changes when using block-scoped variables:
-        ```
+        ```js
         var foo = true, baz = 10;
         
         if (foo) {
-        	let bar = 3;
+            let bar = 3;
         
-        	if (baz > bar) { // <-- don't forget `bar` when moving!
-        		console.log( baz );
-        	}
+            if (baz > bar) { // <-- don't forget `bar` when moving!
+                console.log( baz );
+            }
         }
         ```
 ### const
 - also creates a block-scoped variable, but whose value is fixed (constant)
     - Any attempt to change that value at a later time results in an error
-        ```
+        ```js
         var foo = true;
         
         if (foo) {
-        	var a = 2;
-        	const b = 3; // block-scoped to the containing `if`
+            var a = 2;
+            const b = 3; // block-scoped to the containing `if`
         
-        	a = 3; // just fine!
-        	b = 4; // error!
+            a = 3; // just fine!
+            b = 4; // error!
         }
         
         console.log( a ); // 3
@@ -762,16 +762,16 @@ if (foo) {
 ### Chicken Or The Egg?
 - There's a temptation to think that all of the code you see in a JavaScript program is interpreted line-by-line, top-down in order, as the program executes
     - While that is substantially true, there's one part of that assumption which can lead to incorrect thinking about your program:
-        ```
+        ```js
         a = 2;
         var a;
         console.log( a );
         ```
         - Many developers would expect undefined to be printed, since the var a statement comes after the a = 2, and it would seem natural to assume that the variable is re-defined, and thus assigned the default undefined. However, the output will be 2
-        ```
-        console.log( a );
-        var a = 2;
-        ```
+            ```js
+            console.log( a );
+            var a = 2;
+            ```
         - You might be tempted to assume that, since the previous snippet exhibited some less-than-top-down looking behavior, perhaps in this snippet, 2 will also be printed
         - Others may think that since the a variable is used before it is declared, this must result in a ReferenceError being thrown
         - Unfortunately, both guesses are incorrect. undefined is the output
@@ -783,18 +783,19 @@ if (foo) {
         - The first statement, the declaration, is processed during the compilation phase
         - The second statement, the assignment, is left in place for the execution phase
         - Our first snippet then should be thought of as being handled like this:
-            ```
+            ```js
             var a;
             ```
+            ```js
             a = 2;
             console.log( a );
             ```
             - the first part is the compilation and the second part is the execution
         - our second snippet is actually processed as:
-            ```
+            ```js
             var a;
             ```
-            ```
+            ```js
             console.log( a );
             a = 2;
             ```
@@ -802,7 +803,7 @@ if (foo) {
     - In other words, the egg (declaration) comes before the chicken (assignment)
 - **Only the declarations themselves are hoisted, while any assignments or other executable logic are left *in place***
     - If hoisting were to re-arrange the executable logic of our code, that could wreak havoc
-        ```
+        ```js
         foo();
         
         function foo() {
@@ -815,7 +816,7 @@ if (foo) {
 - hoisting is per-scope
     - while our previous snippets were simplified in that they only included global scope, the foo(..) function we are now examining itself exhibits that var a is hoisted to the top of foo(..) (not, obviously, to the top of the program)
         - So the program can perhaps be more accurately interpreted like this:
-            ```
+            ```js
             function foo() {
                 var a;
             
@@ -831,16 +832,16 @@ if (foo) {
             - So, foo() is attempting to invoke the undefined value, which is a TypeError illegal operation
 - **Function *declarations* are hoisted, as we just saw. But function *expressions* are not**
     - even if it's a named function expression, the name identifier is not available in the enclosing scope:
-    ```
-    foo(); // TypeError
-    bar(); // ReferenceError
-    
-    var foo = function bar() {
-        // ...
-    };
-    ```
-    - This snippet is more accurately interpreted (with hoisting) as:
+        ```js
+        foo(); // TypeError
+        bar(); // ReferenceError
+        
+        var foo = function bar() {
+            // ...
+        };
         ```
+    - This snippet is more accurately interpreted (with hoisting) as:
+        ```js
         var foo;
         
         foo(); // TypeError
@@ -855,51 +856,51 @@ if (foo) {
 ### Functions First
 - **Both function declarations and variable declarations are hoisted**
     - **functions are hoisted first**, and then variables
-```
-foo(); // 1
-
-var foo;
-
-function foo() {
-	console.log( 1 );
-}
-
-foo = function() {
-	console.log( 2 );
-};
-```
+        ```js
+        foo(); // 1
+        
+        var foo;
+        
+        function foo() {
+            console.log( 1 );
+        }
+        
+        foo = function() {
+            console.log( 2 );
+        };
+        ```
 - 1 is printed instead of 2! This snippet is interpreted by the Engine as:
-```
-function foo() {
-	console.log( 1 );
-}
-
-foo(); // 1
-
-foo = function() {
-	console.log( 2 );
-};
-```
+    ```js
+    function foo() {
+        console.log( 1 );
+    }
+    
+    foo(); // 1
+    
+    foo = function() {
+        console.log( 2 );
+    };
+    ```
 - Notice that var foo was the duplicate (and thus ignored) declaration, even though it came before the function foo()... declaration, because function declarations are hoisted before normal variables
 - While multiple/duplicate var declarations are effectively ignored, subsequent function declarations do override previous ones
-    ```
+    ```js
     foo(); // 3
     
     function foo() {
-    	console.log( 1 );
+        console.log( 1 );
     }
     
     var foo = function() {
-    	console.log( 2 );
+        console.log( 2 );
     };
     
     function foo() {
-    	console.log( 3 );
+        console.log( 3 );
     }
     ```
     - it highlights the fact that duplicate definitions in the same scope are a really bad idea and will often lead to confusing results
 - **Function declarations that appear inside of normal blocks typically hoist to the enclosing scope, rather than being conditional**
-    ```
+    ```js
     foo(); // "b"
     
     var a = true;
@@ -915,34 +916,34 @@ foo = function() {
 # Scope Closure
 - For those who are somewhat experienced in JavaScript, but have perhaps never fully grasped the concept of closures, understanding closure can seem like a special nirvana that one must strive and sacrifice to attain
     *Closure* is when **a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope**
-```
-function foo() {
-	var a = 2;
-
-	function bar() {
-		console.log( a ); // 2
-	}
-
-	bar();
-}
-
-foo();
-```
+    ```js
+    function foo() {
+        var a = 2;
+    
+        function bar() {
+            console.log( a ); // 2
+        }
+    
+        bar();
+    }
+    
+    foo();
+    ```
 - Is this "closure"?
     - Well, technically... perhaps. But by our what-you-need-to-know definition above... not exactly. I think the most accurate way to explain bar() referencing a is via lexical scope look-up rules, and those rules are only (an important!) part of what closure is
     - the **function bar() has a *closure* over the *scope* of foo()** (and indeed, even over the rest of the scopes it has access to, such as the global scope in our case)
     - Put slightly differently, it's said that **bar() *closes over *the *scope of foo()*((. Why? Because bar() appears nested inside of foo(). Plain and simple
     - closure defined in this way is not directly observable, nor do we see closure exercised in that snippet. We clearly see lexical scope, but closure remains sort of a mysterious shifting shadow behind the code
     - Let us then consider code which brings closure into full light:
-        ```
+        ```js
         function foo() {
-        	var a = 2;
+            var a = 2;
         
-        	function bar() {
-        		console.log( a );
-        	}
+            function bar() {
+                console.log( a );
+            }
         
-        	return bar;
+            return bar;
         }
         
         var baz = foo();
@@ -965,15 +966,15 @@ foo();
         - The **function is being invoked well *outside* of its *author-time lexical scope***
         - ***Closure lets the function continue to access the lexical scope it was defined in at author-time***
 - any of the various ways that functions can be passed around as values, and indeed invoked in other locations, are all examples of observing/exercising closure
-    ```
+    ```js
     function foo() {
-    	var a = 2;
+        var a = 2;
     
-    	function baz() {
-    		console.log( a ); // 2
-    	}
+        function baz() {
+            console.log( a ); // 2
+        }
     
-    	bar( baz );
+        bar( baz );
     }
     
     function bar(fn) {
@@ -982,21 +983,21 @@ foo();
     ```
     - We pass the inner function baz over to bar, and call that inner function (labeled fn now), and when we do, its closure over the inner scope of foo() is observed, by accessing a
     - These passings-around of functions can be indirect, too
-        ```
+        ```js
         var fn;
         
         function foo() {
-        	var a = 2;
+            var a = 2;
         
-        	function baz() {
-        		console.log( a );
-        	}
+            function baz() {
+                console.log( a );
+            }
         
-        	fn = baz; // assign `baz` to global variable
+            fn = baz; // assign `baz` to global variable
         }
         
         function bar() {
-        	fn(); // look ma, I saw closure!
+            fn(); // look ma, I saw closure!
         }
         
         foo();
@@ -1006,17 +1007,17 @@ foo();
         - **Whatever facility we use to *transport an inner function outside of its lexical scope*, it *will maintain a scope reference to where it was originally declared*, and *wherever we execute it, that closure will be exercised***
  ## Now I Can See
 - The previous code snippets are somewhat academic and artificially constructed to illustrate using closure. But I promised you something more than just a cool new toy. I promised that closure was something all around you in your existing code. Let us now see that truth
-```
-function wait(message) {
-
-	setTimeout( function timer(){
-		console.log( message );
-	}, 1000 );
-
-}
-
-wait( "Hello, closure!" );
-```
+    ```js
+    function wait(message) {
+    
+        setTimeout( function timer(){
+            console.log( message );
+        }, 1000 );
+    
+    }
+    
+    wait( "Hello, closure!" );
+    ```
 - We take an inner function (named timer) and pass it to setTimeout(..)
 - But timer has a scope closure over the scope of wait(..), indeed keeping and using a reference to the variable message
 - A thousand milliseconds after we have executed wait(..), and its inner scope should otherwise be long gone, that inner function timer still has closure over that scope
@@ -1024,11 +1025,11 @@ wait( "Hello, closure!" );
 - whenever and wherever you treat functions (which access their own respective lexical scopes) as first-class values and pass them around, you are likely to see those functions exercising closure
     - Be that timers, event handlers, Ajax requests, cross-window messaging, web workers, or any of the other asynchronous (or synchronous!) tasks, when you pass in a callback function, get ready to sling some closure around!
 - While it is often said that IIFE (alone) is an example of observed closure, I would somewhat disagree
-    ```
+    ```js
     var a = 2;
 
     (function IIFE(){
-    	console.log( a );
+        console.log( a );
     })();
     ```
     - This code "works", but it's not strictly an observation of closure
@@ -1038,11 +1039,11 @@ wait( "Hello, closure!" );
         - So IIFEs are indeed heavily related to closure, even if not exercising closure themselves
  ### Loops + Closure
 - The most common canonical example used to illustrate closure involves the humble for-loop.
-    ```
+    ```js
     for (var i=1; i<=5; i++) {
-    	setTimeout( function timer(){
-    		console.log( i );
-    	}, i*1000 );
+        setTimeout( function timer(){
+            console.log( i );
+        }, i*1000 );
     }
     ```
     - Linters often complain when you put functions inside of loops, because the mistakes of not understanding closure are so common among developers. We explain how to do so properly here, leveraging the full power of closure. But that subtlety is often lost on linters and they will complain regardless, assuming you don't actually know what you're doing
@@ -1061,13 +1062,13 @@ wait( "Hello, closure!" );
                         - Something about the loop structure tends to confuse us into thinking there's something else more sophisticated at work. There is not. There's no difference than if each of the 5 timeout callbacks were just declared one right after the other, with no loop at all
                     - What's missing? We need more cowbell closured scope. Specifically, we need a new closured scope for each iteration of the loop
                         - We learned in Chapter 3 that the IIFE creates scope by declaring a function and immediately executing it
-                            ```
+                            ```js
                             for (var i=1; i<=5; i++) {
-                            	(function(){
-                            		setTimeout( function timer(){
-                            			console.log( i );
-                            		}, i*1000 );
-                            	})();
+                                (function(){
+                                    setTimeout( function timer(){
+                                    console.log( i );
+                                    }, i*1000 );
+                                })();
                             }
                             ```
                             - Does that work? **Nope**. But why?
@@ -1076,25 +1077,25 @@ wait( "Hello, closure!" );
                                 - **It's not enough to have a scope to close over if that scope is empty**
                                     - Look closely. Our IIFE is just an empty do-nothing scope. It needs *something* in it to be useful to us
                                     - It needs its own variable, with a copy of the i value at each iteration:
-                                        ```
+                                        ```js
                                         for (var i=1; i<=5; i++) {
-                                        	(function(){
-                                        		var j = i;
-                                        		setTimeout( function timer(){
-                                        			console.log( j );
-                                        		}, j*1000 );
-                                        	})();
+                                            (function(){
+                                                var j = i;
+                                                setTimeout( function timer(){
+                                                    console.log( j );
+                                                }, j*1000 );
+                                            })();
                                         }
                                         ```
                                         - Eureka! It works!
                                         - A slight variation some prefer is:
-                                            ```
+                                            ```js
                                             for (var i=1; i<=5; i++) {
-                                            	(function(j){
-                                            		setTimeout( function timer(){
-                                            			console.log( j );
-                                            		}, j*1000 );
-                                            	})( i );
+                                                (function(j){
+                                                    setTimeout( function timer(){
+                                                        console.log( j );
+                                                    }, j*1000 );
+                                                })( i );
                                             }
                                             ```
                                             - since these IIFEs are just functions, we can pass in i, and we can call it j if we prefer, or we can even call it i again
@@ -1103,63 +1104,63 @@ wait( "Hello, closure!" );
 ### Block Scoping Revisited
 - Look carefully at our analysis of the previous solution. We used an IIFE to create new scope per-iteration. In other words, we actually needed a per-iteration block scope. Chapter 3 showed us the let declaration, which hijacks a block and declares a variable right there in the block
 - **It essentially turns a block into a scope that we can close over**. So, the following awesome code "just works":
-```
-for (var i=1; i<=5; i++) {
-	let j = i; // yay, block-scope for closure!
-	setTimeout( function timer(){
-		console.log( j );
-	}, j*1000 );
-}
-```
+    ```js
+    for (var i=1; i<=5; i++) {
+        let j = i; // yay, block-scope for closure!
+        setTimeout( function timer(){
+            console.log( j );
+        }, j*1000 );
+    }
+    ```
 - *But, that's not all*!
     - There's a special behavior defined for let declarations used in the head of a for-loop
     - This behavior says that the variable will be declared not just once for the loop, **but each iteration**
     - And, it will, helpfully, be initialized at each subsequent iteration with the value from the end of the previous iteration
-        ```
+        ```js
         for (let i=1; i<=5; i++) {
-        	setTimeout( function timer(){
-        		console.log( i );
-        	}, i*1000 );
+            setTimeout( function timer(){
+                console.log( i );
+            }, i*1000 );
         }
         ```
         - How cool is that? Block scoping and closure working hand-in-hand, solving all the world's problems
  ### Modules
         - other code patterns which leverage the power of closure but which do not on the surface appear to be about callbacks
             - Let's examine the most powerful of them:the the ***module***:
-                ```
+                ```js
                 function foo() {
-                	var something = "cool";
-                	var another = [1, 2, 3];
+                    var something = "cool";
+                    var another = [1, 2, 3];
                 
-                	function doSomething() {
-                		console.log( something );
-                	}
+                    function doSomething() {
+                        console.log( something );
+                    }
                 
-                	function doAnother() {
-                		console.log( another.join( " ! " ) );
-                	}
+                    function doAnother() {
+                        console.log( another.join( " ! " ) );
+                    }
                 }
                 ```
                 - there's no observable closure going on
                 We simply have some private data variables something and another, and a couple of inner functions doSomething() and doAnother(), which both have lexical scope (and thus closure!) over the inner scope of foo()
                 - now consider:
-                    ```
+                    ```js
                     function CoolModule() {
-                    	var something = "cool";
-                    	var another = [1, 2, 3];
+                        var something = "cool";
+                        var another = [1, 2, 3];
                     
-                    	function doSomething() {
-                    		console.log( something );
-                    	}
+                        function doSomething() {
+                            console.log( something );
+                        }
                     
-                    	function doAnother() {
-                    		console.log( another.join( " ! " ) );
-                    	}
+                        function doAnother() {
+                            console.log( another.join( " ! " ) );
+                        }
                     
-                    	return {
-                    		doSomething: doSomething,
-                    		doAnother: doAnother
-                    	};
+                        return {
+                            doSomething: doSomething,
+                            doAnother: doAnother
+                        };
                     }
                     
                     var foo = CoolModule();
@@ -1185,23 +1186,23 @@ for (var i=1; i<=5; i++) {
 - An object with a function property on it alone is not really a module
     - An object which is returned from a function invocation which only has data properties on it and no closured functions is not really a module, in the observable sense
     - A slight variation on this pattern is when you only care to have one instance, a "singleton" of sorts
-        ```
+        ```js
         var foo = (function CoolModule() {
-        	var something = "cool";
-        	var another = [1, 2, 3];
+            var something = "cool";
+            var another = [1, 2, 3];
         
-        	function doSomething() {
-        		console.log( something );
-        	}
+            function doSomething() {
+                console.log( something );
+            }
         
-        	function doAnother() {
-        		console.log( another.join( " ! " ) );
-        	}
+            function doAnother() {
+                console.log( another.join( " ! " ) );
+            }
         
-        	return {
-        		doSomething: doSomething,
-        		doAnother: doAnother
-        	};
+            return {
+                doSomething: doSomething,
+                doAnother: doAnother
+            };
         })();
         
         foo.doSomething(); // cool
@@ -1209,25 +1210,25 @@ for (var i=1; i<=5; i++) {
         ```
         - Here, we turned our module function into an IIFE (see Chapter 3), and we immediately invoked it and assigned its return value directly to our single module instance identifier foo
 - Modules are just functions, so they can receive parameters:
-```
-function CoolModule(id) {
-	function identify() {
-		console.log( id );
-	}
-
-	return {
-		identify: identify
-	};
-}
-
-var foo1 = CoolModule( "foo 1" );
-var foo2 = CoolModule( "foo 2" );
-
-foo1.identify(); // "foo 1"
-foo2.identify(); // "foo 2"
-```
-- Another slight but powerful variation on the module pattern is to name the object you are returning as your public API:
+    ```js
+    function CoolModule(id) {
+        function identify() {
+            console.log( id );
+        }
+    
+        return {
+            identify: identify
+        };
+    }
+    
+    var foo1 = CoolModule( "foo 1" );
+    var foo2 = CoolModule( "foo 2" );
+    
+    foo1.identify(); // "foo 1"
+    foo2.identify(); // "foo 2"
     ```
+- Another slight but powerful variation on the module pattern is to name the object you are returning as your public API:
+    ```js
     var foo = (function CoolModule(id) {
         function change() {
             // modifying the public API
@@ -1257,58 +1258,58 @@ foo2.identify(); // "foo 2"
     - By retaining an inner reference to the public API object inside your module instance, you can modify that module instance from the inside, including adding and removing methods, properties, and changing their values
 ### Modern Modules
 - Various module dependency loaders/managers essentially wrap up this pattern of module definition into a friendly API
-    ```
+    ```js
     var MyModules = (function Manager() {
-    	var modules = {};
+        var modules = {};
     
-    	function define(name, deps, impl) {
-    		for (var i=0; i<deps.length; i++) {
-    			deps[i] = modules[deps[i]];
-    		}
-    		modules[name] = impl.apply( impl, deps );
-    	}
+        function define(name, deps, impl) {
+            for (var i=0; i<deps.length; i++) {
+                deps[i] = modules[deps[i]];
+            }
+            modules[name] = impl.apply( impl, deps );
+        }
     
-    	function get(name) {
-    		return modules[name];
-    	}
+        function get(name) {
+            return modules[name];
+        }
     
-    	return {
-    		define: define,
-    		get: get
-    	};
+        return {
+            define: define,
+    	        get: get
+        };
     })();
     ```
     - The key part of this code is modules[name] = impl.apply(impl, deps)
         - This is invoking the definition wrapper function for a module (passing in any dependencies), and storing the  return value, the module's API, into an internal list of modules tracked by name
     - here's how I might use it to define some modules:
-        ```
+        ```js
         MyModules.define( "bar", [], function(){
-        	function hello(who) {
-        		return "Let me introduce: " + who;
-        	}
+            function hello(who) {
+                return "Let me introduce: " + who;
+            }
         
-        	return {
-        		hello: hello
-        	};
+            return {
+                hello: hello
+            };
         } );
         
         MyModules.define( "foo", ["bar"], function(bar){
-        	var hungry = "hippo";
+            var hungry = "hippo";
         
-        	function awesome() {
-        		console.log( bar.hello( hungry ).toUpperCase() );
-        	}
+            function awesome() {
+                console.log( bar.hello( hungry ).toUpperCase() );
+            }
         
-        	return {
-        		awesome: awesome
-        	};
+            return {
+                awesome: awesome
+            };
         } );
         
         var bar = MyModules.get( "bar" );
         var foo = MyModules.get( "foo" );
         
         console.log(
-        	bar.hello( "hippo" )
+            bar.hello( "hippo" )
         ); // Let me introduce: hippo
         
         foo.awesome(); // LET ME INTRODUCE: HIPPO
@@ -1525,7 +1526,6 @@ Coercion is not evil, nor does it have to be surprising
 - But we won't go much further into that debate -- Chapter 4 of the *Types & Grammar* title of this series covers all sides.
 
 Here's an example of *explicit* coercion:
-
 ```js
 var a = "42";
 
@@ -1536,7 +1536,6 @@ b;  // 42 -- the number!
 ```
 
 And here's an example of *implicit* coercion:
-
 ```js
 var a = "42";
 
@@ -1620,16 +1619,15 @@ You should take special note of the `==` and `===` comparison rules if you're co
 
 For example, `array`s are by default coerced to `string`s by simply joining all the values with commas (`,`) in between
 - You might think that two `array`s with the same contents would be `==` equal, but they're not:
-
-```js
-var a = [1,2,3];
-var b = [1,2,3];
-var c = "1,2,3";
-
-a == c;  // true
-b == c;  // true
-a == b;  // false
-```
+    ```js
+    var a = [1,2,3];
+    var b = [1,2,3];
+    var c = "1,2,3";
+    
+    a == c;  // true
+    b == c;  // true
+    a == b;  // false
+    ```
 
 **Note:** For more information about the `==` equality comparison rules, see the ES5 specification (section 11.9.3) and also consult Chapter 4 of the *Types & Grammar* title of this series; see Chapter 2 for more information about values versus references.
 
@@ -1704,7 +1702,7 @@ Consider:
 var a = 2;
 
 foo();  // works because `foo()`
-        // declaration is "hoisted"
+           // declaration is "hoisted"
 
 function foo() {
     a = 3;
@@ -1712,10 +1710,10 @@ function foo() {
     console.log( a );  // 3
 
     var a;  // declaration is "hoisted"
-            // to the top of `foo()`
+               // to the top of `foo()`
 }
 
-console.log( a );	// 2
+console.log( a ); // 2
 ```
 
 **Warning:** It's not common or a good idea to rely on variable *hoisting* to use a variable earlier in its scope than its `var` declaration appears; it can be quite confusing
@@ -1735,7 +1733,7 @@ function foo() {
         function baz() {
             var c = 3;
 
-            console.log( a, b, c );	// 1 2 3
+            console.log( a, b, c ); // 1 2 3
         }
 
         baz();
@@ -1753,15 +1751,14 @@ Notice that `c` is not available inside of `bar()`, because it's declared only i
 
 If you try to access a variable's value in a scope where it's not available, you'll get a `ReferenceError` thrown
 - If you try to set a variable that hasn't been declared, you'll either end up creating a variable in the top-level global scope (bad!) or getting an error, depending on "strict mode" (see "Strict Mode"). Let's take a look:
-
-```js
-function foo() {
-    a = 1;  // `a` not formally declared
-}
-
-foo();
-a;  // 1 -- oops, auto global variable :(
-```
+    ```js
+    function foo() {
+        a = 1;  // `a` not formally declared
+    }
+    
+    foo();
+    a;  // 1 -- oops, auto global variable :(
+    ```
 
 This is a very bad practice. Don't do it! Always formally declare your variables.
 
@@ -1832,40 +1829,38 @@ switch (a) {
 
 The `break` is important if you want only the statement(s) in one `case` to run
 - If you omit `break` from a `case`, and that `case` matches or runs, execution will continue with the next `case`'s statements regardless of that `case` matching. This so called "fall through" is sometimes useful/desired:
-
-```js
-switch (a) {
-    case 2:
-    case 10:
-        // some cool stuff
-        break;
-    case 42:
-        // other stuff
-        break;
-    default:
-        // fallback
-}
-```
+    ```js
+    switch (a) {
+        case 2:
+        case 10:
+            // some cool stuff
+            break;
+        case 42:
+            // other stuff
+            break;
+        default:
+            // fallback
+    }
+    ```
 
 Here, if `a` is either `2` or `10`, it will execute the "some cool stuff" code statements.
 
 Another form of conditional in JavaScript is the "conditional operator," often called the "ternary operator."
 - It's like a more concise form of a single `if..else` statement, such as:
-
-```js
-var a = 42;
-
-var b = (a > 41) ? "hello" : "world";
-
-// similar to:
-
-// if (a > 41) {
-//    b = "hello";
-// }
-// else {
-//    b = "world";
-// }
-```
+    ```js
+    var a = 42;
+    
+    var b = (a > 41) ? "hello" : "world";
+    
+    // similar to:
+    
+    // if (a > 41) {
+    //    b = "hello";
+    // }
+    // else {
+    //    b = "world";
+    // }
+    ```
 
 If the test expression (`a > 41` here) evaluates as `true`, the first clause (`"hello"`) results, otherwise the second clause (`"world"`) results, and whatever the result is then gets assigned to `b`.
 
@@ -1936,12 +1931,11 @@ Not only will strict mode keep your code to a safer path, and not only will it m
 
 So far, we've discussed functions as the primary mechanism of *scope* in JavaScript
 - You recall typical `function` declaration syntax as follows:
-
-```js
-function foo() {
-    // ..
-}
-```
+    ```js
+    function foo() {
+        // ..
+    }
+    ```
 
 Though it may not seem obvious from that syntax, `foo` is basically just a variable in the outer enclosing scope that's given a reference to the `function` being declared
     - That is, the `function` itself is a value, just like `42` or `[1,2,3]` would be
@@ -2010,10 +2004,10 @@ var a = 42;
 
 (function IIFE(){
     var a = 10;
-    console.log( a );	// 10
+    console.log( a ); // 10
 })();
 
-console.log( a );		// 42
+console.log( a ); // 42
 ```
 
 IIFEs can also have return values:
@@ -2023,7 +2017,7 @@ var x = (function IIFE(){
     return 42;
 })();
 
-x;	// 42
+x;  // 42
 ```
 
 The `42` value gets `return`ed from the `IIFE`-named function being executed, and is then assigned to `x`.
@@ -2065,10 +2059,10 @@ var plusOne = makeAdder( 1 );
 // the outer `makeAdder(..)`
 var plusTen = makeAdder( 10 );
 
-plusOne( 3 );		// 4  <-- 1 + 3
-plusOne( 41 );		// 42 <-- 1 + 41
+plusOne( 3 ); // 4  <-- 1 + 3
+plusOne( 41 );  // 42 <-- 1 + 41
 
-plusTen( 13 );		// 23 <-- 10 + 13
+plusTen( 13 );  // 23 <-- 10 + 13
 ```
 
 More on how this code works:
