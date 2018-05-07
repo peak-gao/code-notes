@@ -1556,6 +1556,9 @@ for (var k in myObject) {
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
 - [Variables: Scopes, Environments, and Closures](http://speakingjs.com/es5/ch16.html)
+- [Function.prototype.apply()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+- [Function.prototype.call()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+- [The Difference Between Call and Apply in Javascript](http://hangar.runway7.net/javascript/difference-call-apply)
 
 # Awesome Vids
 [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
