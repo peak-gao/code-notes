@@ -1534,14 +1534,14 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
               - **So `new` is the final way that a function call's `this` can be bound
         - **Note:** `**new` and `call`/`apply` cannot be used together**, so `new foo.call(obj1)` is not allowed
 
-###### Order of Precedence for Rules on Binding
+##### Order of Precedence for Rules on Binding
 - **default binding** is the lowest priority rule of the 4
 - **explicit binding** takes precedence over **implicit binding**
     - which means you should ask **first** if *explicit binding* applies before checking for *implicit binding*
 - **new binding** is more precedent than **implicit binding**
 - **new binding** can override **hard binding**
 
-###### We can summarize the rules for determining `this` from a **function call's call-site**, in their **order of precedence**
+#### We can summarize the rules for determining `this` from a **function call's call-site**, in their **order of precedence**
 
 # Prototypes
 - When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on
