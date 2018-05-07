@@ -8,6 +8,7 @@
 - [Hoisting](#hoisting)
 - [Scope Closure](#scope-closure)
 - [this](#this)
+- [this and Call-site](#this-and-call-site)
 - [Prototpyes](#prototypes)
 - [Polyfilling](#polyfilling)
 - [Resources](#resources)
