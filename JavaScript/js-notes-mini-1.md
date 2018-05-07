@@ -1420,7 +1420,62 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
         - We'll see shortly a way of "fixing" that problem by *fixing* the `this`
 
 **Explicit Binding**
-- allows us to force its `this` to reference a certain object using the **call()** method
+- allows us to force its `this` to reference a certain object using the **call()** or **apply** method
+    - respect to `this` binding, **`call(..)` and `apply(..)` are identical**
+        - they execute a function in the context, or scope, of the first argument that you pass to them
+
+    - They take as their first parameter, an object to use for the `this`, and then invoke the function with that `this` specified
+    - In **call()** the subsequent arguments are passed in to the function as they are, while in **apply()** expects the list of values to be an **array** that it unpacks as **arguments** for the called function
+        - **function.call(thisArg, arg1, arg2, ...)**
+
+            `say.call(person1, 'Hello');`
+
+            `update.call(person1, 'Slarty', 200, '1xM');`
+
+            ```
+            function Product(name, price) {
+              this.name = name;
+              this.price = price;
+            }
+            
+            function Food(name, price) {
+              Product.call(this, name, price);
+              this.category = 'food';
+            }
+            
+            console.log(new Food('cheese', 5).name);
+            // expected output: "cheese"
+            ```
+        - **func.apply(thisArg, [argsArray])**
+
+            `dispatch(person1, say, ['Hello']);`
+
+            `dispatch(person2, update, ['Slarty', 200, '1xM']);`
+
+            `Math.max.apply(null,[1,2,3]);`
+
+            ```
+            var array = ['a', 'b'];
+            var elements = [0, 1, 2];
+            array.push.apply(array, elements);
+            ```
+
+    - so they different in how you seed this call with a set of arguments (how you seed the parameters you want to pass to the function you're calling
+    - They *do* behave differently with their additional parameters
+
+
+    ```js
+    function foo() {
+          console.log( this.a );
+    }
+    
+    var obj = {
+        a: 2
+    };
+    
+    foo.call( obj ); // 2
+    ```
+    - Invoking `foo` with *explicit binding* by `foo.call(..)` allows us to force its `this` to be `obj`
 
 **Hard Binding**
 - using a hard-bound function produced by using the **bind()** method

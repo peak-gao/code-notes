@@ -555,7 +555,7 @@ foo.call( obj ); // 2
 ```
 
 - Invoking `foo` with *explicit binding* by `foo.call(..)` allows us to force its `this` to be `obj`
-- If you pass a simple primitive value (of type `string`, `boolean`, or `number`) as the `this` binding, the primitive value is wrapped in its object-form (`new String(..)`, `new Boolean(..)`, or `new Number(..)`, respectively). This is often referred to as **"boxing"**.
+- If you pass a simple primitive value (of type `string`, `boolean`, or `number`) as the `this` binding, the primitive value is wrapped in its object-form (`new String(..)`, `new Boolean(..)`, or `new Number(..)`, respectively). This is often referred to as **"boxing"**
 
 **Note:** With respect to `this` binding, **`call(..)` and `apply(..)` are identical**. They *do* behave differently with their additional parameters, but that's not something we care about presently
 
