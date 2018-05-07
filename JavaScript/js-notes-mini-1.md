@@ -1370,11 +1370,60 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
 **Implicit Binding**
 - does the call-site have a *context object***, also referred to as an **owning** or **containing** object
 
+**Implicitly Lost**
+- One of the most common frustrations that `this` binding creates is when an ***implicitly bound* function loses that binding**, which usually means **it falls back to the *default binding* of either the global object or `undefined`**, depending on `strict mode`
+    ```js
+    function foo() {
+        console.log( this.a );
+    }
+    
+    var obj = {
+        a: 2,
+        foo: foo
+    };
+    
+    var bar = obj.foo; // function reference/alias!
+    var a = "oops, global"; // `a` also property on global object
+    bar(); // "oops, global"
+    ```
+
+    - Even though `bar` appears to be a reference to `obj.foo`, in fact, it's really just another reference to `foo` itself
+    - Moreover, the call-site is what matters, and the call-site is `bar()`, which is a plain, un-decorated call and thus the *default binding* applies
+
+- The more subtle, more common, and more unexpected way this occurs is when we consider passing a callback function:
+    ```js
+    function foo() {
+        console.log( this.a );
+    }
+
+    function doFoo(fn) {
+        // `fn` is just another reference to `foo`
+        fn(); // <-- call-site!
+    }
+    
+    var obj = {
+        a: 2,
+        foo: foo
+    };
+    
+    var a = "oops, global"; // `a` also property on global object
+    
+    doFoo( obj.foo ); // "oops, global"
+    ```
+    - **Parameter passing** is **just an implicit assignment**, and **since we're passing a function, it's an implicit reference assignment**, so the **end result is the same as the previous snippet**
+
+- **function commonly lose their callbacks *lose* their `this` binding**, as we've just seen
+- another way that `this` can surprise us is when the **function we've passed our callback to intentionally changes the `this` for the call**
+    - **Event handlers** in popular JavaScript libraries are quite fond of forcing your callback to have a `this` which points to, for instance, the DOM element that triggered the event
+        - While that may sometimes be useful, other times it can be downright infuriating. Unfortunately, these tools rarely let you choose
+        - Either way the `this` is changed unexpectedly, you are not really in control of how your callback function reference will be executed, so you have no way (yet) of controlling the call-site to give your intended binding
+        - We'll see shortly a way of "fixing" that problem by *fixing* the `this`
+
 **Explicit Binding**
-- allows us to force its `this` to reference a certain object.  using call() for example
+- allows us to force its `this` to reference a certain object using the **call()** method
 
 **Hard Binding**
-- using a hard-bound function produced by using the bind() method
+- using a hard-bound function produced by using the **bind()** method
 - **creates a *pass-thru* of any arguments passed** and **any return value received**
 
 # Prototypes

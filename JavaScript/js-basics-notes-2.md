@@ -469,7 +469,7 @@ bar(); // "oops, global"
 ```
 
 - Even though `bar` appears to be a reference to `obj.foo`, in fact, it's really just another reference to `foo` itself
-- Moreover, the call-site is what matters, and the call-site is `bar()`, which is a plain, un-decorated call and thus the *default binding* applies.
+- Moreover, the call-site is what matters, and the call-site is `bar()`, which is a plain, un-decorated call and thus the *default binding* applies
 
 The more subtle, more common, and more unexpected way this occurs is when we consider passing a callback function:
 
@@ -494,7 +494,7 @@ doFoo( obj.foo ); // "oops, global"
 ```
 
 - **Parameter passing** is **just an implicit assignment**, and **since we're passing a function, it's an implicit reference assignment**, so the **end result is the same as the previous snippet**
-    - What if the function you're passing your callback to is not your own, but built-in to the language? No difference, same outcome.
+    - What if the function you're passing your callback to is not your own, but built-in to the language? No difference, same outcome
 
 ```js
 function foo() {
