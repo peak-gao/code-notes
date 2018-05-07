@@ -1,6 +1,7 @@
 # Table Of Contents
 - [Values & Types](#values-and-types)
 - [Objects](#objects)
+- [Functions](#function)
 - [Converting Between Types](#converting-between-types)
 - [Typing and Variables](#typing-and-variables)
 - [Scope](#scope)
@@ -103,7 +104,63 @@ This may sound like a strange concept at first, so take a moment to ponder it
     ```
 
 # Objects
+- **Objects** are the general **building block upon which much of JS is built**. They are *one of the 6 primary types*
+    - *simple primitives* (`string`, `number`, `boolean`, `null`, and `undefined`) are **not** themselves `objects`
+    - `null` is *sometimes referred to as an object type*, but **this misconception stems from a bug in the language which causes `typeof null` to return the string `"object"` incorrectly**.  **`null` is its own primitive type**
+    - `function` is a sub-type of object (technically, a "callable object")
+    - **Functions in JS are said to be "first class"** in that they **are basically just normal objects** (with callable behavior semantics bolted on), and **so they can be handled like any other plain object**
+    - **Arrays** are also a form of **objects, *with extra behavior***
+- **It's a common mis-statement that "everything in JavaScript is an object". This is clearly not true.**
+    - because there *are* a few **special object *****sub-types***, which we can refer to as ***complex** primitives*
+
+- There are several **other** object **sub-types**, usually referred to as **built-in** objects
+
+    - For some of them, their names seem to imply they are directly related to their simple primitives counter-parts, but in fact, their relationship is more complicated, which we'll explore shortly
+
+    * `String`
+    * `Number`
+    * `Boolean`
+    * `Object`
+    * `Function`
+    * `Array`
+    * `Date`
+    * `RegExp`
+    * `Error`
+
+    - These built-ins **have the appearance of being actual types**, even classes, if you rely on the similarity to other languages such as Java's `String` class
+
+    - **But** in JS, **these are actually just built-in *functions***
+        - Each of these built-in functions can be used as a constructor (that is, a function call with the `new` operator -- see Chapter 2), with the result being a newly *constructed* object of the sub-type in question. For instance:
+
+        ```js
+        var strPrimitive = "I am a string";
+        typeof strPrimitive;							// "string"
+        strPrimitive instanceof String;					// false
+        
+        var strObject = new String( "I am a string" );
+        typeof strObject; 								// "object"
+        strObject instanceof String;					// true
+        
+        // inspect the object sub-type
+        Object.prototype.toString.call( strObject );	// [object String]
+        ```
 - The `object` type refers to a compound value where you can set properties (named locations) that each hold their own values of any type.]
+- Objects come in two forms:
+  - **declarative** (*literal*) form:
+        ```js
+        var myObj = {
+            key: value
+            // ...
+        };
+        ```
+  - **constructed** form:
+        ```js
+        var myObj = new Object();
+        myObj.key = value;
+        ```
+- The **constructed** form and the **literal** form ***result in exactly the same sort of object***
+    - The **only difference really is that you can add one or more key/value pairs to the literal declaration**, whereas with **constructed-form objects**, you **must add the properties one-by-one**
+    - **It's extremely uncommon to use the "constructed form" for creating objects as just shown**.  ***pretty much always want to use the literal syntax form***
 - Properties on an object can either be accessed with *dot notation* (i.e., `obj.a`) or *bracket notation* (i.e., `obj["a"]`)
     - Bracket notation is useful if you have a property name that has special characters in it, like `obj["hello world!"]`
         - such properties are often referred to as *keys* when accessed via bracket notation
@@ -123,6 +180,34 @@ This may sound like a strange concept at first, so take a moment to ponder it
 - When you use a primitive value like `"hello world"` as an `object` by referencing a property or method (e.g., `a.toUpperCase()` in the previous snippet), JS automatically "boxes" the value to its object wrapper counterpart (hidden under the covers)
     - A `string` value can be wrapped by a `String` object, a `number` can be wrapped by a `Number` object, and a `boolean` can be wrapped by a `Boolean` object
     - For the most part, you don't need to worry about or directly use these object wrapper forms of the values -- prefer the primitive value forms in practically all cases and JavaScript will take care of the rest for you
+
+# Functions
+
+**functions never "belong" to objects**, so **saying that a function that just happens to be accessed on an object reference is automatically a "method" seems a bit of a stretch of semantics**.
+
+- It *is* true that **some functions have `this` references in them**, and that ***sometimes* these `this` references refer to the object reference at the call-site**
+    - But this usage really does not make that function any more a "method" than any other function, as `this` is dynamically bound at run-time, at the call-site, and thus its relationship to the object is indirect, at best
+- Every time you access a property on an object, that is a **property access**, regardless of the type of value you get back
+    - If you *happen* to get a function from that property access, it's not magically a "method" at that point. There's nothing special (outside of possible implicit `this` binding as explained earlier) about a function that comes from a property access
+        ```js
+        function foo() {
+            console.log( "foo" );
+        }
+        
+        var someFoo = foo;	// variable reference to `foo`
+        
+        var myObject = {
+            someFoo: foo
+        };
+        
+        foo;				// function foo(){..}
+        someFoo;			// function foo(){..}
+        myObject.someFoo;	// function foo(){..}
+        ```
+
+        - `someFoo` and `myObject.someFoo` are just two separate references to the same function, and neither implies anything about the function being special or "owned" by any other object
+            - If `foo()` above was defined to have a `this` reference inside it, that `myObject.someFoo` *implicit binding* would be the **only** observable difference between the two references. Neither reference really makes sense to be called a "method"
+- **"function" and "method" are interchangeable in JavaScript**
 
 # Converting Between Types
 
@@ -1554,11 +1639,11 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
 
     `var bar = foo.call( obj2 )`
 
-3. **Is the function called with a *context*** (**implicit binding**), otherwise known as an owning or containing object? If so, `this` is *that* context object.
+3. **Is the function called with a *context*** (**implicit binding**), otherwise known as an owning or containing object? If so, `this` is *that* context object so use that context
 
     `var bar = obj1.foo()`
 
-4. Otherwise, **default the `this`** (**default binding**). If in `strict mode`, pick `undefined`, otherwise pick the `global` object.
+4. Otherwise, **default the `this`** (**default binding**). If in `strict mode`, pick `undefined`, otherwise the context object is the `global` object
 
     `var bar = foo()`
 
@@ -1568,7 +1653,7 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
 Normal functions abide by the 4 rules we just covered. But **ES6 introduces a special kind of function that does not use these rules: *arrow-function***.
 
 - Arrow-functions are signified not by the `function` keyword, but by the `=>` so called "fat arrow" operator
-- **Instead of using the four standard `this` rules**, **arrow-functions adopt the `this` binding from the enclosing** (function or global) **scope**
+- **Instead of using the four standard `this` rules**, **arrow-functions adopt the `this` binding from its enclosing** (function or global) **scope**
 
 Let's illustrate arrow-function lexical scope:
 
@@ -1612,7 +1697,6 @@ var obj = {
 
 foo.call( obj ); // 2
 ```
-
 - While arrow-functions provide an alternative to using `bind(..)` on a function to ensure its `this`, which can seem attractive, it's important to note that they essentially are disabling the traditional `this` mechanism in favor of more widely-understood lexical scoping
 - Pre-ES6, we already have a fairly common pattern for doing so, which is basically almost indistinguishable from the spirit of ES6 arrow-functions:
 
@@ -1710,6 +1794,8 @@ for (var k in myObject) {
 # Polyfilling
 
 - The word "polyfill" is an invented term (by Remy Sharp) (https://remysharp.com/2010/10/08/what-is-a-polyfill) used to refer to taking the definition of a newer feature and producing a piece of code that's equivalent to the behavior, but is able to run in older JS environments
+
+
 
 # Resources
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)

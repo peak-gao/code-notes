@@ -1395,10 +1395,10 @@ Some developers like to make a distinction when talking about a property access 
 Technically, **functions never "belong" to objects**, so **saying that a function that just happens to be accessed on an object reference is automatically a "method" seems a bit of a stretch of semantics**.
 
 - It *is* true that **some functions have `this` references in them**, and that ***sometimes* these `this` references refer to the object reference at the call-site**
-    - But this usage really does not make that function any more a "method" than any other function, as `this` is dynamically bound at run-time, at the call-site, and thus its relationship to the object is indirect, at best.
+    - But this usage really does not make that function any more a "method" than any other function, as `this` is dynamically bound at run-time, at the call-site, and thus its relationship to the object is indirect, at best
 
 - Every time you access a property on an object, that is a **property access**, regardless of the type of value you get back
-    - If you *happen* to get a function from that property access, it's not magically a "method" at that point. There's nothing special (outside of possible implicit `this` binding as explained earlier) about a function that comes from a property access.
+    - If you *happen* to get a function from that property access, it's not magically a "method" at that point. There's nothing special (outside of possible implicit `this` binding as explained earlier) about a function that comes from a property access
 
 For instance:
 
@@ -1419,9 +1419,9 @@ myObject.someFoo;	// function foo(){..}
 ```
 
 - `someFoo` and `myObject.someFoo` are just two separate references to the same function, and neither implies anything about the function being special or "owned" by any other object
-    - If `foo()` above was defined to have a `this` reference inside it, that `myObject.someFoo` *implicit binding* would be the **only** observable difference between the two references. Neither reference really makes sense to be called a "method".
+    - If `foo()` above was defined to have a `this` reference inside it, that `myObject.someFoo` *implicit binding* would be the **only** observable difference between the two references. Neither reference really makes sense to be called a "method"
 
-**Perhaps one could argue** that a function *becomes a method*, not at definition time, but during run-time just for that invocation, depending on how it's called at its call-site (with an object reference context or not -- see Chapter 2 for more details). Even this interpretation is a bit of a stretch.
+**Perhaps one could argue** that a function *becomes a method*, not at definition time, but during run-time just for that invocation, depending on how it's called at its call-site (with an object reference context or not -- see Chapter 2 for more details). Even this interpretation is a bit of a stretch
 
 The safest conclusion is probably that **"function" and "method" are interchangeable in JavaScript**.
 
