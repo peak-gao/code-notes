@@ -207,6 +207,21 @@ This may sound like a strange concept at first, so take a moment to ponder it
 
         - `someFoo` and `myObject.someFoo` are just two separate references to the same function, and neither implies anything about the function being special or "owned" by any other object
             - If `foo()` above was defined to have a `this` reference inside it, that `myObject.someFoo` *implicit binding* would be the **only** observable difference between the two references. Neither reference really makes sense to be called a "method"
+- **Even when you declare a function expression as part of the object-literal**, **that function doesn't magically *belong* more to the object** -- still **just multiple references to the same function object**:
+    ```js
+    var myObject = {
+        foo: function foo() {
+            console.log( "foo" );
+        }
+    };
+    
+    var someFoo = myObject.foo;
+    someFoo;		// function foo(){..}
+    myObject.foo;	// function foo(){..}
+    ```
+
+
+
 - **"function" and "method" are interchangeable in JavaScript**
 
 # Converting Between Types

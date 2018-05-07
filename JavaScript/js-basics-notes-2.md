@@ -1427,7 +1427,7 @@ The safest conclusion is probably that **"function" and "method" are interchange
 
 **Note:** **ES6 adds a `super` reference**, which is typically going to be used with `class` (see Appendix A)
 - The way `super` behaves (**static binding** rather than **late binding as `this`**) gives further weight to the idea that **a function which is `super` bound somewhere is more a "method" than "function"**
-- But again, these are just subtle semantic (and mechanical) nuances.
+- But again, these are just subtle semantic (and mechanical) nuances
 
 **Even when you declare a function expression as part of the object-literal**, **that function doesn't magically *belong* more to the object** -- still **just multiple references to the same function object**:
 
