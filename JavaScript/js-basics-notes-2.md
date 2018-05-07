@@ -575,7 +575,7 @@ var obj = {
 };
 
 var   bar = function() {
-      foo.call( obj );
+    foo.call( obj );
 };
 
 bar(); // 2
@@ -676,7 +676,7 @@ var obj = {
 [1, 2, 3].forEach( foo, obj ); // 1 awesome  2 awesome  3 awesome
 ```
 
-- Internally, these various functions almost certainly use *explicit binding* via `call(..)` or `apply(..)`, saving you the trouble.
+- Internally, these various functions almost certainly use *explicit binding* via `call(..)` or `apply(..)`, saving you the trouble
 
 ### `new` Binding
 
@@ -689,7 +689,7 @@ something = new MyClass(..);
 ```
 
 - JavaScript has a `new` operator, and the code pattern to use it looks basically identical to what we see in those class-oriented languages;
-- most developers assume that JavaScript's mechanism is doing something similar. However, ***there really is *no connection* to class-oriented functionality implied by `new` usage in JS***.
+- most developers assume that JavaScript's mechanism is doing something similar. However, ***there really is *no connection* to class-oriented functionality implied by `new` usage in JS***
 
 - let's re-define what a "constructor" in JavaScript is. In JS
     - constructors are **just functions** that happen to be called with the `new` operator in front of them

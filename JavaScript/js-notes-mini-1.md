@@ -1481,6 +1481,68 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
 - using a hard-bound function produced by using the **bind()** method
 - **creates a *pass-thru* of any arguments passed** and **any return value received**
 
+**API Call "Contexts"**
+- Many libraries' functions, and indeed many new built-in functions in the JavaScript language and host environment, provide an optional parameter, usually called "context", which is designed as a work-around for you not having to use `bind(..)` to ensure your callback function uses a particular `this`
+    ```js
+    function foo(el) {
+        console.log( el, this.id );
+    }
+    
+    var obj = {
+        id: "awesome"
+    };
+    
+    // use `obj` as `this` for `foo(..)` calls
+    [1, 2, 3].forEach( foo, obj ); // 1 awesome  2 awesome  3 awesome
+    ```
+    - Internally, these various functions almost certainly use *explicit binding* via `call(..)` or `apply(..)`, saving you the trouble
+
+**`new` Binding**
+- The fourth and final rule for `this` binding **requires us to re-think a very common misconception about functions and objects** in JavaScript
+    - In traditional class-oriented languages, "constructors" are special methods attached to classes, that when the class is instantiated with a `new` operator, the constructor of that class is called. This usually looks something like:
+
+        ```js
+        something = new MyClass(..);
+        ```
+
+    - JavaScript has a `new` operator, and the code pattern to use it looks basically identical to what we see in those class-oriented languages;
+    - most developers assume that JavaScript's mechanism is doing something similar. However, ***there really is *no connection* to class-oriented functionality implied by `new` usage in JS***
+    - let's re-define what a "constructor" in JavaScript is. In JS
+        - constructors are **just functions** that happen to be called with the `new` operator in front of them
+        - They are not attached to classes, nor are they instantiating a class
+        - They are not even special types of functions
+        - They're just regular functions that are, in essence, hijacked by the use of `new` in their invocation
+        - So, pretty much any function, including the built-in object functions like `Number(..)` can be called with `new` in front of it
+        - that makes that function call a *constructor call*
+        - This is an important but subtle distinction: there's really no such thing as "constructor functions", but rather construction calls *of* functions
+        - When a function is invoked with `new` in front of it, otherwise known as a constructor call, the following things are done automatically:
+
+          1. a brand new object is created (aka, constructed) out of thin air
+          2. *the newly constructed object is `[[Prototype]]`-linked*
+          3. the newly constructed object is set as the `this` binding for that function call
+          4. unless the function returns its own alternate **object**, the `new`-invoked function call will *automatically* return the newly constructed object
+
+              ```js
+              function foo(a) {
+                  this.a = a;
+              }
+              
+              var bar = new foo( 2 );
+              console.log( bar.a ); // 2
+              ```
+              - By calling `foo(..)` with `new` in front of it, we've constructed a new object and set that new object as the `this` for the call of `foo(..)`
+              - **So `new` is the final way that a function call's `this` can be bound
+        - **Note:** `**new` and `call`/`apply` cannot be used together**, so `new foo.call(obj1)` is not allowed
+
+###### Order of Precedence for Rules on Binding
+- ***default binding* is the lowest priority rule of the 4**
+- ***explicit binding* takes precedence over *implicit binding***
+    - which means you should ask **first** if *explicit binding* applies before checking for *implicit binding*
+- ***new binding* is more precedent than *implicit binding***
+- ***new binding* can override *hard binding**
+
+###### We can summarize the rules for determining `this` from a **function call's call-site**, in their **order of precedence**
+
 # Prototypes
 - When you reference a property on an object, if that property doesn't exist, JavaScript will automatically use that object's internal prototype reference to find another object to look for the property on
 - **Objects** in JavaScript **have an internal property**, denoted in the specification as `[[Prototype]]`, which is **simply a reference to another object**.
@@ -1495,7 +1557,6 @@ Bottom line: to understand what `this` points to, you have to examine how the fu
 - if you use a `for..in` loop to iterate over an object, any property that can be reached via its chain (and is also `enumerable` -- see Chapter 3) will be enumerated
 - if a property is not found on the prototype chain, it'll add the property to the object.  For example `myObject.a`, if a is not found, it'll add an `a` prop to `myObject`
 - a more natural way of applying prototypes is a pattern called "behavior delegation," where you intentionally design your linked objects to be able to *delegate* from one to the other for parts of the needed behavior
-
 
 **Examples**
 ###### Basic Example 1
