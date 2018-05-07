@@ -938,7 +938,7 @@ As usual, there are some ***exceptions* to the "rules"**.
 
 ### Ignored `this`
 
-- If you pass `null` or `undefined` as a `this` binding parameter to `call`, `apply`, or `bind`, those values are effectively ignored, and instead the *default binding* rule applies to the invocation.
+- If you pass `null` or `undefined` as a `this` binding parameter to `call`, `apply`, or `bind`, those values are effectively ignored, and instead the *default binding* rule applies to the invocation
 
 ```js
 function foo() {
@@ -967,7 +967,7 @@ var bar = foo.bind( null, 2 );
 bar( 3 ); // a:2, b:3
 ```
 
-- Both these utilities require a `this` binding for the first parameter. If the functions in question don't care about `this`, you need a placeholder value, and `null` might seem like a reasonable choice as shown in this snippet.
+- Both these utilities require a `this` binding for the first parameter. If the functions in question don't care about `this`, you need a placeholder value, and `null` might seem like a reasonable choice as shown in this snippet
 
     **Note:** We don't cover it in this book, but ES6 has the `...` spread operator which will let you syntactically "spread out" an array as parameters without needing `apply(..)`, such as `foo(...[1,2])`, which amounts to `foo(1,2)` -- syntactically avoiding a `this` binding if it's unnecessary. Unfortunately, there's no ES6 syntactic substitute for currying, so the `this` parameter of the `bind(..)` call still needs attention.
 
@@ -1095,7 +1095,7 @@ setTimeout( obj2.foo, 10 ); // name: obj   <---- falls back to soft-binding
 Normal functions abide by the 4 rules we just covered. But **ES6 introduces a special kind of function that does not use these rules: *arrow-function***.
 
 - Arrow-functions are signified not by the `function` keyword, but by the `=>` so called "fat arrow" operator
-- **Instead of using the four standard `this` rules**, **arrow-functions adopt the `this` binding from the enclosing** (function or global) **scope**.
+- **Instead of using the four standard `this` rules**, **arrow-functions adopt the `this` binding from the enclosing** (function or global) **scope**
 
 Let's illustrate arrow-function lexical scope:
 
@@ -1119,7 +1119,6 @@ var obj2 = {
 var bar = foo.call( obj1 );
 bar.call( obj2 ); // 2, not 3!
 ```
-
 - The arrow-function created in `foo()` lexically captures whatever `foo()`s `this` is at its call-time
 - Since `foo()` was `this`-bound to `obj1`, `bar` (a reference to the returned arrow-function) will also be `this`-bound to `obj1`
 - The lexical binding of an arrow-function cannot be overridden (even with `new`!).
