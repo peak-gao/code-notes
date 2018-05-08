@@ -322,6 +322,33 @@ To contrast against these 24 likely suspects for coercion gotchas, consider anot
 
 In these nonfalsy, noncorner cases (and there are literally an infinite number of comparisons we could put on this list), the coercion results are totally safe, reasonable, and explainable
 
+#### Safely Using Implicit Coercion
+
+The most important advice I can give you: examine your program and reason about what values can show up on either side of an `==` comparison. To effectively avoid issues with such comparisons, here's some heuristic rules to follow:
+
+1. If either side of the comparison can have `true` or `false` values, don't ever, EVER use `==`.
+2. If either side of the comparison can have `[]`, `""`, or `0` values, seriously consider not using `==`.
+
+In these scenarios, it's almost certainly better to use `===` instead of `==`, to avoid unwanted coercion
+- Follow those two simple rules and pretty much all the coercion gotchas that could reasonably hurt you will effectively be avoided
+
+**Being more explicit/verbose in these cases will save you from a lot of headaches.**
+
+The question of `==` vs. `===` is really appropriately framed as: should you allow coercion for a comparison or not?
+
+There's lots of cases where such coercion can be helpful, allowing you to more tersely express some comparison logic (like with `null` and `undefined`, for example).
+
+In the overall scheme of things, there's relatively few cases where *implicit* coercion is truly dangerous
+- But in those places, for safety sake, definitely use `===`
+
+**Tip:** Another place where coercion is guaranteed *not* to bite you is with the `typeof` operator
+- `typeof` is always going to return you one of seven strings (see Chapter 1), and none of them are the empty `""` string
+- As such, there's no case where checking the type of some value is going to run afoul of *implicit* coercion
+- `typeof x == "function"` is 100% as safe and reliable as `typeof x === "function"`
+- Literally, the spec says the algorithm will be identical in this situation
+- So, don't just blindly use `===` everywhere simply because that's what your code tools tell you to do, or (worst of all) because you've been told in some book to **not think about it**. You own the quality of your code.
+
+Is *implicit* coercion evil and dangerous? In a few cases, yes, but overwhelmingly, no.
 
 # Objects
 - **Objects** are the general **building block upon which much of JS is built**. They are *one of the 6 primary types*
