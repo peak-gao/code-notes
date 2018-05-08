@@ -2169,7 +2169,7 @@ This iterator will generate random numbers "forever", so we're careful to only p
 ## Review (TL;DR)
 
 Objects in JS have both a literal form (such as `var a = { .. }`) and a constructed form (such as `var a = new Array(..)`)
-- The literal form is almost always preferred, but the constructed form offers, in some cases, more creation options.
+    - The literal form is almost always preferred, but the constructed form offers, in some cases, more creation options.
 
 Many people mistakenly claim "everything in JavaScript is an object", but this is incorrect
 - Objects are one of the 6 (or 7, depending on your perspective) primitive types. Objects have sub-types, including `function`, and also can be behavior-specialized, like `[object Array]` as the internal label representing the array object sub-type
@@ -2181,7 +2181,7 @@ Properties have certain characteristics that can be controlled through property 
 - In addition, objects can have their mutability (and that of their properties) controlled to various levels of immutability using `Object.preventExtensions(..)`, `Object.seal(..)`, and `Object.freeze(..)`
 
 Properties don't have to contain values -- they can be "accessor properties" as well, with getters/setters
-- They can also be either *enumerable* or not, which controls if they show up in `for..in` loop iterations, for instance.
+- They can also be either *enumerable* or not, which controls if they show up in `for..in` loop iterations, for instance
 
 You can also iterate over **the values** in data structures (arrays, objects, etc) using the ES6 `for..of` syntax, which looks for either a built-in or custom `@@iterator` object consisting of a `next()` method to advance through the data values one at a time.
 
@@ -2211,7 +2211,7 @@ We model this relationship in software with classes by defining a `Vehicle` clas
 
 The definition of `Vehicle` might include things like propulsion (engines, etc.), the ability to carry people, etc., which would all be the behaviors. What we define in `Vehicle` is all the stuff that is common to all (or most of) the different types of vehicles (the "planes, trains, and automobiles").
 
-It might not make sense in our software to re-define the basic essence of "ability to carry people" over and over again for each different type of vehicle. Instead, we define that capability once in `Vehicle`, and then when we define `Car`, we simply indicate that it "inherits" (or "extends") the base definition from `Vehicle`. The definition of `Car` is said to ***specialize* the general `Vehicle` definition**.
+It might not make sense in our software to re-define the basic essence of "ability to carry people" over and over again for each different type of vehicle. Instead, we define that capability once in `Vehicle`, and then when we define `Car`, we simply indicate that it "inherits" (or "extends") the base definition from `Vehicle`. The definition of `Car` is said to ***specialize* the general `Vehicle` definition**
 
 While `Vehicle` and `Car` collectively define the behavior by way of methods, the data in an instance would be things like the unique VIN of a specific car, etc.
 
@@ -2239,9 +2239,10 @@ JS has had *some* class-like syntactic elements (like `new` and `instanceof`) fo
 
 **But does that mean JavaScript actually *has* classes? Plain and simple: **No.****
 
-Since classes are a design pattern, you *can*, with quite a bit of effort (as we'll see throughout the rest of this chapter), implement approximations for much of classical class functionality. J**S tries to satisfy the extremely pervasive *desire* to design with classes by providing seemingly class-like syntax**.
+- Since classes are a design pattern, you *can*, with quite a bit of effort (as we'll see throughout the rest of this chapter), implement approximations for much of classical class functionality. JS tries to satisfy the extremely pervasive *desire* to design with classes by providing seemingly class-like syntax**.
 
-While we may have a syntax that looks like classes,** it's as if JavaScript mechanics are fighting against you using the *class design pattern*, because behind the curtain, the mechanisms that you build on are operating quite differently**. **Syntactic sugar and** (extremely widely used) **JS "Class" libraries go a long way toward hiding this reality from you**, but **sooner or later you will face the fact that the *classes* you have in other languages are not like the "classes" you're faking in J**S.
+- While we may have a syntax that looks like classes,** it's as if JavaScript mechanics are fighting against you using the *class design pattern*, because behind the curtain, the mechanisms that you build on are operating quite differently**. **Syntactic sugar and** (extremely widely used)
+    - **JS "Class" libraries go a long way toward hiding this reality from you**, but **sooner or later you will face the fact that the *classes* you have in other languages are not like the "classes" you're faking in JS.
 
 What this boils down to is that **classes are an optional pattern in software design**, and you have the choice to use them in JavaScript or not. Since many developers have a strong affinity to class oriented software design, we'll spend the rest of this chapter exploring what it takes to maintain the illusion of **classes with what JS provides**, and the **pain points** we experience.
 
@@ -2373,7 +2374,7 @@ We define the `Vehicle` class to assume an engine, a way to turn on the ignition
 
 So then we define two specific kinds of vehicle: `Car` and `SpeedBoat`
 - They each inherit the general characteristics of `Vehicle`, but then they specialize the characteristics appropriately for each kind
-- A car needs 4 wheels, and a speed boat needs 2 engines, which means it needs extra attention to turn on the ignition of both engines.
+- A car needs 4 wheels, and a speed boat needs 2 engines, which means it needs extra attention to turn on the ignition of both engines
 
 ### Polymorphism
 
@@ -2429,7 +2430,7 @@ Some class-oriented languages allow you to specify more than one "parent" class 
 - Multiple-inheritance means that each parent class definition is copied into the child class.
 
 On the surface, this seems like a powerful addition to class-orientation, giving us the ability to compose more functionality together
-- However, there are certainly some complicating questions that arise. If both parent classes provide a method called `drive()`, which version would a `drive()` reference in the child resolve to? Would you always have to manually specify which parent's `drive()` you meant, thus losing some of the gracefulness of polymorphic inheritance?
+    - However, there are certainly some complicating questions that arise. If both parent classes provide a method called `drive()`, which version would a `drive()` reference in the child resolve to? Would you always have to manually specify which parent's `drive()` you meant, thus losing some of the gracefulness of polymorphic inheritance?
 
 There's another variation, the so called "Diamond Problem", which refers to the scenario where a child class "D" inherits from two parent classes ("B" and "C"), and each of those in turn inherits from a common "A" parent
 - If "A" provides a method `drive()`, and both "B" and "C" override (polymorph) that method, when `D` references `drive()`, which version should it use (`B:drive()` or `C:drive()`)?
@@ -2699,7 +2700,7 @@ When traditional classes are instantiated, a copy of behavior from class to inst
 
 Polymorphism (having different functions at multiple levels of an inheritance chain with the same name) may seem like it implies a referential relative link from child back to parent, but it's still just a result of copy behavior.
 
-JavaScript **does not automatically** create copies (as classes imply) between objects.
+JavaScript **does not automatically** create copies (as classes imply) between objects
 
 # References
 - [You Don't Know JS: Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures)
