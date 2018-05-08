@@ -129,13 +129,6 @@ If there's any narrative important to understand about the new reality for JavaS
 - And learning ES6 is where that all
 
 
-
-
-
-
-
-
-
 # Syntax
 
 If you've been writing JS for any length of time, odds are the syntax is pretty familiar to yo
