@@ -105,6 +105,224 @@ This may sound like a strange concept at first, so take a moment to ponder it
        };
     ```
 
+#### NaN
+
+Any mathematic operation you perform without both operands being `number`s (or values that can be interpreted as regular `number`s in base 10 or base 16) will result in the operation failing to produce a valid `number`, in which case you will get the `NaN` value.
+
+`NaN` literally stands for "not a `number`", though this label/description is very poor and misleading, as we'll see shortly
+- It would be much more accurate to think of `NaN` as being "invalid number," "failed number," or even "bad number," than to think of it as "not a number"
+
+For example:
+
+```js
+var a = 2 / "foo";  // NaN
+
+typeof a === "number";	// true
+```
+
+In other words: "the type of not-a-number is 'number'!" Hooray for confusing names and semantics.
+
+`NaN` is a kind of "sentinel value" (an otherwise normal value that's assigned a special meaning) that represents a special kind of error condition within the `number` set
+- The error condition is, in essence: "I tried to perform a mathematic operation but failed, so here's the failed `number` result instead"
+
+So, if you have a value in some variable and want to test to see if it's this special failed-number `NaN`, you might think you could directly compare to `NaN` itself, as you can with any other value, like `null` or `undefined`. Nope.
+
+```js
+var a = 2 / "foo";
+
+a == NaN;  // false
+a === NaN;  // false
+```
+
+`NaN` is a very special value in that it's never equal to another `NaN` value (i.e., it's never equal to itself)
+- It's the only value, in fact, that is not reflexive (without the Identity characteristic `x === x`)
+- So, `NaN !== NaN`. A bit strange, huh?
+
+So how *do* we test for it, if we can't compare to `NaN` (since that comparison would always fail)?
+
+```js
+var a = 2 / "foo";
+
+isNaN( a ); // true
+```
+
+Easy enough, right? We use the built-in global utility called `isNaN(..)` and it tells us if the value is `NaN` or not. Problem solved!
+
+Not so fast.
+
+The `isNaN(..)` utility has a fatal flaw. It appears it tried to take the meaning of `NaN` ("Not a Number") too literally -- that its job is basically: "test if the thing passed in is either not a `number` or is a `number`"
+- But that's not quite accurate.
+
+```js
+var a = 2 / "foo";
+var b = "foo";
+
+a; // NaN
+b; // "foo"
+
+window.isNaN( a ); // true
+window.isNaN( b ); // true -- ouch!
+```
+
+Clearly, `"foo"` is literally *not a `number`*, but it's definitely not the `NaN` value either! This bug has been in JS since the very beginning (over 19 years of *ouch*).
+
+As of ES6, finally a replacement utility has been provided: `Number.isNaN(..)`
+- A simple polyfill for it so that you can safely check `NaN` values *now* even in pre-ES6 browsers is:
+
+```js
+if (!Number.isNaN) {
+    Number.isNaN = function(n) {
+        return (
+            typeof n === "number" &&
+            window.isNaN( n )
+        );
+    };
+}
+
+var a = 2 / "foo";
+var b = "foo";
+
+Number.isNaN( a ); // true
+Number.isNaN( b ); // false -- phew!
+```
+
+Actually, we can implement a `Number.isNaN(..)` polyfill even easier, by taking advantage of that peculiar fact that `NaN` isn't equal to itself. `NaN` is the *only* value in the whole language where that's true; every other value is always **equal to itself**.
+
+So:
+
+```js
+if (!Number.isNaN) {
+    Number.isNaN = function(n) {
+    return n !== n;
+    };
+}
+```
+
+Weird, huh? But it works!
+
+`NaN`s are probably a reality in a lot of real-world JS programs, either on purpose or by accident
+- It's a really good idea to use a reliable test, like `Number.isNaN(..)` as provided (or polyfilled), to recognize them properly
+
+If you're currently using just `isNaN(..)` in a program, the sad reality is your program *has a bug*, even if you haven't been bitten by it yet!
+
+# Comparisons
+#### False-y Comparisons
+
+The most common complaint against *implicit* coercion in `==` comparisons comes from how falsy values behave surprisingly when compared to each other.
+
+To illustrate, let's look at a list of the corner-cases around falsy value comparisons, to see which ones are reasonable and which are troublesome:
+
+```js
+"0" == null;      // false
+"0" == undefined; // false
+"0" == false;     // true -- UH OH!
+"0" == NaN;       // false
+"0" == 0;         // true
+"0" == "";        // false
+
+false == null;    // false
+false == undefined; // false
+false == NaN;     // false
+false == 0;       // true -- UH OH!
+false == "";      // true -- UH OH!
+false == [];      // true -- UH OH!
+false == {};      // false
+
+"" == null;       // false
+"" == undefined;  // false
+"" == NaN;        // false
+"" == 0;          // true -- UH OH!
+"" == [];         // true -- UH OH!
+"" == {};         // false
+
+0 == null;        // false
+0 == undefined;   // false
+0 == NaN;         // false
+0 == [];          // true -- UH OH!
+0 == {};          // false
+```
+
+In this list of 24 comparisons, 17 of them are quite reasonable and predictable. For example, we know that `""` and `NaN` are not at all equatable values, and indeed they don't coerce to be loose equals, whereas `"0"` and `0` are reasonably equatable and *do* coerce as loose equals.
+
+However, seven of the comparisons are marked with "UH OH!" because as false positives, they are much more likely gotchas that could trip you up. `""` and `0` are definitely distinctly different values, and it's rare you'd want to treat them as equatable, so their mutual coercion is troublesome. Note that there aren't any false negatives here.
+
+#### The Crazy Ones
+
+We don't have to stop there, though. We can keep looking for even more troublesome coercions:
+
+```js
+[] == ![];  // true
+```
+
+Oooo, that seems at a higher level of crazy, right!?
+- Your brain may likely trick you that you're comparing a truthy to a falsy value, so the `true` result is surprising, as we *know* a value can never be truthy and falsy at the same time!
+
+But that's not what's actually happening
+- Let's break it down. What do we know about the `!` unary operator? It explicitly coerces to a `boolean` using the `ToBoolean` rules (and it also flips the parity)
+- So before `[] == ![]` is even processed, it's actually already translated to `[] == false`. We already saw that form in our above list (`false == []`), so its surprise result is *not new* to us
+
+How about other corner cases?
+
+```js
+2 == [2];  // true
+"" == [null];  // true
+```
+
+As we said earlier in our `ToNumber` discussion, the right-hand side `[2]` and `[null]` values will go through a `ToPrimitive` coercion so they can be more readily compared to the simple primitives (`2` and `""`, respectively) on the left-hand side
+- Since the `valueOf()` for `array` values just returns the `array` itself, coercion falls to stringifying the `array`
+
+`[2]` will become `"2"`, which then is `ToNumber` coerced to `2` for the right-hand side value in the first comparison. `[null]` just straight becomes `""`.
+
+So, `2 == 2` and `"" == ""` are completely understandable.
+
+If your instinct is to still dislike these results, your frustration is not actually with coercion like you probably think it is
+- It's actually a complaint against the default `array` values' `ToPrimitive` behavior of coercing to a `string` value. More likely, you'd just wish that `[2].toString()` didn't return `"2"`, or that `[null].toString()` didn't return `""`
+
+But what exactly *should* these `string` coercions result in?
+- I can't really think of any other appropriate `string` coercion of `[2]` than `"2"`, except perhaps `"[2]"` -- but that could be very strange in other contexts!
+
+You could rightly make the case that since `String(null)` becomes `"null"`, then `String([null])` should also become `"null"`
+- That's a reasonable assertion. So, that's the real culprit
+
+*Implicit* coercion itself isn't the evil here. Even an *explicit* coercion of `[null]` to a `string` results in `""`
+- What's at odds is whether it's sensible at all for `array` values to stringify to the equivalent of their contents, and exactly how that happens
+- So, direct your frustration at the rules for `String( [..] )`, because that's where the craziness stems from
+- Perhaps there should be no stringification coercion of `array`s at all? But that would have lots of other downsides in other parts of the language
+
+Another famously cited gotcha:
+
+```js
+0 == "\n";  // true
+```
+
+As we discussed earlier with empty `""`, `"\n"` (or `" "` or any other whitespace combination) is coerced via `ToNumber`, and the result is `0`. What other `number` value would you expect whitespace to coerce to?
+- Does it bother you that *explicit* `Number(" ")` yields `0`?
+
+Really the only other reasonable `number` value that empty strings or whitespace strings could coerce to is the `NaN`
+- But would that *really* be better?
+- The comparison `" " == NaN` would of course fail, but it's unclear that we'd have really *fixed* any of the underlying concerns
+
+The chances that a real-world JS program fails because `0 == "\n"` are awfully rare, and such corner cases are easy to avoid.
+
+Type conversions **always** have corner cases, in any language -- nothing specific to coercion
+- The issues here are about second-guessing a certain set of corner cases (and perhaps rightly so!?), but that's not a salient argument against the overall coercion mechanism
+
+Bottom line: almost any crazy coercion between *normal values* that you're likely to run into (aside from intentionally tricky `valueOf()` or `toString()` hacks as earlier) will boil down to the short seven-item list of gotcha coercions we've identified above.
+
+To contrast against these 24 likely suspects for coercion gotchas, consider another list like this:
+
+```js
+42 == "43";  // false
+"foo" == 42;  // false
+"true" == true; // false
+
+42 == "42";  // true
+"foo" == [ "foo" ];  // true
+```
+
+In these nonfalsy, noncorner cases (and there are literally an infinite number of comparisons we could put on this list), the coercion results are totally safe, reasonable, and explainable
+
+
 # Objects
 - **Objects** are the general **building block upon which much of JS is built**. They are *one of the 6 primary types*
     - *simple primitives* (`string`, `number`, `boolean`, `null`, and `undefined`) are **not** themselves `objects`
@@ -260,6 +478,7 @@ As mentioned earlier, the **contents of an object consist of values** (any type)
          - `Object.keys(..)` returns an array of all enumerable properties
             - `in` vs. `hasOwnProperty(..)` differ in whether they consult the `[[Prototype]]` chain or not, `Object.keys(..)` and `Object.getOwnPropertyNames(..)` both inspect *only* the direct object specified
         - There's (currently) no built-in way to get a list of **all properties** which is equivalent to what the `in` operator test would consult (traversing all properties on the entire `[[Prototype]]` chain)
+
 # Functions
 
 **functions never "belong" to objects**, so **saying that a function that just happens to be accessed on an object reference is automatically a "method" seems a bit of a stretch of semantics**.

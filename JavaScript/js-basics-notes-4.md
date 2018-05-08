@@ -1383,11 +1383,6 @@ The `null` type has just one value: `null`, and likewise the `undefined` type ha
 Simple scalar primitives (`string`s, `number`s, etc.) are assigned/passed by value-copy, but compound values (`object`s, etc.) are assigned/passed by reference-copy
 - References are not like references/pointers in other languages -- they're never pointed at other variables/references, only at the underlying values
 
-
-
-
-
-
 # Chapter 3: Natives
 
 Several times in Chapters 1 and 2, we alluded to various built-ins, usually called "natives," like `String` and `Number`. Let's examine those in detail now.
@@ -1911,11 +1906,6 @@ JavaScript provides object wrappers around primitive values, known as natives (`
 
 If you have a simple scalar primitive value like `"abc"` and you access its `length` property or some `String.prototype` method, JS automatically "boxes" the value (wraps it in its respective object wrapper) so that the property/method accesses can be fulfilled.
 
-
-
-
-
-
 # Coercion
 
 Now that we much more fully understand JavaScript's types and values, we turn our attention to a very controversial topic: coercion.
@@ -2012,7 +2002,7 @@ It's important to note that this stringification is not exactly the same thing a
 For most simple values, JSON stringification behaves basically the same as `toString()` conversions, except that the serialization result is *always a `string`*:
 
 ```js
-JSON.stringify( 42 );  // "42"
+JSON.stringify( 42 ); // "42"
 JSON.stringify( "42" );	// ""42"" (a string with a quoted string value in it)
 JSON.stringify( null );	// "null"
 JSON.stringify( true );	// "true"
