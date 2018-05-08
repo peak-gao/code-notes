@@ -202,7 +202,7 @@ In class-oriented languages, multiple **copies** (aka, "instances") of a class c
 
 But in JavaScript, there are no such copy-actions performed
 - You don't create multiple instances of a class. You can create multiple objects that `[[Prototype]]` *link* to a common object
-- But by default, no copying occurs, and thus these objects don't end up totally separate and disconnected from each other, but rather, quite ***linked***.
+- But by default, no copying occurs, and thus these objects don't end up totally separate and disconnected from each other, but rather, quite ***linked***
 
 **`new Foo()` results in a new object** (we called it `a`), and ****that** new object `a` is internally `[[Prototype]]` linked to the `Foo.prototype` object**
 
