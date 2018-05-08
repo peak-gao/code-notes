@@ -228,7 +228,28 @@ As mentioned earlier, the **contents of an object consist of values** (any type)
         - In reality, they both access the same *location*, and will pull out the same value, `2`, so the terms can be used interchangeably
         - We will use the most common term, "property access" from here on
     - The `myObject[..]` property access syntax we just described is useful if you need to use a computed expression value *as* the key name, like `myObject[prefix + name]`
+- a property access like `myObject.a` may result in an `undefined` value if either the explicit `undefined` is stored there or the `a` property doesn't exist at all. So, if the value is the same in both cases, how else do we distinguish them?
+    - We can ask an object if it has a certain property *without* asking to get that property's value:
+        ```js
+        var myObject = {
+            a: 2
+        };
+        
+        ("a" in myObject);				// true
+        ("b" in myObject);				// false
+        
+        myObject.hasOwnProperty( "a" );	// true
+        myObject.hasOwnProperty( "b" );	// false
+        ```
 
+        The `in` operator will check to see if the property is *in* the object, or if it exists at any higher level of the `[[Prototype]]` chain object traversal (see Chapter 5)
+         - By contrast, `hasOwnProperty(..)` checks to see if *only* `myObject` has the property or not, and will *not* consult the `[[Prototype]]` chain
+         - We'll come back to the important differences between these two operations in Chapter 5 when we explore `[[Prototype]]`s in detail
+         - `hasOwnProperty(..)` is accessible for all normal objects via delegation to `Object.prototype` (see Chapter 5)
+         - But be aware that it's possible to create an object that does not link to `Object.prototype` (via `Object.create(null)`
+         - `Object.keys(..)` returns an array of all enumerable properties
+            - `in` vs. `hasOwnProperty(..)` differ in whether they consult the `[[Prototype]]` chain or not, `Object.keys(..)` and `Object.getOwnPropertyNames(..)` both inspect *only* the direct object specified
+        - There's (currently) no built-in way to get a list of **all properties** which is equivalent to what the `in` operator test would consult (traversing all properties on the entire `[[Prototype]]` chain)
 # Functions
 
 **functions never "belong" to objects**, so **saying that a function that just happens to be accessed on an object reference is automatically a "method" seems a bit of a stretch of semantics**.

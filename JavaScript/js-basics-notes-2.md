@@ -1937,7 +1937,7 @@ myObject.hasOwnProperty( "b" );	// false
 
 The `in` operator will check to see if the property is *in* the object, or if it exists at any higher level of the `[[Prototype]]` chain object traversal (see Chapter 5)
  - By contrast, `hasOwnProperty(..)` checks to see if *only* `myObject` has the property or not, and will *not* consult the `[[Prototype]]` chain
- - We'll come back to the important differences between these two operations in Chapter 5 when we explore `[[Prototype]]`s in detail.
+ - We'll come back to the important differences between these two operations in Chapter 5 when we explore `[[Prototype]]`s in detail
 
 `hasOwnProperty(..)` is accessible for all normal objects via delegation to `Object.prototype` (see Chapter 5)
  - But it's possible to create an object that does not link to `Object.prototype` (via `Object.create(null)` -- see Chapter 5)
@@ -2015,7 +2015,7 @@ Object.getOwnPropertyNames( myObject ); // ["a", "b"]
 
 `propertyIsEnumerable(..)` tests whether the given property name exists *directly* on the object and is also `enumerable:true`.
 
-`Object.keys(..)` returns an array of all enumerable properties, whereas `Object.getOwnPropertyNames(..)` returns an array of *all* properties, enumerable or not.
+`Object.keys(..)` returns an array of all enumerable properties, whereas `Object.getOwnPropertyNames(..)` returns an array of *all* properties, enumerable or not
 
 Whereas `in` vs. `hasOwnProperty(..)` differ in whether they consult the `[[Prototype]]` chain or not, `Object.keys(..)` and `Object.getOwnPropertyNames(..)` both inspect *only* the direct object specified.
 
