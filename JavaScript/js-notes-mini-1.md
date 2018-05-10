@@ -11661,7 +11661,7 @@ Instead, they're stored as properties on the `Symbol` function object. For examp
 ```js
 var a = [1,2,3];
 
-a[Symbol.iterator];			// native function
+a[Symbol.iterator]; // native function
 ```
 
 The specification uses the `@@` prefix notation to refer to the built-in symbols, the most common ones being: `@@iterator`, `@@toStringTag`, `@@toPrimitive`. Several others are defined as well, though they probably won't be used as often.
