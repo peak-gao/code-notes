@@ -355,6 +355,7 @@ Is *implicit* coercion evil and dangerous? In a few cases, yes, but overwhelming
 # Objects
 - **Objects** are the general **building block upon which much of JS is built**. They are *one of the 6 primary types*
     - *simple primitives* (`string`, `number`, `boolean`, `null`, and `undefined`) are **not** themselves `objects`
+    - A primitive (primitive value, primitive data type) is data that is not an object and has no methods
     - `null` is *sometimes referred to as an object type*, but **this misconception stems from a bug in the language which causes `typeof null` to return the string `"object"` incorrectly**.  **`null` is its own primitive type**
     - `function` is a sub-type of object (technically, a "callable object")
     - **Functions in JS are said to be "first class"** in that they **are basically just normal objects** (with callable behavior semantics bolted on), and **so they can be handled like any other plain object**
@@ -1042,6 +1043,8 @@ for (var i=0; i<10; i++) {
 #### let
 - Thus far, we've seen that JavaScript only has some strange niche behaviors which expose block scope functionality. If that were all we had, and it was for many, many years, then block scoping would not be terribly useful to the JavaScript developer
 - ES6 changes that, and introduces a new keyword let which sits alongside var as another way to declare variables
+- let allows you to declare variables that are limited in scope to the block, statement, or expression on which it is used
+- The main difference vs var is that the scope of a var variable is the entire enclosing function and variables declared by let have as their scope the block in which they are defined
 - let keyword attaches the variable declaration to the scope of whatever block (commonly a { .. } pair) it's contained in
     - In other words, let implicitly hijacks any block's scope for its variable declaration:
         ```js
