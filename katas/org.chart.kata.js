@@ -66,7 +66,6 @@ function createOrgHierarchy(employee){
     return;
   };
 
-  // let scopes whatever to the loop's block scope
   for(let subordinate of subordinates){
     createOrgHierarchy(subordinate);
   };
