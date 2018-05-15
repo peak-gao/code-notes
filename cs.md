@@ -109,6 +109,19 @@ Do 2 versions of each for the bigger katas, one version using literals + functio
     console.log(beasts.indexOf('bison'));
     // output: 1
     ```
+[findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+- returns the index of the first element in the array that satisfies the provided testing function
+    ```
+    var array1 = [5, 12, 8, 130, 44];
+
+    function findFirstLargeNumber(element) {
+      return element > 13;
+    }
+
+    console.log(array1.findIndex(findFirstLargeNumber));
+    // expected output: 3
+    ```
+
 [keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/keys)
 - returns a new Array Iterator object that contains the keys for each index in the array
     ```
@@ -309,7 +322,19 @@ Do 2 versions of each for the bigger katas, one version using literals + functio
         console.log(array1);
         // expected output: Array [1, 21, 30, 4]
         ```
+[some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+- tests whether at least one element in the array passes the test implemented by the provided function
+    ```
+    var array = [1, 2, 3, 4, 5];
 
+    var even = function(element) {
+      // checks whether an element is even
+      return element % 2 === 0;
+    };
+
+    console.log(array.some(even));
+    // expected output: true
+    ```
 
 
 #### Hash Table / Dictionary / Map
