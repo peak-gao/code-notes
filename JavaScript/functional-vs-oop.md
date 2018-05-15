@@ -15,16 +15,11 @@
 
 #### Examples
 
-**Functional**: You pass an object to the function and do stuff
 
-`_.map([1, 2, 3], function(n){ return n * 2; });`
-
-
-
-`_([1, 2, 3]).map(function(n){ return n * 2; });`
-
-In both examples [1,2,3] (array) is an object.
+# JS and OOP
 
 
 # References
 [Beginner JavaScript OOP vs Functional](https://stackoverflow.com/questions/37231841/beginner-javascript-oop-vs-functional?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+[Understanding the four layers of JavaScript OOP](http://2ality.com/2014/05/oop-layers.html)
+[Objects and Inheritance](http://speakingjs.com/es5/ch17.html)

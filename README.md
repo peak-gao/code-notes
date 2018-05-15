@@ -25,7 +25,7 @@ Reading the `-notes` which is a gigantic dump of good "stuff" is overwhelming.  
     - Examples (as real-world as possible)
 
 ### *mini-2 notes format*
-these extend mini-1 notes.  Because...I don't like puting everything into one file.  Also, since I use WebStorm it takes a ton of memory to work in md files that get too long.
+These extend mini-1 notes.  Because...I don't like puting everything into one file.  Also, since I use WebStorm it takes a ton of memory to work in md files that get too long.
 
 - **Topic Header** (matches the headers in mini-1)
     - More Details that extend the list in mini-1
