@@ -75,6 +75,9 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 ## **WebStorm IDE**
 ## **OS X Local Development Setup**
 
+## **Computer Science & JS Utils**
+- [CS](JavaScript/cs.md)
+
 # Principles and Practices
 ## **BDD**
 ## **TDD**
