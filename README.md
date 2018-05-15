@@ -65,14 +65,14 @@ These extend mini-1 notes.  Because...I don't like puting everything into one fi
 - [Part 4](JavaScript/notes/js-basics-notes-4.md)
 - [Part 5](JavaScript/notes/js-basics-notes-5.md)
 - [Part 6](JavaScript/notes/js-basics-notes-6.md)
+- [JS Misconceptions](JavaScript/notes/js-misconceptions.md)
+- [Functional vs OOP Languages](JavaScript/notes/functional-vs-oop.md)
 
 #### **ES6**
 
 ### Mini Notes
 - [mini notes - 1](JavaScript/notes/js-notes-mini-1.md)
 - [mini notes - 2](JavaScript/notes/js-notes-mini-2.md)
-- [JS Misconceptions](JavaScript/notes/js-misconceptions.md)
-- [Functional vs OOP Languages](JavaScript/notes/functional-vs-oop.md)
 
 ## **Node**
 ## **WebStorm IDE**
