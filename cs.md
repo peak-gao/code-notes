@@ -12,7 +12,7 @@
 ### Linked Lists
 ##### Posts
 ##### Videos
-- https://www.youtube.com/watch?v=njTh_OwMljA
+- [Linked Lists](https://www.youtube.com/watch?v=njTh_OwMljA)
 ### Trees
 ##### Posts
 - [recursive tree construction](https://stackoverflow.com/questions/10347942/recursive-tree-construction?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
