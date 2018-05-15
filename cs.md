@@ -17,7 +17,8 @@
 ##### Posts
 - [recursive tree construction](https://stackoverflow.com/questions/10347942/recursive-tree-construction?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
 - [Implement a Binary Search Tree in JavaScript](https://initjs.org/implement-a-binary-search-tree-in-javascript-952a44ee7c26)
-= [The HTML Document Tree](http://web.simmons.edu/~grabiner/comm244/weekfour/document-tree.html)
+- [The HTML Document Tree](http://web.simmons.edu/~grabiner/comm244/weekfour/document-tree.html)
+
 ##### Videos
 - [build employee hierarchy tree](https://www.youtube.com/watch?v=p3Ct3hELjSs)
 - [Data Structures: Trees](https://www.youtube.com/watch?v=oSWTXtMglKE)
@@ -39,12 +40,11 @@ Do **3 versions** of **each** of the the **bigger katas**:
 - using **Object.create()** & **functions**
 - using ES6 **classes** & **functions**
 
-## CS
-
-
 ## Trees
 - **Build a Binary Search Tree**
 - **Build a hierarchical Tree**
+- **invert a binary tree**
+
 ## Lists
 - **binary search with array**
 - **Build a LinkedList**
