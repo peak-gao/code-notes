@@ -28,9 +28,9 @@
 - [dabeng/OrgChart](https://github.com/dabeng/OrgChart/blob/master/src/js/jquery.orgchart.js) (createNode, buildChildNode)
 
 ## Sorts
+#### Bubble
 ##### Posts
 ##### Videos
-### Bubble
 - [Sorting | packtpub.com](https://www.youtube.com/watch?v=Ymh_AurrMbA)
 ##### Posts
 ##### Videos
