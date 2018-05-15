@@ -11,7 +11,7 @@ You should start with the `cheat-sheet`.  Then move to `notes-mini` sequentially
 
 I think this a much better way to retain this information.
 
-### cheat-sheet
+### _cheat-sheet_
 A very thin list of stuff for quick referencing.  Much more thin than mini-notes
 
 ### *mini-1 notes format*
@@ -59,20 +59,20 @@ These extend mini-1 notes.  Because...I don't like puting everything into one fi
 ### In Depth Notes
 
 #### *JS Fundamentals*
-- [Part 1](JavaScript/js-basics-notes.md)
-- [Part 2](JavaScript/js-basics-notes-2.md)
-- [Part 3](JavaScript/js-basics-notes-3.md)
-- [Part 4](JavaScript/js-basics-notes-4.md)
-- [Part 5](JavaScript/js-basics-notes-5.md)
-- [Part 6](JavaScript/js-basics-notes-6.md)
+- [Part 1](JavaScript/notes/js-basics-notes.md)
+- [Part 2](JavaScript/notes/js-basics-notes-2.md)
+- [Part 3](JavaScript/notes/js-basics-notes-3.md)
+- [Part 4](JavaScript/notes/js-basics-notes-4.md)
+- [Part 5](JavaScript/notes/js-basics-notes-5.md)
+- [Part 6](JavaScript/notes/js-basics-notes-6.md)
 
 #### **ES6**
 
 ### Mini Notes
-- [mini notes - 1](JavaScript/js-notes-mini-1.md)
-- [mini notes - 2](JavaScript/js-notes-mini-2.md)
-- [JS Misconceptions](JavaScript/js-misconceptions.md)
-- [JS vs OOP Languages](JavaScript/js-misconceptions.md)
+- [mini notes - 1](JavaScript/notes/js-notes-mini-1.md)
+- [mini notes - 2](JavaScript/notes/js-notes-mini-2.md)
+- [JS Misconceptions](JavaScript/notes/js-misconceptions.md)
+- [Functional vs OOP Languages](JavaScript/notes/functional-vs-oop.md)
 
 ## **Node**
 ## **WebStorm IDE**
