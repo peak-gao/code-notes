@@ -32,8 +32,6 @@
 ##### Posts
 ##### Videos
 - [Sorting | packtpub.com](https://www.youtube.com/watch?v=Ymh_AurrMbA)
-##### Posts
-##### Videos
 
 # Katas
 For each Kata do them 2 different ways:
@@ -42,15 +40,15 @@ For each Kata do them 2 different ways:
 
 ## CS
 Do 2 versions of each for the bigger katas, one version using literals + functions and another using classes + functions
-#### Trees
+## Trees
 - **Build a Binary Search Tree**
 - **Build a hierarchical Tree**
-#### Lists
+## Lists
 - **binary search with array**
 - **Build a LinkedList**
 - **Build a thread safe LinkedList**
 - **Create a sequence of dictionary words from a predefined set of letters**
-#### Sorts
+## Sorts
 - **Bubble Sort**
 - **Merge Sort**
 
