@@ -84,7 +84,7 @@ Do 2 versions of each for the bigger katas, one version using literals + functio
 - [a short list of algorithms](https://thatjsdude.com/interview/js1.html)
 
 # Common JS Utilities
-#### String
+### String
 [split()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
 - splits a String object into an array of strings
     - _return value_: An Array of strings split at each point where the separator occurs in the given string
@@ -98,7 +98,7 @@ Do 2 versions of each for the bigger katas, one version using literals + functio
     var strReverse = str.split('').reverse().join(''); // 'lkjhgfdsa'
     // split() returns an array on which reverse() and join() can be applied
     ```
-#### Array
+### Array
 [indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
 - returns the first index at which a given element can be found in the array, or -1 if it is not present
     ```
