@@ -15,7 +15,7 @@ I think this a much better way to retain this information.
 A very thin list of stuff for quick referencing.  Much more thin than mini-notes
 
 ### *mini-1 notes format*
-Reading the `-notes` which is a gigantic dump of good "stuff" is overwhelming.  Start with these after the cheat-sheet(s) for each topic.
+Reading the plain `[topic]-notes` which is a gigantic dump of good "stuff" is overwhelming.  Start with these after the cheat-sheet(s) for each topic.
 
 - **Topic Header**
     - Definition
