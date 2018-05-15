@@ -8,6 +8,7 @@
 
 
 ## Data Structures
+
 ### Linked Lists
 #### Videos
 - https://www.youtube.com/watch?v=njTh_OwMljA
@@ -26,6 +27,9 @@
 #### github
 - [dabeng/OrgChart](https://github.com/dabeng/OrgChart/blob/master/src/js/jquery.orgchart.js) (createNode, buildChildNode)
 
+## Sorts
+### Bubble
+- [Sorting | packtpub.com](https://www.youtube.com/watch?v=Ymh_AurrMbA)
 ## JS Utilities
 - [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) - use as a hash map / dictionary
     `new Map([iterable])`
@@ -61,18 +65,29 @@
     ```
 
 # Katas
+For each Kata do them 2 different ways:
+- literals and functions only
+- Using JS Classes
+
 ## CS
+Do 2 versions of each for the bigger katas, one version using literals + functions and another using classes + functions
+- binary search with array
 - Build a Binary Search Tree
 - Build a hierarchical Tree
 - Build a LinkedList
 - Build a thread safe LinkedList
 - Create a sequence of dictionary words from a predefined set of letters
-
+- Sorts
+    - Bubble Sort
+    - Merge Sort
+    - 
 ## JS
 - Write a function that mimics JS's setTimeout
 
 ## Misc
 - Write a debouncer function in JS
+    - [JavaScript Debounce Function](https://davidwalsh.name/javascript-debounce-function)
+    - [Debounce in JavaScript — Improve Your Application’s Performance](https://levelup.gitconnected.com/debounce-in-javascript-improve-your-applications-performance-5b01855e086)
 - Given an array of integers, find the maximum difference of any 2 numbers
     - I'd probably sort the list and then take the highest number and subtract the lowest
 - Sum of prime number until 1 million

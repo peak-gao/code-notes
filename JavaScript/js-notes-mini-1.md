@@ -2211,6 +2211,9 @@ A program can effectively use both styles of code (lexical and `this`), but insi
     - ***`[[Get]]` operation proceeds to follow the `[[Prototype]]` **link** of the object if it cannot find the requested property on the object directly***`[[Prototype]]` linked to `anotherObject`
     - **This process continues until either a matching property name is found**, *or* **the `[[Prototype]]` chain ends**. **If no matching property is *ever* found by the end of the chain**, the return **result** from the `[[Get]]` operation is **`undefined`**
     - You could think of this almost as a fallback if the property is missing
+- the [[Prototype]] mechanism is an internal link that exists on one object which references another object
+- This linkage is exercised when a property/method reference is made against the first object, and no such property/method exists. In that case, the [[Prototype]] linkage tells the engine to look for the property/method on the linked-to object. In turn, if that object cannot fulfill the look-up, its [[Prototype]] is followed, and so on. This series of links between objects forms what is called the "prototype chain"
+    - **JavaScript, is all about objects being linked to other objects**
 - The internal prototype reference linkage from one object to its fallback happens at the time the object is created
     - The simplest way to illustrate it is with a built-in utility called `Object.create(..)`
 - if you use a `for..in` loop to iterate over an object, any property that can be reached via its chain (and is also `enumerable` -- see Chapter 3) will be enumerated

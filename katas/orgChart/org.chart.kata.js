@@ -44,6 +44,10 @@ function createEmployeeMap(employees){
   return map;
 }
 
+subordinates = .map((subordinate, i) => {
+  return createEmployeeNode(subordinate);
+});
+
 function getEmployeeSubordinatesById(employeeId){
   const subordinates = [];
 
@@ -81,9 +85,17 @@ function printOrgHierarchy(employee, level){
   console.log(employee.firstName)
 
   if(employee.id === 0){
-    console.log("\t")
+    console.log("\t")``
   }
   for(s of subordinates){
     printOrgHierarchy(s, level++);
   }
 };
+
+for(const [key, value] of map){
+  console.log(`key: ${key}`);
+
+  if(value.length == 0){
+    map.delete(key)
+  }
+}
