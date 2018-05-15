@@ -34,7 +34,7 @@
 - [Sorting | packtpub.com](https://www.youtube.com/watch?v=Ymh_AurrMbA)
 
 # Katas
-Do 3 versions of each for the bigger katas:
+Do **3 versions** of **each** of the the **bigger katas**:
 - using **object literals** & **functions**
 - using **Object.create()** & **functions**
 - using ES6 **classes** & **functions**
