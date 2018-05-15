@@ -226,7 +226,7 @@ Do **3 versions** of **each** of the the **bigger katas**:
     var arr2 = [1, 2, [3, 4, [5, 6]]];
     arr2.flatten();
     // [1, 2, 3, 4, [5, 6]]
-    ``
+    ```
 
 [every()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
 - tests whether all elements in the array pass the test implemented by the provided function

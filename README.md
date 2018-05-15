@@ -5,14 +5,17 @@ This is a collection of code notes learned over time for various languages, TDD,
 # How to Navigate Notes
 It's hard to digest everthing in the extensive .md files on each particular topic.
 
-So I'm taking an iterative approach to digesting all this information and thus creating little "iterative cheat sheets" that allow you to gradually dive into each topic
+So I'm taking an iterative approach to digesting all this information and thus creating little "iterative cheat sheets", then "mini sheets", and then "core notes", that allow you to gradually dive into each topic.
 
-You should start with the mini-1 cheat sheets, move to mini-2, and then once you have those down well and memorized, you can dive into the extreme "guts" on each topic
+You should start with the `cheat-sheet`.  Then move to `notes-mini` sequentially by their number.  Then once you have those down well and memorized, you can dive into the extreme "guts" on each topic by reading the `[topic]-notes`.
 
 I think this a much better way to retain this information.
 
+### cheat-sheet
+A very thin list of stuff for quick referencing.  Much more thin than mini-notes
+
 ### *mini-1 notes format*
-These serve as more of quick "cheat sheet" and something you can start with.  Then dive more into the details via the mini-2.md files
+Reading the `-notes` which is a gigantic dump of good "stuff" is overwhelming.  Start with these after the cheat-sheet(s) for each topic.
 
 - **Topic Header**
     - Definition
@@ -22,7 +25,7 @@ These serve as more of quick "cheat sheet" and something you can start with.  Th
     - Examples (as real-world as possible)
 
 ### *mini-2 notes format*
-these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet with shorter bullet points compared to the major .md files on that area.
+these extend mini-1 notes.  Because...I don't like puting everything into one file.  Also, since I use WebStorm it takes a ton of memory to work in md files that get too long.
 
 - **Topic Header** (matches the headers in mini-1)
     - More Details that extend the list in mini-1
