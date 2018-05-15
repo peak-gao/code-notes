@@ -1,5 +1,6 @@
-# this & contexts
+≈
 - bind(), call(), and apply() attaches _this_ into function
+
 ### bind()
 `function.bind(thisArg[, arg1[, arg2[, ...]]])`
 - creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called
@@ -33,14 +34,13 @@
     ```
     function MyObject(element) {
         this.elm = element;
-
         element.addEventListener('click', this.onClick.bind(this), false);
     };
 
     MyObject.prototype.onClick = function(e) {
          var t=this;  //do something with [t]...
-        //without bind the context of this function wouldn't be a MyObject
-        //instance as you would normally expect.
+        // without bind the context of this function wouldn't be a MyObject
+        // instance as you would normally expect.
     };
     ```
 
@@ -71,7 +71,7 @@
     using it to reverse a string:
     ```
     var str = 'asdfghjkl';
-    var strReverse = str.split('').reverse().join(''); // 'lkjhgfdsa'
+    var strReverse = str.split('').reverse().join('');  // 'lkjhgfdsa'
     // split() returns an array on which reverse() and join() can be applied
     ```
 ### Array
@@ -79,7 +79,6 @@
 - returns the first index at which a given element can be found in the array, or -1 if it is not present
     ```
     var beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
-
     console.log(beasts.indexOf('bison'));
     // output: 1
     ```
@@ -113,7 +112,7 @@
     const iterator = array1.values();
 
     for (const value of iterator) {
-      console.log(value); // expected output: "a" "b" "c"
+      console.log(value);   // expected output: "a" "b" "c"
     }
     ```
 [entries()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
@@ -129,8 +128,8 @@
 [of()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of)
 - creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments
     ```
-    Array.of(7);       // [7]
-    Array.of(1, 2, 3); // [1, 2, 3]
+    Array.of(7);  // [7]
+    Array.of(1, 2, 3);  // [1, 2, 3]
     ```
 [splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 - changes the contents of an array by removing existing elements and/or adding new
@@ -140,12 +139,12 @@
     months.splice(1, 0, 'Feb');
     // inserts at 1st index position
     console.log(months);
-    // expected output: Array ['Jan', 'Feb', 'March', 'April', 'June']
+    // output: Array ['Jan', 'Feb', 'March', 'April', 'June']
 
     months.splice(4, 1, 'May');
     // replaces 1 element at 4th index
     console.log(months);
-    // expected output: Array ['Jan', 'Feb', 'March', 'April', 'May']
+    // output: Array ['Jan', 'Feb', 'March', 'April', 'May']
     ```
 [join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
 - joins all elements of an array (or an array-like object) into a string
@@ -277,10 +276,10 @@
     var firstElement = array1.shift();
 
     console.log(array1);
-    // expected output: Array [2, 3]
+    // output: Array [2, 3]
 
     console.log(firstElement);
-    // expected output: 1
+    // output: 1
     ```
 [sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 - sorts the elements of an array in place and returns the array. The sort is not necessarily stable. The default sort order is according to string Unicode code points
@@ -289,12 +288,12 @@
         var months = ['March', 'Jan', 'Feb', 'Dec'];
         months.sort();
         console.log(months);
-        // expected output: Array ["Dec", "Feb", "Jan", "March"]
+        // output: Array ["Dec", "Feb", "Jan", "March"]
 
         var array1 = [1, 30, 4, 21];
         array1.sort();
         console.log(array1);
-        // expected output: Array [1, 21, 30, 4]
+        // output: Array [1, 21, 30, 4]
         ```
 [some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
 - tests whether at least one element in the array passes the test implemented by the provided function
@@ -302,12 +301,12 @@
     var array = [1, 2, 3, 4, 5];
 
     var even = function(element) {
-      // checks whether an element is even
-      return element % 2 === 0;
+        // checks whether an element is even
+        return element % 2 === 0;
     };
 
     console.log(array.some(even));
-    // expected output: true
+    // output: true
     ```
 
 
@@ -330,20 +329,24 @@
         myMap.size; // 3
 
         // getting the values
-        myMap.get(keyString);    // "value associated with 'a string'"
-        myMap.get(keyObj);       // "value associated with keyObj"
-        myMap.get(keyFunc);      // "value associated with keyFunc"
+        myMap.get(keyString);   // "value associated with 'a string'"
+        myMap.get(keyObj);  // "value associated with keyObj"
+        myMap.get(keyFunc); // "value associated with keyFunc"
 
-        myMap.get('a string');   // "value associated with 'a string'"
-                                 // because keyString === 'a string'
-        myMap.get({});           // undefined, because keyObj !== {}
-        myMap.get(function() {}) // undefined, because keyFunc !== function () {}
+        myMap.get('a string');  // "value associated with 'a string'"
+                                                // because keyString === 'a string'
+        myMap.get({});  // undefined, because keyObj !== {}
+        myMap.get(function() {})    // undefined, because keyFunc !== function () {}
         ```
         ```
         for (var [key, value] of myMap) {
           console.log(key + ' = ' + value);
         }
         ```
+
+# Scope
+
+# JS Engine & Event Loop
 
 # Resources
 [Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
