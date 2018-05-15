@@ -76,7 +76,7 @@ these extend mini-1 notes and take a deeper dive.  They're still a cheat sheet w
 ## **OS X Local Development Setup**
 
 ## **Computer Science & JS Utils**
-- [CS](JavaScript/cs.md)
+- [CS](cs.md)
 
 # Principles and Practices
 ## **BDD**
