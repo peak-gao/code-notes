@@ -34,15 +34,13 @@
 - [Sorting | packtpub.com](https://www.youtube.com/watch?v=Ymh_AurrMbA)
 
 # Katas
-For each Kata do them 2 different ways:
-- literals and functions only
-- Using JS Classes
+Do 3 versions of each for the bigger katas:
+- using **object literals** & **functions**
+- using **Object.create()** & **functions**
+- using ES6 **classes** & **functions**
 
 ## CS
-Do 3 versions of each for the bigger katas:
-- using object literals & functions
-- using Object.create()
-- using classes & functions
+
 
 ## Trees
 - **Build a Binary Search Tree**
