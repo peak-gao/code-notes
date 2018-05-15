@@ -1,4 +1,6 @@
-# this & contexts
+# js-cheat-sheet-1
+
+## this & contexts
 - bind(), call(), and apply() attaches _this_ into function
 
 ### bind()
@@ -59,7 +61,7 @@
     **Use Cases**
     - when you want to invoke the function immediately, and modify the context
 
-# Common JS Utilities
+## Common JS Utilities
 ### String
 [split()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
 - splits a String object into an array of strings
@@ -344,9 +346,9 @@
         }
         ```
 
-# Scope
+## Scope
 
-# JS Engine & Event Loop
+## JS Engine & Event Loop
 
 # Resources
 [Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
