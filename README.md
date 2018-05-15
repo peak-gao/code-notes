@@ -71,8 +71,8 @@ These extend mini-1 notes.  Because...I don't like puting everything into one fi
 #### **ES6**
 
 ### Mini Notes
-- [mini notes - 1](JavaScript/notes/js-notes-mini-1.md)
-- [mini notes - 2](JavaScript/notes/js-notes-mini-2.md)
+- [mini notes - 1](JavaScript/mini-notes/js-notes-mini-1.md)
+- [mini notes - 2](JavaScript/mini-notes/js-notes-mini-2.md)
 
 ## **Node**
 ## **WebStorm IDE**
