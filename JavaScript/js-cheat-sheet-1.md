@@ -1,4 +1,4 @@
-≈
+# this & contexts
 - bind(), call(), and apply() attaches _this_ into function
 
 ### bind()
