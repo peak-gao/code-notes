@@ -352,3 +352,5 @@
 
 # Resources
 [Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
+[You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
+[Speaking JavaScript: An In-Depth Guide for Programmers](https://www.amazon.com/Speaking-JavaScript-Depth-Guide-Programmers/dp/1449365035/ref=cm_cr_arp_d_product_top?ie=UTF8)
