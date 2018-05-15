@@ -28,7 +28,7 @@
 - [dabeng/OrgChart](https://github.com/dabeng/OrgChart/blob/master/src/js/jquery.orgchart.js) (createNode, buildChildNode)
 
 ## Sorts
-#### Bubble
+### Bubble
 ##### Posts
 ##### Videos
 - [Sorting | packtpub.com](https://www.youtube.com/watch?v=Ymh_AurrMbA)
@@ -39,7 +39,11 @@ For each Kata do them 2 different ways:
 - Using JS Classes
 
 ## CS
-Do 2 versions of each for the bigger katas, one version using literals + functions and another using classes + functions
+Do 3 versions of each for the bigger katas:
+- using object literals & functions
+- using Object.create()
+- using classes & functions
+
 ## Trees
 - **Build a Binary Search Tree**
 - **Build a hierarchical Tree**
