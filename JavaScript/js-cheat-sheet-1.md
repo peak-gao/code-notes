@@ -357,6 +357,10 @@
 **Concurrency**
 - Means that you have multiple task queues on multiple processor cores/threads
 
+   - **Sequential**: do this and then do that
+   - **Concurrent**: do this and do that without waiting between
+   - **Parallel**: do this and do that at the exact same time
+
 **Non-Blocking**
 - A very interesting property of the event loop model is that JavaScript, unlike a lot of other languages, never blocks
 
