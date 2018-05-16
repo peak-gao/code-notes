@@ -354,7 +354,7 @@
 - JavaScript concurrency is much more than just threads and processes since **it can actually multitask using a single process with a single thread**
 - Handling I/O is typically performed via events and callbacks, so when the application is waiting for an IndexedDB query to return or an XHR request to return, it can still process other things like user input
 
-##### Terms
+## Terms
 - **Sequential**: do this and then do that
 - **Concurrent**: do this and do that without waiting between
 - **Parallel**: do this and do that at the exact same time
