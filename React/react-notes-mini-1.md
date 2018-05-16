@@ -421,3 +421,31 @@ componentWillReceiveProps(nextProps, nextState) {
 - React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display
 - **Instead of artificially separating technologies by putting markup and logic in separate files, React separates concerns with loosely coupled units called “components”** that contain both
 - allows React to show more useful error and warning messages
+
+# Performance
+**slow**: taking more than a half second to provide visual feedback
+
+**Possible Causes**
+- most of the time its when useless rerenders of many components happens that's unrelated to each other (behavior is unrelated to other parts of your component or component tree)
+- While React VirtualDom is super fast, in a medium size app, a full redraw can easily render hundreds of components
+    - Even the fastest VirtualDom templating engine can't make that in less than 16ms
+
+**Possible Optimzations*8
+
+#### Tools
+An HOC you can use to determine how many times your components are being called:
+```
+// in src/log.js
+const log = BaseComponent => props => {
+    console.log(`Rendering ${BaseComponent.name}`);
+    return <BaseComponent {...props} />;
+}
+export default log;
+
+// in src/MyComponent.js
+import log from './log';
+export default log(MyComponent);
+```
+
+# References
+[React is Slow, React is Fast: Optimizing React Apps in Practice](https://marmelab.com/blog/2017/02/06/react-is-slow-react-is-fast.html)
