@@ -385,7 +385,7 @@
     - This means that anything that requires some sort of I/O (user input, read from disk, network response, responses from other processes,… — really anything you’d like to turn into I/O) should be handled asynchronously
     - So, you register what you want to do once you get the data from an I/O source and the event loop will call that code when that event happens
         - This allows for the event loop to run some other code it might have on the queue while waiting for events to happen
-    - That’s how you can achieve concurrency using a single process, single thread application
+    - That’s how you can achieve **concurrency** using a **single process**, **single thread** application
 - only one task/function/operation could be executed at a time
 - In JavaScript, when an event happens, the event loop will queue some code that will run in response to that event
 - At some point during the event loop, the runtime starts handling the messages on the queue, starting with the oldest one
