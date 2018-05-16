@@ -373,5 +373,7 @@ Do **3 versions** of **each** of the the **bigger katas**:
         ```
 
 # References
+- [CS Dojo - Data Structures and Algorithms](https://www.youtube.com/playlist?list=PLBZBJbE_rGRV8D7XZ08LK6z-4zPoWzu5H)
 - [Sorting algorithms in JavaScript](http://blog.benoitvallon.com/sorting-algorithms-in-javascript/sorting-algorithms-in-javascript/)
 - [JavaScript - Exercises, Practice, Solution](https://www.w3resource.com/javascript-exercises)
+- [When should LinkedList be used over arrays?](https://www.quora.com/When-should-LinkedList-be-used-over-arrays)

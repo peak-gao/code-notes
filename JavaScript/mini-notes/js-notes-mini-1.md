@@ -11699,4 +11699,4 @@ Expanded Unicode support, new tricks for regular expressions, and even a new pri
 - [The Difference Between Call and Apply in Javascript](http://hangar.runway7.net/javascript/difference-call-apply)
 
 # Awesome Vids
-[JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
+- [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
