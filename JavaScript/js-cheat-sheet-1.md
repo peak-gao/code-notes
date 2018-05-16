@@ -400,10 +400,10 @@
     - If you want to have any type of sequential ordering you can use events, callbacks, or as of late promises
 
 # Resources
-[Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
-[You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
-[Speaking JavaScript: An In-Depth Guide for Programmers](https://www.amazon.com/Speaking-JavaScript-Depth-Guide-Programmers/dp/1449365035/ref=cm_cr_arp_d_product_top?ie=UTF8)
-[Concurrency model and Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
-[JavaScript concurrency model](https://medium.com/@ktachyon/javascript-concurrency-model-dc98dacab527)
-[Concurrency vs Event Loop vs Event Loop + Concurrency](https://medium.com/@tigranbs/concurrency-vs-event-loop-vs-event-loop-concurrency-eb542ad4067b)
-[Concurrency in JavaScript](https://gist.github.com/montanaflynn/cb349fd109b561c35d6c8500471cdb39)
+- [Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
+- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
+- [Speaking JavaScript: An In-Depth Guide for Programmers](https://www.amazon.com/Speaking-JavaScript-Depth-Guide-Programmers/dp/1449365035/ref=cm_cr_arp_d_product_top?ie=UTF8)
+- [Concurrency model and Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+- [JavaScript concurrency model](https://medium.com/@ktachyon/javascript-concurrency-model-dc98dacab527)
+- [Concurrency vs Event Loop vs Event Loop + Concurrency](https://medium.com/@tigranbs/concurrency-vs-event-loop-vs-event-loop-concurrency-eb542ad4067b)
+- [Concurrency in JavaScript](https://gist.github.com/montanaflynn/cb349fd109b561c35d6c8500471cdb39)
