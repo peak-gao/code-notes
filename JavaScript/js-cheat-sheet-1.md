@@ -361,6 +361,11 @@
 
 **Concurrency**
 - Means that you have multiple task queues on multiple processor cores/threads
+- JavaScript has actual threading support by using Web Workers, and Node.js provides the ability to fork a process and a module called cluster, both allowing the development of multiprocess applications
+- Javascript is a programming language with a peculiar twist. Its event driven model means that nothing blocks and everything runs concurrently
+    - This is not to be confused with the same type of concurrency as running in parallel on multiple cores
+- Javascript is single threaded so each program runs on a single core yet every line of code executes without waiting for anything to return
+    - If you want to have any type of sequential ordering you can use events, callbacks, or as of late promises
 
 **Non-Blocking**
 - A very interesting property of the event loop model is that JavaScript, unlike a lot of other languages, never blocks
@@ -375,7 +380,7 @@
 - JavaScript runtime uses a message queue, which is a list of messages to be processed
 - Each message has an associated function which gets called in order to handle the message
 
-#### How The Event Loop Works
+### How The Event Loop Works
 - JavaScript is an asynchronous, I/O bound language
     - This means that anything that requires some sort of I/O (user input, read from disk, network response, responses from other processes,… — really anything you’d like to turn into I/O) should be handled asynchronously
     - So, you register what you want to do once you get the data from an I/O source and the event loop will call that code when that event happens
@@ -388,18 +393,12 @@
 - To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter. As always, calling a function creates a new stack frame for that function's use
 - The processing of functions continues until the stack is once again empty; then the event loop will process the next message in the queue
 
-**setTimeout**
+### setTimeout
 - Zero delay doesn't actually mean the call back will fire-off after zero milliseconds. Calling setTimeout with a delay of 0 (zero) milliseconds doesn't execute the callback function after the given interval
 - The execution depends on the number of waiting tasks in the queue
 - the delay is the minimum time required for the runtime to process the request, but not a guaranteed time
 - setTimeout needs to wait for all the codes to complete even though you specified a particular time limit for your setTimeout
 
-### Concurrency
-- JavaScript has actual threading support by using Web Workers, and Node.js provides the ability to fork a process and a module called cluster, both allowing the development of multiprocess applications
-- Javascript is a programming language with a peculiar twist. Its event driven model means that nothing blocks and everything runs concurrently
-    - This is not to be confused with the same type of concurrency as running in parallel on multiple cores
-- Javascript is single threaded so each program runs on a single core yet every line of code executes without waiting for anything to return
-    - If you want to have any type of sequential ordering you can use events, callbacks, or as of late promises
 
 # Resources
 - [Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
