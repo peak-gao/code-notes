@@ -1,5 +1,3 @@
-# References
-
 
 ## Big O Notation
 - time complexity of a function
@@ -373,3 +371,7 @@ Do **3 versions** of **each** of the the **bigger katas**:
           console.log(key + ' = ' + value);
         }
         ```
+
+# References
+- [Sorting algorithms in JavaScript](http://blog.benoitvallon.com/sorting-algorithms-in-javascript/sorting-algorithms-in-javascript/)
+- [JavaScript - Exercises, Practice, Solution](https://www.w3resource.com/javascript-exercises)
