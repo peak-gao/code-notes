@@ -354,9 +354,14 @@
 - JavaScript concurrency is much more than just threads and processes since **it can actually multitask using a single process with a single thread**
 
 ### Event Loop, Concurrency, and "Non Blocking"
-#### Non-Blocking
+
 - A very interesting property of the event loop model is that JavaScript, unlike a lot of other languages, never blocks
 - Handling I/O is typically performed via events and callbacks, so when the application is waiting for an IndexedDB query to return or an XHR request to return, it can still process other things like user input
+
+**Concurrency**
+- Means that you have multiple task queues on multiple processor cores/threads
+
+**Non-Blocking**
 
 **Stack**
 - Function calls form a stack of frames
@@ -374,6 +379,7 @@
     - So, you register what you want to do once you get the data from an I/O source and the event loop will call that code when that event happens
         - This allows for the event loop to run some other code it might have on the queue while waiting for events to happen
     - That’s how you can achieve concurrency using a single process, single thread application
+- only one task/function/operation could be executed at a time
 - In JavaScript, when an event happens, the event loop will queue some code that will run in response to that event
 - At some point during the event loop, the runtime starts handling the messages on the queue, starting with the oldest one
 - Every time there’s availability to run something, it will run the next task on the queue and it will run to completion before running another task
@@ -395,3 +401,4 @@
 [Speaking JavaScript: An In-Depth Guide for Programmers](https://www.amazon.com/Speaking-JavaScript-Depth-Guide-Programmers/dp/1449365035/ref=cm_cr_arp_d_product_top?ie=UTF8)
 [Concurrency model and Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
 [JavaScript concurrency model](https://medium.com/@ktachyon/javascript-concurrency-model-dc98dacab527)
+[Concurrency vs Event Loop vs Event Loop + Concurrency](https://medium.com/@tigranbs/concurrency-vs-event-loop-vs-event-loop-concurrency-eb542ad4067b)
