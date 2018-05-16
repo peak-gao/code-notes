@@ -2,6 +2,9 @@
 
 
 ## Big O Notation
+- time complexity of a function
+- ...more to come
+
 #### Videos
 - [Big O Notation](https://www.youtube.com/watch?v=v4cd1O4zkGw)
 #### Posts
@@ -74,7 +77,7 @@ Do **3 versions** of **each** of the the **bigger katas**:
         - factors are the integers that are multiplied together to find other integers For example, 3 × 5 = 15.  1 and 15 would also be factors of 15
     - _natural numbers_ - the positive integers (whole numbers) 1, 2, 3, etc., and zero as well
         - refers either to a member of the set of positive integers 1, 2, 3, ... or to the set of nonnegative integers 0, 1, 2, 3
-- **Find unique list of integers from given a list of integers**
+- **Find a unique list of integers from given a list of integers**
 - **Coin exchange: given the amount of change you must return and a list of denominations, give the least amount of coins needed to be given for change**
 - **Write a function to reverse all the words in a string separated by spaces. There will be k spaces, and k + 1 words**
 

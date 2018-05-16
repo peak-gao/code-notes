@@ -1,5 +1,6 @@
 # js-cheat-sheet-1
 
+
 ## this & contexts
 - bind(), call(), and apply() attaches _this_ into function
 
@@ -348,9 +349,48 @@
 
 ## Scope
 
-## JS Engine & Event Loop
+## JS Engine, Event Loop, Async, Processes, Concurrency
+- Even though JavaScript is single-threaded, IO in for example Node.js can happen in parallel due to its async nature
+
+### Event Loop, Concurrency, and "Non Blocking"
+#### Non-Blocking
+- A very interesting property of the event loop model is that JavaScript, unlike a lot of other languages, never blocks
+- Handling I/O is typically performed via events and callbacks, so when the application is waiting for an IndexedDB query to return or an XHR request to return, it can still process other things like user input
+
+**Stack**
+- Function calls form a stack of frames
+
+**Heap**
+- Objects are allocated in a heap which is just a name to denote a large mostly unstructured region of memory
+
+**Queue**
+- JavaScript runtime uses a message queue, which is a list of messages to be processed
+- Each message has an associated function which gets called in order to handle the message
+
+**How It Works**
+- JavaScript is an asynchronous, I/O bound language
+    - This means that anything that requires some sort of I/O (user input, read from disk, network response, responses from other processes,… — really anything you’d like to turn into I/O) should be handled asynchronously
+    - So, you register what you want to do once you get the data from an I/O source and the event loop will call that code when that event happens
+        - This allows for the event loop to run some other code it might have on the queue while waiting for events to happen
+    - That’s how you can achieve concurrency using a single process, single thread application
+- In JavaScript, when an event happens, the event loop will queue some code that will run in response to that event
+- At some point during the event loop, the runtime starts handling the messages on the queue, starting with the oldest one
+- Every time there’s availability to run something, it will run the next task on the queue and it will run to completion before running another task
+- To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter. As always, calling a function creates a new stack frame for that function's use
+- The processing of functions continues until the stack is once again empty; then the event loop will process the next message in the queue
+
+** setTimeout **
+- Zero delay doesn't actually mean the call back will fire-off after zero milliseconds. Calling setTimeout with a delay of 0 (zero) milliseconds doesn't execute the callback function after the given interval
+- The execution depends on the number of waiting tasks in the queue
+- the delay is the minimum time required for the runtime to process the request, but not a guaranteed time
+- setTimeout needs to wait for all the codes to complete even though you specified a particular time limit for your setTimeout
+
+### Concurrency
+- JavaScript has actual threading support by using Web Workers, and Node.js provides the ability to fork a process and a module called cluster, both allowing the development of multiprocess applications
 
 # Resources
 [Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
 [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
 [Speaking JavaScript: An In-Depth Guide for Programmers](https://www.amazon.com/Speaking-JavaScript-Depth-Guide-Programmers/dp/1449365035/ref=cm_cr_arp_d_product_top?ie=UTF8)
+[Concurrency model and Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+[JavaScript concurrency model](https://medium.com/@ktachyon/javascript-concurrency-model-dc98dacab527)
