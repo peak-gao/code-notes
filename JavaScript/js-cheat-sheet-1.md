@@ -351,6 +351,7 @@
 
 ## JS Engine, Event Loop, Async, Processes, Concurrency
 - Even though JavaScript is single-threaded, IO in for example Node.js can happen in parallel due to its async nature
+- JavaScript concurrency is much more than just threads and processes since it can actually multitask using a single process with a single thread
 
 ### Event Loop, Concurrency, and "Non Blocking"
 #### Non-Blocking
