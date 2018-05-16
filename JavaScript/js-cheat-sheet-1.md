@@ -386,7 +386,7 @@
 - To do so, the message is removed from the queue and its corresponding function is called with the message as an input parameter. As always, calling a function creates a new stack frame for that function's use
 - The processing of functions continues until the stack is once again empty; then the event loop will process the next message in the queue
 
-** setTimeout **
+**setTimeout**
 - Zero delay doesn't actually mean the call back will fire-off after zero milliseconds. Calling setTimeout with a delay of 0 (zero) milliseconds doesn't execute the callback function after the given interval
 - The execution depends on the number of waiting tasks in the queue
 - the delay is the minimum time required for the runtime to process the request, but not a guaranteed time
