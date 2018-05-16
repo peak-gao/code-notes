@@ -64,7 +64,56 @@
 
 ## Common JS Utilities
 ### String
+[slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice)
+
+`str.slice(beginIndex[, endIndex])`
+- extracts a section of a string and returns it as a new string
+    ```
+    var str1 = 'The morning is upon us.', // the length of str1 is 23.
+        str2 = str1.slice(1, 8),
+        str3 = str1.slice(4, -2),
+        str4 = str1.slice(12),
+        str5 = str1.slice(30);
+    console.log(str2); // output: he morn
+    console.log(str3); // output: morning is upon u
+    console.log(str4); // output: is upon us.
+    console.log(str5); // output: ""
+    ```
+[substr()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr)
+
+`str.substr(start[, length])`
+- returns the part of a string between the start index and a number of characters after it
+    ```
+    var aString = 'Mozilla';
+    
+    console.log(aString.substr(0, 1));   // 'M'
+    console.log(aString.substr(1, 0));   // ''
+    console.log(aString.substr(-1, 1));  // 'a'
+    console.log(aString.substr(1, -1));  // ''
+    console.log(aString.substr(-3));     // 'lla'
+    console.log(aString.substr(1));      // 'ozilla'
+    console.log(aString.substr(-20, 2)); // 'Mo'
+    console.log(aString.substr(20, 2));  // ''
+    ```
+[substring()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring)
+
+`str.substring(indexStart[, indexEnd])`
+- returns the part of the string between the start and end indexes, or to the end of the string
+
+    ```
+    var anyString = 'Mozilla';
+    
+    // Displays 'M'
+    console.log(anyString.substring(0, 1));
+    console.log(anyString.substring(1, 0));
+    
+    // Displays 'Mozill'
+    console.log(anyString.substring(0, 6));
+    ```
+
 [split()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+
+`str.split([separator[, limit]])`
 - splits a String object into an array of strings
     - _return value_: An Array of strings split at each point where the separator occurs in the given string
     ```
@@ -77,8 +126,101 @@
     var strReverse = str.split('').reverse().join('');  // 'lkjhgfdsa'
     // split() returns an array on which reverse() and join() can be applied
     ```
+
+[charAt()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt)
+
+`character = str.charAt(index)`
+- returns a new string consisting of the single UTF-16 code unit located at the specified offset into the string
+
+[concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat)
+
+`str.concat(string2[, string3, ..., stringN])`
+- concatenates the string arguments to the calling string and returns a new string
+    ```
+    var greetList = ['Hello', ' ', 'Venkat', '!']
+    "".concat(...greetList) // "Hello Venkat!"
+    "".concat({}); // [object Object]
+    "".concat([]); /// ""
+    "".concat(null); // "null"
+    "".concat(true); // "true"
+    "".concat(4, 5); // "45"
+    ```
+[endsWith()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith)
+
+`str.endsWith(searchString[, length])`
+- determines whether a string ends with the characters of a specified string, returning true or false
+    ```
+    var str = 'To be, or not to be, that is the question.';
+    console.log(str.endsWith('question.')); // true
+    ```
+
+[includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
+
+`str.includes(searchString[, position])`
+- determines whether one string may be found within another string, returning true or false
+    ```
+    'Blue Whale'.includes('blue'); // returns false
+
+    var str = 'To be, or not to be, that is the question.';
+    console.log(str.includes('To be')); // true
+    console.log(str.includes('To be', 1));  // false
+    ```
+
+
+
+[indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
+
+`str.indexOf(searchValue[, fromIndex])`
+- returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found
+- there's also a `lastIndexOf()`
+
+    ```
+    'Blue Whale'.indexOf('Blue');     // returns  0
+    'Blue Whale'.indexOf('Blute');    // returns -1
+    'Blue Whale'.indexOf('Whale', 0); // returns  5
+    'Blue Whale'.indexOf('Whale', 5); // returns  5
+    ```
+[replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+
+`str.replace(regexp|substr, newSubstr|function)`
+
+**regexp (pattern)**
+- A RegExp object or literal. The match or matches are replaced with newSubStr or the value returned by the specified function
+
+**substr (pattern)**
+- A String that is to be replaced by newSubStr. It is treated as a verbatim string and is not interpreted as a regular expression. Only the first occurrence will be replaced
+
+    ```
+    // using a regular expression:
+    var str = 'Twas the night before Xmas...';
+    var newstr = str.replace(/xmas/i, 'Christmas');
+
+    // replace each occurrence of 'apples' in the string with 'oranges'
+    var re = /apples/gi;
+    var str = 'Apples are round, and apples are juicy.';
+    var newstr = str.replace(re, 'oranges');
+    console.log(newstr);  // oranges are round, and oranges are juicy.
+
+[search()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search)
+
+`str.search(regexp)`
+- executes a search for a match between a regular expression and this String object
+**regexp**
+- A regular expression object. If a non-RegExp object obj is passed, it is implicitly converted to a RegExp by using new RegExp(obj)
+
+    ```
+    var str = "hey JudE";
+    var re = /[A-Z]/g;
+    var re2 = /[.]/g;
+    console.log(str.search(re)); // returns 4, which is the index of the first capital letter "J"
+    console.log(str.search(re2)); // returns -1 cannot find '.' dot punctuation
+    ```
+
+
 ### Array
 [indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
+
+`arr.indexOf(searchElement[, fromIndex])`
 - returns the first index at which a given element can be found in the array, or -1 if it is not present
     ```
     var beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
@@ -86,6 +228,8 @@
     // output: 1
     ```
 [findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+
+`arr.findIndex(callback[, thisArg])`
 - returns the index of the first element in the array that satisfies the provided testing function
     ```
     var array1 = [5, 12, 8, 130, 44];
@@ -99,6 +243,8 @@
     ```
 
 [keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/keys)
+
+`arr.keys()`
 - returns a new Array Iterator object that contains the keys for each index in the array
     ```
     var array1 = ['a', 'b', 'c'];
@@ -109,6 +255,8 @@
     }
     ```
 [values()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/values)
+
+`arr.values()`
 - returns a new Array Iterator object that contains the values for each index in the array
     ```
     const array1 = ['a', 'b', 'c'];
@@ -119,6 +267,8 @@
     }
     ```
 [entries()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
+
+`a.entries()`
 - returns a new Array Iterator object that contains the key/value pairs for each index in the array
     ```
     var array1 = ['a', 'b', 'c'];
@@ -129,12 +279,16 @@
     // output: Array [0, "a"]
     ```
 [of()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of)
+
+`Array.of(element0[, element1[, ...[, elementN]]])`
 - creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments
     ```
     Array.of(7);  // [7]
     Array.of(1, 2, 3);  // [1, 2, 3]
     ```
 [splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+
+`array.splice(start[, deleteCount[, item1[, item2[, ...]]]])`
 - changes the contents of an array by removing existing elements and/or adding new
  elements
     ```
@@ -149,21 +303,22 @@
     console.log(months);
     // output: Array ['Jan', 'Feb', 'March', 'April', 'May']
     ```
-[join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
-- joins all elements of an array (or an array-like object) into a string
-    ```
-    elements = ['Fire', 'Wind', 'Rain'];
-    elements.join();
-    // output: Fire,Wind,Rain
-    ```
-[length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) - number of elements in that array
+
+[length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length)
+
+`arr.length`
+- number of elements in that array
 
 [concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+
+`var new_array = old_array.concat(value1[, value2[, ...[, valueN]]])`
 - merge two or more arrays
      ```
      array1.concat(array2)
      ```
 [join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+
+`arr.join([separator])`
 - joins all elements of an array (or an array-like object) into a string and returns this string
     ```
     var elements = ['Fire', 'Wind', 'Rain'];
@@ -176,6 +331,12 @@
     // output: Fire-Wind-Rain
     ```
 [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+`
+var new_array = arr.map(function callback(currentValue[, index[, array]]) {
+     // Return element for new_array
+ }[, thisArg])
+`
 - creates a new array with the results of calling a provided function on every element in the calling array
     ```
     var array1 = [1, 4, 9, 16];
@@ -183,16 +344,9 @@
     // pass a function to map
     const map1 = array1.map(x => x * 2);
     ```
-
-[entries()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
-- returns a new Array Iterator object that contains the key/value pairs for each index in the array
-    ```
-    var array1 = ['a', 'b', 'c'];
-    var iterator1 = array1.entries();
-    console.log(iterator1.next().value);
-    // output: Array [0, "a"]
-    ```
 [flatten()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatten)
+
+`var newArray = arr.flatten(depth)`
 - creates a new array with all sub-array elements concatted into it recursively up to the specified depth
     ```
     var arr1 = [1, 2, [3, 4]];
@@ -205,6 +359,8 @@
     ``
 
 [every()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
+
+`arr.every(callback[, thisArg])`
 - tests whether all elements in the array pass the test implemented by the provided function
     ```
     function isBelowThreshold(currentValue) {
@@ -217,6 +373,8 @@
     // output: true
     ```
 [filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+`var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])`
 - creates a new array with all elements that pass the test implemented by the provided function
     ```
     var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
@@ -227,6 +385,8 @@
     // output: Array ["exuberant", "destruction", "present"]
     ```
 [find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+
+`arr.find(callback[, thisArg])`
 - returns the **value** of the **first element** in the array that satisfies the provided testing function
     ```
     var array1 = [5, 12, 8, 130, 44];
@@ -239,6 +399,8 @@
     // output: 12
     ```
 [includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+
+`arr.includes(searchElement[, fromIndex])`
 - determines whether an array includes a certain element, returning true or false as appropriate
     ```
     var array1 = [1, 2, 3];
@@ -248,6 +410,12 @@
     ```
 
 [forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+
+`
+arr.forEach(function callback(currentValue[, index[, array]]) {
+    //your iterator
+}[, thisArg]);
+`
 - executes a provided function once for each array element
     ```
     var array1 = ['a', 'b'];
@@ -260,6 +428,8 @@
     // expected output: "b"
     ```
 [reverse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)
+
+`a.reverse()`
 - reverses an array in place. The first array element becomes the last, and the last array element becomes the first
     ```
     var array1 = ['one', 'two', 'three'];
@@ -272,6 +442,8 @@
     // expected output: Array ['three', 'two', 'one']
     ```
 [shift()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift)
+
+`arr.shift()`
 - removes the first element from an array and returns that removed element. This method changes the length of the array
     ```
     var array1 = [1, 2, 3];
@@ -285,6 +457,8 @@
     // output: 1
     ```
 [sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+`arr.sort([compareFunction])`
 - sorts the elements of an array in place and returns the array. The sort is not necessarily stable. The default sort order is according to string Unicode code points
     - The time and space complexity of the sort cannot be guaranteed as it is implementation dependent
         ```
@@ -299,6 +473,8 @@
         // output: Array [1, 21, 30, 4]
         ```
 [some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+
+`arr.some(callback[, thisArg])`
 - tests whether at least one element in the array passes the test implemented by the provided function
     ```
     var array = [1, 2, 3, 4, 5];
