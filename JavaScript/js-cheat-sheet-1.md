@@ -354,12 +354,13 @@
 - JavaScript concurrency is much more than just threads and processes since **it can actually multitask using a single process with a single thread**
 - Handling I/O is typically performed via events and callbacks, so when the application is waiting for an IndexedDB query to return or an XHR request to return, it can still process other things like user input
 
+##### Terms
+- **Sequential**: do this and then do that
+- **Concurrent**: do this and do that without waiting between
+- **Parallel**: do this and do that at the exact same time
+
 **Concurrency**
 - Means that you have multiple task queues on multiple processor cores/threads
-
-   - **Sequential**: do this and then do that
-   - **Concurrent**: do this and do that without waiting between
-   - **Parallel**: do this and do that at the exact same time
 
 **Non-Blocking**
 - A very interesting property of the event loop model is that JavaScript, unlike a lot of other languages, never blocks
@@ -374,7 +375,7 @@
 - JavaScript runtime uses a message queue, which is a list of messages to be processed
 - Each message has an associated function which gets called in order to handle the message
 
-**How It Works**
+#### How The Event Loop Works
 - JavaScript is an asynchronous, I/O bound language
     - This means that anything that requires some sort of I/O (user input, read from disk, network response, responses from other processes,… — really anything you’d like to turn into I/O) should be handled asynchronously
     - So, you register what you want to do once you get the data from an I/O source and the event loop will call that code when that event happens
