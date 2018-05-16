@@ -394,6 +394,10 @@
 
 ### Concurrency
 - JavaScript has actual threading support by using Web Workers, and Node.js provides the ability to fork a process and a module called cluster, both allowing the development of multiprocess applications
+- Javascript is a programming language with a peculiar twist. Its event driven model means that nothing blocks and everything runs concurrently
+    - This is not to be confused with the same type of concurrency as running in parallel on multiple cores
+- Javascript is single threaded so each program runs on a single core yet every line of code executes without waiting for anything to return
+    - If you want to have any type of sequential ordering you can use events, callbacks, or as of late promises
 
 # Resources
 [Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
@@ -402,3 +406,4 @@
 [Concurrency model and Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
 [JavaScript concurrency model](https://medium.com/@ktachyon/javascript-concurrency-model-dc98dacab527)
 [Concurrency vs Event Loop vs Event Loop + Concurrency](https://medium.com/@tigranbs/concurrency-vs-event-loop-vs-event-loop-concurrency-eb542ad4067b)
+[Concurrency in JavaScript](https://gist.github.com/montanaflynn/cb349fd109b561c35d6c8500471cdb39)
