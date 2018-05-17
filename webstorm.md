@@ -1,2 +1,2 @@
 # Configuration
-**Live Templates Location**: user/Library/Preferences/WebStorm<version>/templates
+**Live Templates Location**: `user/Library/Preferences/WebStorm<version>/templates`
