@@ -76,6 +76,7 @@ These extend mini-1 notes.  Because...I don't like puting everything into one fi
 
 ## **Node**
 ## **WebStorm IDE**
+- [WebStorm IDE](webstorm.md)
 ## **OS X Local Development Setup**
 
 ## **Computer Science & JS Utils**
