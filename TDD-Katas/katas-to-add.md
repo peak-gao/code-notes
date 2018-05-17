@@ -1,6 +1,11 @@
 # Katas to implement via TDD
 
-### Dump / Misc
+## Requirements
+- write both positive and negative tests for each Kata
+- disciplined TDD (don't forget the blue step!)
+- short description explaining the kata
+
+## Dump / Misc
 - Roman Numeral Kata
 - Linked Katas
 - Sorting Katas
@@ -21,10 +26,10 @@
 #### vanilla
 - pure component/function - fetch & list data
 - pure component/function - handle a click event
-- HOC - handle form validation
-- HOC - handle fetching data
+- HOC - that handles form validation
+- HOC - that handle fetching data
 
-### Node Backend Katas
+## Node Backend Katas
 ##### Get
 - Create a REST endpoint that gets company data (koa.js)
 - Create a REST endpoint that gets company data (hapi)
