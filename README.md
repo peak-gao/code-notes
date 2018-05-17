@@ -5,7 +5,7 @@ This is a collection of code notes learned over time for various languages, TDD,
 # How to Navigate Notes
 It's hard to digest everthing in the extensive .md files on each particular topic.
 
-So I'm taking an iterative approach to digesting all this information and thus creating little "iterative cheat sheets", then "mini sheets", and then "core notes", that allow you to gradually dive into each topic.
+So I'm creating "very simple cheat sheets", then "mini sheets" that have more detail, and then "core notes" that have a lot of detail, that allow you to gradually dive into "stuff".
 
 You should start with the `cheat-sheet`.  Then move to `notes-mini` sequentially by their number.  Then once you have those down well and memorized, you can dive into the extreme "guts" on each topic by reading the `[topic]-notes`.
 
