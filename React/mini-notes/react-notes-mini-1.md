@@ -442,7 +442,8 @@ componentWillReceiveProps(nextProps, nextState) {
     - Even the fastest VirtualDom templating engine can't make that in less than 16ms
 
 **Possible Optimzations**
-// TODO: fill in stuff here
+
+* // TODO: fill in stuff here
 
 #### Tools
 An HOC you can use to determine how many times your components are being called:
