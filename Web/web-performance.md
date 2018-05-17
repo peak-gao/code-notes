@@ -4,4 +4,4 @@
 
 #### shouldComponentUpdate
 
-#### minification
+...add more stuff to this list
