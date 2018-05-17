@@ -26,6 +26,6 @@
 
 ### Node Backend
 - Create a REST endpoint that gets company data (koa.js)
-- - Create a REST endpoint that gets company data (hapi)
+- Create a REST endpoint that gets company data (hapi)
 - Create a REST endpoint that gets company data (express)
-- - Create a GraphQL endpoint that gets company data
+- Create a GraphQL endpoint that gets company data
