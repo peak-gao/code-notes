@@ -1,3 +1,6 @@
+* Katas to implement via TDD
+
+### Misc
 - Roman Numeral Kata
 - Linked Katas
 - Sorting Katas
@@ -9,3 +12,14 @@
 - Prime Factor
 - Gilded Rose - Refactoring
 - ...???
+
+### React
+#### react-redux
+- react-redux container - list data (thunk, action, reducer, mapStateToProps, mapDispatchToProps)
+- react-redux container - handle a click event (custom handler, bind, etc.)
+
+#### vanilla
+- pure function - list data
+- pure function - handle a click event
+- HOC - handle form validation
+- HOC - handle fetching data
