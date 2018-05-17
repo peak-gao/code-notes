@@ -7,4 +7,5 @@
 - FizzBuzz
 - Game Of Life
 - Prime Factor
+- Gilded Rose - Refactoring
 - ...???
