@@ -25,7 +25,26 @@
 - HOC - handle fetching data
 
 ### Node Backend
+##### Get
 - Create a REST endpoint that gets company data (koa.js)
 - Create a REST endpoint that gets company data (hapi)
 - Create a REST endpoint that gets company data (express)
 - Create a GraphQL endpoint that gets company data
+
+##### Add
+- Create a REST endpoint that adds company data (koa.js)
+- Create a REST endpoint that adds company data (hapi)
+- Create a REST endpoint that adds company data (express)
+- Create a GraphQL endpoint that adds company data
+
+##### Update
+- Create a REST endpoint that updates company data (koa.js)
+- Create a REST endpoint that updates company data (hapi)
+- Create a REST endpoint that updates company data (express)
+- Create a GraphQL endpoint that updates company data
+
+##### Delete
+- Create a REST endpoint that deletes company data (koa.js)
+- Create a REST endpoint that deletes company data (hapi)
+- Create a REST endpoint that deletes company data (express)
+- Create a GraphQL endpoint that deletes company data
