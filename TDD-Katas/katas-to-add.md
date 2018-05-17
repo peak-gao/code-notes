@@ -1,6 +1,6 @@
 # Katas to implement via TDD
 
-### Misc
+### Dump / Misc
 - Roman Numeral Kata
 - Linked Katas
 - Sorting Katas
@@ -13,7 +13,7 @@
 - Gilded Rose - Refactoring
 - ...???
 
-### React
+## React Katas
 #### react-redux
 - react-redux container - list data (thunk action, reducer, mapStateToProps, mapDispatchToProps)
 - react-redux container - handle a click event (custom handler, bind, etc.)
@@ -24,7 +24,7 @@
 - HOC - handle form validation
 - HOC - handle fetching data
 
-### Node Backend
+### Node Backend Katas
 ##### Get
 - Create a REST endpoint that gets company data (koa.js)
 - Create a REST endpoint that gets company data (hapi)
