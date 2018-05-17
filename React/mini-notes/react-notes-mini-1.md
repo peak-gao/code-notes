@@ -1,4 +1,4 @@
-> [mini notes - 2](../react-notes-mini-2.md) extends this cheat sheet with more detail (deeper dive)
+> [mini notes - 2](react-notes-mini-2.md) extends this cheat sheet with more detail (deeper dive)
 
 # Table Of Contents
 - [Benefits of Using React](#benefits-of-using-react)
