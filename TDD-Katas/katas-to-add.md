@@ -1,0 +1,6 @@
+- Roman Numeral Kata
+- Linked Katas
+- Sorting Katas
+- Tree Katas
+- Coin Change Kata
+- ???
