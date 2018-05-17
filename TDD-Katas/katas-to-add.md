@@ -1,4 +1,4 @@
-* Katas to implement via TDD
+# Katas to implement via TDD
 
 ### Misc
 - Roman Numeral Kata
