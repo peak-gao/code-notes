@@ -39,12 +39,12 @@ These extend mini-1 notes.  Because...I don't like puting everything into one fi
  >  Note: Contains a copy of the Docs from React's website as of 4/29/2018.  I don't plan on keeping this in sync with the React site.  It's just to port it over which is good enough, and then add onto it with useful information from other sources on the web
 
 ### In Depth Notes
-- [React Basics](React/react-basics.md)
-- [React Advanced](React/react-advanced.md)
+- [React Basics](React/notes/react-basics.md)
+- [React Advanced](React/notes/react-advanced.md)
 - [React v16](React/react-v16.md)
 ### Mini Notes
-- [mini notes - 1](React/react-notes-mini-1.md)
-- [mini notes - 2](React/react-notes-mini-2.md)
+- [mini notes - 1](React/mini-notes/react-notes-mini-1.md)
+- [mini notes - 2](React/mini-notes/react-notes-mini-2.md)
 
 ## **Redux**
 ## **JavaScript**

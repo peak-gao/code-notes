@@ -1,4 +1,17 @@
-> [mini notes - 2](react-notes-mini-2.md) extends this cheat sheet with more detail (deeper dive)
+> [mini notes - 2](../react-notes-mini-2.md) extends this cheat sheet with more detail (deeper dive)
+
+# Table Of Contents
+- [Benefits of Using React](#benefits-of-using-react)
+- [Pure Functions](#pure-functions)
+- [Data Flow](#data-flow)
+- [Lifecycle](#lifecycle)
+- [Local State](#local-state)
+- [Props](#props)
+- [Inheritance](#performance)
+- [JSX](#jsx)
+- [Performance](#performance)
+- [Resources](#resources)
+
 
 # Benefits of Using React
 #### Simplicity
@@ -84,7 +97,6 @@ legacy (UNSAFE) - it still works but will be phased out when React v17 comes out
 - methods (“hooks”) that allow you to
     - free up resources taken by the components when they are destroyed
     - special methods on a component class to run some code when a component mounts and unmounts
-
 
 #### Constructor
 - called before it is mounted
@@ -210,7 +222,6 @@ componentWillReceiveProps(nextProps) {
       - But our component is a little bit anxious and is going to ask permission first
 - is invoked before rendering when new props or state are being received. Defaults to true
 - default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior
-
 
 **Use Cases**
 - controlling exactly when your component will re-render
@@ -447,5 +458,5 @@ import log from './log';
 export default log(MyComponent);
 ```
 
-# References
+# Resources
 - [React is Slow, React is Fast: Optimizing React Apps in Practice](https://marmelab.com/blog/2017/02/06/react-is-slow-react-is-fast.html)
