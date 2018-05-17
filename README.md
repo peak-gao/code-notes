@@ -9,8 +9,6 @@ So I'm creating "very simple cheat sheets", then "mini sheets" that have more de
 
 You should start with the `cheat-sheet`.  Then move to `notes-mini` sequentially by their number.  Then once you have those down well and memorized, you can dive into the extreme "guts" on each topic by reading the `[topic]-notes`.
 
-I think this a much better way to retain this information.
-
 ### _cheat-sheet_
 A very thin list of stuff for quick referencing.  Much more thin than mini-notes
 
