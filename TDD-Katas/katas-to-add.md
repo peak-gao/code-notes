@@ -19,7 +19,7 @@
 - react-redux container - handle a click event (custom handler, bind, etc.)
 
 #### vanilla
-- pure function - list data
+- pure function - fetch & list data
 - pure function - handle a click event
 - HOC - handle form validation
 - HOC - handle fetching data
