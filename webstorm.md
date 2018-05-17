@@ -1,3 +1,5 @@
+Below assumes you're using WebStorm on OS X.
+
 # Configuration
 **Live Templates** location
 - `user/Library/Preferences/WebStorm<version>/templates`
