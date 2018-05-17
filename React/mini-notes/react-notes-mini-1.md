@@ -441,7 +441,8 @@ componentWillReceiveProps(nextProps, nextState) {
 - While React VirtualDom is super fast, in a medium size app, a full redraw can easily render hundreds of components
     - Even the fastest VirtualDom templating engine can't make that in less than 16ms
 
-**Possible Optimzations*8
+**Possible Optimzations**
+// TODO: fill in stuff here
 
 #### Tools
 An HOC you can use to determine how many times your components are being called:
