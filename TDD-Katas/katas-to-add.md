@@ -3,4 +3,8 @@
 - Sorting Katas
 - Tree Katas
 - Coin Change Kata
-- ???
+- String Calculator
+- FizzBuzz
+- Game Of Life
+- Prime Factor
+- ...???
