@@ -16,7 +16,9 @@ I focus more on getting good at the command-line with commands, I focus on addin
 - fill this in later
 
 ## Performance
-One of the main complaints I hear from devs is that WebStorm is slow.  That's because they don't take the time to get comfortable with WebStorm, they get impatient and jump ship to VSCode but honestly, they're missing out on a ton WebStorm can help make you more efficient on than VSCode will ever do.  It's not slow if you do the following below:
+One of the main complaints I hear from devs is that WebStorm is slow.  That's because they don't take the time to get comfortable with WebStorm, they get impatient and jump ship to VSCode but honestly, they're missing out on a ton WebStorm can do that will blow your mind and really help you that VSCode just can't.
+
+**It's not slow if you do the following below, at least try these**:
 
 - **disable plugins you don't need.  This is a must.**  I have no idea why WebStorm defaults to installing a shitload of stuff you might not need but they do. It'll have a huge impact on performance if you go through and uncheck plugins you don't need.  Go to **Preferences** => **Plugins** section and start unchecking boxes for those things you won't use
 - You can also **increase memory allocation**
