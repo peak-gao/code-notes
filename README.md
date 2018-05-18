@@ -72,3 +72,6 @@ These extend mini-1 notes.  Because...I don't like putting everything into one f
 ## **BDD**
 ## **TDD**
 ## **React BDD / TDD**
+
+# Resources I Recommend
+- [Cool Links](cool-links.md)
