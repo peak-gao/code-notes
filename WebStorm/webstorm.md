@@ -38,7 +38,7 @@ you can import and try these out if you like
 
     ![GitHub Logo](color-scheme-5-17-2018.png)
 
-**Live Templates** location
+**Live Templates** (AKA Code Snippets) location
 - `user/Library/Preferences/WebStorm<version>/templates`
 - this is where custom live templates you create are stored (always back these up!)
 ## Plugins I Use
