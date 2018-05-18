@@ -2,9 +2,9 @@
 
 ## Tools I Use
 - [iTerm2](https://www.iterm2.com)
-    - cmd -, cmd + to increase or decrease windows size fast
+    - `cmd -`, `cmd +` to increase or decrease windows size fast
     - [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-        - CMD+i (⌘+i) - to get to preferences
+        - `CMD+i` (⌘+i) - to get to preferences
         - Schemes I like: Arthur
 
 - [Homebrew](https://brew.sh)

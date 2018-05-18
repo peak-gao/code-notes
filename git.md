@@ -1,6 +1,14 @@
 #### Oh My Zsh
 - I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which provides a [ton of nice git aliases](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) that make you a lot quicker when typing git commands.  I highly recommend it.
 #### Bash
+- `fn + arrow left` or `Ctrl + e, `fn + arrow right` or `Ctrl + a` - jump to beginning or end of line
+- `alt + f`, `alt + b` - move cursor backwards or forwards by words
+- `Ctrl + b` - move backwards by chars
+- `Ctrl + f` - move forwards by chars
+- `Ctrl + u` - clear everything before cursor position
+- `Ctrl + k` - clear everything after cursor position
+- `Ctrl + w` - delete a word in front of cursor
+- `Ctrl + r` - quick search commands you've done
 
 **Files - Editing, Saving, etc.**
 - `esc` (gets you out of edit mode)
