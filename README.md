@@ -62,7 +62,7 @@ These extend mini-1 notes.  Because...I don't like putting everything into one f
 - [git & bash](git-and-bash.md)
 ## **Node**
 ## **WebStorm IDE**
-- [WebStorm IDE](webstorm.md)
+- [WebStorm IDE](WebStorm/webstorm.md)
 ## **OS X Local Development Setup**
 - [OSX Dev Setup](osx-dev-setup.md)
 ## **Computer Science & JS Utils**

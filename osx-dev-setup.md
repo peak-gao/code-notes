@@ -1,4 +1,9 @@
 
+# Music
+my music collections
+- [play lists](https://soundcloud.com/dave-schinkel/sets)
+- [play list: fav mixes](https://soundcloud.com/dave-schinkel/sets/fav-mixes) - the one I usually listen to the most
+
 ## Commands
 - `diskutil list` - lists out all your disk volumes, etc
 - `xcode-select --install` - to manually install xcode
@@ -9,7 +14,7 @@
     - `cmd -`, `cmd +` to increase or decrease windows size fast
     - [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
         - `CMD+i` (⌘+i) - to get to preferences
-        - Schemes I like: Arthur
+        - Schemes I like: [Arthur](https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/schemes/Arthur.itermcolors)
 
 - [Homebrew](https://brew.sh)
     - Install: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
