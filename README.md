@@ -58,8 +58,8 @@ These extend mini-1 notes.  Because...I don't like putting everything into one f
 - [JS mini notes - 1](JavaScript/mini-notes/js-notes-mini-1.md)
 - [JS mini notes - 2](JavaScript/mini-notes/js-notes-mini-2.md)
 
-## Source Control
-- [git](git.md)
+## Git & Bash
+- [git & bash](git-and-bash.md)
 ## **Node**
 ## **WebStorm IDE**
 - [WebStorm IDE](webstorm.md)
