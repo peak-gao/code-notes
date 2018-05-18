@@ -1,5 +1,5 @@
 #### Oh My Zsh
-- I use Oh My Zsh which provides a ton of git aliases that make you a lot quicker when typing git commands.  I highly recommend it.
+- I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which provides a [ton of nice git aliases](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) that make you a lot quicker when typing git commands.  I highly recommend it.
 #### Bash
 
 **Files - Editing, Saving, etc.**
