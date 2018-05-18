@@ -40,7 +40,7 @@ you can import and try these out if you like
 
 **Live Templates** (AKA Code Snippets) location
 - `user/Library/Preferences/WebStorm<version>/templates`
-- this is where custom live templates you create are stored (always back these up!)
+- this is where custom live templates you create are stored (_always back these up!!!_)
 ## Plugins I Use
 - [js-graphql-intellij-plugin](https://github.com/jimkyndemeyer/js-graphql-intellij-plugin)
 - [Markdown Navigator](http://vladsch.com/product/markdown-navigator) - a must have, makes working with md file markdown a joy
