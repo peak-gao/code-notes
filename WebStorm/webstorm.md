@@ -16,7 +16,7 @@ I focus more on getting good at the command-line with commands, I focus on addin
 - fill this in later
 
 ## Performance
-- One thing you should always do after installing WebStorm is go into the plugins section in WebStorm preferences and disabble anything you don't need.  This is a must.  It'll have a huge impact on performance if you do
+- One thing you should always do after installing WebStorm is go into the plugins section in WebStorm preferences and disable anything you don't need.  This is a must.  I have no idea why webstorm defaults to installing a shitload of stuff you might not need but they do. It'll have a huge impact on performance if you go through and uncheck plugins you don't need
 - you can also increase memory by going to Help => Edit Custom VM Options and change the following (increase their values):
     - -Xms2048m
     - -Xmx2048m
