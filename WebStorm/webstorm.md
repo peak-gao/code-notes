@@ -16,12 +16,14 @@ I focus more on getting good at the command-line with commands, I focus on addin
 - fill this in later
 
 ## Performance
-- One thing you should always do after installing WebStorm is go into the plugins section in WebStorm preferences and disable anything you don't need.  This is a must.  I have no idea why webstorm defaults to installing a shitload of stuff you might not need but they do. It'll have a huge impact on performance if you go through and uncheck plugins you don't need
-- you can also increase memory by going to Help => Edit Custom VM Options and change the following (increase their values):
-    - -Xms2048m
-    - -Xmx2048m
-- Sometimes, if you're doing something really intensive like editing a very long readme file, you might have to just close and re-open WebStorm to clear memory
-- if your unit tests are slow, your problem is not webstorm, your problem is **your tests**.  I'm able to run 300 tests in just a couple seconds.  IF your tests are not well formed and just good tests, no editor or IDE is going to save you there
+- **disable plugins you don't need.  This is a must.**  I have no idea why WebStorm defaults to installing a shitload of stuff you might not need but they do. It'll have a huge impact on performance if you go through and uncheck plugins you don't need.  Go to **Preferences** => **Plugins** section and start unchecking boxes for those things you won't use
+- You can also **increase memory allocation**
+
+    go to **Help** => **Edit Custom VM Options** and change the following (increase their values. Max is 2048):
+    - `-Xms2048m`
+    - `-Xmx2048m`
+- Sometimes, if you're doing something really intensive like editing a very long readme file, you might have to just **close and re-open WebStorm to clear memory**
+- **if your unit tests are slow**, your **problem is not WebStorm**, your problem is **your tests**...they suck.  I'm able to run 300 tests in just a couple seconds.  IFf your tests are not well formed and just good tests, no editor or IDE is going to save you there.  So start practicing and improving and learning how to write better tests
 
 ## My WebStorm Settings
 you can import and try these out if you like
