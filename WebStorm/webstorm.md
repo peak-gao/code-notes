@@ -10,6 +10,8 @@ If you're new just focus on a few things, listed below and don't worry about try
 
 I don't really tweak a ton in preferences, only stuff I absolutely need to for Node, JS, and colors.  Most of the defaults I just leave as is.  That's why I don't get overwhelmed by the options in this IDE.  The defaults have been just fine for me for the most part.
 
+I focus more on getting good at the command-line with commands, I focus on adding and finding those plugins in WebStorm preferences that help in terms of what code I work in.  So I'll spend time adding plugins that benefit me in the Plugins section of WebStorm preferences.  I also spend time adding Definitely Typed libraries to help improve the already awesome intellisense. I focus more on setting up test infrastructure, using the WebStorm test runner as opposed to running them in the console.
+
 #### Areas I use
 - fill this in later
 
