@@ -4,8 +4,11 @@ Below assumes you're using WebStorm on OS X.
 you can import and try these out if you like
 
 - [All of my settings](webstorm-settings-all-5-17-2018.jar)
-- [color scheme I'm using](webstorm-settings-editor-theme-5-17-2018.jar)
 - [custom live templates (code snippets)](webstorm-settings-custom-live-templates-5-17-2018.jar) - I've created a bunch for TDD here
+- [color scheme I'm using](webstorm-settings-editor-theme-5-17-2018.jar)
+
+    ![GitHub Logo](color-scheme-5-17-2018.png)
+
 
 # Configuration
 **Live Templates** location
