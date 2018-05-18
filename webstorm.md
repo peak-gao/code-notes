@@ -10,5 +10,5 @@ Below assumes you're using WebStorm on OS X.
 - [Set up a Custom Keymap to run an npm script in WebStorm](https://www.youtube.com/watch?v=nP9qTpjIlMc)
 - [My WebStorm IDE Color and Settings Setup - Part 1](https://www.youtube.com/watch?v=QQHxWtFKgjk)
 - [My WebStorm IDE Color and Settings Setup - Part 2](https://www.youtube.com/watch?v=-1_rgAGJseQ)
-[The Ultimate Guide to Webstorm / IntelliJ - Part 1 - Colors](https://www.youtube.com/watch?v=7tg9jGDUFQU)
+- [The Ultimate Guide to Webstorm / IntelliJ - Part 1 - Colors](https://www.youtube.com/watch?v=7tg9jGDUFQU)
 - [Run Mocha Tests from Command-line or Webstorm Test Runner](https://www.youtube.com/watch?v=WpouIuSwiik)
