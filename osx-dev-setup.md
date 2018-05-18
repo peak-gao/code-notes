@@ -1,6 +1,7 @@
 `xcode-select --install` - to manually install xcode
 
 ## Tools I Use
+- [iTerm2](https://www.iterm2.com)
 - [Homebrew](https://brew.sh)
     - Install: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
     - If you get this error:
@@ -17,7 +18,23 @@
 - [Motion](https://itunes.apple.com/us/app/motion/id434290957?mt=12)
 - [Camtasia](https://www.techsmith.com/video-editor.html)
 - [Boom](https://www.globaldelight.com/boom/index.php) - a great graphic equalizer
-- [Microsoft NTFS for Mac](https://www.paragon-software.com/home/ntfs-mac/)
+- [NTFS for Mac](https://www.paragon-software.com/home/ntfs-mac/)
     - Microsoft NTFS is one of the primary file systems of Windows. If you work on a Mac computer and want to read or write files from HDD, SSD or a flash drive formatted under Windows
 - [APFS for Windows](https://www.paragon-software.com/home/apfs-windows/)
     - Apple File System (APFS) is a new file system for macOS, iOS, and other Apple devices. Use this if you work on Windows computer and want to read APFS-formatted HDD, SSD or flash drive
+- [Clean My Mac](https://macpaw.com)
+- [Slack Desktop](https://slack.com/downloads/osx)
+- [Discord](https://discordapp.com)
+- [OBS - Open Broadcaster Software](https://obsproject.com/) - for screencasts and streaming live
+- [Sublime Text](https://www.sublimetext.com/) - I use it as a scratch pad
+- [OneNote](https://www.onenote.com/download)
+- [Final Draft](https://www.finaldraft.com/)
+- [Elgato Video Capture](https://www.elgato.com/en/video-capture) - for converting old vhs tapes to mp4
+- [VLC](https://www.videolan.org/vlc/download-macosx.html)
+- [Postman](https://www.getpostman.com)
+- [MySQL Workbench](https://www.mysql.com/products/workbench/)
+- [MS Office](https://www.microsoft.com/en-us/store/b/office?icid=TopNavSoftwareOffice&activetab=tab%3ahomeorpersonal)
+- [HandBrake](https://handbrake.fr/)
+    - tool for converting video from nearly any format to a selection of modern, widely supported codecs
+    - I think I also tried using this to fix OBS mp4 streams that got interrupted/incomplete by system crashes
+- [AutoZapper](https://www.appzapper.com) - a great app uninstaller
