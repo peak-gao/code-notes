@@ -2,6 +2,8 @@
 - I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which provides a [ton of nice git aliases](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) that make you a lot quicker when typing git commands.  I highly recommend it.
 # Bash
 **meta** - your `Alt` key, normally. You need to enable it yourself usually in your terminal settings
+
+- `env` - get a list of environment variables in os x
 - `clear` - clear everything in terminal
 - `history` - list history of commands you've made
 - `arrow up`, `arrow down` - cycle through your command history
@@ -21,6 +23,9 @@
 - `Ctrl + d` - delete current char
 - `Ctrl + w` - delete a word in front of cursor
 - `Ctrl + r` - quick search commands you've done
+
+**other**
+- cal - see calendar and day
 
 **Files - Editing, Saving, etc.**
 - `esc` (gets you out of edit mode)
@@ -49,3 +54,8 @@
 `fatal: 'master' does not appear to be a git repository`
 `fatal: Could not read from remote repository`
  Resolution: `git pull origin master`
+
+ # Resources
+ - [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line)
+ - [alebcay/awesome-shell](https://github.com/alebcay/awesome-shell) - curated list of awesome command-line frameworks, toolkits, guides and gizmos
+ - [unixorn/awesome-zsh-plugins](https://github.com/unixorn/awesome-zsh-plugins) - collection of ZSH frameworks, plugins, tutorials & themes
