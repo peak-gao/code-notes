@@ -1,6 +1,10 @@
-`xcode-select --install` - to manually install xcode
 
-## Tools I Use
+## Commands
+- `diskutil list` - lists out all your disk volumes, etc
+- `xcode-select --install` - to manually install xcode
+
+## Tools / Apps I Use
+- [chrome](https://www.google.com/chrome)
 - [iTerm2](https://www.iterm2.com)
     - `cmd -`, `cmd +` to increase or decrease windows size fast
     - [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)

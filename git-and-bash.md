@@ -2,6 +2,7 @@
 - I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which provides a [ton of nice git aliases](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) that make you a lot quicker when typing git commands.  I highly recommend it.
 # Bash
 **meta** - your `Alt` key, normally. You need to enable it yourself usually in your terminal settings
+- `clear` - clear everything in terminal
 - `history` - list history of commands you've made
 - `arrow up`, `arrow down` - cycle through your command history
 - `ctrl + c` exist command
