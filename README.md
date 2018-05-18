@@ -19,9 +19,6 @@ Extends the cheat sheets with more notes
 These extend mini-1 notes.  Because...I don't like putting everything into one file.  Also, since I use WebStorm it takes a ton of memory to work in md files that get too long.
 
 # The Notes!
-
-## Languages, IDEs, OS X
-
 ## **React**
  >  Note: Contains a copy of the Docs from React's website as of 4/29/2018.  I don't plan on keeping this in sync with the React site.  It's just to port it over which is good enough, and then add onto it with useful information from other sources on the web
 
