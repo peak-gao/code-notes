@@ -7,23 +7,16 @@ It's hard to digest everthing in the extensive .md files on each particular topi
 
 So I'm creating "very simple cheat sheets", then "mini sheets" that have more detail, and then "core notes" that have a lot of detail, that allow you to gradually dive into "stuff".
 
-You should start with the `cheat-sheet`.  Then move to `notes-mini` sequentially by their number.  Then once you have those down well and memorized, you can dive into the extreme "guts" on each topic by reading the `[topic]-notes`.
+You should start with the `cheat-sheet`.  Then move to `notes-mini` sequentially by their number.  Then once you have those down well and memorized, you can dive into the extreme "guts" on each topic by reading the comprehensive  `[topic]-notes`.
 
 ### _cheat-sheet_
 A very thin list of stuff for quick referencing.  Much more thin than mini-notes
 
-### *mini-1 notes format*
-Reading the plain `[topic]-notes` files which are a gigantic dump of good "stuff" is overwhelming.  Start with these after the cheat-sheet(s) for each topic.
+### *mini-1 notes*
+Extends the cheat sheets with more notes
 
-- **Topic Header**
-    - Definition
-    - Small Details (enough to keep in your head)
-    - Benefits
-    - Disadvantages
-    - Examples (as real-world as possible)
-
-### *mini-2 notes format*
-These extend mini-1 notes.  Because...I don't like puting everything into one file.  Also, since I use WebStorm it takes a ton of memory to work in md files that get too long.
+### *mini-2 notes*
+These extend mini-1 notes.  Because...I don't like putting everything into one file.  Also, since I use WebStorm it takes a ton of memory to work in md files that get too long.
 
 - **Topic Header** (matches the headers in mini-1)
     - More Details that extend the list in mini-1
