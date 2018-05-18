@@ -64,7 +64,7 @@ These extend mini-1 notes.  Because...I don't like putting everything into one f
 ## **WebStorm IDE**
 - [WebStorm IDE](webstorm.md)
 ## **OS X Local Development Setup**
-
+- [OSX Dev Setup](osx-dev-setup.md)
 ## **Computer Science & JS Utils**
 - [CS](cs.md)
 
