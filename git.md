@@ -2,9 +2,9 @@
 - I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which provides a [ton of nice git aliases](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) that make you a lot quicker when typing git commands.  I highly recommend it.
 #### Bash
 **meta** - your `Alt` key, normally. You need to enable it yourself usually in your terminal settings
-        - set your `option` key as "meta"
-        - for **OS X built-in terminal** open it and then go to Edit | Use Option as Meta Key
-        - for **iTerm2** go to Preferences->Profiles tab. Select your profile on the left, and then open the Keys tab. Set the option key to use Esc+
+- how to set your `option` key as "meta":
+    - for **OS X built-in terminal** open it and then go to Edit | Use Option as Meta Key
+    - for **iTerm2** go to Preferences->Profiles tab. Select your profile on the left, and then open the Keys tab. Set the option key to use Esc+
 - `fn + arrow left` or `Ctrl + e`, - jump to beginning of line
 - `fn + arrow right` or `Ctrl + a` or  - jump to end of line
 - `alt + f`, `alt + b` - move cursor backwards or forwards by words
