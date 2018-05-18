@@ -43,5 +43,5 @@
 #### Errors & Resolutions
 
 `fatal: 'master' does not appear to be a git repository`
- `fatal: Could not read from remote repository`
+`fatal: Could not read from remote repository`
  Resolution: `git pull origin master`
