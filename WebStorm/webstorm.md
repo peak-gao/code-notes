@@ -35,7 +35,7 @@ One of the main complaints I hear from devs is that WebStorm is slow.  That's be
 you can import and try these out if you like
 
 - [All of my settings](webstorm-settings-all-5-17-2018.jar)
-- [custom live templates (code snippets)](webstorm-settings-custom-live-templates-5-17-2018.jar) - I've created a bunch for TDD here
+- [custom live templates (code snippets)](webstorm-settings-custom-live-templates-5-17-2018.jar) - I've created a bunch for TDD here (snippets I create are based on mocha, chai, and enzyme)
 - [color scheme I'm using](webstorm-settings-editor-theme-5-17-2018.jar)
 
     ![GitHub Logo](color-scheme-5-17-2018.png)
