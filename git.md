@@ -1,6 +1,6 @@
-#### Oh My Zsh
+# Oh My Zsh
 - I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) which provides a [ton of nice git aliases](https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet) that make you a lot quicker when typing git commands.  I highly recommend it.
-#### Bash
+# Bash
 **meta** - your `Alt` key, normally. You need to enable it yourself usually in your terminal settings
 - how to set your `option` key as "meta":
     - for **OS X built-in terminal** open it and then go to Edit | Use Option as Meta Key
@@ -22,6 +22,7 @@
 - `esc` (gets you out of edit mode)
 - `:wq` (saves the file)
 
+# Git
 #### Basic Commands Used Often
 `git commit --amend`
 - Lets you update a commit message if you haven't pushed it yet
