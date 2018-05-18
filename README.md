@@ -18,10 +18,6 @@ Extends the cheat sheets with more notes
 ### *mini-2 notes*
 These extend mini-1 notes.  Because...I don't like putting everything into one file.  Also, since I use WebStorm it takes a ton of memory to work in md files that get too long.
 
-- **Topic Header** (matches the headers in mini-1)
-    - More Details that extend the list in mini-1
-    - In depth Examples (as real-world as possible)
-
 # The Notes!
 
 ## Languages, IDEs, OS X
