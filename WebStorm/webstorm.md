@@ -1,4 +1,5 @@
 Below assumes you're using WebStorm on OS X.
+
 Below works for IntelliJ as well.
 
 ## Shortcuts
