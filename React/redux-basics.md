@@ -1,6 +1,8 @@
 # General
+*(TBD)*
 
 # Benefits of Using Redux
+*(TBD)*
 
 # Actions
 
@@ -21,11 +23,11 @@ Personally I like to maintain them in one file.  Below Dan Abramov explains the 
 - If you make a typo when importing an action constant, you will get undefined. This is much easier to notice than a typo when you wonder why nothing happens when the action is dispatched.
 
 ### Actions
-
+*(TBD)*
 ### Action Creators
-
+*(TBD)*
 ### Thunk Action Creators
-
+*(TBD)*
 
 
 # Resources
