@@ -73,8 +73,6 @@ These extend mini-1 notes.  Because...I don't like putting everything into one f
 # Principles and Practices
 ## **BDD**
 ## **TDD**
-- [Recommended Resources](PrinciplesAndPractices/tdd/recommended-resources.md)
-
 ## **React BDD / TDD**
 
 # Resources I Recommend
