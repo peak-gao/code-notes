@@ -8,7 +8,7 @@
 
 ### Action Types
 
-A lot of people maintain the creation of action constants differently.  Some put them directly in the same file as actions and action creators, and some put them in one constants file usually called ActionTypes.js and then just simply import them into actions.
+A lot of people maintain the creation of action **constants** (aka Action **Types**) differently.  Some put them directly in the same file as actions and action creators, and some put them in one constants file usually called ActionTypes.js and then just simply import them into actions.
 
 Personally I like to maintain them in one file.
 
