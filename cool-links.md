@@ -15,9 +15,6 @@
 - *Topics*: `React`, `Node Backend APIs`, `Vue`, `TDD`, etc.
 - also check out [WeDoTDD.com](WeDoTDD.com)
 
-[Codurance](https://www.youtube.com/channel/UCacyhBPMQpC4Vi-WqtrRpBw)
-- *Topics*: `TDD`
-
 [Joe Bew's TDD Stream](https://www.twitch.tv/videos/295109802)
 - *Topics*: `Elixir`, `Clean Code`, `TDD`, etc.
 - [about Joe](https://joebew42.github.io/twitch/about/)
