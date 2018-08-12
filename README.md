@@ -31,6 +31,8 @@ These extend mini-1 notes.  Because...I don't like putting everything into one f
 - [mini notes - 2](React/mini-notes/react-notes-mini-2.md)
 
 ## **Redux**
+- [Redux Basics](React/redux-basics.md)
+
 ## **JavaScript**
 **Note:**
 > A lot of the "You Don't Know JS" content (which is in the first 6 `js-basics.md` files) was ported over and I did 2 things
