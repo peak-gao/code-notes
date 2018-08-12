@@ -44,8 +44,9 @@ Here is an example:
     ROBOTS_RECEIVED: 'ROBOTS_RECEIVED'
   }
 }
-```
- export default ActionTypes
+
+export default ActionTypes
+ ```
 
 ### Actions
 *(TBD)*
