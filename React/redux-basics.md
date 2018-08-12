@@ -12,7 +12,7 @@ A lot of people maintain the creation of action **constants** (aka Action **Type
 
 Personally I like to maintain them in one file.
 
-Below Dan Abramov explains the benefits of this style.
+**Below Dan Abramov explains the benefits of this style:**
 
 *Why is this beneficial? It is often claimed that constants are unnecessary, and for small projects, this might be correct. For larger projects, there are some benefits to defining action types as constants:*
 
