@@ -41,6 +41,7 @@
 - [about Chris](https://twitter.com/chrisholland)
 
 [Roy Osherove 1](https://www.youtube.com/channel/UCM9Jz0z1IXlgGy_CY3wGRWA)
+
 [Roy Osherove 2](https://www.youtube.com/channel/UCuDFkDK8Y_CQFV2zPHfhWIQ?pbjreload=10)
 - *Topics*: `TDD`, `Building Teams`, `DevOps`
 
