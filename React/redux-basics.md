@@ -10,7 +10,9 @@
 
 A lot of people maintain the creation of action constants differently.  Some put them directly in the same file as actions and action creators, and some put them in one constants file usually called ActionTypes.js and then just simply import them into actions.
 
-Personally I like to maintain them in one file.  Below Dan Abramov explains the benefits of this style.
+Personally I like to maintain them in one file.
+
+Below Dan Abramov explains the benefits of this style.
 
 *Why is this beneficial? It is often claimed that constants are unnecessary, and for small projects, this might be correct. For larger projects, there are some benefits to defining action types as constants:*
 
@@ -20,7 +22,30 @@ Personally I like to maintain them in one file.  Below Dan Abramov explains the 
 
 - The list of action types that were added, removed, and changed in a Pull Request helps everyone on the team keep track of scope and implementation of new features.
 
-- If you make a typo when importing an action constant, you will get undefined. This is much easier to notice than a typo when you wonder why nothing happens when the action is dispatched.
+- If you make a typo when importing an action constant, you will get undefined. This is much easier to notice than a typo when you wonder why nothing happens when the action is dispatched
+
+Here is an example:
+
+**ActionTypes.js**
+```
+ const ActionTypes = {
+  auth: {
+    REQUEST_AUTHENTICATION:  'REQUEST_AUTHENTICATION',
+    AUTHENTICATED: 'AUTHENTICATED',
+    REQUEST_UNAUTHENTICATION: 'REQUEST_UNAUTHENTICATION',
+    UNAUTHENTICATED: 'UNAUTHENTICATED'
+  },
+  users: {
+    REQUEST_ALL_USERS: 'REQUEST_ALL_USERS',
+    USERS_RECEIVED: 'USERS_RECEIVED'
+  },
+  robots: {
+    REQUEST_ALL_ROBOTS: 'REQUEST_ALL_ROBOTS',
+    ROBOTS_RECEIVED: 'ROBOTS_RECEIVED'
+  }
+}
+```
+ export default ActionTypes
 
 ### Actions
 *(TBD)*
