@@ -34,12 +34,12 @@
 
 
 ### Twitch
-[WeDoTDD's TDD Stream](https://www.twitch.tv/wedotdd)
-- also check out [WeDoTDD.com](WeDoTDD.com)
+- [WeDoTDD's TDD Stream](https://www.twitch.tv/wedotdd)
+    - also check out [WeDoTDD.com](WeDoTDD.com)
 
-[Joe Bew's TDD Stream](https://www.twitch.tv/videos/295109802) <span style="font-size: 10">*[about Joe](https://joebew42.github.io/twitch/about/)*</a>
+- [Joe Bew's TDD Stream](https://www.twitch.tv/joebew42) <span style="font-size: 10">*[about Joe](https://joebew42.github.io/twitch/about/)*</a>
 
-[Coding it Wrong's TDD Stream](https://www.twitch.tv/videos/295562825)
+- [Coding it Wrong's TDD Stream](https://www.twitch.tv/videos/295562825)
 
 ### YouTube
 
