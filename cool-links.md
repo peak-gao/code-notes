@@ -9,7 +9,8 @@
 # TDD
 
 ### Posts
-
+- [Unit testing and TDD misconceptions](https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac/)
+- [Moving Parts](http://bit.ly/parts-moving)
 - [“Uncle Bob” Martin Speaks at Yale SOM](https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som)
 
 ### Videos
