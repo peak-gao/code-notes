@@ -40,9 +40,10 @@
 
      <a href="https://www.youtube.com/watch?v=XHnuMjah6ps" target="blank"><img src="images/sandro-outside-in-tdd.png" width="200" height="111" title="Moving Parts"></a>
 
-- [Testing and Refactoring Legacy Code](https://www.youtube.com/watch?v=_NnElPO5BU0)
+- [Testing and Refactoring Legacy Code](https://www.youtube.com/watch?v=_NnElPO5BU0) - *Sandro Mancusco*
 
     <a href="https://www.youtube.com/watch?v=_NnElPO5BU0" target="blank"><img src="images/sandro-refactoring-kata-tdd.png" width="200" height="115" title="Moving Parts"></a>
+    - Sandro shows us amazing techniques to refactor messy code
 
 ### Twitch
 - [WeDoTDD's TDD Stream](https://www.twitch.tv/wedotdd)
