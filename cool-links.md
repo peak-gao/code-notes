@@ -1,6 +1,6 @@
 # Craftsmanship / Professionalism / Agile / XP / Clean Code
 - [Developers Should Abandon Agile](https://ronjeffries.com/articles/018-01ff/abandon-1/)
-- [Speed Kills](a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills)
+- [Speed Kills](https://sites.google.com/site/unclebobconsultingllc/speed-kills)
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
     - [“Uncle Bob” Martin Speaks at Yale SOM](https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som)
 
