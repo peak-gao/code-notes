@@ -1,14 +1,21 @@
-# JavaScript
-## Posts
-## Videos
-- [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
-- [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
+# Craftsmanship
 
-## General JS
-- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
+# Agile
+- [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html)
+- [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174)
+
+# XP
 
 # TDD
-## Videos
+
+### Posts
+
+- [“Uncle Bob” Martin Speaks at Yale SOM](https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som)
+
+### Videos
+- [Robert C. Martin - The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk)
+    ![Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work. Disciplines like Test Driven Development, Continuous Integration, Simple Design, Refactoring, and Pair Programming. In this talk Uncle Bob will describe those missing disciplines, and tell you how to rescue your Scrum projects from failure by adopting those disciplines](https://github.com/WeDoTDD/code-notes/images/land-that-scrum-forgot.png)
+    - Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work. Disciplines like Test Driven Development, Continuous Integration, Simple Design, Refactoring, and Pair Programming. In this talk Uncle Bob will describe those missing disciplines, and tell you how to rescue your Scrum projects from failure by adopting those disciplines
 
 ### Twitch
 [WeDoTDD's TDD Stream](https://www.twitch.tv/wedotdd)
@@ -50,3 +57,15 @@
 
 ### Talks
 - [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
+
+# JavaScript
+## Posts
+## Videos
+- [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
+- [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
+
+## General JS
+- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
+
+
+
