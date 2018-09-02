@@ -1,8 +1,9 @@
 # Craftsmanship / Professionalism / Agile / XP / Clean Code
 - <a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills" target="blank">Speed Kills
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
+    - <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
 
-    <img src="images/solid-yale.png" width="200" height="112" title="Land That Scrum Forgot Keynote">
+      <img src="images/solid-yale.png" width="200" height="112" title="Land That Scrum Forgot Keynote">
 
 - <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="blank">Clean Architecture</a>
 
@@ -26,9 +27,6 @@
 - <a href="http://bit.ly/parts-moving" target="blank">Moving Parts</a>
 
     <img src="images/tdd-moving-parts.png" width="170" height="114" title="Land That Scrum Forgot Keynote">
-
-
-- <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
 
 ### Videos
 
