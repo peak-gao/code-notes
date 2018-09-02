@@ -32,7 +32,7 @@
 
     <a href="http://bit.ly/parts-moving" target="blank"><img src="images/tdd-moving-parts.png" width="170" height="114" title="Moving Parts"></a>
 
-#### Videos
+### Videos
 - [TDD, where did it all go wrong](https://vimeo.com/68375232) - *Ian Cooper*
 
      <a href="https://vimeo.com/68375232" target="blank"><img src="images/tdd-where-did-it-all-go-wrong.png" width="200" height="111" title="TDD, where did it all go wrong"></a>
@@ -42,7 +42,7 @@
 
      <a href="https://vimeo.com/102329098" target="blank"><img src="images/what-should-qa-do.png" width="200" height="111" title="What Should QA Do?"></a>
 
-##### TDD as if you mean it
+#### TDD as if you mean it
 **Preface**: [TDD as if you mean it](https://gojko.net/2009/02/27/thought-provoking-tdd-exercise-at-the-software-craftsmanship-conference/) was invented by a guy named [Keith Braithwaite](http://peripateticaxiom.blogspot.com/) in London during the Software Craftsmanship Conference 2009.  His idea is that you can write code with TDD in a way that forces you to make very small steps.  This means you need to respect the following rules:
 1. Write one failing test
 2. make test pass by writing implementation code in the test method itself (you're not allowed to create a class or method yet)
@@ -75,7 +75,7 @@
 - [Tdd as if you Meant It: Episode 15 --- Remote Live Coding with Grenoble](https://www.youtube.com/watch?v=At6XtCXaf3Q)
 
 
-#### Katas / Examples
+### Katas / Examples
 - [Outside In TDD part I](https://www.youtube.com/watch?v=XHnuMjah6ps) - *Sandro Mancusco*
 
      <a href="https://www.youtube.com/watch?v=XHnuMjah6ps" target="blank"><img src="images/sandro-outside-in-tdd.png" width="200" height="111" title="Outside In TDD part I"></a>
