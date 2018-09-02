@@ -72,8 +72,8 @@
 - [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
 
 ### General JS Learning
-- [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
-- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
+- [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q) -  an awesome JS YouTube channel
+- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) - The defacto github book - Forget JavaScript the Good parts, this is far better
 # GitHub
 - [Markdown - Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
