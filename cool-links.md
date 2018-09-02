@@ -1,5 +1,9 @@
-# Craftsmanship / Agile / XP
+# Craftsmanship / Agile / XP / Clean Code
 - Speed Kills
+- [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
+
+    <img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote">
+
 - [Robert C. Martin - The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk)
 
     <img src="images/land-that-scrum-forgot.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
@@ -13,11 +17,11 @@
 ### Posts
 - [Unit testing and TDD misconceptions](https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac/)
 
-    <img src="images/tdd-misconceptions.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
+    <img src="images/tdd-misconceptions.png" width="200" height="107" title="Land That Scrum Forgot Keynote">
 
 - [Moving Parts](http://bit.ly/parts-moving)
 
-    <img src="images/tdd-moving-parts.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
+    <img src="images/tdd-moving-parts.png" width="170" height="114" title="Land That Scrum Forgot Keynote">
 
 
 - [“Uncle Bob” Martin Speaks at Yale SOM](https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som)
