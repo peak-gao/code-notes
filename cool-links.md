@@ -32,8 +32,11 @@
 
     <a href="http://bit.ly/parts-moving" target="blank"><img src="images/tdd-moving-parts.png" width="170" height="114" title="Moving Parts"></a>
 
-### Videos
+#### Videos
+- [TDD, where did it all go wrong](https://vimeo.com/68375232) - *Ian Cooper*
 
+     <a href="https://vimeo.com/68375232" target="blank"><img src="images/tdd-where-did-it-all-go-wrong.png" width="200" height="111" title="TDD, where did it all go wrong"></a>
+     - Ian talks about the anti TDD patterns discovered over the years.  Very good talk.
 
 #### Katas / Examples
 - [Outside In TDD part I](https://www.youtube.com/watch?v=XHnuMjah6ps) - *Sandro Mancusco*
