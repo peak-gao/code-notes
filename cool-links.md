@@ -69,11 +69,10 @@
 - [Philip Roberts: What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
     <img src="images/what-is-the-js-even-loop.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
-
-- [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
 - [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
 
 ### General JS
+- [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
 - [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
 # GitHub
 - [Markdown - Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
