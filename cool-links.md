@@ -2,7 +2,7 @@
 - <a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills" target="blank">Speed Kills
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
 
-    <img src="images/solid-yale.png" width="160" height="117" title="Land That Scrum Forgot Keynote">
+    <img src="images/solid-yale.png" width="200" height="112" title="Land That Scrum Forgot Keynote">
 
 - <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="blank">Clean Architecture</a>
 
