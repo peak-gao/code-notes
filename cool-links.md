@@ -20,7 +20,7 @@
 
 # TDD
 
-####  **[Who is doing TDD?  Find a List here](http://www.wedotdd.com)**
+### **[Who is doing TDD?  Find a List here](http://www.wedotdd.com)**
 
 ### Posts
 - [How TDD Affects My Designs](https://blog.thecodewhisperer.com/permalink/how-tdd-affects-my-designs) - *J. B. Rainsberger*
