@@ -6,9 +6,9 @@
 
       <a href="https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s" target="blank"><img src="images/solid-yale.png" width="200" height="112" title="Land That Scrum Forgot Keynote"></a>
 
-- [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture)
+- [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
 
-    <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture" target="blank"><img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote"></a>
+    <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="blank"><img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote"></a>
 
 - [Robert C. Martin - The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk)
 
