@@ -73,7 +73,7 @@
 
 ### General JS Learning
 - [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q) -  an awesome JS YouTube channel
-- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) - The defacto github book - Forget JavaScript the Good parts, this is far better
+- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) - The defacto JS  book - Forget JavaScript the Good parts, this is far better
 # GitHub
 - [Markdown - Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
