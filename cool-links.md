@@ -52,6 +52,7 @@
 
 ### General JS
 - [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
-
+# GitHub
+- [Markdown - Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
 
