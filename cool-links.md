@@ -1,5 +1,5 @@
 # Craftsmanship / Professionalism / Agile / XP / Clean Code
-- [Speed Kills](https://sites.google.com/site/unclebobconsultingllc/speed-kills){:target="_blank"}
+- <a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills">Speed Kills</a>
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
     - <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="_blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
 
