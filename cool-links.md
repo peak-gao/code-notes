@@ -22,7 +22,7 @@
 [WeDoTDD's TDD Stream](https://www.twitch.tv/wedotdd)
 - also check out [WeDoTDD.com](WeDoTDD.com)
 
-[Joe Bew's TDD Stream](https://www.twitch.tv/videos/295109802) (<span style="font-size: 10">*[about Joe](https://joebew42.github.io/twitch/about/)*</a>)
+[Joe Bew's TDD Stream](https://www.twitch.tv/videos/295109802) <span style="font-size: 10">*[about Joe](https://joebew42.github.io/twitch/about/)*</a>
 
 [Coding it Wrong's TDD Stream](https://www.twitch.tv/videos/295562825)
 
@@ -32,7 +32,7 @@
 - [Sandro Mancusco](https://www.youtube.com/user/sandromancuso/videos)
 - [Adi Bolboaca](https://www.youtube.com/channel/UC7H7P2tu2i3Wnz-ZBdnO13Q)
 - [Clean Coders](https://www.youtube.com/user/cleancoders/videos)
-- [Chris Holland](https://www.youtube.com/channel/UCtGq0kpqgpc83ShN_rZQFbA) (<span style="font-size: 10">*[about Chris](https://twitter.com/chrisholland)*</a>)
+- [Chris Holland](https://www.youtube.com/channel/UCtGq0kpqgpc83ShN_rZQFbA) <span style="font-size: 10">*[about Chris](https://twitter.com/chrisholland)*</a>
 - [Roy Osherove 1](https://www.youtube.com/channel/UCM9Jz0z1IXlgGy_CY3wGRWA)
 - [Roy Osherove 2](https://www.youtube.com/channel/UCuDFkDK8Y_CQFV2zPHfhWIQ?pbjreload=10)
 - [Codurance](https://www.youtube.com/channel/UCacyhBPMQpC4Vi-WqtrRpBw)
