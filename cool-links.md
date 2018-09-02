@@ -35,12 +35,20 @@
 
 ### Twitch
 - [WeDoTDD's TDD Stream](https://www.twitch.tv/wedotdd)
+
+    <img src="images/we-do-tdd-twitch.png" width="200" height="112" title="Moving Parts">
+
     - also check out [WeDoTDD.com](WeDoTDD.com)
+
+
 
 - [Joe Bew's TDD Stream](https://www.twitch.tv/joebew42) <span style="font-size: 10">*[about Joe](https://joebew42.github.io/twitch/about/)*</a>
 
+    <img src="images/joe-twitch.png" width="200" height="113" title="Moving Parts">
+
 - [Coding it Wrong's TDD Stream](https://www.twitch.tv/videos/295562825)
 
+    <img src="images/coding-it-wrong.png" width="200" height="113" title="Moving Parts">
 ### YouTube
 
 - [8th Light](https://www.youtube.com/channel/UClJNsSHF9yR-MU4v-VosZ1A/videos)
