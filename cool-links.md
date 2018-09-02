@@ -81,6 +81,8 @@
     <img src="images/what-is-the-js-even-loop.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
 - [JavaScript is too convenient](https://vimeo.com/267418198?activityReferer=1) -  SCNA - Sam Jones of Test Double
 
+    <a href="https://vimeo.com/267418198?activityReferer=1" target="blank"><img src="images/javascript-too-convenient.png" width="200" height="112" title="JavaScript is Too Convenient"></a>
+
 ### General JS Learning
 - [Fun Fun Function](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q) -  an awesome JS YouTube channel
 - [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) - The defacto JS  book - Forget JavaScript the Good parts, this is far better
