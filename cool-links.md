@@ -15,8 +15,7 @@
 
 ### Videos
 - [Robert C. Martin - The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk)
-
-- ![Land That Scrum Forgot Keynote Pic](https://github.com/WeDoTDD/code-notes/blob/master/images/land-that-scrum-forgot.png)
+![Land That Scrum Forgot Keynote Pic](https://github.com/WeDoTDD/code-notes/blob/master/images/land-that-scrum-forgot.png)
 
     - Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work. Disciplines like Test Driven Development, Continuous Integration, Simple Design, Refactoring, and Pair Programming. In this talk Uncle Bob will describe those missing disciplines, and tell you how to rescue your Scrum projects from failure by adopting those disciplines
 
