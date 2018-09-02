@@ -1,15 +1,16 @@
 # Craftsmanship / Professionalism / Agile / XP / Clean Code
-- <a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills">Speed Kills</a>
+- [Developers Should Abandon Agile](https://ronjeffries.com/articles/018-01ff/abandon-1/)
+- [Speed Kills](a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills)
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
-    - <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="_blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
+    - [“Uncle Bob” Martin Speaks at Yale SOM](https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som)
 
       <a href="https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s" target="blank"><img src="images/solid-yale.png" width="200" height="112" title="Land That Scrum Forgot Keynote"></a>
 
-- <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">Clean Architecture</a>
+- [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture)
 
     <img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote">
 
-- <a href="https://www.youtube.com/watch?v=hG4LH6P8Syk" target="_blank">Robert C. Martin - The Land that Scrum Forgot</a>
+- [Robert C. Martin - The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk)
 
     <img src="images/land-that-scrum-forgot.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
 
@@ -20,11 +21,11 @@
 # TDD
 
 ### Posts
-- <a href="https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac" target="_blank">Unit testing and TDD misconceptions</a>
+- [Unit testing and TDD misconceptions](https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac)
 
     <img src="images/tdd-misconceptions.png" width="200" height="107" title="Land That Scrum Forgot Keynote">
 
-- <a href="http://bit.ly/parts-moving" target="blank">Moving Parts</a>
+- [Moving Parts](http://bit.ly/parts-moving)
 
     <img src="images/tdd-moving-parts.png" width="170" height="114" title="Land That Scrum Forgot Keynote">
 
