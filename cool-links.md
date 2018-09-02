@@ -3,7 +3,7 @@
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
     - <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
 
-      <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="blank"><img src="images/solid-yale.png" width="200" height="112" title="Land That Scrum Forgot Keynote"></a>
+      <a href="https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s" target="blank"><img src="images/solid-yale.png" width="200" height="112" title="Land That Scrum Forgot Keynote"></a>
 
 - <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="blank">Clean Architecture</a>
 
