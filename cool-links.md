@@ -1,5 +1,5 @@
 # Craftsmanship / Professionalism / Agile / XP / Clean Code
-- <a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills" target="_blank">Speed Kills
+- [Speed Kills](https://sites.google.com/site/unclebobconsultingllc/speed-kills){:target="_blank"}
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
     - <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="_blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
 
@@ -24,7 +24,7 @@
 
     <img src="images/tdd-misconceptions.png" width="200" height="107" title="Land That Scrum Forgot Keynote">
 
-- <a href="http://bit.ly/parts-moving" target="_blank">Moving Parts</a>
+- <a href="http://bit.ly/parts-moving" target="blank">Moving Parts</a>
 
     <img src="images/tdd-moving-parts.png" width="170" height="114" title="Land That Scrum Forgot Keynote">
 
