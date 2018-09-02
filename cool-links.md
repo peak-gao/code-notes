@@ -55,7 +55,7 @@
      <a href="https://vimeo.com/68375232" target="blank"><img src="images/tdd-like-you-mean-it.png" width="200" height="112" title="TDD as if you You Mean It - Chris Powers"></a>
 
 - [TDD as if you You Mean It - Classical TDD Series](https://vimeo.com/68375232) - *Adi Bolboaca*
-    - pref
+
      <a href="https://www.youtube.com/watch?v=zXLG0nE3Upg" target="blank"><img src="images/tdd-as-if-you-mean-it.png" width="200" height="112" title="TDD as if you You Mean It - Classical TDD Series - Adi Bolboaca"></a>
 
     - [Tdd as if you Meant It: Episode 1 --- Think - Red - Green - Refactor](https://www.youtube.com/watch?v=zXLG0nE3Upg)
