@@ -42,10 +42,29 @@
 
      <a href="https://vimeo.com/102329098" target="blank"><img src="images/what-should-qa-do.png" width="200" height="111" title="What Should QA Do?"></a>
 
-- [TDD Like You Mean It](https://vimeo.com/68375232) - *Chris Powers*
+- [TDD as if you You Mean It - @ Groupon Greekfest](https://vimeo.com/68375232) - *Chris Powers*
 
-     <a href="https://vimeo.com/68375232" target="blank"><img src="images/tdd-like-you-mean-it.png" width="200" height="112" title="TDD Like Tou Mean It"></a>
+     <a href="https://vimeo.com/68375232" target="blank"><img src="images/tdd-like-you-mean-it.png" width="200" height="112" title="TDD as if you You Mean It - Chris Powers"></a>
 
+- [TDD as if you You Mean It - Classical TDD Series](https://vimeo.com/68375232) - *Adi Bolboaca*
+
+     <a href="https://www.youtube.com/watch?v=zXLG0nE3Upg" target="blank"><img src="images/tdd-as-if-you-mean-it.png" width="200" height="112" title="TDD as if you You Mean It - Classical TDD Series - Adi Bolboaca"></a>
+
+- [Tdd as if you Meant It: Episode 1 --- Think - Red - Green - Refactor](https://www.youtube.com/watch?v=zXLG0nE3Upg)
+- [Tdd as if you Meant It: Episode 2 --- I care about behavior, not about representation](https://www.youtube.com/watch?v=fLaJOhACcWE)
+- [Tdd as if you Meant It: Episode 3 --- Refactor Primitives to Concepts](https://www.youtube.com/watch?v=YqN11lKUaqo)
+- [Tdd as if you Meant It: Episode 4 --- Refactor to a new class](https://www.youtube.com/watch?v=7t05MD43IHA)
+- [Tdd as if you Meant It: Episode 5 --- Refactoring to Builder](https://www.youtube.com/watch?v=2XJAQ-hISq0)
+- [Tdd as if you Meant It: Episode 6 --- Some Traditional TDD - part 1](https://www.youtube.com/watch?v=Z-a42TemsC4)
+- [Tdd as if you Meant It: Episode 7 --- Some Traditional TDD - part 2](https://www.youtube.com/watch?v=Lq9QnOa6yLc)
+- [Tdd as if you Meant It: Episode 8 --- Create Duplication in order to remove it](https://www.youtube.com/watch?v=w7lWE6ne5qE)
+- [Tdd as if you Meant It: Episode 9 --- Experiment Design Alternatives when Stuck](https://www.youtube.com/watch?v=dSkbXMvgghc)
+- [Tdd as if you Meant It: Episode 10 --- Add Missing Tests for Untested Branches](https://www.youtube.com/watch?v=eCEKX2w-xYs)
+- [Tdd as if you Meant It: Episode 11 --- Refactor and Clean-Up](https://www.youtube.com/watch?v=tgEmOeQUZEE&t=8s)
+- [Tdd as if you Meant It: Episode 12 --- Separate Production from Test Code](https://www.youtube.com/watch?v=bWJniwQcu0U)
+- [Tdd as if you Meant It: Episode 13 --- Clean-up before next Triangulation](https://www.youtube.com/watch?v=3-ofl9RpwKc)
+- [Tdd as if you Meant It: Episode 14 --- Refactor, but in Small Steps Now](https://www.youtube.com/watch?v=OUgaPtf497I)
+- [Tdd as if you Meant It: Episode 15 --- Remote Live Coding with Grenoble](https://www.youtube.com/watch?v=At6XtCXaf3Q)
 
 
 #### Katas / Examples
