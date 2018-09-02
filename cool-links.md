@@ -1,15 +1,15 @@
 # Craftsmanship / Professionalism / Agile / XP / Clean Code
-- <a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills" target="blank">Speed Kills
+- <a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills" target="_blank">Speed Kills
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
-    - <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
+    - <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="_blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
 
       <a href="https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s" target="blank"><img src="images/solid-yale.png" width="200" height="112" title="Land That Scrum Forgot Keynote"></a>
 
-- <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="blank">Clean Architecture</a>
+- <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">Clean Architecture</a>
 
     <img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote">
 
-- <a href="https://www.youtube.com/watch?v=hG4LH6P8Syk" target="blank">Robert C. Martin - The Land that Scrum Forgot</a>
+- <a href="https://www.youtube.com/watch?v=hG4LH6P8Syk" target="_blank">Robert C. Martin - The Land that Scrum Forgot</a>
 
     <img src="images/land-that-scrum-forgot.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
 
@@ -20,11 +20,11 @@
 # TDD
 
 ### Posts
-- <a href="https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac" target="blank">Unit testing and TDD misconceptions</a>
+- <a href="https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac" target="_blank">Unit testing and TDD misconceptions</a>
 
     <img src="images/tdd-misconceptions.png" width="200" height="107" title="Land That Scrum Forgot Keynote">
 
-- <a href="http://bit.ly/parts-moving" target="blank">Moving Parts</a>
+- <a href="http://bit.ly/parts-moving" target="_blank">Moving Parts</a>
 
     <img src="images/tdd-moving-parts.png" width="170" height="114" title="Land That Scrum Forgot Keynote">
 
