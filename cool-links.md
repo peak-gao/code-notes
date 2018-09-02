@@ -8,11 +8,11 @@
 
 - [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture)
 
-    <img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote">
+    <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture" target="blank"><img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote"></a>
 
 - [Robert C. Martin - The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk)
 
-    <img src="images/land-that-scrum-forgot.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
+     <a href="https://www.youtube.com/watch?v=hG4LH6P8Syk" target="blank"><img src="images/land-that-scrum-forgot.png" width="200" height="113" title="Land That Scrum Forgot Keynote"></a>
 
     Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work
 - [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) *Martin Fowler*
@@ -26,31 +26,38 @@
 - [How TDD Affects My Designs](https://blog.thecodewhisperer.com/permalink/how-tdd-affects-my-designs) - *J. B. Rainsberger*
 - [Unit testing and TDD misconceptions](https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac) - *Marko Bjelac*
 
-    <img src="images/tdd-misconceptions.png" width="200" height="107" title="Land That Scrum Forgot Keynote">
+     <a href="https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac" target="blank"><img src="images/tdd-misconceptions.png" width="200" height="107" title="Land That Scrum Forgot Keynote"></a>
 
 - [Moving Parts](http://bit.ly/parts-moving) *Chris Holland*
 
-    <img src="images/tdd-moving-parts.png" width="170" height="114" title="Moving Parts">
+    <a href="http://bit.ly/parts-moving" target="blank"><img src="images/tdd-moving-parts.png" width="170" height="114" title="Moving Parts"></a>
 
 ### Videos
 
 
+#### Katas / Examples
+- [Outside In TDD part I](https://www.youtube.com/watch?v=XHnuMjah6ps) - *Sandro Mancusco*
+
+     <a href="https://www.youtube.com/watch?v=XHnuMjah6ps" target="blank"><img src="images/sandro-outside-in-tdd.png" width="200" height="111" title="Moving Parts"></a>
+
+- [Testing and Refactoring Legacy Code](https://www.youtube.com/watch?v=_NnElPO5BU0)
+
+    <a href="https://www.youtube.com/watch?v=_NnElPO5BU0" target="blank"><img src="images/sandro-refactoring-kata-tdd.png" width="200" height="115" title="Moving Parts"></a>
+
 ### Twitch
 - [WeDoTDD's TDD Stream](https://www.twitch.tv/wedotdd)
 
-    <img src="images/we-do-tdd-twitch.png" width="200" height="112" title="Moving Parts">
+    <a href="https://www.twitch.tv/wedotdd" target="blank"><img src="images/we-do-tdd-twitch.png" width="200" height="112" title="Moving Parts"></a>
 
     - also check out [WeDoTDD.com](WeDoTDD.com)
 
-
-
 - [Joe Bew's TDD Stream](https://www.twitch.tv/joebew42) <span style="font-size: 10">*[about Joe](https://joebew42.github.io/twitch/about/)*</a>
 
-    <img src="images/joe-twitch.png" width="200" height="113" title="Moving Parts">
+    <a href="https://www.twitch.tv/joebew42" target="blank"><img src="images/joe-twitch.png" width="200" height="113" title="Moving Parts"></a>
 
 - [Coding it Wrong's TDD Stream](https://www.twitch.tv/videos/295562825)
 
-    <img src="images/coding-it-wrong.png" width="200" height="113" title="Moving Parts">
+    <a href="ttps://www.twitch.tv/videos/295562825" target="blank"><img src="images/coding-it-wrong.png" width="200" height="113" title="Coding it Wrong's TDD Stream - React Native"></a>
 ### YouTube
 
 - [8th Light](https://www.youtube.com/channel/UClJNsSHF9yR-MU4v-VosZ1A/videos)
