@@ -1,5 +1,5 @@
 # Craftsmanship / Agile / XP / Clean Code
-- Speed Kills
+- [Speed Kills](https://sites.google.com/site/unclebobconsultingllc/speed-kills)
 - [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
 
     <img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote">
