@@ -18,7 +18,7 @@
 
     <img src="images/land-that-scrum-forgot.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
 
-- Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work. Disciplines like Test Driven Development, Continuous Integration, Simple Design, Refactoring, and Pair Programming. In this talk Uncle Bob will describe those missing disciplines, and tell you how to rescue your Scrum projects from failure by adopting those disciplines
+    Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work. Disciplines like Test Driven Development, Continuous Integration, Simple Design, Refactoring, and Pair Programming. In this talk Uncle Bob will describe those missing disciplines, and tell you how to rescue your Scrum projects from failure by adopting those disciplines
 
 ### Twitch
 [WeDoTDD's TDD Stream](https://www.twitch.tv/wedotdd)
