@@ -16,7 +16,7 @@
 
     Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work
 - [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) *Martin Fowler*
-- [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174) *Bob Martin*
+- [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174) *Marko Bjelac*
 
 # TDD
 
