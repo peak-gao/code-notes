@@ -38,6 +38,12 @@
      <a href="https://vimeo.com/68375232" target="blank"><img src="images/tdd-where-did-it-all-go-wrong.png" width="200" height="111" title="TDD, where did it all go wrong"></a>
      - Ian talks about the anti TDD patterns discovered over the years.  Very good talk.
 
+- [TDD Like You Mean It](https://vimeo.com/68375232) - *Chris Powers*
+
+     <a href="https://vimeo.com/68375232" target="blank"><img src="images/tdd-like-you-mean-it.png" width="200" height="112" title="TDD Like Tou Mean It"></a>
+
+
+
 #### Katas / Examples
 - [Outside In TDD part I](https://www.youtube.com/watch?v=XHnuMjah6ps) - *Sandro Mancusco*
 
