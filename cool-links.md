@@ -1,10 +1,14 @@
-# Craftsmanship / Agile / XP / Clean Code
-- [Speed Kills](https://sites.google.com/site/unclebobconsultingllc/speed-kills)
-- [Clean Architecture](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
+# Craftsmanship / Professionalism / Agile / XP / Clean Code
+- <a href="https://sites.google.com/site/unclebobconsultingllc/speed-kills" target="blank">Speed Kills
+- [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
+
+    <img src="images/solid-yale.png" width="160" height="117" title="Land That Scrum Forgot Keynote">
+
+- <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="blank">Clean Architecture</a>
 
     <img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote">
 
-- [Robert C. Martin - The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk)
+- <a href="https://www.youtube.com/watch?v=hG4LH6P8Syk" target="blank">Robert C. Martin - The Land that Scrum Forgot</a>
 
     <img src="images/land-that-scrum-forgot.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
 
@@ -15,16 +19,16 @@
 # TDD
 
 ### Posts
-- [Unit testing and TDD misconceptions](https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac/)
+- <a href="https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac" target="blank">Unit testing and TDD misconceptions</a>
 
     <img src="images/tdd-misconceptions.png" width="200" height="107" title="Land That Scrum Forgot Keynote">
 
-- [Moving Parts](http://bit.ly/parts-moving)
+- <a href="http://bit.ly/parts-moving" target="blank">Moving Parts</a>
 
     <img src="images/tdd-moving-parts.png" width="170" height="114" title="Land That Scrum Forgot Keynote">
 
 
-- [“Uncle Bob” Martin Speaks at Yale SOM](https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som)
+- <a href="https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som" target="blank">“Uncle Bob” Martin Speaks at Yale SOM</a>
 
 ### Videos
 
