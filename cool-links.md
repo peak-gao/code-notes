@@ -20,6 +20,8 @@
 
 # TDD
 
+[Who is doing TDD?  Find a List here](http://www.wedotdd.com)
+
 ### Posts
 - [How TDD Affects My Designs](https://blog.thecodewhisperer.com/permalink/how-tdd-affects-my-designs) - *J. B. Rainsberger*
 - [Unit testing and TDD misconceptions](https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac) - *Marko Bjelac*
