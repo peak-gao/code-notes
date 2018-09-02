@@ -1,6 +1,6 @@
 # Craftsmanship / Professionalism / Agile / XP / Clean Code
-- [Developers Should Abandon Agile](https://ronjeffries.com/articles/018-01ff/abandon-1/)
-- [Speed Kills](https://sites.google.com/site/unclebobconsultingllc/speed-kills)
+- [Developers Should Abandon Agile](https://ronjeffries.com/articles/018-01ff/abandon-1/) - *Ron Jeffries*
+- [Speed Kills](https://sites.google.com/site/unclebobconsultingllc/speed-kills) - *Bob Martin*
 - [Bob Martin SOLID Principles of Object Oriented and Agile Design](https://www.youtube.com/watch?v=TMuno5RZNeE&t=2180s)
     - [“Uncle Bob” Martin Speaks at Yale SOM](https://som.yale.edu/news/2014/09/uncle-bob-martin-speaks-yale-som)
 
@@ -15,19 +15,20 @@
     <img src="images/land-that-scrum-forgot.png" width="200" height="113" title="Land That Scrum Forgot Keynote">
 
     Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work
-- [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html)
-- [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174)
+- [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) *Martin Fowler*
+- [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174) *Bob Martin*
 
 # TDD
 
 ### Posts
-- [Unit testing and TDD misconceptions](https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac)
+- [How TDD Affects My Designs](https://blog.thecodewhisperer.com/permalink/how-tdd-affects-my-designs) - *J. B. Rainsberger*
+- [Unit testing and TDD misconceptions](https://www.linkedin.com/pulse/unit-testing-tdd-misconceptions-marko-bjelac) - *Marko Bjelac*
 
     <img src="images/tdd-misconceptions.png" width="200" height="107" title="Land That Scrum Forgot Keynote">
 
-- [Moving Parts](http://bit.ly/parts-moving)
+- [Moving Parts](http://bit.ly/parts-moving) *Chris Holland*
 
-    <img src="images/tdd-moving-parts.png" width="170" height="114" title="Land That Scrum Forgot Keynote">
+    <img src="images/tdd-moving-parts.png" width="170" height="114" title="Moving Parts">
 
 ### Videos
 
