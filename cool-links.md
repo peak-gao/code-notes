@@ -35,6 +35,7 @@
     <a href="http://bit.ly/parts-moving" target="blank"><img src="images/tdd-moving-parts.png" width="170" height="114" title="Moving Parts"></a>
 
 - [What's the Simplest Thing that Could Possibly Work? A Conversation with Ward Cunningham](https://www.artima.com/intv/simplest3.html) - *Bill Venners*
+- [When should you remove or change a unit test?](http://osherove.com/blog/2005/4/3/when-should-you-remove-or-change-a-unit-test.html) - *Roy Osherove*
 
 ### Videos
 - [Integrated Tests Are A Scam HD](https://www.youtube.com/watch?v=VDfX44fZoMc) - *J.B. Rainsberger*
