@@ -44,11 +44,16 @@
 
 #### TDD as if you mean it
 **Preface**: [TDD as if you mean it](https://gojko.net/2009/02/27/thought-provoking-tdd-exercise-at-the-software-craftsmanship-conference/) was invented by a guy named [Keith Braithwaite](http://peripateticaxiom.blogspot.com/) in London during the Software Craftsmanship Conference 2009.  His idea is that you can write code with TDD in a way that forces you to make very small steps.  This means you need to respect the following rules:
-1. Write one failing test
-2. make test pass by writing implementation code in the test method itself (you're not allowed to create a class or method yet)
-3. When duplication is spotted, extract the implementation from the test to a new method in the test class or to an existing method in the test class
-4. When more methods belong together, extract them into a new class
-5. Refactor as required
+1. write exactly ONE failing test
+2. make the test from (1) pass by first writing implementation code IN THE TEST
+3. create a new implementation method/function by:
+    - doing extract method on implementation code created as per (2), or
+    - moving implementation code as per (2) into an existing implementation method
+4. only ever create new methods IN THE TEST CLASS
+5. only ever create implementation classes to provide a destination for extracting a method created as per (4)
+6. populate implementation classes by doing move method from a test class into them
+7. refactor as required
+8. go to (1)
 
 - [TDD as if you You Mean It - @ Groupon Greekfest](https://vimeo.com/68375232) - *Chris Powers*
 
