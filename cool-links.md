@@ -18,7 +18,7 @@
 - [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) *Martin Fowler*
 - [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174) *Marko Bjelac*
 
-# TDD
+# TDD & General Testing
 
 ## **[Who is doing TDD?  Find a List here](http://www.wedotdd.com)**
 
