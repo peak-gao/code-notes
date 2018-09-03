@@ -23,7 +23,7 @@ These are industry leading, proven, defacto books that the majority of developer
 
 - [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM) *Rob Martin*
 
-    <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM" target="blank"><img src="images/clean-code-book.jpg" width="75" height="100" title=Clean Code"></a>
+    <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM" target="blank"><img src="images/clean-code-book.jpg" width="75" height="100" title="Clean Code"></a>
 
 - [The Clean Coder](https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers-ebook/dp/B0050JLC9Y) *Rob Martin*
 
