@@ -147,6 +147,7 @@ TPP suggests that Refactorings have counterparts called Transformations. Refacto
 
 # JavaScript
 ### Posts
+- [JavaScript Factory Functions vs Constructor Functions vs Classes](https://medium.com/javascript-scene/javascript-factory-functions-vs-constructor-functions-vs-classes-2f22ceddf33e) - *Eric Elliott*
 ### Videos
 - [Philip Roberts: What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
