@@ -107,6 +107,9 @@ TPP suggests that Refactorings have counterparts called Transformations. Refacto
     - [Tdd as if you Meant It: Episode 14 --- Refactor, but in Small Steps Now](https://www.youtube.com/watch?v=OUgaPtf497I)
     - [Tdd as if you Meant It: Episode 15 --- Remote Live Coding with Grenoble](https://www.youtube.com/watch?v=At6XtCXaf3Q)
 
+### Front-end TDD
+#### React
+- [Dependency Inversion in React with Render Props & Tests](https://8thlight.com/blog/becca-nelson/2018/08/30/dependency-inversion-in-react-with-render-props.html) - *Becca Nelson*
 
 ### Katas / Examples
 - [Outside In TDD part I](https://www.youtube.com/watch?v=XHnuMjah6ps) - *Sandro Mancusco*
