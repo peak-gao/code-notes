@@ -33,6 +33,11 @@
     <a href="http://bit.ly/parts-moving" target="blank"><img src="images/tdd-moving-parts.png" width="170" height="114" title="Moving Parts"></a>
 
 ### Videos
+- [Integrated Tests Are A Scam HD](https://www.youtube.com/watch?v=VDfX44fZoMc) - *Ian Cooper*
+
+     <a href="https://www.youtube.com/watch?v=VDfX44fZoMc" target="blank"><img src="images/integration-tests-are-a-scam.png" width="200" height="111" title="Integrated Tests Are A Scam HD"></a>
+
+
 - [TDD, where did it all go wrong](https://vimeo.com/68375232) - *Ian Cooper*
 
      <a href="https://vimeo.com/68375232" target="blank"><img src="images/tdd-where-did-it-all-go-wrong.png" width="200" height="111" title="TDD, where did it all go wrong"></a>
