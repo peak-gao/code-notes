@@ -49,6 +49,15 @@
 
      <a href="https://vimeo.com/102329098" target="blank"><img src="images/what-should-qa-do.png" width="200" height="111" title="What Should QA Do?"></a>
 
+### Transformation Priority Premise
+- [The Transformation Priority Premise - Workshop](https://www.youtube.com/watch?v=B93QezwTQpI) - *Rob Martin*
+
+     <a href="https://www.youtube.com/watch?v=B93QezwTQpI" target="blank"><img src="images/transformation-priority-premise.png" width="200" height="111" title="What Should QA Do?"></a>
+
+- [The Transformation Priority Premise - 8th Light Blog](https://8thlight.com/blog/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html) - *Rob Martin*
+- [Transformation Priority and Sorting - 8th Light Blog](https://8thlight.com/blog/uncle-bob/2013/05/27/TransformationPriorityAndSorting.html) - *Rob Martin*
+- [Transformation Priority Premise: TDD Test Order Matters](https://www.slideshare.net/mdclement/transformation-priority-premise) - *Mike Clement*
+
 ### TDD as if you mean it
 **Preface**: [TDD as if you mean it](https://gojko.net/2009/02/27/thought-provoking-tdd-exercise-at-the-software-craftsmanship-conference/) was invented by a guy named [Keith Braithwaite](http://peripateticaxiom.blogspot.com/) in London during the Software Craftsmanship Conference 2009.  His idea is that you can write code with TDD in a way that forces you to make very small steps.  This means you need to respect the following rules:
 1. write exactly ONE failing test
