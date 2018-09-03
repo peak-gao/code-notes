@@ -10,7 +10,7 @@
 
     <a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="blank"><img src="images/clean-architecture.jpg" width="160" height="118" title="Land That Scrum Forgot Keynote"></a>
 
-- [Robert C. Martin - The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk)
+- [The Land that Scrum Forgot](https://www.youtube.com/watch?v=hG4LH6P8Syk) - *Bob Martin*
 
      <a href="https://www.youtube.com/watch?v=hG4LH6P8Syk" target="blank"><img src="images/land-that-scrum-forgot.png" width="200" height="113" title="The Land That Scrum Forgot Keynote"></a>
 
@@ -18,7 +18,11 @@
 - [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) *Martin Fowler*
 - [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174) *Marko Bjelac*
 
+- [The Technical Debt Trap - Doc Norton](https://www.youtube.com/watch?v=SfWCRl75Kas&feature=youtu.be&t=1736)  - *Doc Norton*
 
+     <a href="https://www.youtube.com/watch?v=hG4LH6P8Syk" target="blank"><img src="images/land-that-scrum-forgot.png" width="200" height="113" title="The Land That Scrum Forgot Keynote"></a>
+     - Technical Debt has become a catch-all phrase for any code that needs to be re-worked. Much like Refactoring has become a catch-all phrase for any activity that involves changing code.
+       These fundamental misunderstandings and comfortable yet mis-applied metaphors have resulted in a plethora of poor decisions. What is technical debt? What is not technical debt? Why should we care? What is the cost of misunderstanding? What do we do about it? Doc discusses the origins of the metaphor, what it means today, and how we properly identify and manage technical debt.
 
 # TDD & General Testing
 
