@@ -18,6 +18,25 @@
 - [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) *Martin Fowler*
 - [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174) *Marko Bjelac*
 
+### Recommended Books
+These are industry leading, proven, defacto books that the majority of developers use to guide their Craft.
+
+- [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM) *Rob Martin*
+
+    <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM" target="blank"><img src="images/clean-code-book.jpg" width="75" height="100" title=Clean Code"></a>
+
+- [The Clean Coder](https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers-ebook/dp/B0050JLC9Y) *Rob Martin*
+
+    <a href="https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers-ebook/dp/B0050JLC9Y" target="blank"><img src="images/the-clean-coder.jpg" width="75" height="97" title="The Clean Coder"></a>
+
+- [Clean Architecture](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164) *Rob Martin*
+
+    <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164" target="blank"><img src="images/clean-architecture-book.jpg" width="75" height="100" title="Clean Architecture"></a>
+
+- [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627) *Steve Freeman*
+
+    <a href="https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627" target="blank"><img src="images/goos-book.jpg" width="75" height="100" title="Unit testing and TDD misconceptions"></a>
+
 # TDD & General Testing
 
 ## **[Who is doing TDD?  Find a List here](http://www.wedotdd.com)**
@@ -134,6 +153,8 @@ TPP suggests that Refactorings have counterparts called Transformations. Refacto
 - [Roy Osherove 1](https://www.youtube.com/channel/UCM9Jz0z1IXlgGy_CY3wGRWA)
 - [Roy Osherove 2](https://www.youtube.com/channel/UCuDFkDK8Y_CQFV2zPHfhWIQ?pbjreload=10)
 - [Codurance](https://www.youtube.com/channel/UCacyhBPMQpC4Vi-WqtrRpBw)
+
+### Recommended Books
 
 # JavaScript
 ### Posts
