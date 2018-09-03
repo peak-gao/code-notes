@@ -14,7 +14,7 @@
 
      <a href="https://www.youtube.com/watch?v=hG4LH6P8Syk" target="blank"><img src="images/land-that-scrum-forgot.png" width="200" height="113" title="The Land That Scrum Forgot Keynote"></a>
 
-    Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work
+    - Scrum is the most popular of all the Agile methods. Tens of thousands of people have been certified as Scrum Masters. Thousands of projects have use Scrum to get great work done. But there's a problem. Some of those projects fail, and fail badly. The reason they fail is that Scrum forgot something. Scrum forgot to incorporate the technical disciplines that make Agile work
 - [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) *Martin Fowler*
 - [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174) *Marko Bjelac*
 
