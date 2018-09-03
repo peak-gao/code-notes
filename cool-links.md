@@ -33,7 +33,7 @@
     <a href="http://bit.ly/parts-moving" target="blank"><img src="images/tdd-moving-parts.png" width="170" height="114" title="Moving Parts"></a>
 
 ### Videos
-- [Integrated Tests Are A Scam HD](https://www.youtube.com/watch?v=VDfX44fZoMc) - *Ian Cooper*
+- [Integrated Tests Are A Scam HD](https://www.youtube.com/watch?v=VDfX44fZoMc) - *J.B. Rainsberger*
 
      <a href="https://www.youtube.com/watch?v=VDfX44fZoMc" target="blank"><img src="images/integration-tests-are-a-scam.png" width="200" height="111" title="Integrated Tests Are A Scam HD"></a>
 
