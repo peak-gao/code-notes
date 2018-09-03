@@ -58,7 +58,7 @@ TPP suggests that Refactorings have counterparts called Transformations. Refacto
      <a href="https://www.youtube.com/watch?v=B93QezwTQpI" target="blank"><img src="images/transformation-priority-premise.png" width="200" height="111" title="What Should QA Do?"></a>
 
 - [The Transformation Priority Premise](http://blog.cleancoder.com/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html) - *Rob Martin*
-- [Transformation Priority and Sorting](hhttp://blog.cleancoder.com/uncle-bob/2013/05/27/TransformationPriorityAndSorting.html) - *Rob Martin*
+- [Transformation Priority and Sorting](http://blog.cleancoder.com/uncle-bob/2013/05/27/TransformationPriorityAndSorting.html) - *Rob Martin*
 - [Transformation Priority Premise: TDD Test Order Matters](https://www.slideshare.net/mdclement/transformation-priority-premise) - *Mike Clement*
 - [Extract of Uncle Bob’s Transformation Priority Premise post](https://medium.com/@zolipeto/extract-of-uncle-bobs-transformation-priority-premise-post-85ab20216fb1) - *Zoltán Pető*
 
