@@ -50,6 +50,8 @@
      <a href="https://vimeo.com/102329098" target="blank"><img src="images/what-should-qa-do.png" width="200" height="111" title="What Should QA Do?"></a>
 
 ### Transformation Priority Premise
+TPP suggests that Refactorings have counterparts called Transformations. Refactorings are simple operations that change the structure of code without changing it’s behavior. Transformations are simple operations that change the behavior of code. Transformations can be used as the sole means for passing the currently failing test in the red/green/refactor cycle. Transformations have a priority, or a preferred ordering, which if maintained, by the ordering of the tests, will prevent impasses, or long outages in the red/green/refactor cycle.
+
 - [The Transformation Priority Premise - Workshop](https://www.youtube.com/watch?v=B93QezwTQpI) - *Rob Martin*
 
      <a href="https://www.youtube.com/watch?v=B93QezwTQpI" target="blank"><img src="images/transformation-priority-premise.png" width="200" height="111" title="What Should QA Do?"></a>
