@@ -52,13 +52,15 @@
 ### Transformation Priority Premise
 TPP suggests that Refactorings have counterparts called Transformations. Refactorings are simple operations that change the structure of code without changing it’s behavior. Transformations are simple operations that change the behavior of code. Transformations can be used as the sole means for passing the currently failing test in the red/green/refactor cycle. Transformations have a priority, or a preferred ordering, which if maintained, by the ordering of the tests, will prevent impasses, or long outages in the red/green/refactor cycle.
 
+- [The Transformation Priority Premise - Wikipedia](https://en.wikipedia.org/wiki/Transformation_Priority_Premise)
 - [The Transformation Priority Premise - Workshop](https://www.youtube.com/watch?v=B93QezwTQpI) - *Rob Martin*
 
      <a href="https://www.youtube.com/watch?v=B93QezwTQpI" target="blank"><img src="images/transformation-priority-premise.png" width="200" height="111" title="What Should QA Do?"></a>
 
-- [The Transformation Priority Premise - 8th Light Blog](https://8thlight.com/blog/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html) - *Rob Martin*
-- [Transformation Priority and Sorting - 8th Light Blog](https://8thlight.com/blog/uncle-bob/2013/05/27/TransformationPriorityAndSorting.html) - *Rob Martin*
+- [The Transformation Priority Premise](http://blog.cleancoder.com/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html) - *Rob Martin*
+- [Transformation Priority and Sorting](hhttp://blog.cleancoder.com/uncle-bob/2013/05/27/TransformationPriorityAndSorting.html) - *Rob Martin*
 - [Transformation Priority Premise: TDD Test Order Matters](https://www.slideshare.net/mdclement/transformation-priority-premise) - *Mike Clement*
+- [Extract of Uncle Bob’s Transformation Priority Premise post](https://medium.com/@zolipeto/extract-of-uncle-bobs-transformation-priority-premise-post-85ab20216fb1) - *Zoltán Pető*
 
 ### TDD as if you mean it
 **Preface**: [TDD as if you mean it](https://gojko.net/2009/02/27/thought-provoking-tdd-exercise-at-the-software-craftsmanship-conference/) was invented by a guy named [Keith Braithwaite](http://peripateticaxiom.blogspot.com/) in London during the Software Craftsmanship Conference 2009.  His idea is that you can write code with TDD in a way that forces you to make very small steps.  This means you need to respect the following rules:
