@@ -172,11 +172,11 @@ These are industry leading, proven, defacto books that the majority of developer
 
 - [Clean Architecture](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164) *Rob Martin*
 
-    <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164" target="blank"><img src="images/clean-architecture-book.jpg" width="75" height="97" title="Clean Architecture"></a>
+    <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164" target="blank"><img src="images/clean-architecture-book.jpg" width="75" height="100" title="Clean Architecture"></a>
 
 - [TDD by Example](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530) *Kent Beck*
 
-    <a href="https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530" target="blank"><img src="images/goos-book.jpg" width="75" height="94" title="TDD by Example"></a>
+    <a href="https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530" target="blank"><img src="images/tdd-by-example-book.jpg" width="75" height="94" title="TDD by Example"></a>
 
 - [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627) *Steve Freeman*
 
