@@ -18,24 +18,7 @@
 - [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) *Martin Fowler*
 - [Flaccid Agile?](https://medium.com/@marko.bjelac/flaccid-agile-308be2982174) *Marko Bjelac*
 
-### Recommended Books
-These are industry leading, proven, defacto books that the majority of developers use to guide their Craft.
 
-- [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM) *Rob Martin*
-
-    <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM" target="blank"><img src="images/clean-code-book.jpg" width="75" height="100" title="Clean Code"></a>
-
-- [The Clean Coder](https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers-ebook/dp/B0050JLC9Y) *Rob Martin*
-
-    <a href="https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers-ebook/dp/B0050JLC9Y" target="blank"><img src="images/the-clean-coder.jpg" width="75" height="97" title="The Clean Coder"></a>
-
-- [Clean Architecture](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164) *Rob Martin*
-
-    <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164" target="blank"><img src="images/clean-architecture-book.jpg" width="75" height="100" title="Clean Architecture"></a>
-
-- [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627) *Steve Freeman*
-
-    <a href="https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627" target="blank"><img src="images/goos-book.jpg" width="75" height="100" title="Unit testing and TDD misconceptions"></a>
 
 # TDD & General Testing
 
@@ -172,4 +155,30 @@ TPP suggests that Refactorings have counterparts called Transformations. Refacto
 # GitHub
 - [Markdown - Basic writing and formatting syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 
+# Recommended Books
+These are industry leading, proven, defacto books that the majority of developers use to guide their Craft.
+
+- [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM) *Rob Martin*
+
+These are industry leading, proven, defacto books that the majority of developers use to guide their Craft.
+
+- [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM) *Rob Martin*
+
+    <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM" target="blank"><img src="images/clean-code-book.jpg" width="75" height="100" title="Clean Code"></a>
+
+- [The Clean Coder](https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers-ebook/dp/B0050JLC9Y) *Rob Martin*
+
+    <a href="https://www.amazon.com/Clean-Coder-Conduct-Professional-Programmers-ebook/dp/B0050JLC9Y" target="blank"><img src="images/the-clean-coder.jpg" width="75" height="97" title="The Clean Coder"></a>
+
+- [Clean Architecture](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164) *Rob Martin*
+
+    <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164" target="blank"><img src="images/clean-architecture-book.jpg" width="75" height="97" title="Clean Architecture"></a>
+
+- [TDD by Example](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530) *Kent Beck*
+
+    <a href="https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530" target="blank"><img src="images/goos-book.jpg" width="75" height="94" title="TDD by Example"></a>
+
+- [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627) *Steve Freeman*
+
+    <a href="https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627" target="blank"><img src="images/goos-book.jpg" width="75" height="100" title="Unit testing and TDD misconceptions"></a>
 
