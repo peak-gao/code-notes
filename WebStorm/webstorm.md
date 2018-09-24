@@ -5,6 +5,19 @@ Below works for IntelliJ as well.
 ## Shortcuts
 `cmd + ,` - opens up WebStorm Preferences
 
+## Configuring Test GUI
+### mocha options
+You can specify mocha options when you setup a test configuration with mocha.  Here are a few I use:
+
+- -w --compilers js:babel-core/register
+- [Image of an espresso machine with UI](https://github.com/WeDoTDD/code-notes/images/mocha-setup-minimal.png)
+
+
+#### Images of Setup
+
+
+## Test Scripts (for running tests at command-line instead of GUI)
+
 ## Main Areas of WebStorm I Use
 WebStorm is overwhelming at first but if you can get over yourself on that, and learn some of the main parts that most devs will need at a very basic level you'll come to find that this IDE is amazing and kicks editors like Microsoft's VS Code in the ass in terms of productivity
 
