@@ -6,9 +6,7 @@ Below works for IntelliJ as well.
 `cmd + ,` - opens up WebStorm Preferences
 
 ## Configuring Test GUI
-### mocha options
-#### Images of Setup
-##### Webstorm Setup - Minimal
+### Webstorm Setup - Minimal
 - mocha options : `-w --compilers js:babel-core/register`
 
     ![webstorm-setup-minimal](/images/mocha-setup-minimal.png)
