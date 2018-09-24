@@ -7,14 +7,11 @@ Below works for IntelliJ as well.
 
 ## Configuring Test GUI
 ### mocha options
-You can specify mocha options when you setup a test configuration with mocha.  Here are a few I use:
-
-- -w --compilers js:babel-core/register
-- [Image of an espresso machine with UI](https://github.com/WeDoTDD/code-notes/images/mocha-setup-minimal.png)
-
-
 #### Images of Setup
+##### Webstorm Setup - Minimal
+- mocha options : -w --compilers js:babel-core/register
 
+[webstorm-setup-minimal](https://github.com/WeDoTDD/code-notes/tree/master/images/mocha-setup-minimal.png)
 
 ## Test Scripts (for running tests at command-line instead of GUI)
 
