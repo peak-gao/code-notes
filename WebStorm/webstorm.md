@@ -9,9 +9,9 @@ Below works for IntelliJ as well.
 ### mocha options
 #### Images of Setup
 ##### Webstorm Setup - Minimal
-- mocha options : -w --compilers js:babel-core/register
+- mocha options : `-w --compilers js:babel-core/register`
 
-[webstorm-setup-minimal](https://github.com/WeDoTDD/code-notes/tree/master/images/mocha-setup-minimal.png)
+    ![webstorm-setup-minimal](/images/mocha-setup-minimal.png)
 
 ## Test Scripts (for running tests at command-line instead of GUI)
 
