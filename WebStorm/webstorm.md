@@ -8,8 +8,25 @@ Below works for IntelliJ as well.
 ## Configuring Test GUI
 ### Webstorm Setup - Minimal
 - mocha options : `-w --compilers js:babel-core/register`
+- insure you have installed the following: `babel-core`, `babel-preset-es2015`, `babel-register`
 
-    ![webstorm-setup-minimal](/images/mocha-setup-minimal.png)
+##### .babelrc
+```
+{
+  "presets": ["es2015", "react", "stage-3"],
+  "plugins": [
+        ["transform-runtime", {
+          "helpers": false,
+          "polyfill": true,
+          "regenerator": true,
+          "moduleName": "babel-runtime"
+        }],
+        "transform-object-rest-spread"
+    ]
+}
+```
+
+![webstorm-setup-minimal](/images/mocha-setup-minimal.png)
 
 ## Test Scripts (for running tests at command-line instead of GUI)
 
