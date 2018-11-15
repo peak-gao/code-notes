@@ -6,9 +6,66 @@ Below works for IntelliJ as well.
 `cmd + ,` - opens up WebStorm Preferences
 
 ## Configuring Test GUI
-### Webstorm Setup - Minimal
-- mocha options : `-w --compilers js:babel-core/register`
+### Webstorm Setup - Minimal - Older versions of babel
+- mocha options : `-w --require js:babel-core/register`
+  - mocha is depreciating `--compilers`, just use `--require`
 - insure you have installed the following: `babel-core`, `babel-preset-es2015`, `babel-register`
+
+Above works with a `.babelrc` setup like this:
+
+```
+{
+  "presets": [
+    "react",
+    "env"
+  ],
+  "plugins": [
+    ["transform-object-rest-spread"],
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
+}
+```
+
+### Webstorm Setup - Minimal - babel 7x
+Script in package.json looks like this: `yarn run mocha --recursive --require @babel/register ./javascript/test/test.imports javascript/test/unit -w --timeout 8000`
+
+Test Runner:
+- mocha options : `-w --require js:@babel/register`
+
+All this assumes you've installed the following:
+`yarn add -D @babel/preset-env` - provides ES6 syntax support
+`yarn add -D @babel/core @babel/cli @babel/preset-env`
+`yarn add -D @babel/polyfill` - not sure if I really need this anymore
+`yarn add -D @babel/preset-react`
+`yarn add -D @babel/register`
+
+ - `yarn add -D @babel/babel-plugin-transform-object-rest-spread` - while `@babel/preset-env` covers most of the ES6 support, it doesn't appear to support the ES6 object spread operator so this plugin has to still be added for now
+ - `yarn add -D @babel/plugin-transform-runtime` - need this or you not get async support for tests and get a regeneratorRuntime babel error
+
+Above works with a `.babelrc` setup like this:
+
+```
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
+      }
+    },
+    "@babel/preset-react"]
+  ],
+  "plugins": [
+    ["@babel/transform-object-rest-spread"],
+    ["@babel/transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
+}
+```
 
 ##### .babelrc
 ```
@@ -95,3 +152,6 @@ you can import and try these out if you like
 - [The Ultimate Guide to Webstorm / IntelliJ - Part 1 - Colors](https://www.youtube.com/watch?v=7tg9jGDUFQU)
 - [The Ultimate Guide to WebStorm / IntelliJ - Part 2 - Live Templates](https://www.youtube.com/watch?v=97pNB6DBfEs)
 - [Run Mocha Tests from Command-line or Webstorm Test Runner](https://www.youtube.com/watch?v=WpouIuSwiik)
+
+# Resources
+[mocha - compilers deprecation](https://github.com/mochajs/mocha/wiki/compilers-deprecation)
