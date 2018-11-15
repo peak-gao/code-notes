@@ -36,7 +36,7 @@ Note: The "env" preset completely replaces these now:
   - babel-preset-latest
 
 ### Webstorm Setup - Minimal - babel 7x
-Script in package.json looks like this: `yarn run mocha --recursive -r @babel/register ./javascript/test/test.imports javascript/test/unit -w --timeout 8000`
+Script in package.json looks like this: `mocha --recursive -r @babel/register ./javascript/test/test.imports javascript/test/unit -w --timeout 8000`
 
 Test Runner:
 - mocha options : `-w --require @babel/register --recursive` or shortened: `-w -r @babel/register`
@@ -44,7 +44,8 @@ Test Runner:
 All this assumes you've installed the following:
 `yarn add -D @babel/preset-env` - provides ES6 syntax support
 `yarn add -D @babel/core @babel/cli @babel/preset-env`
-`yarn add -D @babel/polyfill` - not sure if I really need this anymore
+`yarn add -D @babel/polyfill`  - includes a polyfill that includes a custom regenerator runtime and core-js
+- I've imported the polyfill in test.imports.js and then added `src/test/test.imports.js` to the test script and also extra mocha options in the IntelliJ test runner mocha config
 `yarn add -D @babel/preset-react`
 `yarn add -D @babel/cli`
 `yarn add -D @babel/register` - when you’re developing a Node.js application in ES6, one of the ways to run and test it is using @babel/register
@@ -172,3 +173,5 @@ you can import and try these out if you like
 [mocha - compilers deprecation](https://github.com/mochajs/mocha/wiki/compilers-deprecation)
 [Module build failed: TypeError: this.setDynamic is not a function](https://github.com/babel/babel-loader/issues/560)
 [mocha --compilers js:babel/register “cannot find module”](https://stackoverflow.com/questions/38517590/mocha-compilers-jsbabel-register-cannot-find-module)
+[Using enzyme with JSDOM](https://airbnb.io/enzyme/docs/guides/jsdom.html) - shows an example of the old and new setup
+[Using Mocha programmatically](https://github.com/mochajs/mocha/wiki/Using-mocha-programmatically) - shows an example of the old and new setup
