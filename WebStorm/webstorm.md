@@ -44,7 +44,7 @@ All this assumes you've installed the following:
 `yarn add -D @babel/register` - when you’re developing a Node.js application in ES6, one of the ways to run and test it is using @babel/register
 
 
- - `yarn add -D @babel/babel-plugin-transform-object-rest-spread` - while `@babel/preset-env` covers most of the ES6 support, it doesn't appear to support the ES6 object spread operator so this plugin has to still be added for now
+ - `yarn add -D @babel/plugin-proposal-object-rest-spread` - while `@babel/preset-env` covers most of the ES6 support, it doesn't appear to support the ES6 object spread operator so this plugin has to still be added for now
  - `yarn add -D @babel/plugin-transform-runtime` - need this or you not get async support for tests and get a regeneratorRuntime babel error
 
 Above works with a `.babelrc` setup like this:
