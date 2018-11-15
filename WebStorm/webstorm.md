@@ -48,6 +48,7 @@ All this assumes you've installed the following:
  - `yarn add -D @babel/plugin-transform-runtime` - need this or you not get async support for tests and get a regeneratorRuntime babel error
 
 Above works with a `.babelrc` setup like this:
+`pollyflll` - this option for `@babel/transform-runtime` has been removed so do not add it anymore
 
 ```
 {
