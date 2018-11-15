@@ -67,8 +67,8 @@ Above works with a `.babelrc` setup like this:
     "@babel/preset-react"]
   ],
   "plugins": [
-    ["@babel/transform-object-rest-spread"],
-    ["@babel/transform-runtime", {
+    ["@babel/plugin-proposal-object-rest-spread"],
+    ["@babel/plugin-transform-runtime", {
       "polyfill": false,
       "regenerator": true
     }]
