@@ -30,17 +30,19 @@ Above works with a `.babelrc` setup like this:
 ```
 
 ### Webstorm Setup - Minimal - babel 7x
-Script in package.json looks like this: `yarn run mocha --recursive --require @babel/register ./javascript/test/test.imports javascript/test/unit -w --timeout 8000`
+Script in package.json looks like this: `yarn run mocha --recursive -r @babel/register ./javascript/test/test.imports javascript/test/unit -w --timeout 8000`
 
 Test Runner:
-- mocha options : `-w --require js:@babel/register`
+- mocha options : `-w --require @babel/register --recursive` or shortened: `-w -r @babel/register`
 
 All this assumes you've installed the following:
 `yarn add -D @babel/preset-env` - provides ES6 syntax support
 `yarn add -D @babel/core @babel/cli @babel/preset-env`
 `yarn add -D @babel/polyfill` - not sure if I really need this anymore
 `yarn add -D @babel/preset-react`
-`yarn add -D @babel/register`
+`yarn add -D @babel/cli`
+`yarn add -D @babel/register` - when you’re developing a Node.js application in ES6, one of the ways to run and test it is using @babel/register
+
 
  - `yarn add -D @babel/babel-plugin-transform-object-rest-spread` - while `@babel/preset-env` covers most of the ES6 support, it doesn't appear to support the ES6 object spread operator so this plugin has to still be added for now
  - `yarn add -D @babel/plugin-transform-runtime` - need this or you not get async support for tests and get a regeneratorRuntime babel error
@@ -155,3 +157,5 @@ you can import and try these out if you like
 
 # Resources
 [mocha - compilers deprecation](https://github.com/mochajs/mocha/wiki/compilers-deprecation)
+[Module build failed: TypeError: this.setDynamic is not a function](https://github.com/babel/babel-loader/issues/560)
+[mocha --compilers js:babel/register “cannot find module”](https://stackoverflow.com/questions/38517590/mocha-compilers-jsbabel-register-cannot-find-module)
