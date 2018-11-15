@@ -1,16 +1,35 @@
 # Initial Notes
 - Git only records the state of the files when you stage them (with git add) or when you create a commit
 - Once you've created a commit which has your project files in a particular state, they're very safe, but until then Git's not really "tracking changes" to your files. (for example, even if you do git add to stage a new version of the file, that overwrites the previously staged version of that file in the staging area.)
+- An easier way to think about reset and checkout is through the mental frame of Git being a content manager of three different trees. By “tree” here, we really mean “collection of files”, not specifically the data structure
+- `HEAD`
+    - the pointer to the current branch reference, which is in turn a pointer to the last commit made on that branch
+        - That means HEAD will be the parent of the next commit that is created
+    - It’s generally simplest to think of HEAD as the snapshot of your last commit on that branch
+    - points to your current branch (or current commit), so all that git reset --hard HEAD will do is to throw away any uncommitted changes you have
+- **snapshot**
+- **Index**
+    - your proposed next commit
+    - We’ve also been referring to this concept as Git’s “Staging Area” as this is what Git looks at when you run git commit
+    - Git populates this index with a list of all the file contents that were last checked out into your working directory and what they looked like when they were originally checked out
+        - You then replace some of those files with new versions of them, and git commit converts that into the tree for a new commit
+    - The index is not technically a tree structure — it’s actually implemented as a flattened manifest — but for our purposes it’s close enough
+- **Working Directory**
+    - The other two trees store their content in an efficient but inconvenient manner, inside the .git folder
+        - The Working Directory unpacks them into actual files, which makes it much easier for you to edit them
+    - Think of the Working Directory as a sandbox, where you can try changes out before committing them to your staging area (index) and then to history
 
 # State
 ##### Switch to a previous state of the repository
-`git reset --hard` -
-- resets the _current branch_ head
+`git reset --hard`
+- resets the _current branch_
+- `hard` - the staged snapshot and the working directory are both updated to match the specified commit.  In this case we're not specifying a specific commit so it's referring the current branch
 - throws away all your uncommitted changes so do a git status first to make sure you want to lose what's in your current repo
 - `--hard` resets the index and working tree. Any changes to tracked files in the working tree since <commit> are discarded.
 
 `git reset --hard HEAD` -
-- HEAD points to your current branch (or current commit), so all that git reset --hard HEAD will do is to throw away any uncommitted changes you have
+- `HEAD` - points to the **current branch**
+    - so I think this command is the same as above, it infers the current branch
 
 `git reset --hard f414f31` - sets it back to a specific commit where f414f31 is the sha
 - this is rewriting the history of your branch, so you should avoid it
@@ -26,4 +45,31 @@
 `git checkout master` - to get back to latest and out of this state
 
 # References
-[How do I use 'git reset --hard HEAD' to revert to a previous commit?](https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit)
+- [How do I use 'git reset --hard HEAD' to revert to a previous commit?](https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit)
+- [Git Tools - Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified)
+- [Resetting, Checking Out & Reverting - Atlassian](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
+
+# My Rebase Workflow
+#### General Commands
+
+`git pull`
+- this does a git fetch && git merge under the hood
+- use it when I have no local changes but just want to pull latest
+
+`qa!` - exit a rebase
+`git rebase --abort` - exit or do a rebase over
+`i` - switch to interactive (edit) mode in vim
+`esc` - exit interactive mode in vim
+
+### Rebasing Flow
+*Note:* if you only did one commit period, and that's the latest then you don't need to rebase, just do a git fetch && git rebase origin/develop
+
+- First make sure I can compile, run lint, run tests
+- Find the latest commit: `git log --graph --decorate --pretty=oneline --abbrev-commit`
+- rebase interactively based on latest commit (the commit sha before your changes occurred): `git rebase -i <last person's sha before my changes>`
+- `squash` all my commits except for the first
+- `esc` - to exit interactive mode after done editing
+- `:x!` - to save changes in vim and finish rebasing
+- if I mess up, `rebase --edit-todo` or `git rebase --abort` to just cancel the rebase completely and start over
+- `git fetch && git rebase origin/develop`  (make sure it's develop or whatever your master is.  If you only work off master make it origin/master)
+- `gp -f` (zsh shortcut for git push -f)
