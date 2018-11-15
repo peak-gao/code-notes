@@ -44,16 +44,22 @@
 `git checkout <sha>`
 `git checkout master` - to get back to latest and out of this state
 
-# References
-- [How do I use 'git reset --hard HEAD' to revert to a previous commit?](https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit)
-- [Git Tools - Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified)
-- [Resetting, Checking Out & Reverting - Atlassian](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
+##### Removing uncommitted changes
+uncommitted: non-tracked files that have changed but you have not staged them yet (have not done a git add)
+
+`git clean -n` - show what will be deleted
+`git clean -f` - this will delete those files
+
+- To remove directories, run `git clean -f -d` or `git clean -fd`
+- To remove ignored files, run `git clean -f -X` or `git clean -fX`
+- To remove ignored and non-ignored files, run `git clean -f -x` or `git clean -fx`
 
 # My Rebase Workflow
 #### General Commands
 
 `git pull`
-- this does a git fetch && git merge under the hood
+- this does a `git fetch && git merge` under the hood
+    - `fetch` just pulls remote changes into your local repository. It doesn't merge them into any local branch
 - use it when I have no local changes but just want to pull latest
 
 `qa!` - exit a rebase
@@ -66,10 +72,16 @@
 
 - First make sure I can compile, run lint, run tests
 - Find the latest commit: `git log --graph --decorate --pretty=oneline --abbrev-commit`
-- rebase interactively based on latest commit (the commit sha before your changes occurred): `git rebase -i <last person's sha before my changes>`
+- rebase interactively based on latest commit (the commit sha before your changes occurred): `git rebase -i <hash of current base commit>`
 - `squash` all my commits except for the first
 - `esc` - to exit interactive mode after done editing
 - `:x!` - to save changes in vim and finish rebasing
 - if I mess up, `rebase --edit-todo` or `git rebase --abort` to just cancel the rebase completely and start over
 - `git fetch && git rebase origin/develop`  (make sure it's develop or whatever your master is.  If you only work off master make it origin/master)
 - `gp -f` (zsh shortcut for git push -f)
+
+# References
+- [How do I use 'git reset --hard HEAD' to revert to a previous commit?](https://stackoverflow.com/questions/9529078/how-do-i-use-git-reset-hard-head-to-revert-to-a-previous-commit)
+- [Git Tools - Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified)
+- [Resetting, Checking Out & Reverting - Atlassian](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
+- [How to remove local (untracked) files from the current Git working tree?](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
