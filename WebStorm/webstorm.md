@@ -42,10 +42,10 @@ All this assumes you've installed the following:
 `yarn add -D @babel/preset-react`
 `yarn add -D @babel/cli`
 `yarn add -D @babel/register` - when you’re developing a Node.js application in ES6, one of the ways to run and test it is using @babel/register
-
-
- - `yarn add -D @babel/plugin-proposal-object-rest-spread` - while `@babel/preset-env` covers most of the ES6 support, it doesn't appear to support the ES6 object spread operator so this plugin has to still be added for now
- - `yarn add -D @babel/plugin-transform-runtime` - need this or you not get async support for tests and get a regeneratorRuntime babel error
+`yarn add -D @babel/plugin-proposal-object-rest-spread` - while `@babel/preset-env` covers most of the ES6 support, it doesn't appear to support the ES6 object spread operator so this plugin has to still be added for now
+`yarn add -D @babel/plugin-transform-runtime` - need this or you not get async support for tests and get a regeneratorRuntime babel error
+`yarn add @babel/polyfill` - because React 16 depends on the collection types Map and Set
+- This means you can use new built-ins like Promise or WeakMap, static methods like Array.from or Object.assign, instance methods like Array.prototype.includes, and generator functions (provided you use the regenerator plugin). The polyfill adds to the global scope as well as native prototypes like String in order to do this
 
 Above works with a `.babelrc` setup like this:
 `pollyflll` - this option for `@babel/transform-runtime` has been removed so do not add it anymore
@@ -157,6 +157,12 @@ you can import and try these out if you like
 - [Run Mocha Tests from Command-line or Webstorm Test Runner](https://www.youtube.com/watch?v=WpouIuSwiik)
 
 # Resources
+-[Upgrade to Babel 7](https://babeljs.io/docs/en/v7-migration)
+-[Babel Docs](https://babeljs.io/setup#installation) say to look at [ECMAScript 6 in WebStorm: Transpiling](https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling#babelfilewatcher) for the latest install for WebStorm
+-[Using Babel](https://babeljs.io/setup#installation) - start here
+-[@babel/preset-react](https://babeljs.io/docs/en/babel-preset-react)
+-[@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env)
+-[@babel/polyfill](https://babeljs.io/docs/en/babel-polyfill/)
 [mocha - compilers deprecation](https://github.com/mochajs/mocha/wiki/compilers-deprecation)
 [Module build failed: TypeError: this.setDynamic is not a function](https://github.com/babel/babel-loader/issues/560)
 [mocha --compilers js:babel/register “cannot find module”](https://stackoverflow.com/questions/38517590/mocha-compilers-jsbabel-register-cannot-find-module)
