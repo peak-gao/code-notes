@@ -28,6 +28,12 @@ Above works with a `.babelrc` setup like this:
   ]
 }
 ```
+Note: The "env" preset completely replaces these now:
+- These presets should be substituted with the "env" preset:
+  - babel-preset-es2015
+  - babel-preset-es2016
+  - babel-preset-es2017
+  - babel-preset-latest
 
 ### Webstorm Setup - Minimal - babel 7x
 Script in package.json looks like this: `yarn run mocha --recursive -r @babel/register ./javascript/test/test.imports javascript/test/unit -w --timeout 8000`
