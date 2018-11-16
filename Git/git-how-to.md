@@ -62,8 +62,8 @@ First rename the repository on github via settings
 
 Now update your local to reflect the new name:
 - example of updating local repo to sync to new name:
-`git remote set-url origin https://github.com/WeDoTDD/react-tdd-redux-e1-react-utils.git
-`
+`git remote set-url origin https://github.com/WeDoTDD/react-tdd-redux-e1-react-utils.git`
+- verify that it changed: `git remote -v`
 
 
 # My Rebase Workflow
@@ -97,4 +97,5 @@ Now update your local to reflect the new name:
 - [Git Tools - Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified)
 - [Resetting, Checking Out & Reverting - Atlassian](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
 - [How to remove local (untracked) files from the current Git working tree?](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
-- [Renaming a repository](https://help.github.com/articles/renaming-a-repository/)
+- [Renaming a repository](https://help.github.com/articles/renaming-a-repository)
+- [Changing a remote's URL](https://help.github.com/articles/changing-a-remote-s-url)
