@@ -54,6 +54,18 @@ uncommitted: non-tracked files that have changed but you have not staged them ye
 - To remove ignored files, run `git clean -f -X` or `git clean -fX`
 - To remove ignored and non-ignored files, run `git clean -f -x` or `git clean -fx`
 
+##### Renaming a Repository
+Scenario: You'd like to rename the remote repository then update your local
+to point to that new name
+
+First rename the repository on github via settings
+
+Now update your local to reflect the new name:
+- example of updating local repo to sync to new name:
+`git remote set-url origin https://github.com/WeDoTDD/react-tdd-redux-e1-react-utils.git
+`
+
+
 # My Rebase Workflow
 #### General Commands
 
@@ -85,3 +97,4 @@ uncommitted: non-tracked files that have changed but you have not staged them ye
 - [Git Tools - Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified)
 - [Resetting, Checking Out & Reverting - Atlassian](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting)
 - [How to remove local (untracked) files from the current Git working tree?](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
+- [Renaming a repository](https://help.github.com/articles/renaming-a-repository/)
