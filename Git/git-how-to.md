@@ -19,6 +19,49 @@
         - The Working Directory unpacks them into actual files, which makes it much easier for you to edit them
     - Think of the Working Directory as a sandbox, where you can try changes out before committing them to your staging area (index) and then to history
 
+# Auth
+##### Authenticating over https
+- [create an access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line) -   This is an OAuth token that you will use to auth at the command-line
+- be sure to also [update your OS X Keychain with it](https://help.github.com/articles/updating-credentials-from-the-osx-keychain)
+# Starting New
+##### Add a remote repo to your local repo
+`git remote add origin [http...your repo url]`
+
+##### Create a new repository from command-line steps:
+Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses GraphQL.  Prior versions were using REST
+
+- First you need to create the repo on github first OR run this:
+  - ###### Creating it using v3 - REST
+      - `curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO"}'`
+        - _replace USER with your username and REPO with your repository/application name_
+      - To do it with an access token: `curl https://api.github.com/user/repos?access_token=myAccessToken -d '{"name":"REPO"}'`
+        - to make it private during creation: `'{"name":"REPO", "private":"true"}'`
+          - example: `curl -u 'dschinkel' https://api.github.com/dschinkel/repos -d '{"name":"nodejs-kata-scaffolding"}'`
+
+  - ###### Creating it using v4 - GraphQL
+    - [Github's graphql explorer](https://developer.github.com/v4/explorer) - try out graphql calls to the github API OR to explore the API and see what mutations are there, what entities are there, etc.
+      - [using the explorer](https://developer.github.com/v4/guides/using-the-explorer/#using-graphiql) - talks about adding your bearer token in the explorer GUI http headers
+    - To query GraphQL using cURL, make a POST request with a JSON payload. The payload must contain a string called query:
+        ```
+        curl -H "Authorization: bearer token" -X POST -d " \
+         { \
+           \"query\": \"query { viewer { login }}\" \
+         } \
+        " https://api.github.com/graphql
+        ```
+      - replace _token_ above with your personal access token
+      - ![example of a successful auth](https://github.com/WeDoTDD/code-notes/raw/master/images/github-v4-example-successful-auth.png)
+- `touch README.md`
+- `git init`
+- `git add README.md`
+- `git commit -m "first commit"`
+- `git remote add origin git@github.com:alexpchin/<reponame>.git`
+- `git push -u origin master`
+
+Then push it so it creates the new repo on the remote (github):
+- `git remote add origin git@github.com:dschinkel/<reponame>.git`
+- `git push -u origin master`
+
 # State
 ##### Switch to a previous state of the repository
 `git reset --hard`
