@@ -50,7 +50,9 @@ Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses
         " https://api.github.com/graphql
         ```
       - replace _token_ above with your personal access token
-      - ![example of a successful auth](https://github.com/WeDoTDD/code-notes/raw/master/images/github-v4-example-successful-auth.png)
+
+        ![example of a successful auth](https://github.com/WeDoTDD/code-notes/raw/master/images/github-v4-example-successful-auth.png)
+
 - `touch README.md`
 - `git init`
 - `git add README.md`
