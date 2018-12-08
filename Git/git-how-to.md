@@ -40,9 +40,14 @@ Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses
 
 
   - #### Creating it using v4 - GraphQL
+    - about [creating queries and mutations](https://developer.github.com/v4/guides/forming-calls/#about-query-and-mutation-operations)
+      - [example mutation](https://developer.github.com/v4/guides/forming-calls/#example-mutation)
     - [Github's graphql explorer](https://developer.github.com/v4/explorer) - try out graphql calls to the github API OR to explore the API and see what mutations are there, what entities are there, etc.
       - [using the explorer](https://developer.github.com/v4/guides/using-the-explorer/#using-graphiql) - talks about adding your bearer token in the explorer GUI http headers
-    - To query GraphQL using cURL, make a POST request with a JSON payload. The payload must contain a string called query:
+    - To query GraphQL using cURL, make a POST request with a JSON payload.
+
+    #### Step 1: Auth into developer API
+
         ```
         curl -H "Authorization: bearer token" -X POST -d " \
          { \
@@ -53,6 +58,48 @@ Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses
       - replace _token_ above with your personal access token
 
         ![example of a successful auth](https://github.com/WeDoTDD/code-notes/raw/master/images/github-v4-example-successful-auth.png)
+
+    #### Step 2: Call mutation to [create a new project](https://developer.github.com/v4/mutation/createproject) (repo):
+    note: `$ownerId: ID!` is an example of a mutation query variable
+          these will be replaced by the query variable/value pairs you
+          send in
+    ```
+    mutation ($ownerId: ID!, $name: String!, $body: String, $clientMutationId: String!) {
+      createProject(input: {ownerId: $ownerId, name: $name, body: $body, clientMutationId: $clientMutationId}) {
+        project {
+          name
+          owner {
+            ... on Repository {
+              name
+              owner {
+                login
+              }
+            }
+            ... on Organization {
+              login
+            }
+          }
+          body
+          number
+          creator {
+            login
+          }
+          createdAt
+          updatedAt
+        }
+      }
+    }
+    ```
+    Query variables (which will be injected in the above mutation)
+    ```
+    {
+      "ownerId": "???????",
+    	"name": "test-github-v4-api",
+      "body": "Basic setup of NodeJS: Babel, Mocha, and Jest",
+      "clientMutationId": "1234"
+    }
+    ```
+
 
 - `touch README.md`
 - `git init`
@@ -146,3 +193,4 @@ Now update your local to reflect the new name:
 - [Renaming a repository](https://help.github.com/articles/renaming-a-repository)
 - [Changing a remote's URL](https://help.github.com/articles/changing-a-remote-s-url)
 - [create a GitHub repo via the command line using the GitHub API](https://stackoverflow.com/questions/2423777/is-it-possible-to-create-a-remote-repo-on-github-from-the-cli-without-opening-br/10325316#10325316)
+- [createProject mutation not working?](https://platform.github.community/t/createproject-mutation-not-working/1010)
