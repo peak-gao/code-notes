@@ -30,13 +30,14 @@
 ### Create a new _remote_ repository from command-line steps:
 Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses GraphQL.  Prior versions were using REST
 
-- First you need to create the repo on github first OR run this:
-  - #### Creating it using v3 - REST
-      - `curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO"}'`
-        - _replace USER with your username and REPO with your repository/application name_
-      - To do it with an access token: `curl https://api.github.com/user/repos?access_token=myAccessToken -d '{"name":"REPO"}'`
+- First you need to create the repo (formally called a "project" on github) on github first manually, OR run this:
+  - #### [Creating it using v3](https://developer.github.com/v3/repos/#create) - REST
+      - to do it with an access token: `curl https://api.github.com/user/repos?access_token=myAccessToken -d '{"name":"REPO"}'`
         - to make it private during creation: `'{"name":"REPO", "private":"true"}'`
-          - example: `curl -u 'dschinkel' https://api.github.com/dschinkel/repos -d '{"name":"nodejs-kata-scaffolding"}'`
+          - example: `curl -u 'dschinkel' https://api.github.com/user/repos -d '{"name":"nodejs-kata-scaffolding","description":"Basic setup of NodeJS: Babel, Mocha, and Jest"}'`
+            - Result:
+                ![example of a successful auth](https://github.com/WeDoTDD/code-notes/raw/master/images/github-v3-example-successful-project-creation.png)
+
 
   - #### Creating it using v4 - GraphQL
     - [Github's graphql explorer](https://developer.github.com/v4/explorer) - try out graphql calls to the github API OR to explore the API and see what mutations are there, what entities are there, etc.
@@ -144,3 +145,4 @@ Now update your local to reflect the new name:
 - [How to remove local (untracked) files from the current Git working tree?](https://stackoverflow.com/questions/61212/how-to-remove-local-untracked-files-from-the-current-git-working-tree)
 - [Renaming a repository](https://help.github.com/articles/renaming-a-repository)
 - [Changing a remote's URL](https://help.github.com/articles/changing-a-remote-s-url)
+- [create a GitHub repo via the command line using the GitHub API](https://stackoverflow.com/questions/2423777/is-it-possible-to-create-a-remote-repo-on-github-from-the-cli-without-opening-br/10325316#10325316)
