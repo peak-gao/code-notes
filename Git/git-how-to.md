@@ -27,7 +27,7 @@
 ##### Add a remote repo to your local repo
 `git remote add origin [http...your repo url]`
 
-##### Create a new repository from command-line steps:
+##### Create a new _remote_ repository from command-line steps:
 Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses GraphQL.  Prior versions were using REST
 
 - First you need to create the repo on github first OR run this:
