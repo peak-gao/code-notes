@@ -20,25 +20,25 @@
     - Think of the Working Directory as a sandbox, where you can try changes out before committing them to your staging area (index) and then to history
 
 # Auth
-#### Authenticating over https
+### Authenticating over https
 - [create an access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line) -   This is an OAuth token that you will use to auth at the command-line
 - be sure to also [update your OS X Keychain with it](https://help.github.com/articles/updating-credentials-from-the-osx-keychain)
 # Starting New
-#### Add a remote repo to your local repo
+### Add a remote repo to your local repo
 `git remote add origin [http...your repo url]`
 
-#### Create a new _remote_ repository from command-line steps:
+### Create a new _remote_ repository from command-line steps:
 Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses GraphQL.  Prior versions were using REST
 
 - First you need to create the repo on github first OR run this:
-  - ##### Creating it using v3 - REST
+  - #### Creating it using v3 - REST
       - `curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO"}'`
         - _replace USER with your username and REPO with your repository/application name_
       - To do it with an access token: `curl https://api.github.com/user/repos?access_token=myAccessToken -d '{"name":"REPO"}'`
         - to make it private during creation: `'{"name":"REPO", "private":"true"}'`
           - example: `curl -u 'dschinkel' https://api.github.com/dschinkel/repos -d '{"name":"nodejs-kata-scaffolding"}'`
 
-  - ##### Creating it using v4 - GraphQL
+  - #### Creating it using v4 - GraphQL
     - [Github's graphql explorer](https://developer.github.com/v4/explorer) - try out graphql calls to the github API OR to explore the API and see what mutations are there, what entities are there, etc.
       - [using the explorer](https://developer.github.com/v4/guides/using-the-explorer/#using-graphiql) - talks about adding your bearer token in the explorer GUI http headers
     - To query GraphQL using cURL, make a POST request with a JSON payload. The payload must contain a string called query:
@@ -65,7 +65,7 @@ Then push it so it creates the new repo on the remote (github):
 - `git push -u origin master`
 
 # State
-#### Switch to a previous state of the repository
+### Switch to a previous state of the repository
 `git reset --hard`
 - resets the _current branch_
 - `hard` - the staged snapshot and the working directory are both updated to match the specified commit.  In this case we're not specifying a specific commit so it's referring the current branch
@@ -84,12 +84,12 @@ Then push it so it creates the new repo on the remote (github):
 `git reset --soft HEAD@{1}`
 `git commit -m "Reverting to the state of the project at f414f31"`
 
-#### Switch to a previous state of the repository
+### Switch to a previous state of the repository
 
 `git checkout <sha>`
 `git checkout master` - to get back to latest and out of this state
 
-#### Removing uncommitted changes
+### Removing uncommitted changes
 uncommitted: non-tracked files that have changed but you have not staged them yet (have not done a git add)
 
 `git clean -n` - show what will be deleted
@@ -99,7 +99,7 @@ uncommitted: non-tracked files that have changed but you have not staged them ye
 - To remove ignored files, run `git clean -f -X` or `git clean -fX`
 - To remove ignored and non-ignored files, run `git clean -f -x` or `git clean -fx`
 
-#### Renaming a Repository
+### Renaming a Repository
 Scenario: You'd like to rename the remote repository then update your local
 to point to that new name
 
@@ -112,7 +112,7 @@ Now update your local to reflect the new name:
 
 
 # My Rebase Workflow
-#### General Commands
+### General Commands
 
 `git pull`
 - this does a `git fetch && git merge` under the hood
