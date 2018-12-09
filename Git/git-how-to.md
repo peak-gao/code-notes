@@ -23,31 +23,33 @@
 ### Authenticating over https
 - [create an access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line) -   This is an OAuth token that you will use to auth at the command-line
 - be sure to also [update your OS X Keychain with it](https://help.github.com/articles/updating-credentials-from-the-osx-keychain)
+
 # Starting New
 ### Add a remote repo to your local repo
 `git remote add origin [http...your repo url]`
+- First you need to create the repo (formally called a "project" on github) on github first manually, OR try some ways below:
+- 
+#### Create a new _remote_ repository from command-line
+##### Try [Binit](https://github.com/theJacobDev/binit)
 
-### Create a new _remote_ repository from command-line steps:
-Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses GraphQL.  Prior versions were using REST
+##### [Creating it using Github API v3](https://developer.github.com/v3/repos/#create)
+*Note*: [v4](https://developer.github.com/v4) of the Github Developer API now uses GraphQL.  Prior versions were using REST
 
-- First you need to create the repo (formally called a "project" on github) on github first manually, OR run this:
-  - #### [Creating it using v3](https://developer.github.com/v3/repos/#create) - REST
-      - to do it with an access token: `curl https://api.github.com/user/repos?access_token=myAccessToken -d '{"name":"REPO"}'`
-        - to make it private during creation: `'{"name":"REPO", "private":"true"}'`
-          - example: `curl -u 'dschinkel' https://api.github.com/user/repos -d '{"name":"nodejs-kata-scaffolding","description":"Basic setup of NodeJS: Babel, Mocha, and Jest"}'`
-            - Result:
-                ![example of a successful auth](https://github.com/WeDoTDD/code-notes/raw/master/images/github-v3-example-successful-project-creation.png)
+- REST
+  - to do it with an access token: `curl https://api.github.com/user/repos?access_token=myAccessToken -d '{"name":"REPO"}'`
+    - to make it private during creation: `'{"name":"REPO", "private":"true"}'`
+      - example: `curl -u 'dschinkel' https://api.github.com/user/repos -d '{"name":"nodejs-kata-scaffolding", "private": "true", "description":"Basic setup of NodeJS: Babel, Mocha, and Jest"}'`
+        - Result:
+          ![example of a successful auth](https://github.com/WeDoTDD/code-notes/raw/master/images/github-v3-example-successful-project-creation.png)
 
-
-  - #### Creating it using v4 - GraphQL
-    - about [creating queries and mutations](https://developer.github.com/v4/guides/forming-calls/#about-query-and-mutation-operations)
-      - [example mutation](https://developer.github.com/v4/guides/forming-calls/#example-mutation)
+##### Creating it using using Github API v4 - GraphQL
+  - about [creating queries and mutations](https://developer.github.com/v4/guides/forming-calls/#about-query-and-mutation-operations)
+    - [example mutation](https://developer.github.com/v4/guides/forming-calls/#example-mutation)
     - [Github's graphql explorer](https://developer.github.com/v4/explorer) - try out graphql calls to the github API OR to explore the API and see what mutations are there, what entities are there, etc.
       - [using the explorer](https://developer.github.com/v4/guides/using-the-explorer/#using-graphiql) - talks about adding your bearer token in the explorer GUI http headers
     - To query GraphQL using cURL, make a POST request with a JSON payload.
 
-    #### Step 1: Auth into developer API
-
+    ###### Step 1: Auth into developer API
         ```
         curl -H "Authorization: bearer token" -X POST -d " \
          { \
@@ -59,7 +61,7 @@ Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses
 
         ![example of a successful auth](https://github.com/WeDoTDD/code-notes/raw/master/images/github-v4-example-successful-auth.png)
 
-    #### Step 2: Call mutation to [create a new project](https://developer.github.com/v4/mutation/createproject) (repo):
+    ###### Step 2: Call mutation to [create a new project](https://developer.github.com/v4/mutation/createproject) (repo):
     note: `$ownerId: ID!` is an example of a mutation query variable
           these will be replaced by the query variable/value pairs you
           send in
@@ -100,7 +102,7 @@ Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses
     }
     ```
 
-
+#### Once Created then:
 - `touch README.md`
 - `git init`
 - `git add README.md`
@@ -111,6 +113,17 @@ Note: [v4](https://developer.github.com/v4) of the Github Developer API now uses
 Then push it so it creates the new repo on the remote (github):
 - `git remote add origin git@github.com:dschinkel/<reponame>.git`
 - `git push -u origin master`
+
+# Forking
+A [fork]((https://help.github.com/articles/fork-a-repo)) is a copy of a repository.
+
+- allows you to freely experiment with changes without affecting the original project
+- commonly used to either propose changes to someone else's project or to use someone else's project as a starting point for your own idea
+- allows you to spawn a new repository from a common ancestor. Forking is essentially the same as cloning with a couple extra steps:
+- you can also tell git to sync your fork with the original repo.  So you can pull new changes made in the parent.  So if you have a boilerplate repo you created for all your projects, you can fork it for new projects and have those new projects pull updates if you make changes to the boilerplate
+- A brand new repository is created based off the parent
+- A new remote repository is added to the new repo to specify the parent project
+- once you have forked a repo, you will just clone it down like normal and start working with it
 
 # State
 ### Switch to a previous state of the repository
@@ -194,3 +207,8 @@ Now update your local to reflect the new name:
 - [Changing a remote's URL](https://help.github.com/articles/changing-a-remote-s-url)
 - [create a GitHub repo via the command line using the GitHub API](https://stackoverflow.com/questions/2423777/is-it-possible-to-create-a-remote-repo-on-github-from-the-cli-without-opening-br/10325316#10325316)
 - [createProject mutation not working?](https://platform.github.community/t/createproject-mutation-not-working/1010)
+- [Using a repository's code as a starting point](https://community.atlassian.com/t5/Git-questions/Using-a-repository-s-code-as-a-starting-point/qaq-p/90803)
+- [Fork a repo](https://help.github.com/articles/fork-a-repo)
+- [Forking Projects](https://guides.github.com/activities/forking)
+- [The difference between cloning and forking a repository on GitHub](https://github.community/t5/Support-Protips/The-difference-between-forking-and-cloning-a-repository/ba-p/1372)
+- [Duplicating a git repository to another repository - Bitbucket](https://www.ravisagar.in/blog/duplicating-git-repository-another-repository-bitbucket)
