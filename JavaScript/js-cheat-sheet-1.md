@@ -575,6 +575,9 @@ arr.forEach(function callback(currentValue[, index[, array]]) {
 - the delay is the minimum time required for the runtime to process the request, but not a guaranteed time
 - setTimeout needs to wait for all the codes to complete even though you specified a particular time limit for your setTimeout
 
+## JS Modules (ES5)
+
+
 
 # Resources
 - [Javascript call() & apply() vs bind()?](https://stackoverflow.com/questions/15455009/javascript-call-apply-vs-bind)
@@ -584,3 +587,5 @@ arr.forEach(function callback(currentValue[, index[, array]]) {
 - [JavaScript concurrency model](https://medium.com/@ktachyon/javascript-concurrency-model-dc98dacab527)
 - [Concurrency vs Event Loop vs Event Loop + Concurrency](https://medium.com/@tigranbs/concurrency-vs-event-loop-vs-event-loop-concurrency-eb542ad4067b)
 - [Concurrency in JavaScript](https://gist.github.com/montanaflynn/cb349fd109b561c35d6c8500471cdb39)
+- [JavaScript Modules: A Beginner’s Guide](https://medium.freecodecamp.org/javascript-modules-a-beginner-s-guide-783f7d7a5fcc)
+- [Modules](https://eloquentjavascript.net/10_modules.html)
